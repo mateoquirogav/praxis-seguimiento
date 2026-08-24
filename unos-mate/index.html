@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tu proyecto · Unos Mate · PRAXIS</title>
+<meta name="description" content="Seguimiento del proyecto de Unos Mate. Mirá cómo viene el avance, día por día.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PRAXIS">
+<meta property="og:title" content="Unos Mate · Seguimiento del proyecto">
+<meta property="og:description" content="Mirá cómo viene tu proyecto, día por día. Se actualiza solo.">
+<meta name="theme-color" content="#0EA5C6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230EA5C6'/%3E%3Cpath d='M4 17l5-5 4 3 7-7' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --pa:#0B2038; --pa2:#33526F; --pa3:#7C90A6;
+  --cy:#0EA5C6; --tl:#12B5A6; --ok:#0F9D6B;
+  --bg:#FFFFFF; --card:#F7FAFC; --line:#E3EAF1; --off:#EDF2F7;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,sans-serif;
+  background:var(--bg); color:var(--pa); line-height:1.6;
+  padding:30px 20px 44px; display:flex; justify-content:center;
+}
+.w{width:100%;max-width:560px}
+
+.top{display:flex;align-items:center;gap:9px;margin-bottom:28px}
+.top .lg{flex:0 0 auto;display:block;line-height:0}
+.top .lg svg{display:block}
+.top span{font-size:.72rem;color:var(--pa3);margin-left:auto}
+
+h1{font-size:1.72rem;font-weight:600;letter-spacing:-.7px;line-height:1.25;text-wrap:balance}
+.sub{font-size:.92rem;color:var(--pa2);margin-top:6px}
+
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;margin:28px 0 0}
+.d{aspect-ratio:1;border-radius:9px;background:var(--off);border:1.5px solid var(--line);display:grid;place-items:center;font-size:.74rem;font-weight:600;color:#B4C2CF;transition:background .5s ease,color .5s ease,border-color .5s ease}
+.d.on{background:linear-gradient(145deg,var(--cy),var(--tl));border-color:transparent;color:#fff}
+.d.hoy{background:var(--bg);border:2.5px solid var(--cy);color:var(--cy);box-shadow:0 0 0 4px rgba(14,165,198,.13)}
+
+.nums{display:flex;align-items:baseline;gap:11px;margin-top:26px;flex-wrap:wrap}
+.nums .big{font-size:2.5rem;font-weight:700;letter-spacing:-1.6px;line-height:1}
+.nums .of{font-size:1rem;color:var(--pa3);font-weight:500}
+.nums .rest{margin-left:auto;font-size:.82rem;font-weight:600;color:var(--ok);background:rgba(15,157,107,.1);padding:6px 13px;border-radius:20px}
+.nums .rest.cerca{color:#B4690E;background:rgba(180,105,14,.1)}
+
+.fases{margin:26px 0 0;display:flex;flex-direction:column;gap:2px}
+.f{display:flex;align-items:center;gap:11px;padding:9px 0}
+.f .pt{width:9px;height:9px;border-radius:50%;background:var(--line);flex:0 0 auto}
+.f.hecha .pt{background:var(--ok)}
+.f.hoy .pt{background:var(--bg);border:2.5px solid var(--cy);width:11px;height:11px}
+.f .nm{font-size:.93rem;color:#B4C2CF}
+.f.hecha .nm{color:var(--pa2)}
+.f.hoy .nm{color:var(--pa);font-weight:600}
+.f .tag{margin-left:auto;font-size:.67rem;letter-spacing:1.3px;text-transform:uppercase;color:var(--cy);font-weight:600;flex:0 0 auto}
+.f .ok{margin-left:auto;font-size:.76rem;color:var(--ok);flex:0 0 auto}
+.f .dd{margin-left:auto;font-size:.72rem;color:#B4C2CF;flex:0 0 auto;font-variant-numeric:tabular-nums}
+.msg{margin-top:20px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--cy);border-radius:0 13px 13px 0;padding:17px 19px}
+.msg .et{font-size:.66rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--pa3);font-weight:600;margin-bottom:7px}
+.msg p{font-size:.98rem;color:var(--pa);line-height:1.65;text-wrap:pretty}
+.pacto{margin-top:20px;font-size:.85rem;color:var(--pa2);line-height:1.7;background:var(--card);border-radius:12px;padding:16px 18px}
+
+.pie{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.pie div{font-size:.76rem;color:var(--pa3)}
+.pie b{display:block;font-size:.95rem;color:var(--pa);font-weight:600;margin-top:2px}
+.nota{margin-top:26px;font-size:.79rem;color:var(--pa3);line-height:1.7;text-align:center}
+.nota b{color:var(--pa2);font-weight:600}
+@media(max-width:420px){ h1{font-size:1.42rem} .grid{gap:7px} body{padding:24px 16px 36px} }
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="w">
+  <div class="top">
+    <span class="lg" role="img" aria-label="PRAXIS">
+      <svg viewBox="0 0 132 40" width="99" height="30" aria-hidden="true">
+        <path d="M10 8.4 L20 2.6 L30 8.4 L30 20 L20 25.8 L10 20 Z" fill="#12324F"/>
+        <path d="M14.5 18.6 L14.5 10.4 L20.2 7.1 L25.9 10.4" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M10 22.6 L20 28.4 L30 22.6 L30 31.6 L20 37.4 L10 31.6 Z" fill="#1E8C86"/>
+        <text x="40" y="27.5" font-family="Poppins, system-ui, sans-serif" font-size="21" font-weight="700" letter-spacing="1.6" fill="#12324F">PRAXIS</text>
+      </svg>
+    </span>
+    <span>Seguimiento del proyecto</span>
+  </div>
+
+  <h1>Unos Mate</h1>
+  <p class="sub">Rediseño de tienda (Tiendanube)</p>
+
+  <div class="fases" id="fs"></div>
+
+  <div class="grid" id="g"></div>
+
+  <div class="nums">
+    <span class="big" id="dia">—</span>
+    <span class="of">de 14 días</span>
+  </div>
+
+  <div class="msg" id="caja">
+    <div class="et" id="et">Hoy</div>
+    <p id="msg">—</p>
+  </div>
+
+  <div class="pie">
+    <div>Arrancamos el<b id="ini"></b></div>
+    <div style="text-align:right">Entrega estimada<b>26 de agosto</b></div>
+  </div>
+
+  <p class="nota">Esta página se actualiza sola todos los días.<br>
+  Podés volver a entrar cuando quieras con <b>el mismo link</b>.</p>
+</div>
+
+<script>
+(function(){
+  var INICIO = "2026-08-13", TOTAL = 14;
+  var CORTES = [2, 8, 12, 14], FASES = [["Análisis y gestión", "Analizamos tu sitio con criterios de diseño de conversión: qué mira primero tu cliente, dónde se pierde y qué lo lleva a comprar. También revisamos que todo vaya acorde a tu identidad de marca, para dejar el plan cerrado antes de arrancar."], ["Desarrollo de código", "Armamos las estructuras de código de cada bloque de tu web. Es la parte más silenciosa del trabajo: se construye por fuera, listo para montarlo después en tu sitio."], ["Diseño", "Unimos las estructuras de código con tu tienda y ajustamos que todo hable el mismo idioma: colores, tipografías y espacios en concordancia con tu marca."], ["Ajustes", "Revisamos la web completa: que cargue rápido, que no haya conflictos entre códigos y que cada sección funcione como tiene que funcionar."]];
+  var MES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+  function parse(s){ var a=s.split('-'); return new Date(+a[0], +a[1]-1, +a[2]); }
+  var ini = parse(INICIO), hoy = new Date();
+  hoy = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
+  var t = Math.round((hoy - ini)/86400000);
+  var dia = Math.min(Math.max(t + 1, 1), TOTAL);
+  var pasado = t + 1 > TOTAL;
+
+  document.getElementById('ini').textContent = ini.getDate() + ' de ' + MES[ini.getMonth()];
+  document.getElementById('dia').textContent = dia;
+  var iF = 0;
+  for(var f = 0; f < CORTES.length; f++){ if(dia <= CORTES[f]){ iF = f; break; } iF = CORTES.length - 1; }
+
+  document.getElementById('et').textContent = pasado ? 'Estado' : FASES[iF][0];
+  document.getElementById('msg').textContent = pasado
+    ? 'Estamos en el cierre del proyecto.'
+    : FASES[iF][1];
+
+  var desde = 0, hF = '';
+  for(var j = 0; j < FASES.length; j++){
+    var hasta = CORTES[j];
+    var cls = pasado || j < iF ? 'f hecha' : (j === iF ? 'f hoy' : 'f');
+    var der = (pasado || j < iF) ? '<span class="ok">listo</span>'
+            : (j === iF ? '<span class="tag">acá estamos</span>'
+                        : '<span class="dd">día ' + (desde + 1) + ' al ' + hasta + '</span>');
+    hF += '<div class="' + cls + '"><span class="pt"></span><span class="nm">' + FASES[j][0] + '</span>' + der + '</div>';
+    desde = hasta;
+  }
+  document.getElementById('fs').innerHTML = hF;
+
+  var g = document.getElementById('g'), html = '';
+  for(var i = 1; i <= TOTAL; i++){
+    var cls = i < dia || pasado ? 'd on' : (i === dia ? 'd hoy' : 'd');
+    html += '<span class="' + cls + '">' + i + '</span>';
+  }
+  g.innerHTML = html;
+})();
+</script>
+</body>
+</html>
