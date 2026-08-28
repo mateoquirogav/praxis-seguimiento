@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elike · Las tres herramientas</title>
+<meta name="description" content="Vista previa de las tres herramientas que PRAXIS desarrolla para la tienda de Elike: compatibilidad, comparador y cotizador de instalación.">
+<link rel="icon" href="assets/elike-marca.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/praxis.css">
+<style>
+  .hb{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;max-width:1160px;margin:0 auto}
+  .ht{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--r-xl);padding:30px 28px 28px;
+    box-shadow:var(--sombra-card);display:flex;flex-direction:column;transition:all .25s ease;
+    text-decoration:none;color:inherit;position:relative;overflow:hidden;
+  }
+  .ht::before{content:'';position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--e-azul-osc),var(--e-cian),var(--e-verde))}
+  .ht:hover{transform:translateY(-4px);box-shadow:var(--sombra-alta);border-color:#D3DEE8}
+  .ht__n{
+    font-family:'Gabarito',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--txt-3);margin-bottom:16px;
+  }
+  .ht__ic{
+    width:56px;height:56px;border-radius:16px;display:grid;place-items:center;margin-bottom:18px;
+    background:linear-gradient(135deg,#EAF2FA,#E4F6F5);color:var(--e-azul-osc);
+  }
+  .ht__ic svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .ht h3{font-size:24px;font-weight:600;margin-bottom:9px}
+  .ht p{color:var(--txt-2);font-size:14.5px;margin-bottom:16px}
+  .ht ul{list-style:none;margin:0 0 22px;padding:0}
+  .ht li{
+    font-size:13.5px;color:var(--txt-2);padding-left:22px;position:relative;line-height:1.75;
+  }
+  .ht li::before{
+    content:'';position:absolute;left:2px;top:9px;width:9px;height:9px;border-radius:50%;
+    background:linear-gradient(135deg,var(--e-verde-mid),var(--e-verde));
+  }
+  .ht__cta{
+    margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;
+    color:var(--e-azul-osc);
+  }
+  .ht__cta svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease}
+  .ht:hover .ht__cta svg{transform:translateX(4px)}
+
+  .bl{max-width:1160px;margin:66px auto 0}
+  .bl h2{font-size:clamp(24px,3.2vw,34px);font-weight:600;text-align:center;margin-bottom:10px}
+  .bl>p.sub{text-align:center;color:var(--txt-2);font-size:16px;max-width:640px;margin:0 auto 34px}
+  .bl__g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .bl__i{background:#fff;border:1px solid var(--linea);border-radius:var(--r-lg);padding:22px}
+  .bl__i b{display:block;font-family:'Gabarito',sans-serif;font-size:17px;font-weight:600;margin-bottom:7px}
+  .bl__i p{color:var(--txt-2);font-size:14px}
+
+  .nota{
+    max-width:1160px;margin:44px auto 0;background:linear-gradient(135deg,#0E1B26,#16283a);
+    border-radius:var(--r-xl);padding:clamp(26px,3.6vw,42px);color:#fff;
+  }
+  .nota h3{font-size:clamp(20px,2.6vw,26px);font-weight:600;margin-bottom:10px}
+  .nota>p{color:rgba(255,255,255,.66);font-size:15px;max-width:700px;margin-bottom:24px}
+  .nota__g{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+  .nota__i{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-md);padding:18px}
+  .nota__i b{display:block;font-size:14.5px;font-weight:600;margin-bottom:5px}
+  .nota__i p{color:rgba(255,255,255,.6);font-size:13.5px}
+</style>
+</head>
+<body>
+
+<section class="ek-hero">
+  <div class="ek-aurora"><i></i><i></i><i></i><i></i></div>
+  <div class="ek-hero__in">
+    <span class="ek-pastilla"><i class="ek-punto"></i> Elike &middot; vista previa</span>
+    <h1>Las tres herramientas que cierran la venta.</h1>
+    <p class="bajada">Las mismas tres consultas que hoy se responden a mano por WhatsApp, resueltas por la web y funcionando con el catálogo real de Elike.</p>
+  </div>
+</section>
+
+<main class="ek-lienzo">
+
+  <div class="hb">
+    <a class="ht" href="compatibilidad.html">
+      <span class="ht__n">Herramienta 01</span>
+      <span class="ht__ic"><svg viewBox="0 0 24 24"><path d="M5 3h14v18H5z"/><path d="M5 21h14"/><circle cx="15.6" cy="12" r="1"/><path d="M2 12h1.5M20.5 12H22"/></svg></span>
+      <h3>Compatibilidad con puertas</h3>
+      <p>Recomendador en 4 pasos que responde la pregunta que frena la mitad de las compras: &laquo;¿entra en mi puerta?&raquo;.</p>
+      <ul>
+        <li>Tipo de puerta, ubicación, manijón y espesor</li>
+        <li>Cruza los datos con la ficha real de los 17 modelos</li>
+        <li>Devuelve el modelo que entra, más alternativas</li>
+        <li>Salida directa al producto y a WhatsApp</li>
+      </ul>
+      <span class="ht__cta">Probar la herramienta <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="ht" href="comparativa.html">
+      <span class="ht__n">Herramienta 02</span>
+      <span class="ht__ic"><svg viewBox="0 0 24 24"><path d="M4 4h6v16H4zM14 4h6v16h-6z"/><path d="M6 9h2M6 13h2M16 9h2M16 13h2"/></svg></span>
+      <h3>Compará los modelos</h3>
+      <p>El visitante elige hasta 3 cerraduras y ve las diferencias técnicas lado a lado, con las filas que importan resaltadas.</p>
+      <ul>
+        <li>Modelos agrupados por tipo de puerta</li>
+        <li>22 características reales sacadas de la ficha</li>
+        <li>Tabla dinámica: lo que no aplica no aparece</li>
+        <li>Preparada para leerse en celular</li>
+      </ul>
+      <span class="ht__cta">Probar la herramienta <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="ht" href="cotizar-instalacion.html">
+      <span class="ht__n">Herramienta 03</span>
+      <span class="ht__ic"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+      <h3>Cotizá la instalación</h3>
+      <p>Cotizador en 4 pasos que termina en un precio estimado y en una conversación de WhatsApp ya empezada.</p>
+      <ul>
+        <li>Unidades, tipo de puerta y zona de cobertura</li>
+        <li>Verificación por localidad, al instante</li>
+        <li>Precios reales de CABA y las 3 zonas de GBA</li>
+        <li>Resumen completo listo para coordinar</li>
+      </ul>
+      <span class="ht__cta">Probar la herramienta <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+    </a>
+  </div>
+
+  <section class="bl">
+    <h2>Cómo vive esto dentro de tu Tiendanube</h2>
+    <p class="sub">No es una web aparte ni una app con abono. Cada herramienta es una página real de la tienda de Elike.</p>
+    <div class="bl__g">
+      <div class="bl__i"><b>Dirección propia</b><p>Cada herramienta tiene su propia URL dentro de elike.com.ar, su lugar en el menú y su posicionamiento en Google.</p></div>
+      <div class="bl__i"><b>Sin apps ni abonos</b><p>Todo corre con código propio dentro de la tienda. No hay suscripción mensual para que funcione.</p></div>
+      <div class="bl__i"><b>El carrito sigue siendo el tuyo</b><p>Los botones llevan al producto real de Tiendanube: mismo checkout, mismos medios de pago, mismo panel.</p></div>
+      <div class="bl__i"><b>Una sola base de datos</b><p>Los 17 modelos y las 4 zonas viven en un solo archivo. Se toca ahí y las tres herramientas se actualizan solas.</p></div>
+    </div>
+  </section>
+
+  <section class="nota">
+    <h3>Lo que ves ya funciona con datos reales</h3>
+    <p>Los modelos, precios, fotos, medidas, zonas de cobertura y valores de instalación salen de la tienda de Elike. Quedan dos cosas por confirmar con el cliente antes de publicar:</p>
+    <div class="nota__g">
+      <div class="nota__i"><b>La tabla de compatibilidad</b><p>Qué modelo corresponde a cada tipo de puerta está armado con las medidas de ficha. Elike lo revisa y lo ajusta con su criterio de instalador.</p></div>
+      <div class="nota__i"><b>Los modificadores del cotizador</b><p>Hoy: +20% si la puerta es blindada y 60% de la mano de obra por cada unidad adicional. Son los dos únicos numeros que no salen de la tienda.</p></div>
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/modelos.js"></script>
+<script src="assets/comun.js"></script>
+<script>
+  ekHeader('');
+  ekFooter();
+</script>
+</body>
+</html>
