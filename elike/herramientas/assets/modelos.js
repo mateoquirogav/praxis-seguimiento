@@ -365,7 +365,7 @@ const EK_ZONAS = [
   {
     id:'gba2', nombre:'GBA Zona 2', precio:160000,
     slug:'gba-zona-2-servicio-de-instalacion-de-cerradura-inteligente-elike',
-    localidades:['General Rodríguez','General San Martín','Hurlingham','Ituzaingó','José C. Paz','La Matanza','Luján','Marcos Paz','Merlo','Moreno','Moron']
+    localidades:['General Rodríguez','General San Martín','Hurlingham','Ituzaingó','José C. Paz','La Matanza','Luján','Marcos Paz','Merlo','Moreno','Morón']
   },
   {
     id:'gba3', nombre:'GBA Zona 3', precio:170000,

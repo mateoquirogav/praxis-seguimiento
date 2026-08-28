@@ -20,15 +20,15 @@ const PASOS = ['Puerta','Ubicación','Manijón','Medidas'];
 
 const OPC = {
   puerta:[
-    {v:'convencional', t:'Convencional', s:'Madera, chapa o metal', i:IC.conv},
-    {v:'aluminio',     t:'PVC o aluminio', s:'Perfil o marco angosto', i:IC.alum},
-    {v:'blindada',     t:'Blindada', s:'Puerta de seguridad', i:IC.blin},
-    {v:'corrediza',    t:'Corrediza', s:'Corre sobre un riel', i:IC.corr},
-    {v:'vidrio',       t:'Vidrio / blindex', s:'Vidrio templado', i:IC.vidr}
+    {v:'convencional', t:'Convencional', s:'Madera, chapa o metal', i:IC.conv, r:'convencional'},
+    {v:'aluminio',     t:'PVC o aluminio', s:'Perfil o marco angosto', i:IC.alum, r:'de PVC o aluminio'},
+    {v:'blindada',     t:'Blindada', s:'Puerta de seguridad', i:IC.blin, r:'blindada'},
+    {v:'corrediza',    t:'Corrediza', s:'Corre sobre un riel', i:IC.corr, r:'corrediza'},
+    {v:'vidrio',       t:'Vidrio / blindex', s:'Vidrio templado', i:IC.vidr, r:'de vidrio'}
   ],
   ubicacion:[
-    {v:'interior', t:'Interior o protegida', s:'No recibe lluvia ni sol directo', i:IC.inte},
-    {v:'exterior', t:'A la intemperie', s:'Recibe lluvia, humedad o sol', i:IC.exte}
+    {v:'interior', t:'Interior o protegida', s:'No recibe lluvia ni sol directo', i:IC.inte, r:'interior o protegida'},
+    {v:'exterior', t:'A la intemperie', s:'Recibe lluvia, humedad o sol', i:IC.exte, r:'a la intemperie'}
   ],
   manijon:[
     {v:'si',   t:'Si, tiene manijón', s:'Barral o manija fija del lado de afuera', i:IC.mano},
@@ -72,13 +72,13 @@ function recomendar(){
 
     // 2. Ubicación -- duro solo si es intemperie
     if (est.ubicacion === 'exterior'){
-      if (m.exterior) { pts += 4; motivos.push('está preparada para la intemperie'); }
+      if (m.exterior) { pts += 4; motivos.push('resiste la intemperie'); }
       else duros = false;
     } else { pts += 1; }
 
     // 3. Manijón -- duro si dijo que si
     if (est.manijon === 'si'){
-      if (m.manijon) { pts += 3; motivos.push('su panel es angosto y convive con el manijón'); }
+      if (m.manijon) { pts += 3; motivos.push('su panel angosto convive con el manijón'); }
       else duros = false;
     } else if (est.manijon === 'no'){ pts += 1; }
 
@@ -86,7 +86,7 @@ function recomendar(){
     if (rangoSel){
       const cubre = m.espesor[0] <= rangoSel[1] && m.espesor[1] >= rangoSel[0];
       const total = m.espesor[0] <= rangoSel[0] && m.espesor[1] >= rangoSel[1];
-      if (total) { pts += 3; motivos.push('cubre el espesor de tu puerta (' + m.specs.espesorTxt.toLowerCase() + ')'); }
+      if (total) { pts += 3; motivos.push('cubre tu espesor (' + m.specs.espesorTxt.toLowerCase() + ')'); }
       else if (cubre) pts += 1;
       else duros = false;
     }
@@ -201,11 +201,16 @@ function textoResumen(){
   const P = n => OPC[n].find(x => x.v === est[n]);
   const listaEsp = est.puerta === 'vidrio' ? OPC.espesorVidrio : OPC.espesor;
   return [
-    'Puerta ' + nom(P('puerta')).toLowerCase(),
-    nom(P('ubicacion')).toLowerCase(),
+    'Puerta ' + P('puerta').r,
+    P('ubicacion').r,
     est.manijon === 'si' ? 'con manijón' : (est.manijon === 'no' ? 'sin manijón' : 'manijón a confirmar'),
     'espesor ' + nom(listaEsp.find(x => x.v === est.espesor)).toLowerCase()
   ].join(' | ');
+}
+
+function enumerar(a){
+  if (a.length === 1) return a[0];
+  return a.slice(0, -1).join(', ') + ' y ' + a[a.length - 1];
 }
 
 function pintarResultado(){
@@ -232,8 +237,9 @@ function pintarResultado(){
   const alts = r.lista.slice(1, 4);
 
   const porque = top.motivos.length
-    ? 'Te la recomendamos porque entra en una puerta ' + (OPC.puerta.find(x => x.v === est.puerta).t.toLowerCase()) + ', ' + top.motivos.join(' y ') + '.'
-    : 'Entra en una puerta ' + OPC.puerta.find(x => x.v === est.puerta).t.toLowerCase() + ' como la tuya.';
+    ? 'Te la recomendamos porque entra en una puerta ' + OPC.puerta.find(x => x.v === est.puerta).r +
+      (top.motivos.length === 1 ? ' y ' : ', ') + enumerar(top.motivos) + '.'
+    : 'Entra en una puerta ' + OPC.puerta.find(x => x.v === est.puerta).r + ' como la tuya.';
 
   app.innerHTML = barraPasos() +
     '<div class="ek-res">' +
@@ -291,9 +297,9 @@ function avisoNo(){
 }
 
 function btnWpp(resumen, m){
-  const txt = 'Hola Elike! Use el test de compatibilidad en la web.%0A%0AMi puerta: ' +
+  const txt = 'Hola Elike! Hice el test de compatibilidad en la web.%0A%0AMi puerta: ' +
     encodeURIComponent(resumen) +
-    (m ? '%0AMe recomendo la ' + encodeURIComponent('Elike ' + m.nombre) : '') +
+    (m ? '%0AMe recomendó la ' + encodeURIComponent('Elike ' + m.nombre) : '') +
     '%0A%0AQuiero confirmar si es la correcta.';
   return '<a class="ek-btn ek-btn--verde" target="_blank" rel="noopener" href="https://wa.me/' + EK_WPP + '?text=' + txt + '">' +
     ekSvg(EK_ICONOS.wpp) + 'Confirmar por WhatsApp</a>';
