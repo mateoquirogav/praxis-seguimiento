@@ -20,7 +20,7 @@
   --max:1240px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--tinta);color:var(--hueso);font-family:var(--tc);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -28,7 +28,7 @@ a{color:inherit;text-decoration:none}
 .eyebrow{font-family:var(--tc);font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--rojo)}
 .eyebrow.g{color:var(--gris)}
 h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:uppercase;letter-spacing:-.01em}
-.h-sec{font-size:clamp(42px,6.4vw,84px)}
+.h-sec{font-size:clamp(38px,6.4vw,84px)}
 .lead{font-size:17px;color:var(--melange);font-weight:300;max-width:52ch}
 
 /* ---------- cinta de grados (gesto de marca) ---------- */
@@ -62,7 +62,7 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:upp
 .hero{position:relative;border-bottom:1px solid #1f1f1f}
 .hero .in{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;min-height:640px}
 .hero .txt{padding:86px 60px 86px max(24px,calc((100vw - var(--max))/2 + 24px));display:flex;flex-direction:column;justify-content:center}
-.hero h1{font-size:clamp(58px,7.4vw,112px);letter-spacing:-.02em;margin:18px 0 0}
+.hero h1{font-size:clamp(42px,7.4vw,112px);letter-spacing:-.02em;margin:18px 0 0}
 .hero h1 .l2{display:block;color:var(--gris2)}
 .hero .lead{margin-top:24px}
 .hero .cta{margin-top:38px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
@@ -286,6 +286,8 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:upp
   .prods{grid-template-columns:1fr 1fr;gap:12px}
   .card .txt{padding:12px 12px 16px}
   .card .pr{font-size:22px}
+  .card .add{font-size:10px;letter-spacing:.1em;padding:10px 4px}
+  .card .cuo{font-size:11px}
   .cats{gap:10px}
   .cat h3{font-size:26px}
   .faq summary{font-size:25px;padding:19px 40px 19px 0}
@@ -413,7 +415,7 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:upp
         <div class="txt">
           <h3>Humildade</h3>
           <div class="pr">$29.000</div>
-          <div class="cuo">3 cuotas sin interés de $9.666</div>
+          <div class="cuo">3x $9.666 sin interés</div>
           <span class="add">Agregar al carrito</span>
         </div>
       </article>
@@ -422,7 +424,7 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:upp
         <div class="txt">
           <h3>Choke</h3>
           <div class="pr">$29.000</div>
-          <div class="cuo">3 cuotas sin interés de $9.666</div>
+          <div class="cuo">3x $9.666 sin interés</div>
           <span class="add">Agregar al carrito</span>
         </div>
       </article>
@@ -431,7 +433,7 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:upp
         <div class="txt">
           <h3>Mindset</h3>
           <div class="pr">$29.000</div>
-          <div class="cuo">3 cuotas sin interés de $9.666</div>
+          <div class="cuo">3x $9.666 sin interés</div>
           <span class="add">Agregar al carrito</span>
         </div>
       </article>
@@ -440,7 +442,7 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:upp
         <div class="txt">
           <h3>Ambassador OS</h3>
           <div class="pr">$29.000</div>
-          <div class="cuo">3 cuotas sin interés de $9.666</div>
+          <div class="cuo">3x $9.666 sin interés</div>
           <span class="add">Agregar al carrito</span>
         </div>
       </article>
@@ -571,7 +573,7 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:upp
         </div>
       </article>
       <article class="of">
-        <div class="ph"><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/whatsapp-image-2026-08-27-at-11-34-36-592405a9d4c173258417883033409638-640-0.webp" alt="Pack x3 remeras"></div>
+        <div class="ph"><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dorso-1-12fcfbd83b1e663fdc17797377680206-640-0.webp" alt="Pack x3 remeras"></div>
         <div class="in2">
           <span class="off">20% OFF</span>
           <h3>Pack x3<br>remeras</h3>
