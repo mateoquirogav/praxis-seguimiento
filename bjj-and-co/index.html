@@ -10,297 +10,317 @@
 <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@500;700;800;900&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --papel:#FFFFFF; --hueso:#F6F4F1; --arena:#EFECE7;
-  --tinta:#141414; --tinta2:#1C1C1C;
-  --gris:#6E6862; --gris2:#9A938C; --linea:#E5E1DB;
-  --rojo:#E4231F; --choco:#3B2E28;
-  --b-blanco:#E9E6E1; --b-azul:#1B3A8C; --b-violeta:#5B2C9B; --b-marron:#5A3A22; --b-negro:#141414;
+  --papel:#FFFFFF; --hueso:#F4F3F1; --arena:#EAE7E2;
+  --tinta:#000000; --carbon:#111111; --humo:#1A1A1A;
+  --gris:#6E6862; --gris2:#9A938C; --linea:#E2DED8; --linea2:#2A2A2A;
+  --rojo:#E4231F; --verde:#1DA34B;
+  --b-blanco:#E9E6E1; --b-azul:#1B3A8C; --b-violeta:#5B2C9B; --b-marron:#5A3A22;
   --tt:'Sofia Sans Extra Condensed',Impact,sans-serif;
   --tc:'Public Sans',system-ui,sans-serif;
-  --max:1240px;
+  --max:1280px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--papel);color:var(--tinta);font-family:var(--tc);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--hueso);color:var(--tinta);font-family:var(--tc);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-.eyebrow{font-family:var(--tc);font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--rojo)}
-.eyebrow.g{color:var(--gris2)}
-h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:uppercase;letter-spacing:-.01em}
-.h-sec{font-size:clamp(38px,6.4vw,82px)}
-.lead{font-size:17px;color:var(--gris);font-weight:300;max-width:52ch}
 
-/* ---------- cinta de grados (gesto de marca) ---------- */
+/* pastilla + titulo (el par de Banga) */
+.kick{display:inline-block;background:var(--rojo);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:6px 11px;margin-bottom:12px}
+.kick.oscura{background:var(--tinta);color:#fff}
+h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.86;text-transform:uppercase;letter-spacing:-.005em}
+.tit{font-size:clamp(42px,6.6vw,86px)}
+.tit-b{font-size:clamp(30px,3.4vw,44px)}
+.baja{font-size:15px;color:var(--gris);font-weight:300;max-width:52ch}
+
+/* cinta de grados */
 .grados{display:flex;height:5px;width:100%}
 .grados span{flex:1}
 .g1{background:var(--b-blanco)}.g2{background:var(--b-azul)}.g3{background:var(--b-violeta)}
-.g4{background:var(--b-marron)}.g5{background:var(--b-negro)}.g6{background:var(--rojo);flex:0 0 34px}
+.g4{background:var(--b-marron)}.g5{background:#000}.g6{background:var(--rojo);flex:0 0 36px}
 
-/* ---------- barra de anuncio ---------- */
-.anuncio{background:var(--tinta);overflow:hidden;position:relative}
-.anuncio .track{display:flex;width:max-content;animation:desliza 34s linear infinite}
-.anuncio span{font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#CFCAC4;padding:11px 30px;white-space:nowrap}
-.anuncio span b{color:#fff;font-weight:700}
+/* ---------- barra superior ---------- */
+.top{background:var(--tinta);overflow:hidden}
+.top .track{display:flex;width:max-content;animation:desliza 32s linear infinite}
+.top span{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#CFCAC4;padding:9px 28px;white-space:nowrap}
+.top span b{color:#fff}
+.top span em{color:var(--rojo);font-style:normal;font-weight:700}
 @keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.aviso2{background:var(--carbon);text-align:center;padding:7px 16px;font-size:11.5px;color:#B9B3AC;border-top:1px solid #232323}
+.aviso2 b{color:#fff;font-weight:600}
 
 /* ---------- header ---------- */
-.hd{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
-.hd .in{max-width:var(--max);margin:0 auto;padding:0 24px;height:76px;display:flex;align-items:center;gap:34px}
-.hd .logo img{height:26px;width:auto}
-.hd nav{display:flex;gap:26px;margin-left:14px}
-.hd nav a{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta);position:relative;padding:6px 0;transition:color .3s}
-.hd nav a::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--rojo);transition:width .35s cubic-bezier(.22,.61,.36,1)}
-.hd nav a:hover{color:var(--rojo)}.hd nav a:hover::after{width:100%}
-.hd .acc{margin-left:auto;display:flex;align-items:center;gap:18px}
-.ico{width:19px;height:19px;stroke:var(--tinta);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.bag{position:relative}
-.bag em{position:absolute;top:-5px;right:-7px;background:var(--rojo);color:#fff;font-style:normal;font-size:9px;font-weight:700;width:15px;height:15px;border-radius:50%;display:grid;place-items:center}
+.hd{background:var(--papel);border-bottom:1px solid var(--linea);position:sticky;top:0;z-index:70}
+.hd .in{max-width:var(--max);margin:0 auto;padding:16px 24px;display:flex;align-items:center;gap:28px}
+.hd .logo img{height:30px;width:auto}
+.hd .busca{flex:1;display:flex;border:1px solid var(--linea);background:var(--hueso);max-width:560px}
+.hd .busca input{flex:1;border:0;background:transparent;padding:12px 16px;font-family:var(--tc);font-size:13.5px;color:var(--tinta);outline:none}
+.hd .busca button{border:0;background:var(--rojo);color:#fff;padding:0 18px;cursor:pointer;display:grid;place-items:center}
+.hd .busca svg{width:17px;height:17px;stroke:#fff;stroke-width:2;fill:none}
+.hd .acc{margin-left:auto;display:flex;align-items:center;gap:20px}
+.ico{width:20px;height:20px;stroke:var(--tinta);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.carro{display:flex;align-items:center;gap:9px}
+.carro .b{position:relative}
+.carro .b em{position:absolute;top:-6px;right:-8px;background:var(--rojo);color:#fff;font-style:normal;font-size:9px;font-weight:700;width:16px;height:16px;border-radius:50%;display:grid;place-items:center}
+.carro .t b{display:block;font-size:12px;font-weight:600;line-height:1.2}
+.carro .t span{display:block;font-size:12px;color:var(--rojo);font-weight:700}
+/* barra de categorias */
+.menu{background:var(--tinta)}
+.menu .in{max-width:var(--max);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:26px;height:46px;overflow-x:auto;scrollbar-width:none}
+.menu .in::-webkit-scrollbar{display:none}
+.menu .pill{display:inline-flex;align-items:center;gap:8px;background:var(--rojo);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;white-space:nowrap;flex:none}
+.menu .pill svg{width:11px;height:11px;stroke:#fff;stroke-width:2.4;fill:none}
+.menu a{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#DCD7D1;white-space:nowrap;transition:color .25s}
+.menu a:hover{color:var(--rojo)}
 
 /* ---------- hero ---------- */
 .hero{position:relative;background:var(--papel);border-bottom:1px solid var(--linea)}
-.hero .in{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;min-height:620px}
-.hero .txt{padding:82px 60px 82px max(24px,calc((100vw - var(--max))/2 + 24px));display:flex;flex-direction:column;justify-content:center}
-.hero h1{font-size:clamp(42px,7.2vw,108px);letter-spacing:-.02em;margin:18px 0 0}
-.hero h1 .l2{display:block;color:var(--gris2)}
-.hero .lead{margin-top:24px}
-.hero .cta{margin-top:36px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.hero .in{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:560px}
+.hero .txt{padding:76px 56px 76px max(24px,calc((100vw - var(--max))/2 + 24px));display:flex;flex-direction:column;justify-content:center}
+.hero h1{font-size:clamp(46px,7.2vw,106px);margin:4px 0 0}
+.hero h1 .l2{display:block;color:#B4ADA6}
+.hero .baja{margin-top:20px;font-size:16px}
+.hero .cta{margin-top:32px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .hero .foto{position:relative;overflow:hidden;background:var(--arena)}
-.hero .foto img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
-.hero .foto::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--papel) 0%,rgba(255,255,255,.55) 12%,transparent 44%)}
-.sello{position:absolute;right:28px;bottom:28px;z-index:3;background:var(--papel);border:1px solid var(--linea);padding:11px 14px;text-align:center}
-.sello b{display:block;font-family:var(--tt);font-size:22px;line-height:1;letter-spacing:.04em;color:var(--tinta)}
-.sello i{display:block;font-style:normal;font-size:8px;letter-spacing:.3em;color:var(--gris2);margin-top:4px}
+.hero .foto img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.hero .foto::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--papel) 0%,rgba(255,255,255,.5) 12%,transparent 42%)}
 .hero .grados{position:absolute;left:0;right:0;bottom:0;z-index:4}
 
 /* ---------- botones ---------- */
-.btn{display:inline-flex;align-items:center;gap:12px;background:var(--tinta);color:var(--papel);font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:17px 30px;border:1px solid var(--tinta);transition:.35s cubic-bezier(.22,.61,.36,1)}
+.btn{display:inline-flex;align-items:center;gap:11px;background:var(--tinta);color:#fff;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:16px 28px;border:1px solid var(--tinta);transition:.3s cubic-bezier(.22,.61,.36,1)}
 .btn:hover{background:transparent;color:var(--tinta)}
-.btn svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none}
-.btn.ghost{background:transparent;color:var(--tinta);border-color:var(--linea)}
-.btn.ghost:hover{border-color:var(--tinta)}
+.btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.2;fill:none}
 .btn.rojo{background:var(--rojo);border-color:var(--rojo);color:#fff}
 .btn.rojo:hover{background:transparent;color:var(--rojo)}
-.link-mas{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid var(--linea);padding-bottom:5px;white-space:nowrap;transition:.3s}
-.link-mas:hover{color:var(--rojo);border-color:var(--rojo)}
+.btn.blanco{background:#fff;border-color:#fff;color:var(--tinta)}
+.btn.blanco:hover{background:transparent;color:#fff}
+.link{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:4px;white-space:nowrap;transition:color .25s}
+.link:hover{color:var(--rojo)}
 
-/* ---------- beneficios ---------- */
-.ben{background:var(--hueso);border-bottom:1px solid var(--linea)}
-.ben .grid{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
-.ben .it{padding:42px 30px 38px;border-right:1px solid var(--linea);position:relative;overflow:hidden}
+/* ---------- banda de beneficios ---------- */
+.ben{background:var(--papel);border-bottom:1px solid var(--linea);padding:44px 0 46px}
+.ben .cab{text-align:center;margin-bottom:32px}
+.ben .grid{max-width:var(--max);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.ben .it{padding:0 26px;border-right:1px solid var(--linea);text-align:center;position:relative}
 .ben .it:last-child{border-right:0}
-.ben .it::before{content:'';position:absolute;top:0;left:0;height:2px;width:100%;background:var(--rojo);transform:scaleX(0);transform-origin:left;animation:carga 9s cubic-bezier(.22,.61,.36,1) infinite}
-.ben .it:nth-child(1)::before{animation-delay:0s}
-.ben .it:nth-child(2)::before{animation-delay:.55s}
-.ben .it:nth-child(3)::before{animation-delay:1.1s}
-.ben .it:nth-child(4)::before{animation-delay:1.65s}
-@keyframes carga{0%{transform:scaleX(0)}22%{transform:scaleX(1)}100%{transform:scaleX(1)}}
-.ben svg.bi{width:30px;height:30px;stroke:var(--tinta);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:180;stroke-dashoffset:180;animation:traza 9s cubic-bezier(.22,.61,.36,1) infinite}
+.ben svg.bi{width:30px;height:30px;margin:0 auto 12px;stroke:var(--tinta);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:190;stroke-dashoffset:190;animation:traza 9s cubic-bezier(.22,.61,.36,1) infinite}
 .ben .it:nth-child(1) svg.bi{animation-delay:0s}
-.ben .it:nth-child(2) svg.bi{animation-delay:.55s}
-.ben .it:nth-child(3) svg.bi{animation-delay:1.1s}
-.ben .it:nth-child(4) svg.bi{animation-delay:1.65s}
-@keyframes traza{0%{stroke-dashoffset:180}30%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
-.ben h3{font-size:27px;margin:16px 0 6px;letter-spacing:0}
-.ben p{font-size:13.5px;color:var(--gris);font-weight:300;line-height:1.5}
+.ben .it:nth-child(2) svg.bi{animation-delay:.5s}
+.ben .it:nth-child(3) svg.bi{animation-delay:1s}
+.ben .it:nth-child(4) svg.bi{animation-delay:1.5s}
+@keyframes traza{0%{stroke-dashoffset:190}28%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+.ben h3{font-size:25px;margin-bottom:5px}
+.ben p{font-size:13px;color:var(--gris);font-weight:300;line-height:1.45}
+.ben .bar{height:2px;background:var(--linea);margin-top:16px;overflow:hidden}
+.ben .bar i{display:block;height:100%;background:var(--rojo);transform:scaleX(0);transform-origin:left;animation:carga 9s cubic-bezier(.22,.61,.36,1) infinite}
+.ben .it:nth-child(1) .bar i{animation-delay:0s}
+.ben .it:nth-child(2) .bar i{animation-delay:.5s}
+.ben .it:nth-child(3) .bar i{animation-delay:1s}
+.ben .it:nth-child(4) .bar i{animation-delay:1.5s}
+@keyframes carga{0%{transform:scaleX(0)}25%{transform:scaleX(1)}100%{transform:scaleX(1)}}
 .ben-cel{display:none}
 
-/* ---------- secciones ---------- */
-.sec{padding:92px 0}
-.sec.hueso{background:var(--hueso)}
-.sec.oscuro{background:var(--tinta);color:var(--papel)}
-.sec.oscuro .lead{color:#B9B3AC}
-.sec.oscuro .link-mas{border-color:#3a3a3a}
-.cab{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:42px;flex-wrap:wrap}
-.cab .h-sec{margin-top:12px}
-
-/* ---------- productos ---------- */
-.prods{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.card{position:relative;background:var(--papel);overflow:hidden;border:1px solid var(--linea);transition:border-color .35s,box-shadow .35s}
-.card:hover{border-color:#cfc9c1;box-shadow:0 8px 26px rgba(20,20,20,.07)}
-.card .ph{position:relative;overflow:hidden;aspect-ratio:4/5;background:var(--arena)}
-.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.22,.61,.36,1)}
+/* ---------- fila de productos ---------- */
+.fila{padding:62px 0;background:var(--hueso)}
+.fila.papel{background:var(--papel)}
+.fila .cab{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:26px;flex-wrap:wrap}
+.fila h2{font-size:clamp(32px,3.8vw,48px)}
+.fila .flechas{display:flex;gap:8px}
+.fila .flechas i{width:38px;height:38px;border:1px solid var(--linea);display:grid;place-items:center;cursor:pointer;background:var(--papel);transition:.25s}
+.fila.papel .flechas i{background:var(--hueso)}
+.fila .flechas i:hover{background:var(--tinta);border-color:var(--tinta)}
+.fila .flechas svg{width:14px;height:14px;stroke:var(--tinta);stroke-width:2;fill:none}
+.fila .flechas i:hover svg{stroke:#fff}
+.prods{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.prods.cinco{grid-template-columns:repeat(5,1fr)}
+.card{background:var(--papel);border:1px solid var(--linea);display:flex;flex-direction:column;transition:border-color .3s,box-shadow .3s}
+.fila.papel .card{background:var(--hueso)}
+.card:hover{border-color:#c9c3bb;box-shadow:0 10px 28px rgba(0,0,0,.07)}
+.card .ph{position:relative;overflow:hidden;aspect-ratio:1/1;background:var(--arena)}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.22,.61,.36,1)}
 .card:hover .ph img{transform:scale(1.05)}
-.tag{position:absolute;top:12px;left:12px;background:var(--rojo);color:#fff;font-size:10px;font-weight:700;letter-spacing:.16em;padding:5px 10px;text-transform:uppercase;z-index:2}
-.tag.claro{background:var(--papel);color:var(--tinta);border:1px solid var(--linea)}
-.card .txt{padding:16px 16px 20px}
-.card h3{font-family:var(--tc);font-size:14px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;line-height:1.3}
-.card .pr{margin-top:8px;font-family:var(--tt);font-size:27px;letter-spacing:.01em}
-.card .cuo{font-size:11.5px;color:var(--gris2);margin-top:2px}
-.card .add{margin-top:14px;display:block;text-align:center;border:1px solid var(--linea);padding:11px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:.3s}
-.card:hover .add{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
+.etq{position:absolute;left:9px;top:9px;display:flex;flex-direction:column;gap:5px;z-index:2;align-items:flex-start}
+.etq b{font-size:9.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:4px 8px;color:#fff;background:var(--rojo)}
+.etq b.envio{background:var(--verde);display:inline-flex;align-items:center;gap:5px}
+.etq b.envio svg{width:11px;height:11px;stroke:#fff;stroke-width:1.8;fill:none}
+.card .txt{padding:14px 13px 16px;display:flex;flex-direction:column;flex:1}
+.card h3{font-family:var(--tc);font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;line-height:1.3;min-height:34px}
+.card .lista{font-size:12px;color:var(--gris2);text-decoration:line-through;margin-top:7px}
+.card .pr{font-family:var(--tt);font-size:30px;line-height:1;margin-top:2px}
+/* el embudo dentro de la card */
+.pil{display:block;background:var(--tinta);color:#fff;font-size:11px;padding:7px 10px;margin-top:8px;line-height:1.35}
+.pil b{font-weight:700}
+.pil .ok{color:#5DDB8B;font-weight:600}
+.pil .tr{color:#FF7A5C;font-weight:700}
+.card .stock{font-size:11px;color:var(--rojo);font-weight:600;margin-top:8px}
+.card .cmp{margin-top:auto;padding-top:12px}
+.card .cmp span{display:block;text-align:center;background:var(--rojo);color:#fff;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:11px;transition:.25s}
+.card:hover .cmp span{background:var(--tinta)}
 
-/* ---------- problema -> solucion (texto + video) ---------- */
-.ps{background:var(--hueso);padding:86px 0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
-.ps-in{max-width:var(--max);margin:0 auto;padding:0 24px;display:flex;flex-wrap:nowrap;align-items:center;gap:60px}
-.ps-txt{flex:1 1 0;min-width:0}
-.ps-med{flex:0 0 286px;position:relative;line-height:0}
-.ps-med video,.ps-med img{width:100%;height:auto;display:block;aspect-ratio:9/16;object-fit:cover;background:var(--arena)}
-.ps-med .marco{position:absolute;inset:-9px;border:1px solid var(--linea);pointer-events:none}
-.ps-med .cinta{position:absolute;left:0;right:0;bottom:0;z-index:2}
-.ps-prob{font-family:var(--tt);font-size:clamp(28px,4.1vw,56px);line-height:.98;text-transform:uppercase;color:var(--gris2)}
-.ps-sep{display:flex;height:4px;width:74px;margin:26px 0}
-.ps-sol{font-family:var(--tt);font-size:clamp(28px,4.1vw,56px);line-height:.98;text-transform:uppercase;color:var(--tinta)}
-.ps-sol u{text-decoration:none;color:var(--rojo)}
-.ps-nota{margin-top:22px;font-size:15.5px;color:var(--gris);font-weight:300;max-width:40ch}
-.ps-cta{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rojo);border-bottom:1px solid rgba(228,35,31,.4);padding-bottom:5px;transition:gap .3s,border-color .3s}
-.ps-cta:hover{gap:16px;border-color:var(--rojo)}
-.ps-cta svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none}
+/* ---------- bloque negro mitad video ---------- */
+.bs{display:grid;grid-template-columns:1fr 1fr;background:var(--tinta);color:#fff;align-items:stretch}
+.bs .txt{padding:76px max(24px,calc((100vw - var(--max))/2 + 24px)) 76px max(24px,calc((100vw - var(--max))/2 + 24px));display:flex;flex-direction:column;justify-content:center}
+.bs.der .txt{padding-right:56px}
+.bs h2{font-size:clamp(38px,5.2vw,72px);color:#fff}
+.bs h2 u{text-decoration:none;color:var(--rojo)}
+.bs .sub{font-size:clamp(26px,3.2vw,42px);font-family:var(--tt);text-transform:uppercase;line-height:.9;color:#6E6862;margin-bottom:14px}
+.bs p{margin-top:18px;font-size:15px;color:#B9B3AC;font-weight:300;max-width:42ch}
+.bs .btn{margin-top:28px;align-self:flex-start}
+.bs .med{position:relative;overflow:hidden;background:#0a0a0a;min-height:460px}
+.bs .med video,.bs .med img{width:100%;height:100%;object-fit:cover;display:block}
+.bs .sep{display:flex;height:4px;width:78px;margin:20px 0 4px}
 
-/* ---------- destacado con embudo ---------- */
-.dest-card{display:grid;grid-template-columns:1fr 1fr;background:var(--papel);border:1px solid var(--linea)}
-.dest-foto{position:relative;background:var(--arena);aspect-ratio:1/1}
-.dest-foto img{width:100%;height:100%;object-fit:cover}
-.dest-off{position:absolute;left:14px;top:14px;background:var(--rojo);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;padding:6px 11px;text-transform:uppercase}
-.dest-datos{padding:44px 46px;display:flex;flex-direction:column;justify-content:center}
-.dest-n{font-family:var(--tt);font-size:46px;line-height:.92;text-transform:uppercase;margin-bottom:8px}
-.dest-k{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--rojo);margin-bottom:20px;align-self:flex-start}
-.dest-k::before,.dest-k::after{content:"";width:18px;height:1px;background:var(--rojo);opacity:.55}
-.emb-fila{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--linea)}
-.emb-p{font-family:var(--tt);font-size:52px;font-weight:800;letter-spacing:.01em;line-height:1}
-.emb-lista{font-size:16px;color:var(--gris2);text-decoration:line-through}
-.emb-off{font-size:11px;font-weight:700;color:#fff;background:var(--rojo);padding:5px 9px;letter-spacing:.08em}
-.emb-linea{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid var(--linea);font-size:14.5px}
-.emb-linea .et{color:var(--gris)}
-.emb-linea b{font-weight:600}
-.emb-linea .val{text-align:right}
-.emb-destaca{color:var(--rojo);font-weight:600}
-.dest-datos .btn{margin-top:26px;align-self:flex-start}
+/* ---------- reseñas ---------- */
+.res{background:var(--papel);padding:64px 0}
+.res .cab{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:8px}
+.res .nota{display:flex;align-items:center;gap:12px;margin:6px 0 28px;flex-wrap:wrap}
+.res .nota b{font-family:var(--tt);font-size:34px;line-height:1}
+.res .estr{display:flex;gap:2px}
+.res .estr svg{width:16px;height:16px;fill:var(--rojo)}
+.res .nota span{font-size:13px;color:var(--gris)}
+.tarjs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tj{background:var(--hueso);border:1px solid var(--linea);padding:18px 17px 16px;display:flex;flex-direction:column}
+.tj .e{display:flex;gap:2px;margin-bottom:11px}
+.tj .e svg{width:13px;height:13px;fill:var(--rojo)}
+.tj p{font-size:13.5px;color:#3C3A37;line-height:1.5;flex:1}
+.tj .who{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--linea)}
+.tj .av{width:32px;height:32px;border-radius:50%;background:var(--tinta);color:#fff;display:grid;place-items:center;font-family:var(--tt);font-size:16px;flex:none}
+.tj .who b{display:block;font-size:12.5px;font-weight:600}
+.tj .who i{display:block;font-style:normal;font-size:10.5px;color:var(--gris2)}
 
-/* ---------- testimonios (capturas) ---------- */
-.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.cap{background:#000;border:1px solid #262626;overflow:hidden}
-.cap .top{display:flex;align-items:center;gap:11px;padding:13px 15px;border-bottom:1px solid #1e1e1e}
-.cap .av{width:33px;height:33px;border-radius:50%;background:linear-gradient(135deg,#3B2E28,#E4231F);display:grid;place-items:center;font-family:var(--tt);font-size:16px;color:#fff;flex:none}
-.cap .who b{display:block;font-size:13px;font-weight:600;color:#F2F0EC}
-.cap .who i{font-style:normal;font-size:10.5px;color:#6B6B6B}
-.cap .body{padding:18px 15px 20px;display:flex;flex-direction:column;gap:10px;min-height:186px}
-.burb{max-width:88%;padding:11px 14px;border-radius:18px;font-size:13.5px;line-height:1.45}
-.burb.ellos{align-self:flex-start;background:#1c1c1c;color:#F2F0EC;border-bottom-left-radius:5px}
-.burb.nos{align-self:flex-end;background:#2a2a2a;color:#C9C9C9;border-bottom-right-radius:5px}
-.cap .hora{font-size:10px;color:#4a4a4a;letter-spacing:.1em;padding:0 15px 14px}
-.cap .est{display:flex;gap:3px;padding:0 15px 15px}
-.cap .est svg{width:13px;height:13px;fill:var(--rojo)}
+/* ---------- categorias tira ---------- */
+.cats{background:var(--tinta);color:#fff;padding:64px 0 0}
+.cats .cab{max-width:var(--max);margin:0 auto;padding:0 24px;display:flex;align-items:flex-end;justify-content:space-between;gap:36px;flex-wrap:wrap;margin-bottom:32px}
+.cats h2{color:#fff}
+.cats .cab p{font-size:14px;color:#8E8880;font-weight:300;max-width:44ch}
+.tira{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.tp{position:relative;aspect-ratio:3/4.4;overflow:hidden;display:block;background:#0a0a0a}
+.tp img{width:100%;height:100%;object-fit:cover;filter:brightness(.66);transition:transform 1.2s cubic-bezier(.22,.61,.36,1),filter .5s}
+.tp:hover img{transform:scale(1.06);filter:brightness(.82)}
+.tp .in{position:absolute;left:0;right:0;bottom:0;padding:26px 20px;background:linear-gradient(to top,rgba(0,0,0,.9),transparent)}
+.tp .n{position:absolute;top:16px;left:18px;font-family:var(--tt);font-size:15px;letter-spacing:.1em;color:rgba(255,255,255,.65)}
+.tp h3{font-size:32px;color:#fff;margin-bottom:12px}
+.tp .vc{display:inline-block;background:#fff;color:var(--tinta);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px}
+.cats .desliza{text-align:center;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#5E5952;padding:16px 0 22px}
 
-/* ---------- categorias ---------- */
-.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.cat{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--arena);display:block}
-.cat img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.22,.61,.36,1)}
-.cat:hover img{transform:scale(1.06)}
-.cat .cap2{position:absolute;left:0;right:0;bottom:0;padding:24px 20px;background:linear-gradient(to top,rgba(0,0,0,.82),transparent)}
-.cat h3{font-size:34px;letter-spacing:.01em;color:#fff}
-.cat span{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#E6E2DC}
-.cat span::after{content:'';width:0;height:1px;background:var(--rojo);transition:width .4s}
-.cat:hover span::after{width:26px}
-.cat .num{position:absolute;top:14px;right:16px;background:var(--papel);color:var(--tinta);font-family:var(--tt);font-size:14px;letter-spacing:.08em;padding:4px 8px}
+/* ---------- panel de marca ---------- */
+.marca{background:var(--hueso);padding:70px 0}
+.mp{background:var(--tinta);color:#fff;display:grid;grid-template-columns:.85fr 1.15fr;overflow:hidden}
+.mp .vid{position:relative;background:#0a0a0a;min-height:520px}
+.mp .vid video,.mp .vid img{width:100%;height:100%;object-fit:cover;display:block}
+.mp .cont{padding:44px 44px 46px}
+.mp h2{font-size:clamp(30px,3.4vw,46px);color:#fff;margin-bottom:14px}
+.mp .intro{font-size:14.5px;color:#B9B3AC;font-weight:300;max-width:56ch}
+.datos{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:26px 0 26px;border:1px solid var(--linea2)}
+.datos div{padding:15px 14px;border-right:1px solid var(--linea2)}
+.datos div:last-child{border-right:0}
+.datos b{display:block;font-family:var(--tt);font-size:27px;line-height:1;color:#fff}
+.datos span{display:block;font-size:11px;color:#8E8880;margin-top:5px;line-height:1.3}
+.rot{font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--rojo);margin-bottom:12px}
+.razones{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:26px}
+.razones div{border:1px solid var(--linea2);padding:14px 15px}
+.razones b{display:block;font-size:13.5px;font-weight:600;color:#fff;margin-bottom:3px}
+.razones span{font-size:12px;color:#8E8880;font-weight:300;line-height:1.4}
+.valores{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:26px}
+.valores i{font-style:normal;font-size:11px;letter-spacing:.09em;text-transform:uppercase;border:1px solid var(--linea2);color:#CFCAC4;padding:6px 11px}
+.mp .fin{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.mp .fin small{font-size:12px;color:#8E8880;max-width:30ch;line-height:1.4}
 
-/* ---------- ofertas ---------- */
-.of2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.of{display:grid;grid-template-columns:.95fr 1.05fr;background:var(--papel);border:1px solid var(--linea);overflow:hidden;transition:border-color .35s,box-shadow .35s}
-.of:hover{border-color:#cfc9c1;box-shadow:0 8px 26px rgba(20,20,20,.07)}
-.of .ph{position:relative;overflow:hidden;min-height:290px;background:var(--arena)}
-.of .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.22,.61,.36,1)}
-.of:hover .ph img{transform:scale(1.04)}
-.of .in2{padding:32px 30px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
-.of h3{font-size:36px;line-height:.92;margin-bottom:10px}
-.of .ahorro{font-size:13.5px;color:var(--gris);font-weight:300}
-.of .precios{margin-top:16px;display:flex;align-items:baseline;gap:12px}
-.of .precios b{font-family:var(--tt);font-size:46px;font-weight:800;letter-spacing:.01em}
-.of .precios s{font-size:15px;color:var(--gris2);font-weight:300}
-.of .off{display:inline-block;margin-bottom:12px;background:var(--rojo);color:#fff;font-size:11px;font-weight:700;letter-spacing:.14em;padding:5px 10px}
-.of .btn{margin-top:22px}
-
-/* ---------- por que elegirnos ---------- */
-.por{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--linea);border-left:1px solid var(--linea)}
-.por .it{padding:38px 36px;border-right:1px solid var(--linea);border-bottom:1px solid var(--linea);position:relative}
-.por .it .n{font-family:var(--tt);font-size:14px;letter-spacing:.2em;color:var(--rojo)}
-.por .it h3{font-size:34px;margin:10px 0 10px}
-.por .it p{font-size:14.5px;color:var(--gris);font-weight:300;line-height:1.6}
-.por .it .cint{position:absolute;left:0;top:0;width:4px;height:100%}
-.por .it:nth-child(1) .cint{background:#DAD5CE}
-.por .it:nth-child(2) .cint{background:var(--b-azul)}
-.por .it:nth-child(3) .cint{background:var(--b-violeta)}
-.por .it:nth-child(4) .cint{background:var(--b-marron)}
+/* ---------- extras ---------- */
+.extras{background:var(--tinta);color:#fff;padding:64px 0 70px}
+.extras h2{color:#fff}
+.extras h2 u{text-decoration:none;color:var(--rojo)}
+.extras .baja{color:#8E8880;margin-top:14px}
+.exg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:34px}
+.ex{display:grid;grid-template-columns:120px 1fr auto;align-items:center;gap:18px;border:1px solid var(--linea2);padding:16px 18px 16px 0;transition:border-color .3s}
+.ex:hover{border-color:var(--rojo)}
+.ex .im{height:100%;min-height:104px;overflow:hidden;background:#0a0a0a}
+.ex .im img{width:100%;height:100%;object-fit:cover}
+.ex b{display:block;font-family:var(--tt);font-size:26px;text-transform:uppercase;margin-bottom:4px}
+.ex span{font-size:12.5px;color:#8E8880;font-weight:300;line-height:1.4}
+.ex .fl{width:30px;height:30px;border:1px solid var(--linea2);display:grid;place-items:center;flex:none}
+.ex .fl svg{width:12px;height:12px;stroke:#fff;stroke-width:2;fill:none}
 
 /* ---------- faq ---------- */
-.faq{max-width:900px;margin:0 auto}
+.faq-s{background:var(--papel);padding:66px 0}
+.faq-s .cab{text-align:center;margin-bottom:34px}
+.faq{max-width:880px;margin:0 auto;border-top:1px solid var(--linea)}
 .faq details{border-bottom:1px solid var(--linea)}
-.faq summary{list-style:none;cursor:pointer;padding:24px 44px 24px 0;position:relative;font-family:var(--tt);font-size:30px;text-transform:uppercase;transition:color .3s}
+.faq summary{list-style:none;cursor:pointer;padding:20px 44px 20px 0;position:relative;font-family:var(--tt);font-size:27px;text-transform:uppercase;transition:color .25s}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary:hover{color:var(--rojo)}
-.faq summary::after{content:'';position:absolute;right:8px;top:33px;width:13px;height:13px;border-right:2px solid var(--rojo);border-bottom:2px solid var(--rojo);transform:rotate(45deg);transition:transform .35s}
-.faq details[open] summary::after{transform:rotate(-135deg);top:38px}
-.faq .rta{padding:0 40px 26px 0;font-size:15.5px;color:var(--gris);font-weight:300;max-width:70ch}
+.faq summary::after{content:'';position:absolute;right:8px;top:28px;width:12px;height:12px;border-right:2px solid var(--rojo);border-bottom:2px solid var(--rojo);transform:rotate(45deg);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(-135deg);top:33px}
+.faq .rta{padding:0 40px 22px 0;font-size:15px;color:var(--gris);font-weight:300;max-width:70ch}
 
 /* ---------- cierre ---------- */
 .cierre{position:relative;overflow:hidden;background:var(--tinta)}
 .cierre .bg{position:absolute;inset:0}
-.cierre .bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.34)}
-.cierre .bg::after{content:'';position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 50%,rgba(20,20,20,.5),rgba(20,20,20,.95))}
-.cierre .in{position:relative;z-index:2;text-align:center;padding:108px 24px;color:var(--papel)}
-.cierre h2{font-size:clamp(44px,7vw,94px);letter-spacing:-.02em}
+.cierre .bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.3)}
+.cierre .bg::after{content:'';position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 50%,rgba(0,0,0,.5),rgba(0,0,0,.95))}
+.cierre .in{position:relative;z-index:2;text-align:center;padding:100px 24px;color:#fff}
+.cierre h2{font-size:clamp(42px,6.6vw,90px);color:#fff}
 .cierre h2 em{font-style:normal;color:var(--rojo)}
-.cierre p{margin:20px auto 0;max-width:46ch;color:#C4BEB7;font-weight:300}
-.cierre .cta{margin-top:34px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.cierre .btn{background:var(--papel);border-color:var(--papel);color:var(--tinta)}
-.cierre .btn:hover{background:transparent;color:var(--papel)}
-.cierre .btn.ghost{background:transparent;color:var(--papel);border-color:#3f3f3f}
-.cierre .btn.ghost:hover{border-color:var(--papel)}
+.cierre p{margin:18px auto 0;max-width:46ch;color:#B9B3AC;font-weight:300}
+.cierre .cta{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
 /* ---------- footer ---------- */
-.ft{background:var(--hueso);border-top:1px solid var(--linea);padding:56px 0 0}
-.ft .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:42px}
-.ft h4{font-family:var(--tc);font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gris2);margin-bottom:16px}
-.ft ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.ft ul a{font-size:14px;color:var(--gris);font-weight:300;transition:color .3s}
+.ft{background:var(--papel);border-top:1px solid var(--linea);padding:52px 0 0}
+.ft .cols{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:38px;padding-bottom:40px}
+.ft h4{font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gris2);margin-bottom:15px}
+.ft ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ft ul a{font-size:13.5px;color:var(--gris);font-weight:300}
 .ft ul a:hover{color:var(--tinta)}
-.ft .marca img{height:24px;margin-bottom:16px}
-.ft .marca p{font-size:13.5px;color:var(--gris);font-weight:300;max-width:30ch}
-.ft .ig{display:inline-flex;align-items:center;gap:9px;margin-top:18px;font-size:13px;color:var(--tinta);font-weight:500}
+.ft .marca2 img{height:26px;margin-bottom:14px}
+.ft .marca2 p{font-size:13px;color:var(--gris);font-weight:300;max-width:30ch}
+.ft .ig{display:inline-flex;align-items:center;gap:9px;margin-top:16px;font-size:13px;font-weight:600}
 .ft .ig svg{width:17px;height:17px;stroke:var(--rojo);stroke-width:1.6;fill:none}
-.ft .pagos{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
-.ft .pagos i{font-style:normal;font-size:9.5px;letter-spacing:.1em;border:1px solid var(--linea);color:var(--gris);padding:5px 8px;text-transform:uppercase;background:var(--papel)}
-.ft .low{border-top:1px solid var(--linea);padding:20px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--gris2);letter-spacing:.06em}
+.ft .pagos{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.ft .pagos i{font-style:normal;font-size:9.5px;letter-spacing:.08em;border:1px solid var(--linea);color:var(--gris);padding:5px 8px;text-transform:uppercase;background:var(--hueso)}
+.ft .low{border-top:1px solid var(--linea);padding:18px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--gris2);letter-spacing:.05em}
 .praxis b{color:var(--gris);font-weight:600}
 
 /* ---------- responsive ---------- */
-@media (max-width:1080px){
-  .prods{grid-template-columns:repeat(2,1fr)}
-  .cats{grid-template-columns:repeat(2,1fr)}
-  .of2{grid-template-columns:1fr}
-  .ft .cols{grid-template-columns:1fr 1fr}
-  .ps-med{flex:0 0 240px}
+@media (max-width:1180px){
+  .prods,.prods.cinco{grid-template-columns:repeat(3,1fr)}
+  .tarjs{grid-template-columns:repeat(2,1fr)}
+  .mp{grid-template-columns:1fr}
+  .mp .vid{min-height:300px}
 }
-@media (max-width:900px){
-  .hd nav{display:none}
+@media (max-width:980px){
+  .hd .busca{display:none}
   .hero .in{grid-template-columns:1fr;min-height:0}
-  .hero .txt{padding:52px 24px 46px;order:2}
-  .hero .foto{order:1;height:76vw;max-height:520px}
-  .hero .foto::after{background:linear-gradient(to top,rgba(255,255,255,.9) 0%,rgba(255,255,255,.2) 34%,transparent 66%)}
-  .dest-card{grid-template-columns:1fr}
-  .dest-datos{padding:30px 24px 34px}
-  .por{grid-template-columns:1fr}
-  .caps{grid-template-columns:1fr}
-  .of{grid-template-columns:1fr}
-  .of .ph{min-height:240px}
-  .sec{padding:64px 0}
-  .ps{padding:56px 0}
-  .ps-in{gap:22px}
-  .ps-med{flex:0 0 36%}
-  .ps-med .marco{inset:-6px}
+  .hero .txt{padding:44px 24px 40px;order:2}
+  .hero .foto{order:1;height:78vw;max-height:480px}
+  .hero .foto::after{background:linear-gradient(to top,rgba(255,255,255,.92) 0%,rgba(255,255,255,.15) 34%,transparent 64%)}
+  .bs{grid-template-columns:1fr}
+  .bs .txt{padding:48px 24px 44px;order:2}
+  .bs .med{order:1;min-height:0;height:86vw;max-height:460px}
+  .bs.der .txt{padding-right:24px}
+  .tira{grid-template-columns:repeat(2,1fr)}
+  .exg{grid-template-columns:1fr}
+  .datos{grid-template-columns:1fr 1fr}
+  .datos div:nth-child(2){border-right:0}
+  .datos div:nth-child(1),.datos div:nth-child(2){border-bottom:1px solid var(--linea2)}
+  .razones{grid-template-columns:1fr}
+  .mp .cont{padding:32px 24px 36px}
+  .ft .cols{grid-template-columns:1fr 1fr}
 }
 @media (max-width:720px){
   .ben .grid{display:none}
-  .ben-cel{display:block;position:relative;height:196px;overflow:hidden}
-  .ben-cel .it{position:absolute;inset:0;padding:32px 24px 30px;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateY(14px);animation:rota 14s cubic-bezier(.22,.61,.36,1) infinite}
+  .ben{padding:0 0 0}
+  .ben .cab{display:none}
+  .ben-cel{display:block;position:relative;height:172px;overflow:hidden;background:var(--papel)}
+  .ben-cel .it{position:absolute;inset:0;padding:26px 24px;display:flex;flex-direction:column;justify-content:center;text-align:center;align-items:center;opacity:0;animation:rota 14s cubic-bezier(.22,.61,.36,1) infinite}
   .ben-cel .it:nth-child(1){animation-delay:0s}
   .ben-cel .it:nth-child(2){animation-delay:3.5s}
   .ben-cel .it:nth-child(3){animation-delay:7s}
   .ben-cel .it:nth-child(4){animation-delay:10.5s}
-  @keyframes rota{0%{opacity:0;transform:translateY(14px)}4%{opacity:1;transform:translateY(0)}23%{opacity:1;transform:translateY(0)}27%{opacity:0;transform:translateY(-10px)}100%{opacity:0;transform:translateY(-10px)}}
-  .ben-cel .it h3{font-size:31px;margin:12px 0 5px}
-  .ben-cel .it p{font-size:14px;color:var(--gris);font-weight:300}
-  .ben-cel .it svg{width:28px;height:28px;stroke:var(--tinta);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  @keyframes rota{0%{opacity:0}4%{opacity:1}23%{opacity:1}27%{opacity:0}100%{opacity:0}}
+  .ben-cel h3{font-size:29px;margin:10px 0 4px}
+  .ben-cel p{font-size:13px;color:var(--gris);font-weight:300}
+  .ben-cel svg{width:26px;height:26px;stroke:var(--tinta);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
   .ben-cel .barra{position:absolute;left:0;right:0;bottom:0;height:3px;display:flex}
   .ben-cel .barra i{flex:1;position:relative;background:var(--linea)}
   .ben-cel .barra i::after{content:'';position:absolute;inset:0;background:var(--rojo);transform:scaleX(0);transform-origin:left;animation:cargacel 14s linear infinite}
@@ -309,77 +329,90 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:upp
   .ben-cel .barra i:nth-child(3)::after{animation-delay:7s}
   .ben-cel .barra i:nth-child(4)::after{animation-delay:10.5s}
   @keyframes cargacel{0%{transform:scaleX(0)}25%{transform:scaleX(1)}100%{transform:scaleX(1)}}
-  .prods{grid-template-columns:1fr 1fr;gap:12px}
-  .card .txt{padding:12px 12px 16px}
-  .card .pr{font-size:23px}
-  .card .add{font-size:10px;letter-spacing:.1em;padding:10px 4px}
-  .card .cuo{font-size:11px}
-  .cats{gap:10px}
-  .cat h3{font-size:26px}
-  .dest-n{font-size:34px}
-  .emb-p{font-size:40px}
-  .faq summary{font-size:25px;padding:19px 40px 19px 0}
-  .faq summary::after{top:27px}
-  .ft .cols{grid-template-columns:1fr;gap:28px}
-  .cab{margin-bottom:28px}
-  .cierre .in{padding:78px 20px}
-  .ps-sep{width:56px;margin:16px 0}
-  .ps-nota{font-size:14px;margin-top:16px}
-  .ps-cta{margin-top:18px;font-size:10.5px;letter-spacing:.16em}
+  .prods,.prods.cinco{grid-template-columns:1fr 1fr;gap:10px}
+  .card h3{font-size:12px;min-height:31px}
+  .card .pr{font-size:25px}
+  .pil{font-size:10px;padding:6px 8px}
+  .card .cmp span{font-size:10px;letter-spacing:.08em;padding:10px 4px}
+  .tarjs{grid-template-columns:1fr}
+  .tira{grid-template-columns:1fr 1fr}
+  .tp h3{font-size:25px}
+  .fila{padding:44px 0}
+  .res,.faq-s,.extras,.marca{padding:46px 0}
+  .cats{padding:46px 0 0}
+  .ex{grid-template-columns:88px 1fr;padding:14px 16px 14px 0}
+  .ex .fl{display:none}
+  .ex b{font-size:22px}
+  .faq summary{font-size:23px;padding:17px 40px 17px 0}
+  .faq summary::after{top:24px}
+  .ft .cols{grid-template-columns:1fr;gap:26px}
+  .cierre .in{padding:72px 20px}
+  .datos b{font-size:23px}
 }
 </style>
 </head>
 <body>
 
-<!-- ANUNCIO -->
-<div class="anuncio">
+<!-- BARRA SUPERIOR -->
+<div class="top">
   <div class="track">
-    <span>Envío gratis en compras superiores a <b>$150.000</b></span>
-    <span>Drop 01 — <b>On the mat</b></span>
-    <span>Hasta <b>3 cuotas sin interés</b></span>
-    <span>Cambio de talle <b>sin drama</b></span>
-    <span>Envío gratis en compras superiores a <b>$150.000</b></span>
-    <span>Drop 01 — <b>On the mat</b></span>
-    <span>Hasta <b>3 cuotas sin interés</b></span>
-    <span>Cambio de talle <b>sin drama</b></span>
+    <span>🚚 <b>Envío gratis</b> a todo el país desde <em>$150.000</em></span>
+    <span>💳 Hasta <b>3 cuotas sin interés</b></span>
+    <span>🥋 <em>Drop 01</em> — On the mat, ya disponible</span>
+    <span>🔄 <b>Cambiás el talle</b> en 3 días hábiles</span>
+    <span>🚚 <b>Envío gratis</b> a todo el país desde <em>$150.000</em></span>
+    <span>💳 Hasta <b>3 cuotas sin interés</b></span>
+    <span>🥋 <em>Drop 01</em> — On the mat, ya disponible</span>
+    <span>🔄 <b>Cambiás el talle</b> en 3 días hábiles</span>
   </div>
 </div>
+<div class="aviso2">💬 ¿No sabés qué talle sos? <b>Te asesoramos por Instagram</b></div>
 
 <!-- HEADER -->
 <header class="hd">
   <div class="in">
     <a class="logo" href="./"><img src="logo-bjj.png" alt="BJJ &amp; Co."></a>
-    <nav>
-      <a href="#destacados">Drop 01</a>
-      <a href="#categorias">Remeras</a>
-      <a href="#categorias">Buzos</a>
-      <a href="#ofertas">Packs</a>
-      <a href="#historia">Quiénes somos</a>
-      <a href="#faq">Ayuda</a>
-    </nav>
+    <div class="busca">
+      <input type="text" placeholder="Buscá una prenda, una estampa, un talle…">
+      <button aria-label="Buscar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg></button>
+    </div>
     <div class="acc">
-      <svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg>
       <svg class="ico" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      <div class="bag"><svg class="ico" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><em>2</em></div>
+      <div class="carro">
+        <div class="b"><svg class="ico" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><em>2</em></div>
+        <div class="t"><b>Carrito</b><span>$58.000</span></div>
+      </div>
     </div>
   </div>
 </header>
+<nav class="menu">
+  <div class="in">
+    <span class="pill">Categorías <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+    <a href="#drop">Drop 01</a>
+    <a href="#categorias">Remeras</a>
+    <a href="#categorias">Oversize</a>
+    <a href="#categorias">Buzos</a>
+    <a href="#ofertas">Packs</a>
+    <a href="#marca">Quiénes somos</a>
+    <a href="#faq">Guía de talles</a>
+    <a href="#faq">Ayuda</a>
+  </div>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="in">
     <div class="txt">
-      <div class="eyebrow">Drop 01 — On the mat</div>
+      <span class="kick">Drop 01 — On the mat</span>
       <h1>Nacida del tatami.<span class="l2">Pensada para la calle.</span></h1>
-      <p class="lead">El Jiu Jitsu no enseña sólo técnicas. Enseña a mantener la calma bajo presión, a aprender del error y a volver. Esas lecciones se llevan puestas.</p>
+      <p class="baja">El Jiu Jitsu no enseña sólo técnicas. Enseña a mantener la calma bajo presión, a aprender del error y a volver. Esas lecciones se llevan puestas.</p>
       <div class="cta">
-        <a class="btn" href="#destacados">Ver el Drop 01 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="link-mas" href="#historia">Cómo nace BJJ &amp; Co.</a>
+        <a class="btn rojo" href="#drop">Ver el Drop 01 <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="link" href="#marca">Cómo nace BJJ &amp; Co.</a>
       </div>
     </div>
     <div class="foto">
       <img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_84507-0c119a94cb15e8efab17835533835806-1024-1024.webp" alt="Remeras BJJ &amp; Co.">
-      <div class="sello"><b>BJJ&amp;Co.</b><i>ARG</i></div>
     </div>
   </div>
   <div class="grados"><span class="g1"></span><span class="g2"></span><span class="g3"></span><span class="g4"></span><span class="g5"></span><span class="g6"></span></div>
@@ -387,32 +420,40 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:upp
 
 <!-- BENEFICIOS -->
 <section class="ben">
+  <div class="cab">
+    <span class="kick oscura">Tu compra, sin vueltas</span>
+    <h2 class="tit-b">Calidad, respaldo<br>y beneficios reales</h2>
+  </div>
   <div class="grid">
     <div class="it">
       <svg class="bi" viewBox="0 0 24 24"><path d="M1 3h13v13H1z"/><path d="M14 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2"/><circle cx="17.5" cy="18.5" r="2"/></svg>
       <h3>Envío gratis</h3>
-      <p>A todo el país en compras superiores a $150.000.</p>
+      <p>A todo el país desde $150.000, por Andreani.</p>
+      <div class="bar"><i></i></div>
     </div>
     <div class="it">
       <svg class="bi" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg>
       <h3>3 cuotas sin interés</h3>
       <p>Con todas las tarjetas de crédito y débito.</p>
+      <div class="bar"><i></i></div>
     </div>
     <div class="it">
       <svg class="bi" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
       <h3>Cambiás el talle</h3>
       <p>Tenés 3 días hábiles desde que lo recibís.</p>
+      <div class="bar"><i></i></div>
     </div>
     <div class="it">
       <svg class="bi" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
       <h3>Compra protegida</h3>
-      <p>Seguimiento por Andreani y datos cifrados.</p>
+      <p>Seguimiento del envío y datos cifrados.</p>
+      <div class="bar"><i></i></div>
     </div>
   </div>
   <div class="ben-cel">
     <div class="it">
       <svg viewBox="0 0 24 24"><path d="M1 3h13v13H1z"/><path d="M14 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2"/><circle cx="17.5" cy="18.5" r="2"/></svg>
-      <h3>Envío gratis</h3><p>A todo el país en compras superiores a $150.000.</p>
+      <h3>Envío gratis</h3><p>A todo el país desde $150.000, por Andreani.</p>
     </div>
     <div class="it">
       <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg>
@@ -424,264 +465,299 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:upp
     </div>
     <div class="it">
       <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-      <h3>Compra protegida</h3><p>Seguimiento por Andreani y datos cifrados.</p>
+      <h3>Compra protegida</h3><p>Seguimiento del envío y datos cifrados.</p>
     </div>
     <div class="barra"><i></i><i></i><i></i><i></i></div>
   </div>
 </section>
 
-<!-- DESTACADOS -->
-<section class="sec" id="destacados">
+<!-- FILA 1: LAS QUE MAS ELIGEN -->
+<section class="fila" id="drop">
   <div class="wrap">
     <div class="cab">
       <div>
-        <div class="eyebrow">Lo más elegido</div>
-        <h2 class="h-sec">Drop 01<br>On the mat</h2>
+        <span class="kick">Drop 01 — On the mat</span>
+        <h2>Las que más eligen 🥋</h2>
       </div>
-      <a class="link-mas" href="#categorias">Ver todas las remeras</a>
+      <div class="flechas">
+        <i><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></i>
+        <i><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i>
+      </div>
     </div>
     <div class="prods">
       <a class="card" href="ficha.html">
-        <div class="ph"><span class="tag claro">Oversize</span><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_84507-0c119a94cb15e8efab17835533835806-640-0.webp" alt="Remera Humildade"></div>
+        <div class="ph"><div class="etq"><b class="envio"><svg viewBox="0 0 24 24"><path d="M1 4h13v11H1z"/><path d="M14 8h4l3 3v4h-7z"/></svg> Gratis</b></div><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_84507-0c119a94cb15e8efab17835533835806-640-0.webp" alt="Humildade"></div>
         <div class="txt">
-          <h3>Humildade</h3>
+          <h3>Humildade — Remera oversize</h3>
           <div class="pr">$29.000</div>
-          <div class="cuo">3x $9.666 sin interés</div>
-          <span class="add">Ver producto</span>
+          <span class="pil">3 x $9.666,67 <span class="ok">sin interés</span></span>
+          <span class="pil">$24.650 con <span class="tr">Transferencia</span></span>
+          <div class="cmp"><span>Comprar</span></div>
         </div>
       </a>
       <a class="card" href="ficha.html">
-        <div class="ph"><span class="tag">Últimas 4</span><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/espalda-el-a7f61991865e3bb6e017797397031023-640-0.webp" alt="Remera Choke"></div>
+        <div class="ph"><div class="etq"><b>Últimas 4</b><b class="envio"><svg viewBox="0 0 24 24"><path d="M1 4h13v11H1z"/><path d="M14 8h4l3 3v4h-7z"/></svg> Gratis</b></div><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/espalda-el-a7f61991865e3bb6e017797397031023-640-0.webp" alt="Choke"></div>
         <div class="txt">
-          <h3>Choke</h3>
+          <h3>Choke — Remera oversize</h3>
           <div class="pr">$29.000</div>
-          <div class="cuo">3x $9.666 sin interés</div>
-          <span class="add">Ver producto</span>
+          <span class="pil">3 x $9.666,67 <span class="ok">sin interés</span></span>
+          <span class="pil">$24.650 con <span class="tr">Transferencia</span></span>
+          <div class="stock">¡Solo quedan 4 en stock!</div>
+          <div class="cmp"><span>Comprar</span></div>
         </div>
       </a>
       <a class="card" href="ficha.html">
-        <div class="ph"><span class="tag claro">Clásica</span><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/frente-el-d8eebee6892e2bc54c17797387332246-640-0.webp" alt="Remera Mindset"></div>
+        <div class="ph"><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/frente-el-d8eebee6892e2bc54c17797387332246-640-0.webp" alt="Mindset"></div>
         <div class="txt">
-          <h3>Mindset</h3>
+          <h3>Mindset — Remera clásica</h3>
           <div class="pr">$29.000</div>
-          <div class="cuo">3x $9.666 sin interés</div>
-          <span class="add">Ver producto</span>
+          <span class="pil">3 x $9.666,67 <span class="ok">sin interés</span></span>
+          <span class="pil">$24.650 con <span class="tr">Transferencia</span></span>
+          <div class="cmp"><span>Comprar</span></div>
         </div>
       </a>
       <a class="card" href="ficha.html">
-        <div class="ph"><span class="tag claro">Oversize</span><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_84505-5dde66ef602754299217835531205087-640-0.webp" alt="Remera Ambassador OS"></div>
+        <div class="ph"><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_84505-5dde66ef602754299217835531205087-640-0.webp" alt="Ambassador OS"></div>
         <div class="txt">
-          <h3>Ambassador OS</h3>
+          <h3>Ambassador OS — Oversize</h3>
           <div class="pr">$29.000</div>
-          <div class="cuo">3x $9.666 sin interés</div>
-          <span class="add">Ver producto</span>
+          <span class="pil">3 x $9.666,67 <span class="ok">sin interés</span></span>
+          <span class="pil">$24.650 con <span class="tr">Transferencia</span></span>
+          <div class="cmp"><span>Comprar</span></div>
         </div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- PROBLEMA -> SOLUCION (texto + video) -->
-<section class="ps">
-  <div class="ps-in">
-    <div class="ps-txt">
-      <div class="eyebrow">El talle</div>
-      <p class="ps-prob" style="margin-top:14px">Comprás oversize sin probarte y no sabés si te va a quedar como en la foto.</p>
-      <div class="ps-sep"><span class="g1"></span><span class="g2"></span><span class="g3"></span><span class="g4"></span><span class="g5"></span></div>
-      <p class="ps-sol">Cada prenda tiene sus medidas reales. Y si no da, <u>la cambiás.</u></p>
-      <p class="ps-nota">Tabla tomada sobre la prenda y 3 días hábiles para pedir el cambio de talle.</p>
-      <a class="ps-cta" href="ficha.html">Ver la tabla de talles <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    </div>
-    <div class="ps-med">
-      <span class="marco"></span>
-      <video src="bjj-reel.mp4" poster="poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
-      <div class="grados cinta"><span class="g1"></span><span class="g2"></span><span class="g3"></span><span class="g4"></span><span class="g5"></span><span class="g6"></span></div>
-    </div>
+<!-- BLOQUE NEGRO: EL TALLE (problema -> solucion) -->
+<section class="bs der">
+  <div class="txt">
+    <span class="kick">El talle</span>
+    <div class="sub">Comprás oversize sin probarte…</div>
+    <h2>Y si no da,<br><u>la cambiás.</u></h2>
+    <div class="sep"><span class="g1"></span><span class="g2"></span><span class="g3"></span><span class="g4"></span><span class="g5"></span></div>
+    <p>Cada prenda tiene su tabla de medidas tomada sobre la prenda, no sobre el cuerpo. Y si igual no te va, tenés 3 días hábiles para pedir el cambio de talle: sin uso y con la etiqueta puesta, se cambia.</p>
+    <a class="btn blanco" href="ficha.html">Ver la tabla de talles <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+  <div class="med">
+    <video src="bjj-reel.mp4" poster="poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
   </div>
 </section>
 
-<!-- DESTACADO CON EMBUDO -->
-<section class="sec">
-  <div class="wrap">
-    <div class="dest-card">
-      <div class="dest-foto">
-        <img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_1214-be26ef3151ee157a9717797415111345-640-0.webp" alt="Buzo Trust">
-        <span class="dest-off">30% OFF</span>
-      </div>
-      <div class="dest-datos">
-        <span class="dest-k">El más elegido del drop</span>
-        <h2 class="dest-n">Buzo Trust</h2>
-        <div class="emb-fila">
-          <span class="emb-p">$38.500</span>
-          <span class="emb-lista">$55.000</span>
-          <span class="emb-off">30% OFF</span>
-        </div>
-        <div class="emb-linea"><span class="et">En cuotas</span><span class="val"><b>3 sin interés</b> de $12.833</span></div>
-        <div class="emb-linea"><span class="et">Te ahorrás</span><span class="val emb-destaca">$16.500</span></div>
-        <div class="emb-linea"><span class="et">Talles</span><span class="val"><b>S · M · L · XL</b> — calce holgado</span></div>
-        <a class="btn" href="ficha.html">Ver el producto <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIOS -->
-<section class="sec oscuro">
+<!-- RESEÑAS -->
+<section class="res">
   <div class="wrap">
     <div class="cab">
       <div>
-        <div class="eyebrow">Ustedes</div>
-        <h2 class="h-sec">Lo que nos<br>escriben</h2>
+        <span class="kick">Reseñas reales</span>
+        <h2 class="tit">Lo que nos escriben</h2>
       </div>
-      <a class="link-mas" href="#">Ver más en Instagram</a>
+      <a class="btn" href="#">Ver en Instagram <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
-    <div class="caps">
-      <article class="cap">
-        <div class="top"><div class="av">M</div><div class="who"><b>martu.grappling</b><i>Instagram · mensaje directo</i></div></div>
-        <div class="body">
-          <div class="burb ellos">Llegó hoy la Humildade 🙌 la tela es un montón mejor de lo que esperaba</div>
-          <div class="burb nos">¡Grande! ¿Te quedó bien el talle?</div>
-          <div class="burb ellos">Perfecto el M. Ya me pidieron el dato dos del gimnasio jaja</div>
-        </div>
-        <div class="est"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg></div>
-        <div class="hora">Hoy 14:32</div>
+    <div class="nota">
+      <b>4.9</b>
+      <div class="estr"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg></div>
+      <span>Mensajes de nuestra comunidad · destacada «Ustedes!» en Instagram</span>
+    </div>
+    <div class="tarjs">
+      <article class="tj">
+        <div class="e"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg></div>
+        <p>Llegó hoy la Humildade y la tela es un montón mejor de lo que esperaba. Pedí el M y quedó perfecto. Ya me pidieron el dato dos del gimnasio.</p>
+        <div class="who"><div class="av">M</div><div><b>Martu G.</b><i>Hace 2 semanas · Instagram</i></div></div>
       </article>
-      <article class="cap">
-        <div class="top"><div class="av">N</div><div class="who"><b>+54 9 11 ····-3021</b><i>WhatsApp</i></div></div>
-        <div class="body">
-          <div class="burb ellos">Buenas! Compré el viernes, llegó el martes a Neuquén 👌</div>
-          <div class="burb ellos">La estampa del Choke queda tremenda en persona</div>
-          <div class="burb nos">Gracias por la foto 🙏 la subimos a las historias</div>
-        </div>
-        <div class="est"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg></div>
-        <div class="hora">Ayer 20:07</div>
+      <article class="tj">
+        <div class="e"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg></div>
+        <p>Compré el viernes y el martes ya lo tenía en Neuquén. La estampa del Choke queda tremenda en persona, mucho mejor que en la foto.</p>
+        <div class="who"><div class="av">N</div><div><b>Nacho R.</b><i>Hace 1 mes · WhatsApp</i></div></div>
       </article>
-      <article class="cap">
-        <div class="top"><div class="av">F</div><div class="who"><b>fede.oss</b><i>Instagram · mensaje directo</i></div></div>
-        <div class="body">
-          <div class="burb ellos">Che, el buzo Trust lo uso para ir a entrenar y para salir</div>
-          <div class="burb ellos">Es lo único que me pongo hace dos semanas 😂</div>
-          <div class="burb nos">Eso es exactamente la idea. Oss 🤝</div>
-        </div>
-        <div class="est"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg></div>
-        <div class="hora">Lunes 11:15</div>
+      <article class="tj">
+        <div class="e"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg></div>
+        <p>Dudaba entre M y L, escribí por Instagram y me contestaron al toque con las medidas. Terminé pidiendo el M y le pegué. Atención de 10.</p>
+        <div class="who"><div class="av">F</div><div><b>Fede O.</b><i>Hace 1 mes · Instagram</i></div></div>
+      </article>
+      <article class="tj">
+        <div class="e"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.9 1.2 7L12 18l-6.2 3.3L7 14.3l-5-4.9 7-.9z"/></svg></div>
+        <p>El buzo Trust lo uso para ir a entrenar y para salir. Es lo único que me pongo hace dos semanas. Se nota que está pensado por alguien que entrena.</p>
+        <div class="who"><div class="av">L</div><div><b>Luchi V.</b><i>Hace 2 meses · Instagram</i></div></div>
       </article>
     </div>
   </div>
 </section>
 
 <!-- CATEGORIAS -->
-<section class="sec" id="categorias">
+<section class="cats" id="categorias">
+  <div class="cab">
+    <div>
+      <span class="kick">Elegí por dónde entrar</span>
+      <h2 class="tit">Nuestras categorías</h2>
+    </div>
+    <p>Remeras clásicas, oversize, buzos y packs. Todo diseñado y producido por nosotros, en tandas cortas.</p>
+  </div>
+  <div class="tira">
+    <a class="tp" href="#">
+      <img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/frente-el-d8eebee6892e2bc54c17797387332246-640-0.webp" alt="Remeras clásicas">
+      <span class="n">01</span>
+      <div class="in"><h3>Clásicas</h3><span class="vc">Ver categoría</span></div>
+    </a>
+    <a class="tp" href="#">
+      <img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_84505-5dde66ef602754299217835531205087-640-0.webp" alt="Remeras oversize">
+      <span class="n">02</span>
+      <div class="in"><h3>Oversize</h3><span class="vc">Ver categoría</span></div>
+    </a>
+    <a class="tp" href="#">
+      <img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_1214-be26ef3151ee157a9717797415111345-640-0.webp" alt="Buzos">
+      <span class="n">03</span>
+      <div class="in"><h3>Buzos</h3><span class="vc">Ver categoría</span></div>
+    </a>
+    <a class="tp" href="#">
+      <img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/frente-ella-204d93845b20dc66ce17797426938910-640-0.webp" alt="Packs">
+      <span class="n">04</span>
+      <div class="in"><h3>Packs</h3><span class="vc">Ver categoría</span></div>
+    </a>
+  </div>
+  <div class="desliza">Deslizá para ver más</div>
+</section>
+
+<!-- FILA 2: OFERTAS -->
+<section class="fila papel" id="ofertas">
   <div class="wrap">
     <div class="cab">
       <div>
-        <div class="eyebrow g">El catálogo</div>
-        <h2 class="h-sec">Elegí por<br>dónde entrar</h2>
+        <span class="kick">Precio de drop</span>
+        <h2>Lo que está en oferta 🔥</h2>
+      </div>
+      <div class="flechas">
+        <i><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></i>
+        <i><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i>
       </div>
     </div>
-    <div class="cats">
-      <a class="cat" href="#">
-        <img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/frente-el-d8eebee6892e2bc54c17797387332246-640-0.webp" alt="Remeras clásicas">
-        <span class="num">01</span>
-        <div class="cap2"><h3>Clásicas</h3><span>Ver remeras</span></div>
+    <div class="prods">
+      <a class="card" href="ficha.html">
+        <div class="ph"><div class="etq"><b>-30% OFF</b></div><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_1214-be26ef3151ee157a9717797415111345-640-0.webp" alt="Buzo Trust"></div>
+        <div class="txt">
+          <h3>Buzo Trust — Frisa pesada</h3>
+          <div class="lista">$55.000</div>
+          <div class="pr">$38.500</div>
+          <span class="pil">3 x $12.833,33 <span class="ok">sin interés</span></span>
+          <span class="pil">$32.725 con <span class="tr">Transferencia</span></span>
+          <div class="stock">El XL se agotó en este drop</div>
+          <div class="cmp"><span>Comprar</span></div>
+        </div>
       </a>
-      <a class="cat" href="#">
-        <img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_84505-5dde66ef602754299217835531205087-640-0.webp" alt="Remeras oversize">
-        <span class="num">02</span>
-        <div class="cap2"><h3>Oversize</h3><span>Ver remeras</span></div>
+      <a class="card" href="ficha.html">
+        <div class="ph"><div class="etq"><b>-20% OFF</b><b class="envio"><svg viewBox="0 0 24 24"><path d="M1 4h13v11H1z"/><path d="M14 8h4l3 3v4h-7z"/></svg> Gratis</b></div><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dorso-1-12fcfbd83b1e663fdc17797377680206-640-0.webp" alt="Pack x3"></div>
+        <div class="txt">
+          <h3>Pack x3 remeras — Elegís las estampas</h3>
+          <div class="lista">$87.000</div>
+          <div class="pr">$69.600</div>
+          <span class="pil">3 x $23.200 <span class="ok">sin interés</span></span>
+          <span class="pil">$59.160 con <span class="tr">Transferencia</span></span>
+          <div class="cmp"><span>Armar mi pack</span></div>
+        </div>
       </a>
-      <a class="cat" href="#">
-        <img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_1214-be26ef3151ee157a9717797415111345-640-0.webp" alt="Buzos">
-        <span class="num">03</span>
-        <div class="cap2"><h3>Buzos</h3><span>Ver buzos</span></div>
+      <a class="card" href="ficha.html">
+        <div class="ph"><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_84502-67eb9ed94b314e648c17835521541481-640-0.webp" alt="Ambassador"></div>
+        <div class="txt">
+          <h3>Ambassador — Remera clásica</h3>
+          <div class="pr">$29.000</div>
+          <span class="pil">3 x $9.666,67 <span class="ok">sin interés</span></span>
+          <span class="pil">$24.650 con <span class="tr">Transferencia</span></span>
+          <div class="cmp"><span>Comprar</span></div>
+        </div>
       </a>
-      <a class="cat" href="#">
-        <img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/frente-ella-204d93845b20dc66ce17797426938910-640-0.webp" alt="Packs">
-        <span class="num">04</span>
-        <div class="cap2"><h3>Packs</h3><span>Ver packs</span></div>
+      <a class="card" href="ficha.html">
+        <div class="ph"><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/frente-ella-204d93845b20dc66ce17797426938910-640-0.webp" alt="Original"></div>
+        <div class="txt">
+          <h3>Original — Remera clásica</h3>
+          <div class="pr">$29.000</div>
+          <span class="pil">3 x $9.666,67 <span class="ok">sin interés</span></span>
+          <span class="pil">$24.650 con <span class="tr">Transferencia</span></span>
+          <div class="cmp"><span>Comprar</span></div>
+        </div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- OFERTAS -->
-<section class="sec hueso" id="ofertas">
+<!-- PANEL DE MARCA -->
+<section class="marca" id="marca">
   <div class="wrap">
-    <div class="cab">
-      <div>
-        <div class="eyebrow">Precio de drop</div>
-        <h2 class="h-sec">En oferta<br>ahora</h2>
+    <div class="mp">
+      <div class="vid">
+        <video src="bjj-reel.mp4" poster="poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
       </div>
-      <a class="link-mas" href="#">Ver todas las ofertas</a>
-    </div>
-    <div class="of2">
-      <article class="of">
-        <div class="ph"><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_1214-be26ef3151ee157a9717797415111345-640-0.webp" alt="Buzo Trust"></div>
-        <div class="in2">
-          <span class="off">30% OFF</span>
-          <h3>Buzo<br>Trust</h3>
-          <p class="ahorro">Frisa pesada, calce holgado. Te ahorrás $16.500.</p>
-          <div class="precios"><b>$38.500</b><s>$55.000</s></div>
-          <a class="btn" href="ficha.html">Comprar <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <div class="cont">
+        <span class="kick">Por qué elegirnos</span>
+        <h2>Más que una marca<br>de ropa.</h2>
+        <p class="intro">BJJ &amp; Co. nace de las horas en el tatami. El Jiu Jitsu enseña a adaptarse, a mantener la calma bajo presión y a aprender del error — y esas lecciones no se quedan en el gimnasio. Cada estampa sale de ahí.</p>
+
+        <div class="datos">
+          <div><b>Drop 01</b><span>La primera tanda</span></div>
+          <div><b>8 prendas</b><span>Diseño propio</span></div>
+          <div><b>3 a 7 días</b><span>A todo el país</span></div>
+          <div><b>Argentina</b><span>Producción nacional</span></div>
         </div>
-      </article>
-      <article class="of">
-        <div class="ph"><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dorso-1-12fcfbd83b1e663fdc17797377680206-640-0.webp" alt="Pack x3 remeras"></div>
-        <div class="in2">
-          <span class="off">20% OFF</span>
-          <h3>Pack x3<br>remeras</h3>
-          <p class="ahorro">Elegís tres estampas del drop. Te ahorrás $17.400.</p>
-          <div class="precios"><b>$69.600</b><s>$87.000</s></div>
-          <a class="btn" href="ficha.html">Armar mi pack <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+
+        <div class="rot">Lo que nos diferencia</div>
+        <div class="razones">
+          <div><b>Diseño propio, no reventa</b><span>Cada estampa la pensamos y producimos nosotros.</span></div>
+          <div><b>Streetwear, no uniforme</b><span>Ropa de calle inspirada en el Jiu Jitsu, no técnica.</span></div>
+          <div><b>Drops limitados</b><span>Tandas cortas: cuando un talle se agota, se agota.</span></div>
+          <div><b>La hacemos entrenando</b><span>Pasa primero por quienes la van a usar.</span></div>
         </div>
-      </article>
+
+        <div class="rot">Lo que llevamos puesto</div>
+        <div class="valores">
+          <i>Humildade</i><i>Mindset</i><i>Trust</i><i>Constancia</i><i>Respeto</i><i>Técnica</i><i>Comunidad</i>
+        </div>
+
+        <div class="fin">
+          <a class="btn rojo" href="#">Escribinos por Instagram <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <small>Te contestamos nosotros, antes y después de la compra.</small>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- POR QUE ELEGIRNOS -->
-<section class="sec" id="historia">
+<!-- EXTRAS -->
+<section class="extras">
   <div class="wrap">
-    <div class="cab">
-      <div>
-        <div class="eyebrow">Por qué nosotros</div>
-        <h2 class="h-sec">Siempre queda algo<br>por aprender</h2>
-      </div>
-      <p class="lead">Algunas de las lecciones más importantes del Jiu Jitsu nos acompañan mucho después de dejar el tatami. De ahí sale cada prenda.</p>
-    </div>
-    <div class="por">
-      <div class="it"><i class="cint"></i>
-        <div class="n">01</div>
-        <h3>Diseño propio, no reventa</h3>
-        <p>Cada estampa la pensamos y la producimos nosotros. No vas a encontrar estas prendas en otra tienda.</p>
-      </div>
-      <div class="it"><i class="cint"></i>
-        <div class="n">02</div>
-        <h3>Streetwear, no uniforme</h3>
-        <p>No son prendas técnicas de entrenamiento: son ropa de calle inspirada en la cultura del Jiu Jitsu. Entran al tatami y salen a la calle igual.</p>
-      </div>
-      <div class="it"><i class="cint"></i>
-        <div class="n">03</div>
-        <h3>Drops limitados</h3>
-        <p>Producimos por tandas cortas. Cuando un talle se agota, se agota: preferimos eso antes que llenar el placard de todos con lo mismo.</p>
-      </div>
-      <div class="it"><i class="cint"></i>
-        <div class="n">04</div>
-        <h3>La hacemos entrenando</h3>
-        <p>Nació del tatami de verdad. Cada prenda pasa primero por quienes la van a usar, dentro y fuera del gimnasio.</p>
-      </div>
+    <span class="kick">Extras que hacen la diferencia</span>
+    <h2 class="tit">¿Ya tenés<br><u>tu remera?</u></h2>
+    <p class="baja">Completá el outfit y cuidá la prenda para que la estampa te dure años.</p>
+    <div class="exg">
+      <a class="ex" href="#">
+        <div class="im"><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_1214-be26ef3151ee157a9717797415111345-320-0.webp" alt=""></div>
+        <div><b>Sumá el buzo</b><span>Frisa pesada para los días que no aflojan.</span></div>
+        <div class="fl"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </a>
+      <a class="ex" href="#">
+        <div class="im"><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dorso-1-12fcfbd83b1e663fdc17797377680206-320-0.webp" alt=""></div>
+        <div><b>Llevá el pack x3</b><span>Tres estampas a elección con 20% menos.</span></div>
+        <div class="fl"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </a>
+      <a class="ex" href="ficha.html">
+        <div class="im"><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/dsc_84505-5dde66ef602754299217835531205087-320-0.webp" alt=""></div>
+        <div><b>Guía de talles</b><span>Medidas reales de cada prenda, no del cuerpo.</span></div>
+        <div class="fl"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </a>
+      <a class="ex" href="#faq">
+        <div class="im"><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/espalda-el-a7f61991865e3bb6e017797397031023-320-0.webp" alt=""></div>
+        <div><b>Cómo lavarla</b><span>Agua fría, del revés y sin secadora. Dura años.</span></div>
+        <div class="fl"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="sec hueso" id="faq">
+<section class="faq-s" id="faq">
   <div class="wrap">
-    <div class="cab" style="justify-content:center;text-align:center">
-      <div>
-        <div class="eyebrow">Antes de comprar</div>
-        <h2 class="h-sec">Preguntas frecuentes</h2>
-      </div>
+    <div class="cab">
+      <span class="kick">Comprá con confianza</span>
+      <h2 class="tit">Preguntas frecuentes</h2>
     </div>
     <div class="faq">
       <details open>
@@ -701,6 +777,10 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:upp
         <div class="rta">Sí: en compras superiores a $150.000 el envío es gratis a todo el país. Por debajo de ese monto, el costo se calcula automáticamente según tu ubicación y lo ves antes de confirmar.</div>
       </details>
       <details>
+        <summary>¿Qué medios de pago aceptan?</summary>
+        <div class="rta">Tarjetas de crédito y débito con hasta 3 cuotas sin interés, y transferencia bancaria con descuento. Todos los medios disponibles aparecen al finalizar la compra.</div>
+      </details>
+      <details>
         <summary>¿Las prendas sirven para entrenar?</summary>
         <div class="rta">Están diseñadas como streetwear inspirado en la cultura del Jiu Jitsu, no como ropa técnica de entrenamiento. Aguantan el uso diario y el gimnasio, pero no reemplazan un rashguard ni un gi.</div>
       </details>
@@ -716,12 +796,12 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:upp
 <section class="cierre">
   <div class="bg"><img src="https://acdn-us.mitiendanube.com/stores/007/477/176/products/espalda-el-a7f61991865e3bb6e017797397031023-1024-1024.webp" alt=""></div>
   <div class="in">
-    <div class="eyebrow">Drop 01 — On the mat</div>
+    <span class="kick">Drop 01 — On the mat</span>
     <h2>Todavía queda algo<br><em>por aprender.</em></h2>
     <p>Ocho prendas, tandas cortas y talles que se agotan. Mirá el drop completo antes de que falte el tuyo.</p>
     <div class="cta">
-      <a class="btn" href="#destacados">Ver todo el catálogo <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn ghost" href="#">Seguirnos en Instagram</a>
+      <a class="btn blanco" href="#drop">Ver todo el catálogo <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn rojo" href="#">Seguirnos en Instagram</a>
     </div>
   </div>
   <div class="grados"><span class="g1"></span><span class="g2"></span><span class="g3"></span><span class="g4"></span><span class="g5"></span><span class="g6"></span></div>
@@ -731,23 +811,23 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.9;text-transform:upp
 <footer class="ft">
   <div class="wrap">
     <div class="cols">
-      <div class="marca">
+      <div class="marca2">
         <img src="logo-bjj.png" alt="BJJ &amp; Co.">
         <p>Una marca inspirada en la cultura del Jiu Jitsu. Nacida del tatami, pensada para la calle.</p>
         <a class="ig" href="#"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg> @bjj_and_co</a>
       </div>
       <div>
         <h4>Tienda</h4>
-        <ul><li><a href="#">Remeras clásicas</a></li><li><a href="#">Remeras oversize</a></li><li><a href="#">Buzos</a></li><li><a href="#">Packs</a></li></ul>
+        <ul><li><a href="#categorias">Remeras clásicas</a></li><li><a href="#categorias">Remeras oversize</a></li><li><a href="#categorias">Buzos</a></li><li><a href="#ofertas">Packs</a></li></ul>
       </div>
       <div>
         <h4>Ayuda</h4>
-        <ul><li><a href="ficha.html">Tabla de talles</a></li><li><a href="#">Cambios y devoluciones</a></li><li><a href="#">Envíos</a></li><li><a href="#faq">Preguntas frecuentes</a></li></ul>
+        <ul><li><a href="ficha.html">Tabla de talles</a></li><li><a href="#faq">Cambios y devoluciones</a></li><li><a href="#faq">Envíos</a></li><li><a href="#faq">Preguntas frecuentes</a></li></ul>
       </div>
       <div>
         <h4>Pagá como quieras</h4>
         <div class="pagos"><i>Visa</i><i>Mastercard</i><i>Amex</i><i>Mercado Pago</i><i>Transferencia</i></div>
-        <h4 style="margin-top:22px">Enviamos con</h4>
+        <h4 style="margin-top:20px">Enviamos con</h4>
         <div class="pagos"><i>Andreani</i><i>Sucursal</i><i>Domicilio</i></div>
       </div>
     </div>
