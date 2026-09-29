@@ -145,6 +145,10 @@ button{font-family:inherit}
 .alt p{margin:0;font-size:13.5px;color:var(--suave);line-height:1.45}
 .alt .p{font-family:var(--f-tit);font-weight:700;color:var(--noche);margin-top:6px;font-size:15px}
 
+.alts.tres{grid-template-columns:repeat(3,1fr)}
+.alts.tres .alt{grid-template-columns:1fr;text-align:left}
+.alts.tres .alt .foto{max-width:120px}
+.medidas.una{grid-template-columns:minmax(0,420px)}
 .logica{margin-top:26px;border-top:1px solid var(--linea);padding-top:18px}
 .logica summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--suave);list-style:none;display:flex;align-items:center;gap:8px}
 .logica summary::-webkit-details-marker{display:none}
@@ -167,6 +171,9 @@ button{font-family:inherit}
   .top-card{grid-template-columns:1fr;gap:18px}
   .top-card .foto{max-width:300px;width:100%;margin:0 auto}
   .alts{grid-template-columns:1fr}
+  .alts.tres{grid-template-columns:1fr}
+  .alts.tres .alt{grid-template-columns:96px 1fr}
+  .alts.tres .alt .foto{max-width:none}
 }
 @media (max-width:600px){
   .aura{padding:18px 20px 128px}
@@ -227,13 +234,12 @@ button{font-family:inherit}
 <section class="valida">
   <h2>Lo que tiene que confirmar Aurel</h2>
   <ol>
-    <li><b>La escalera:</b> qué motor recomiendan en cada rango de peso y uso. Abrí «¿Por qué este motor?» en el resultado para ver la regla.</li>
-    <li><b>Margen de seguridad:</b> el motor tiene que arrastrar 1,25 veces el peso del portón.</li>
-    <li><b>Kilos por m² según material:</b> liviano 20 · reja de hierro 35 · madera 40 · pesado 55.</li>
+    <li><b>Corredizo en casa:</b> primero Imperium (hasta 300 kg) o Imperium Plus, y de alternativa los Bru-Mec que sirven (Galgo, Puma, Liebre, Potro).</li>
+    <li><b>Peso «a mano»:</b> con una mano fácil = hasta 250 kg · cuesta un poco = hasta 400 kg · con las dos manos = pide los kilos.</li>
+    <li><b>Margen:</b> hasta 500 kg alcanza un motor de ese peso; más pesado, el portón no pasa del 85 % del motor (700 kg ya no va con uno de 800).</li>
     <li><b>Maniobras por hora</b> de Imperium, Imperium Plus, Galgo y Potro 600 (sus fichas no lo dicen).</li>
     <li><b>Batiente doble:</b> ¿300 kg por hoja o en total?</li>
-    <li><b>Persianas:</b> la tabla de torque según medida, y la descripción del motor Paralelo (hoy vacía).</li>
-    <li><b>Imperium Plus:</b> ¿titular o alternativa por precio?</li>
+    <li><b>Levadizo y persianas:</b> pendiente el Excel de recomendaciones de Aurel.</li>
   </ol>
 </section>
 
@@ -244,7 +250,7 @@ button{font-family:inherit}
 /* ===================== DATOS (salen de la tienda) ===================== */
 var T='https://aurel7.mitiendanube.com/productos/';
 var I='https://dcdn-us.mitiendanube.com/stores/008/218/664/products/';
-var WA='541172284597';
+var WA='5491172284597'; /* wa.me con el 9 de celular */
 var M={
   imperium:{n:'Imperium',kg:300,ch:15,chS:1,seg:15,cr:'acero',inc:3,p:193392,g:'1 año',u:'motor-para-porton-corredizo-imperium',f:'11-4feb41a3bfba4dad2817890640852951-640-0.webp',d:'Silencioso, piñón y cremallera de acero.'},
   puma:{n:'Puma',kg:400,ch:15,seg:14,cr:'nylon',inc:3,p:217566,g:'1 año',u:'motor-puma-porton-corredizo',f:'8-1-400a4821582837351a17890643117644-640-0.webp',d:'Robusto para casas: fuerza antes que velocidad.'},
@@ -266,95 +272,110 @@ var M={
 var CREM={nylon:{n:'Cremallera de nylon maciza (1 m)',p:14504,u:'cremallera-de-nylon-maciza-1m',f:'d_nq_np_2x_870228-mla112505684781_052026-f-3-d27a6199d44536c44d17903677178001-640-0.webp'},
           acero:{n:'Cremallera de acero (1 m)',p:24174,u:'cremallera-de-acero-1m',f:'d_nq_np_2x_743804-mla112506669903_052026-f-3-a6804afa59765d26ae17903676429214-640-0.webp'}};
 
-var MARGEN=1.25;
-var MAT={liv:{t:'Liviano',s:'Caño con chapa lisa o malla',k:20},reja:{t:'Reja de hierro',s:'Barrotes o chapa simple',k:35},
-         mad:{t:'Madera',s:'Tablas o placa maciza',k:40},pes:{t:'Pesado',s:'Hierro macizo o chapa gruesa',k:55}};
-var USO={casa:{t:'Casa',s:'Una familia, hasta ~10 aperturas por día'},mov:{t:'Casa con mucho movimiento',s:'PH, pasillo o varias familias'},
-         cons:{t:'Consorcio, cochera o comercio',s:'Abre y cierra todo el día'},ind:{t:'Industria',s:'Uso continuo, portones grandes'}};
 
-/* ===================== LA ESCALERA ===================== */
-/* hasta = peso del PORTÓN (el motor ya tiene 25% de margen: 240 = 300/1,25) */
-var ESC={
-  casa:[{h:240,r:'puma',rap:'galgo',pre:'imperium',dur:'liebre'},{h:320,r:'puma',rap:'liebre',dur:'potro'},
-        {h:400,r:'liebre',dur:'potro'},{h:480,r:'potro',rap:'plusS',dur:'potroPlus'},
-        {h:640,r:'potroPlus',pre:'impplus',dur:'toro'},{h:800,r:'toro',dur:'megaM'},
-        {h:1440,r:'megaM',pre:'megaI'},{h:2000,r:'megaI',dur:'megaT'}],
-  mov:[{h:400,r:'liebre',dur:'potroPlus'},{h:480,r:'plusS',pre:'potro',dur:'potroPlus'},
-       {h:640,r:'potroPlus',pre:'impplus',dur:'toro'},{h:800,r:'toro',dur:'megaM'},
-       {h:1440,r:'megaM',pre:'megaI'},{h:2000,r:'megaI',dur:'megaT'}],
-  cons:[{h:800,r:'toro',dur:'megaM'},{h:1440,r:'megaM',pre:'megaI'},{h:2000,r:'megaI',dur:'megaT'}]
+/* ===================== CÓMO SE MUEVE (criterio de Aurel, 29-09) =====================
+   «Si se mueve con una mano es liviano, hasta 250-300 kg. Si cuesta un poco, un poco
+   más pesado. Si hay que moverlo con las dos manos, es pesado — y ese cliente
+   generalmente sabe cuánto pesa.» Liviano y medio se toman por su tope. */
+var MANO={
+  liv:{t:'Con una mano, fácil',s:'Lo deslizás sin esfuerzo',kg:250},
+  med:{t:'Con una mano, pero cuesta un poco',s:'Hay que hacer algo de fuerza',kg:400},
+  pes:{t:'Con las dos manos, y cuesta',s:'Es un portón pesado',kg:null},
+  sabe:{t:'Sé cuánto pesa',s:'Escribí los kilos',kg:null}
 };
-var ETQ={rap:'Más rápido',pre:'Más económico',dur:'Más robusto',r:'El recomendado'};
+var USO={casa:{t:'Casa',s:'Residencial, una o varias familias'},
+         cons:{t:'Consorcio, cochera o comercio',s:'Abre y cierra todo el día'},
+         ind:{t:'Industria',s:'Uso continuo, portones grandes'}};
+
+/* ===================== MARGEN =====================
+   Aurel: «un motor de 400 con un portón de 400 no tiene problema; uno de 800 con
+   un portón de 700 o más va exigido». Hasta 500 kg el motor alcanza con su número;
+   arriba de 500 kg el portón no pasa del 85 % del motor. */
+var LIVIANO=500, CARGA=0.85;
+function sirve(k,kg){var c=M[k].kg;return kg<=LIVIANO?c>=kg:kg<=c*CARGA;}
+
+/* ===================== LA RECOMENDACIÓN =====================
+   Casa: primero Imperium / Imperium Plus (lo que más venden, mejor precio).
+   Después, como alternativas, los Bru-Mec que también sirven. */
+var CASA_PRI=['imperium','impplus','toro','megaM','megaI'];
+var CASA_ALT=['impplus','galgo','puma','liebre','potro','plusS','potroPlus','toro','megaM'];
+var CONS_PRI=['toro','megaM','megaI'];
+var ETQ={galgo:'Más rápido',liebre:'Más rápido',plusS:'Más rápido',puma:'Línea Bru-Mec',potro:'Línea Bru-Mec',
+         potroPlus:'Línea Bru-Mec',impplus:'Con más margen',toro:'Uso intensivo',megaM:'Industrial',megaI:'Industrial',megaT:'Trifásico'};
 
 /* ===================== ESTADO ===================== */
 var S={};
 var hist=[];
-function reset(){S={tipo:null,largo:4,alto:2,mat:null,kgMan:null,uso:null,pref:null,tri:null,contra:null};}
+function reset(){S={tipo:null,largo:4,alto:2,mano:null,kgMan:null,uso:null,tri:null};}
 reset();
 
 function peso(){
   if(S.kgMan){return Math.round(S.kgMan);}
-  if(!S.mat){return null;}
-  /* batiente doble: el largo es el ancho total y el peso se calcula por hoja */
-  return Math.round(S.largo*S.alto*MAT[S.mat].k/(S.tipo==='bat2'?2:1));
+  if(S.mano&&MANO[S.mano].kg){return MANO[S.mano].kg;}
+  return null;
 }
+function necesitaKg(){return S.mano==='pes'||S.mano==='sabe';}
 
 function flujo(){
   var t=S.tipo;
-  if(t==='corr'){var f=['tipo','medidas','material','uso'];
-    if(S.uso!=='ind'){f.push('pref');}
-    if(S.uso==='ind'||(peso()&&peso()>1440)){f.push('tri');}
+  if(t==='corr'){var f=['tipo','medidas','mano'];
+    if(necesitaKg()){f.push('kilos');}
+    f.push('uso');
+    if(S.uso==='ind'||(peso()&&peso()>1530)){f.push('tri');}
     f.push('res');return f;}
-  if(t==='bat1'||t==='bat2'){return ['tipo','medidas','material','res'];}
-  if(t==='lev'){return ['tipo','contra','medidas','res'];}
-  if(t==='pers'){return ['tipo','medidas','res'];}
-  return ['tipo','medidas','material','uso','pref','res'];
+  if(t==='bat1'||t==='bat2'){var b=['tipo','medidas'];
+    if(hojaOk()){b.push('mano');if(necesitaKg()){b.push('kilos');}}
+    b.push('res');return b;}
+  if(t==='lev'||t==='pers'){return ['tipo','medidas','res'];}
+  return ['tipo','medidas','mano','uso','res'];
 }
+function hoja(){return S.tipo==='bat2'?S.largo/2:S.largo;}
+function hojaOk(){return hoja()<=2.5;}
 
-/* ===================== MOTOR DE RECOMENDACIÓN ===================== */
 function recomendar(){
   var kg=peso(),t=S.tipo,o={kg:kg,alts:[],logica:[]};
   if(t==='corr'){
-    o.logica.push('Peso del portón: '+kg+' kg'+(S.kgMan?' (lo escribió)':' = '+fmt(S.largo)+' × '+fmt(S.alto)+' m × '+MAT[S.mat].k+' kg/m² ('+MAT[S.mat].t.toLowerCase()+')'));
-    o.logica.push('El motor tiene que arrastrar al menos '+Math.round(kg*MARGEN)+' kg (margen × '+fmt(MARGEN)+')');
+    o.logica.push('Peso: '+kg+' kg'+(S.kgMan?' (lo escribió)':' ('+MANO[S.mano].t.toLowerCase()+' → tope '+kg+' kg)'));
+    o.logica.push(kg<=LIVIANO?'Hasta '+LIVIANO+' kg: alcanza un motor de ese mismo peso':
+      'Más de '+LIVIANO+' kg: el portón no puede pasar del '+Math.round(CARGA*100)+' % del motor → motor de '+Math.ceil(kg/CARGA)+' kg o más');
     if(S.uso==='ind'){
-      if(kg>2000){return fuera(o,'Tu portón pesa más de lo que mueve nuestro motor más grande (2.500 kg con margen).');}
-      if(S.tri==='si'){o.r='megaT';o.alts=[{k:'megaI',e:'Más económico'}];o.logica.push('Industria + corriente trifásica → Mega Trifásico');}
-      else{o.r='megaI';o.alts=[{k:'megaT',e:'Si conseguís trifásica'}];o.consultar=true;
-        o.logica.push('Industria sin trifásica (o no sabe) → Mega Inverter, y conviene confirmarlo con un asesor');}
+      if(!sirve('megaI',kg)){return fuera(o,'Tu portón pesa más de lo que mueve nuestro motor más grande. Lo vemos con vos.');}
+      if(S.tri==='si'){o.r='megaT';o.alts=[{k:'megaI',e:'Sin trifásica'}];o.logica.push('Industria + trifásica → Mega Trifásico');}
+      else{o.r='megaI';o.alts=[{k:'megaT',e:'Si tenés trifásica'}];o.consultar=true;o.logica.push('Industria sin trifásica (o no sabe) → Mega Inverter, conviene confirmarlo');}
       return o;
     }
-    var esc=ESC[S.uso],e=null;
-    for(var i=0;i<esc.length;i++){if(kg<=esc[i].h){e=esc[i];break;}}
-    if(!e){return fuera(o,'Tu portón pesa más de 2.000 kg: lo vemos con vos para no quedarnos cortos.');}
-    var desde=i>0?esc[i-1].h+1:0;
-    o.logica.push('Uso «'+USO[S.uso].t+'» · escalón '+desde+'–'+e.h+' kg → recomendado: '+M[e.r].n);
-    var r=e.r;
-    if(S.pref&&S.pref!=='r'&&e[S.pref]&&!(e[S.pref]==='megaT'&&S.tri!=='si')){r=e[S.pref];o.logica.push('Prioridad «'+ETQ[S.pref]+'» → '+M[r].n);}
-    else if(S.pref&&S.pref!=='r'){o.logica.push('Prioridad «'+ETQ[S.pref]+'»: el recomendado ya es la mejor opción de su escalón');}
-    o.r=r;
-    ['r','rap','pre','dur'].forEach(function(k){
-      var m=e[k];if(!m||m===r||o.alts.some(function(a){return a.k===m;})){return;}
-      if(m==='megaT'&&S.tri!=='si'){return;}
-      o.alts.push({k:m,e:k==='r'?'El recomendado para tu caso':ETQ[k]});
-    });
-    o.alts=o.alts.slice(0,2);
+    var pri=S.uso==='cons'?CONS_PRI:CASA_PRI;
+    o.r=pri.filter(function(k){return sirve(k,kg);})[0];
+    if(!o.r){return fuera(o,'Tu portón pesa más de lo que mueve nuestro motor más grande. Lo vemos con vos.');}
+    o.logica.push((S.uso==='cons'?'Consorcio/comercio → Toro 1000 o más':'Casa → primero Imperium / Imperium Plus')+' · el primero que sirve: '+M[o.r].n);
+    /* Mega Trifásico solo si tiene trifásica */
+    if(S.tri==='si'&&o.r==='megaI'){o.alts.push({k:'megaT',e:'Trifásico'});}
+    if(S.uso!=='cons'){
+      CASA_ALT.forEach(function(k){
+        if(o.alts.length>=3||k===o.r||!sirve(k,kg)){return;}
+        /* alternativas del mismo rango: nada que sea dos escalones más grande */
+        if(M[k].kg>Math.max(M[o.r].kg*1.5,kg<=LIVIANO?600:0)&&k!=='impplus'){return;}
+        o.alts.push({k:k,e:ETQ[k]});
+      });
+    } else {
+      var sig={toro:'megaM',megaM:'megaI'}[o.r];if(sig){o.alts.push({k:sig,e:'Con más margen'});}
+    }
+    o.logica.push('Alternativas: '+(o.alts.map(function(a){return M[a.k].n;}).join(', ')||'—'));
     return o;
   }
   if(t==='bat1'||t==='bat2'){
-    var hoja=S.tipo==='bat2'?S.largo/2:S.largo;
-    o.logica.push((t==='bat2'?'2 hojas de ':'1 hoja de ')+hoja.toFixed(2).replace('.',',')+' m · peso por hoja: '+kg+' kg');
-    if(hoja>2.5){return fuera(o,'Cada hoja mide más de 2,5 m, que es lo máximo que mueve el brazo.');}
-    if(kg*MARGEN>300){return fuera(o,'Cada hoja pesa más de lo que mueve el brazo con margen (240 kg por hoja).');}
-    o.r=t;o.logica.push('Hoja ≤ 2,5 m y ≤ 240 kg → '+M[t].n);return o;
+    o.logica.push((t==='bat2'?'2 hojas de ':'1 hoja de ')+fmt(hoja())+' m');
+    if(!hojaOk()){o.noHay=true;return fuera(o,'Cada hoja mide más de 2,5 m, y ese es el máximo que se puede automatizar con brazo. Para ese portón no tenemos un motor para ofrecerte.');}
+    o.logica.push('Peso por hoja: '+kg+' kg (máximo 300)');
+    if(kg>300){return fuera(o,'Cada hoja pesa más de 300 kg, el máximo que mueve el brazo. Lo vemos con vos.');}
+    o.r=t;o.logica.push('Hoja ≤ 2,5 m y ≤ 300 kg → '+M[t].n);return o;
   }
   if(t==='lev'){
-    var m2=S.largo*S.alto;o.logica.push('Superficie: '+m2.toFixed(1).replace('.',',')+' m²');
-    if(S.contra!=='si'){return fuera(o,'El motor levadizo es para portones contrapesados. Si el tuyo no lo es (o no sabés), lo revisamos con vos.');}
-    if(m2>14){return fuera(o,'Tu portón pasa los 14 m², el máximo del motor levadizo.');}
-    o.r='levE';o.alts=[{k:'levR',e:'Más rápido'}];o.logica.push('Contrapesado ≤ 14 m² → Levadizo Estándar');return o;
+    var m2=S.largo*S.alto;o.logica.push('Superficie: '+fmt(Math.round(m2*10)/10)+' m²');
+    if(m2>14){return fuera(o,'Tu portón pasa los 14 m², el máximo de nuestro motor levadizo. Lo vemos con vos.');}
+    o.r='levE';o.alts=[{k:'levR',e:'Más rápido'}];o.logica.push('≤ 14 m² → Levadizo Estándar');return o;
   }
-  return fuera(o,'Para persianas y cortinas elegimos el torque según la medida exacta. Mandanos las medidas y te decimos cuál va.',true);
+  return fuera(o,'Para persianas y cortinas elegimos el motor según la medida exacta. Mandanos las medidas y te decimos cuál va.',true);
 }
 function fuera(o,txt,pers){o.fuera=txt;o.pers=pers;return o;}
 
@@ -364,13 +385,18 @@ var vista=$('vista'),escena=$('escena');
 function $$(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));}
 function plata(n){return '$'+Math.round(n).toLocaleString('es-AR');}
 function img(k){return I+(M[k]?M[k].f:k);}
+function fmt(n){return String(Math.round(n*100)/100).replace('.',',');}
 
 var SVG={
   corr:'<svg viewBox="0 0 64 48"><path d="M4 42h56"/><rect x="10" y="12" width="34" height="26" rx="1"/><path d="M18 12v26M26 12v26M34 12v26"/><path class="r" d="M48 25h10m-4-4 4 4-4 4"/></svg>',
   bat1:'<svg viewBox="0 0 64 48"><path d="M4 42h56M12 8v34"/><path d="M12 12h26v26H12"/><path d="M20 12v26M28 12v26"/><path class="r" d="M40 40a28 28 0 0 0 8-20" stroke-dasharray="3 3"/></svg>',
   bat2:'<svg viewBox="0 0 64 48"><path d="M4 42h56M6 8v34M58 8v34"/><path d="M6 12h24v26H6zM34 12h24v26H34z"/><path class="r" d="M18 44c-2-6-2-12 1-16M46 44c2-6 2-12-1-16" stroke-dasharray="3 3"/></svg>',
   lev:'<svg viewBox="0 0 64 48"><path d="M4 42h56M10 6v36M54 6v36"/><path d="M10 10h44M14 16h36M14 22h36"/><path class="r" d="M32 38V28m-4 4 4-4 4 4"/></svg>',
-  pers:'<svg viewBox="0 0 64 48"><rect x="10" y="4" width="44" height="7" rx="3.5"/><path d="M12 11v26h40V11"/><path d="M12 17h40M12 23h40M12 29h40"/><path class="r" d="M32 43v-4"/></svg>'
+  pers:'<svg viewBox="0 0 64 48"><rect x="10" y="4" width="44" height="7" rx="3.5"/><path d="M12 11v26h40V11"/><path d="M12 17h40M12 23h40M12 29h40"/><path class="r" d="M32 43v-4"/></svg>',
+  liv:'<svg viewBox="0 0 64 48"><path d="M30 40c-6 0-10-4-10-10V18a3 3 0 0 1 6 0v8M26 22v-8a3 3 0 0 1 6 0v12M32 16a3 3 0 0 1 6 0v10M38 20a3 3 0 0 1 6 0v10c0 6-4 10-10 10"/><path class="r" d="M48 12h10m-4-4 4 4-4 4"/></svg>',
+  med:'<svg viewBox="0 0 64 48"><path d="M30 40c-6 0-10-4-10-10V18a3 3 0 0 1 6 0v8M26 22v-8a3 3 0 0 1 6 0v12M32 16a3 3 0 0 1 6 0v10M38 20a3 3 0 0 1 6 0v10c0 6-4 10-10 10"/><path class="r" d="M48 12h6m-3-3 3 3-3 3M48 20h6"/></svg>',
+  pes:'<svg viewBox="0 0 64 48"><path d="M14 40c-5 0-8-3-8-8V21a2.5 2.5 0 0 1 5 0v6M11 24v-7a2.5 2.5 0 0 1 5 0v10M16 19a2.5 2.5 0 0 1 5 0v8M21 22a2.5 2.5 0 0 1 5 0v9c0 5-3 9-8 9"/><path d="M50 40c5 0 8-3 8-8V21a2.5 2.5 0 0 0-5 0v6M53 24v-7a2.5 2.5 0 0 0-5 0v10M48 19a2.5 2.5 0 0 0-5 0v8M43 22a2.5 2.5 0 0 0-5 0v9c0 5 3 9 8 9"/><path class="r" d="M29 10h6M32 7v6"/></svg>',
+  sabe:'<svg viewBox="0 0 64 48"><path d="M16 14h32l6 26H10z"/><path d="M26 14a6 6 0 0 1 12 0"/><path class="r" d="M24 30h16"/></svg>'
 };
 var TIPOS=[{v:'corr',t:'Corredizo',s:'Se desliza de costado'},{v:'bat1',t:'Batiente 1 hoja',s:'Abre como una puerta'},
            {v:'bat2',t:'Batiente 2 hojas',s:'Dos hojas que abren al medio'},{v:'lev',t:'Levadizo',s:'Sube de una pieza'},
@@ -380,15 +406,15 @@ var NOMBRE_T={corr:'Corredizo',bat1:'Batiente 1 hoja',bat2:'Batiente 2 hojas',le
 function pasoActual(){return hist[hist.length-1]||'tipo';}
 
 function chips(){
-  var c=[];
-  if(S.tipo&&pasoActual()!=='tipo'){c.push('<b>'+NOMBRE_T[S.tipo]+'</b>');}
-  var f=flujo(),i=f.indexOf(pasoActual());
-  if(i>f.indexOf('medidas')&&f.indexOf('medidas')>-1){c.push('<b>'+fmt(S.largo)+' × '+fmt(S.alto)+' m</b>');}
-  if(S.mat&&i>f.indexOf('material')&&f.indexOf('material')>-1){c.push('~<b>'+peso()+' kg</b>'+(S.tipo==='bat2'?' por hoja':''));}
+  var c=[],p=pasoActual(),f=flujo(),i=f.indexOf(p);
+  if(S.tipo&&p!=='tipo'){c.push('<b>'+NOMBRE_T[S.tipo]+'</b>');}
+  if(i>f.indexOf('medidas')&&f.indexOf('medidas')>-1){
+    c.push('<b>'+(S.tipo==='corr'?fmt(S.largo)+' m de largo':S.tipo==='bat1'||S.tipo==='bat2'?(S.tipo==='bat2'?'2 hojas de ':'')+fmt(hoja())+' m':fmt(S.largo)+' × '+fmt(S.alto)+' m')+'</b>');}
+  var ult=necesitaKg()?'kilos':'mano';
+  if(peso()&&f.indexOf(ult)>-1&&i>f.indexOf(ult)){c.push((S.kgMan?'':'hasta ')+'<b>'+peso()+' kg</b>'+(S.tipo==='bat2'?' por hoja':''));}
   if(S.uso&&i>f.indexOf('uso')&&f.indexOf('uso')>-1){c.push(USO[S.uso].t);}
   $('chips').innerHTML=c.map(function(x){return '<span class="chip">'+x+'</span>';}).join('');
 }
-function fmt(n){return String(Math.round(n*100)/100).replace('.',',');}
 
 function barra(){
   var f=flujo(),i=f.indexOf(pasoActual()),n=f.length-1;
@@ -433,60 +459,49 @@ function pintar(){
   if(p==='tipo'){
     mostrar('<h2 class="q">¿Qué portón tenés?</h2><p class="ayuda">Elegí el que más se parezca al tuyo.</p>'+
       opciones(TIPOS.map(function(t){return {v:t.v,t:t.t,s:t.s,svg:SVG[t.v]};}),S.tipo,'tipos'),function(){
-      alElegir(function(v){var cambio=S.tipo!==v;if(cambio){var t=v;reset();S.tipo=t;}siguiente();});});
+      alElegir(function(v){if(S.tipo!==v){reset();S.tipo=v;}siguiente();});});
   }
   else if(p==='medidas'){
-    var bat=S.tipo==='bat1'||S.tipo==='bat2';
-    var q=S.tipo==='pers'?'¿Cuánto mide la persiana?':'¿Cuánto mide tu portón?';
-    var ay=S.tipo==='bat2'?'El ancho total de la abertura (las dos hojas juntas) y la altura.':
-           S.tipo==='corr'?'El largo de la hoja que se desliza y su altura. No hace falta que sea exacto.':'Aproximado está bien.';
+    var t=S.tipo,q,ay,cajas;
+    if(t==='corr'){q='¿Cuánto mide de largo?';ay='El largo de la hoja que se desliza. Con esto calculamos la cremallera que necesitás.';cajas=stepper('largo','Largo');}
+    else if(t==='bat1'){q='¿Cuánto mide la hoja?';ay='El ancho de la hoja que abre.';cajas=stepper('largo','Ancho de la hoja');}
+    else if(t==='bat2'){q='¿Cuánto mide el portón?';ay='El ancho total de la abertura, con las dos hojas cerradas.';cajas=stepper('largo','Ancho total');}
+    else{q=t==='pers'?'¿Cuánto mide la persiana?':'¿Cuánto mide tu portón?';ay='Ancho y alto, aproximado está bien.';cajas=stepper('largo','Ancho')+stepper('alto','Alto');}
     mostrar('<h2 class="q">'+q+'</h2><p class="ayuda">'+ay+'</p>'+
-      '<div class="medidas">'+stepper('largo',S.tipo==='bat2'?'Ancho total':(S.tipo==='lev'||S.tipo==='pers')?'Ancho':'Largo')+stepper('alto','Alto')+'</div>'+
-      '<p class="area" id="area"></p>'+
+      '<div class="medidas'+(cajas.split('class="med"').length===2?' una':'')+'">'+cajas+'</div><p class="area" id="area"></p>'+
       '<div class="btns"><button class="b" id="seguir">Continuar <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button></div>',function(){
       $$('.stp button',vista).forEach(function(b){b.addEventListener('click',function(){
         var k=b.getAttribute('data-k'),d=+b.getAttribute('data-d');
-        var min=k==='alto'?1:1,max=k==='alto'?5:20;
-        S[k]=Math.min(max,Math.max(min,Math.round((S[k]+d)*10)/10));
+        var max=k==='alto'?6:20;
+        S[k]=Math.min(max,Math.max(1,Math.round((S[k]+d)*10)/10));
         $('o-'+k).innerHTML=fmt(S[k])+'<small>m</small>';area();});});
       area();$('seguir').addEventListener('click',siguiente);});
   }
-  else if(p==='material'){
-    var ops=Object.keys(MAT).map(function(k){return {v:k,t:MAT[k].t,s:MAT[k].s};});
-    ops.push({v:'kg',t:'Sé cuánto pesa',s:'Escribí los kilos'});
-    mostrar('<h2 class="q">¿De qué está hecho?</h2><p class="ayuda">Con esto calculamos cuánto pesa'+(S.tipo==='bat2'?' cada hoja':'')+'. <span class="sup">kg/m² a confirmar</span></p>'+
-      opciones(ops,S.kgMan?'kg':S.mat)+
-      '<div class="kg'+(S.kgMan?' on':'')+'" id="kgbox"><input id="kgin" type="number" inputmode="numeric" min="20" max="5000" placeholder="kg" value="'+(S.kgMan||'')+'"><span class="area">kilos'+(S.tipo==='bat2'?' por hoja':'')+'</span>'+
-      '<button class="b" id="kgok">Continuar</button></div>',function(){
-      $$('.op',vista).forEach(function(b){b.addEventListener('click',function(){
-        if(ocupado){return;}var v=b.getAttribute('data-v');
-        $$('.op',vista).forEach(function(x){x.classList.remove('sel');});b.classList.add('sel');
-        if(v==='kg'){$('kgbox').classList.add('on');$('kgin').focus();return;}
-        S.mat=v;S.kgMan=null;setTimeout(siguiente,170);});});
-      function okKg(){var n=+$('kgin').value;if(!n||n<20){$('kgin').focus();return;}S.kgMan=n;S.mat=S.mat||'reja';siguiente();}
-      $('kgok').addEventListener('click',okKg);
-      $('kgin').addEventListener('keydown',function(e){if(e.key==='Enter'){okKg();}});});
+  else if(p==='mano'){
+    mostrar('<h2 class="q">¿Cómo se mueve tu portón a mano?</h2><p class="ayuda">'+(S.tipo==='corr'?'Destrabado, empujándolo por su guía.':'Abriendo una hoja a mano.')+' Con esto sabemos cuánto pesa.</p>'+
+      opciones(Object.keys(MANO).map(function(k){return {v:k,t:MANO[k].t,s:MANO[k].s,svg:SVG[k]};}),S.mano),function(){
+      alElegir(function(v){S.mano=v;if(!necesitaKg()){S.kgMan=null;}siguiente();});});
+  }
+  else if(p==='kilos'){
+    var pes=S.mano==='pes';
+    mostrar('<h2 class="q">'+(pes?'¿Sabés más o menos cuánto pesa?':'¿Cuánto pesa?')+'</h2><p class="ayuda">'+
+      (pes?'En portones pesados el dato cambia el motor. Si no lo sabés, lo vemos con vos.':'Un número aproximado alcanza.')+(S.tipo==='bat2'?' Cada hoja.':'')+'</p>'+
+      '<div class="kg on"><input id="kgin" type="number" inputmode="numeric" min="20" max="5000" placeholder="kg" value="'+(S.kgMan||'')+'"><span class="area">kilos'+(S.tipo==='bat2'?' por hoja':'')+'</span></div>'+
+      '<div class="btns"><button class="b" id="kgok">Continuar <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>'+
+      (pes?'<a class="b b2" href="'+waLink('Mi portón es pesado y no sé cuánto pesa. ¿Me ayudan a elegir el motor?')+'" target="_blank" rel="noopener">'+WAIC+'No sé, consultar</a>':'')+'</div>',function(){
+      function ok(){var n=+$('kgin').value;if(!n||n<20){$('kgin').focus();return;}S.kgMan=n;siguiente();}
+      $('kgok').addEventListener('click',ok);
+      $('kgin').addEventListener('keydown',function(e){if(e.key==='Enter'){ok();}});});
   }
   else if(p==='uso'){
-    mostrar('<h2 class="q">¿Cuánto se usa?</h2><p class="ayuda">Un motor de casa y uno de consorcio pueden mover el mismo peso, pero no aguantan el mismo ritmo.</p>'+
+    mostrar('<h2 class="q">¿Dónde está el portón?</h2><p class="ayuda">Un motor de casa y uno de consorcio pueden mover el mismo peso, pero no aguantan el mismo ritmo.</p>'+
       opciones(Object.keys(USO).map(function(k){return {v:k,t:USO[k].t,s:USO[k].s};}),S.uso),function(){
-      alElegir(function(v){S.uso=v;if(v==='ind'){S.pref=null;}siguiente();});});
-  }
-  else if(p==='pref'){
-    mostrar('<h2 class="q">¿Qué te importa más?</h2><p class="ayuda">Si hay más de un motor para tu portón, elegimos por esto.</p>'+
-      opciones([{v:'r',t:'Lo que me recomienden',s:'El equilibrio justo para tu caso'},{v:'rap',t:'Que abra rápido',s:'Modelos que abren 3 m en 7 segundos'},
-                {v:'pre',t:'El mejor precio',s:'Lo más económico que cumple'},{v:'dur',t:'Que dure más',s:'Más margen y construcción más robusta'}],S.pref),function(){
-      alElegir(function(v){S.pref=v;siguiente();});});
+      alElegir(function(v){S.uso=v;siguiente();});});
   }
   else if(p==='tri'){
     mostrar('<h2 class="q">¿Tenés corriente trifásica?</h2><p class="ayuda">Es la de 380 V que suelen tener las industrias y galpones. Define qué motor industrial va.</p>'+
       opciones([{v:'si',t:'Sí'},{v:'no',t:'No'},{v:'ns',t:'No sé',s:'Te recomendamos uno que funciona igual'}],S.tri),function(){
       alElegir(function(v){S.tri=v;siguiente();});});
-  }
-  else if(p==='contra'){
-    mostrar('<h2 class="q">¿Tu portón es contrapesado?</h2><p class="ayuda">Tiene resortes o pesas que lo equilibran: si lo soltás a media altura, se queda quieto.</p>'+
-      opciones([{v:'si',t:'Sí, es contrapesado'},{v:'no',t:'No'},{v:'ns',t:'No sé'}],S.contra),function(){
-      alElegir(function(v){S.contra=v;siguiente();});});
   }
   else if(p==='res'){mostrar(resultado(),function(){
     $('otra').addEventListener('click',function(){reset();hist=[];ir('tipo');});});}
@@ -496,13 +511,19 @@ function stepper(k,lab){
   return '<div class="med"><label>'+lab+'</label><div class="stp"><button data-k="'+k+'" data-d="-0.5" aria-label="Menos">−</button>'+
          '<output id="o-'+k+'">'+fmt(S[k])+'<small>m</small></output><button data-k="'+k+'" data-d="0.5" aria-label="Más">+</button></div></div>';
 }
-function area(){var a=S.largo*S.alto;$('area').innerHTML='Superficie: <b>'+fmt(Math.round(a*10)/10)+' m²</b>'+
-  (S.tipo==='bat2'?' · cada hoja mide <b>'+fmt(S.largo/2)+' m</b>':'');}
+function area(){
+  var a=$('area');if(!a){return;}
+  if(S.tipo==='bat2'){a.innerHTML='Cada hoja mide <b>'+fmt(hoja())+' m</b>'+(hojaOk()?'':' · <b style="color:var(--rojo)">más de 2,5 m</b>');}
+  else if(S.tipo==='bat1'){a.innerHTML=hojaOk()?'':'<b style="color:var(--rojo)">Más de 2,5 m por hoja</b>';}
+  else if(S.tipo==='lev'||S.tipo==='pers'){a.innerHTML='Superficie: <b>'+fmt(Math.round(S.largo*S.alto*10)/10)+' m²</b>';}
+  else{a.innerHTML='';}
+}
 
 function waLink(extra){
-  var t='Hola! Usé el cotizador de la web. Mi portón: '+NOMBRE_T[S.tipo]+', '+fmt(S.largo)+' × '+fmt(S.alto)+' m';
-  if(peso()&&S.tipo!=='lev'&&S.tipo!=='pers'){t+=', unos '+peso()+' kg'+(S.tipo==='bat2'?' por hoja':'');}
-  if(S.uso){t+=', uso: '+USO[S.uso].t.toLowerCase();}
+  var t='Hola! Usé el cotizador de la web. Mi portón: '+(S.tipo?NOMBRE_T[S.tipo]:'')+
+    (S.tipo==='corr'?', '+fmt(S.largo)+' m de largo':S.tipo==='bat1'||S.tipo==='bat2'?', hojas de '+fmt(hoja())+' m':', '+fmt(S.largo)+' × '+fmt(S.alto)+' m');
+  if(peso()&&S.tipo!=='lev'&&S.tipo!=='pers'){t+=', '+(S.kgMan?'':'hasta ')+peso()+' kg'+(S.tipo==='bat2'?' por hoja':'');}
+  if(S.uso){t+=', '+USO[S.uso].t.toLowerCase();}
   if(extra){t+='. '+extra;}
   return 'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
 }
@@ -514,22 +535,23 @@ function resultado(){
   R=recomendar();
   var h='';
   if(R.fuera){
-    return '<div class="fuera"><p class="res-ante">Lo vemos con vos</p><h3>'+(R.pers?'Te decimos qué motor va':'Tu portón necesita una mirada más')+'</h3>'+
-      '<p>'+R.fuera+'</p><p>Te respondemos por WhatsApp con el modelo exacto.</p>'+
-      '<div class="btns"><a class="b wa" href="'+waLink(R.pers?'¿Qué motor de persiana va?':'¿Qué motor me recomiendan?')+'" target="_blank" rel="noopener">'+WAIC+'Consultar por WhatsApp</a>'+
+    return '<div class="fuera"><p class="res-ante">'+(R.noHay?'Sin motor para este portón':'Lo vemos con vos')+'</p><h3>'+
+      (R.pers?'Te decimos qué motor va':R.noHay?'Ese portón no se puede automatizar con brazo':'Tu portón necesita una mirada más')+'</h3>'+
+      '<p>'+R.fuera+'</p>'+(R.noHay?'':'<p>Te respondemos por WhatsApp con el modelo exacto.</p>')+
+      '<div class="btns">'+(R.noHay?'':'<a class="b wa" href="'+waLink(R.pers?'¿Qué motor de persiana va?':'¿Qué motor me recomiendan?')+'" target="_blank" rel="noopener">'+WAIC+'Consultar por WhatsApp</a>')+
       '<button class="b b2" id="otra">Empezar de nuevo</button></div></div>'+logica();
   }
   var m=M[R.r],kg=R.kg,li=[];
   if(S.tipo==='corr'){
-    li.push('<b>Arrastra hasta '+m.kg.toLocaleString('es-AR')+' kg.</b> Tu portón pesa unos '+kg+' kg: le sobra un '+Math.round((m.kg/kg-1)*100)+'%.');
+    li.push('<b>Mueve hasta '+m.kg.toLocaleString('es-AR')+' kg.</b> Tu portón: '+(S.kgMan?'unos ':'hasta ')+kg+' kg.');
     li.push('<b>Abre 3 metros en '+m.seg+' segundos.</b>');
     li.push('<b>'+(m.ch>=999?'Uso continuo.':'Hasta '+m.ch+' maniobras por hora.')+'</b>'+(m.chS?'<span class="sup">a confirmar</span>':'')+' '+m.d);
     li.push('<b>Trae '+m.inc+' m de cremallera de '+m.cr+' y 2 controles.</b>'+(m.g?' Garantía oficial de '+m.g+'.':''));
   } else if(S.tipo==='lev'){
-    li.push('<b>Para contrapesados de hasta 14 m².</b> El tuyo tiene '+fmt(Math.round(S.largo*S.alto*10)/10)+' m².');
+    li.push('<b>Para portones de hasta 14 m².</b> El tuyo tiene '+fmt(Math.round(S.largo*S.alto*10)/10)+' m².');
     li.push('<b>Hasta 25 maniobras por hora.</b> Abre en 13 segundos.');
   } else {
-    li.push('<b>Hojas de hasta 2,5 m y 300 kg.</b> Las tuyas: '+fmt(S.tipo==='bat2'?S.largo/2:S.largo)+' m y unos '+kg+' kg.'+(S.tipo==='bat2'?'<span class="sup">300 kg por hoja, a confirmar</span>':''));
+    li.push('<b>Hojas de hasta 2,5 m y 300 kg.</b> Las tuyas: '+fmt(hoja())+' m y '+(S.kgMan?'unos ':'hasta ')+kg+' kg.'+(S.tipo==='bat2'?'<span class="sup">300 kg por hoja, a confirmar</span>':''));
     li.push('<b>Hasta 60 ciclos por hora</b> y apertura en 10 segundos.');
     li.push('<b>Trae central electrónica, 2 controles y llave de destrabe.</b>');
   }
@@ -540,7 +562,6 @@ function resultado(){
      '<div class="btns" style="margin-top:0"><a class="b" href="'+T+m.u+'/" target="_blank" rel="noopener">Comprar el '+m.n+'</a>'+
      '<a class="b b2" href="'+waLink('Me recomendó el '+m.n+'. ¿Me lo confirman?')+'" target="_blank" rel="noopener">'+WAIC+'Confirmarlo con un asesor</a></div>'+
      '</div></div>';
-  /* cremallera que falta */
   if(S.tipo==='corr'&&m.inc){
     var falta=Math.max(0,Math.ceil(S.largo+0.5-m.inc));
     if(falta>0){var c=CREM[m.cr];
@@ -549,7 +570,7 @@ function resultado(){
          '<a class="b b2" href="'+T+c.u+'/" target="_blank" rel="noopener">Sumar '+falta+' m</a></div>';}
   }
   if(R.alts.length){
-    h+='<h4 class="alts-t">También te sirven</h4><div class="alts">'+R.alts.map(function(a){var x=M[a.k];
+    h+='<h4 class="alts-t">También te sirven</h4><div class="alts'+(R.alts.length===3?' tres':'')+'">'+R.alts.map(function(a){var x=M[a.k];
       return '<a class="alt" href="'+T+x.u+'/" target="_blank" rel="noopener"><div class="foto"><img src="'+img(a.k)+'" alt="" loading="lazy"></div><div>'+
         '<div class="et">'+a.e+'</div><h4>'+x.n+'</h4><p>'+(x.kg?'Hasta '+x.kg.toLocaleString('es-AR')+' kg · ':'')+(x.seg?'abre en '+x.seg+' s':'')+'</p><p class="p">'+plata(x.p)+'</p></div></a>';}).join('')+'</div>';
   }
@@ -561,7 +582,7 @@ function logica(){return '<details class="logica"><summary>¿Por qué este motor
 /* banco de pruebas: ?test expone el motor de recomendación */
 if(/[?&]test\b/.test(location.search)){window.__cot={S:function(){return S;},set:function(o){reset();for(var k in o){S[k]=o[k];}},rec:recomendar};}
 /* ?demo abre directo en el resultado de un caso tipo (para capturas) */
-if(/[?&]demo\b/.test(location.search)){S.tipo='corr';S.largo=4.5;S.mat='reja';S.uso='casa';S.pref='r';hist=['tipo','medidas','material','uso','pref'];ir('res');}
+if(/[?&]demo\b/.test(location.search)){S.tipo='corr';S.largo=4.5;S.mano='med';S.uso='casa';hist=['tipo','medidas','mano','uso'];ir('res');}
 else{ir('tipo');}
 })();
 </script>
