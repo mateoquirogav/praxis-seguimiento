@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cotizador de motores — Aurel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noche:#0F172A;--hondo:#0B1120;--rojo:#DD183B;--rojo-b:#C41533;--verde:#1E8E4E;
+  --base:#FFFFFF;--alt:#F4F5F7;--linea:#E2E5EA;--suave:#5B6475;--gris:#86868B;
+  --f-tit:Montserrat,system-ui,sans-serif;--f-txt:Inter,system-ui,sans-serif;
+  --e:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--alt);color:var(--noche);font-family:var(--f-txt);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font-family:inherit}
+
+/* ---------- banda de prototipo ---------- */
+.demo{background:#FFF7E0;color:#6B4E00;font-size:12.5px;text-align:center;padding:8px 16px;line-height:1.45}
+.demo b{font-weight:600}
+
+/* ---------- aura ---------- */
+.aura{position:relative;overflow:hidden;background:var(--hondo);color:#fff;padding:26px 24px 150px;isolation:isolate}
+.aura-m{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.aura-m i{position:absolute;border-radius:50%;filter:blur(70px);will-change:transform}
+.m1{width:46vw;height:46vw;max-width:680px;max-height:680px;left:-8%;top:-30%;background:rgba(221,24,59,.55);animation:r1 19s ease-in-out infinite alternate}
+.m2{width:52vw;height:52vw;max-width:760px;max-height:760px;right:-12%;bottom:-45%;background:rgba(37,78,180,.55);animation:r2 23s ease-in-out infinite alternate}
+.m3{width:30vw;height:30vw;max-width:440px;max-height:440px;left:40%;top:30%;background:rgba(120,150,210,.30);animation:r3 17s ease-in-out infinite alternate}
+@keyframes r1{to{transform:translate3d(18%,22%,0) scale(1.15)}}
+@keyframes r2{to{transform:translate3d(-16%,-18%,0) scale(1.1)}}
+@keyframes r3{to{transform:translate3d(-30%,-20%,0) scale(1.25)}}
+.aura-in{max-width:960px;margin:0 auto}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:56px}
+.top img{height:46px;width:auto;display:block}
+.top a{color:rgba(255,255,255,.75);font-size:13px;text-decoration:none;border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:8px 14px;transition:background .2s}
+.top a:hover{background:rgba(255,255,255,.08)}
+.pill{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+  border-radius:99px;padding:7px 14px 7px 12px;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--rojo);box-shadow:0 0 0 0 rgba(221,24,59,.7);animation:late 1.8s infinite}
+@keyframes late{70%{box-shadow:0 0 0 9px rgba(221,24,59,0)}100%{box-shadow:0 0 0 0 rgba(221,24,59,0)}}
+.aura h1{font-family:var(--f-tit);font-weight:800;font-size:clamp(34px,6vw,60px);line-height:1.02;letter-spacing:-.03em;margin:20px 0 14px;max-width:780px}
+.aura h1 span{color:rgba(255,255,255,.55)}
+.aura .baj{font-size:clamp(15px,1.8vw,18px);line-height:1.55;color:rgba(255,255,255,.78);margin:0;max-width:600px}
+.hechos{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;font-size:13.5px;color:rgba(255,255,255,.7)}
+.hechos span{display:inline-flex;align-items:center;gap:8px}
+.hechos svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+
+/* ---------- herramienta ---------- */
+.wrap{max-width:960px;margin:-110px auto 0;padding:0 16px 64px;position:relative}
+.tool{background:#fff;border-radius:28px;box-shadow:0 30px 80px rgba(11,17,32,.16),0 2px 6px rgba(11,17,32,.05);padding:34px 40px 36px}
+.pasos{display:flex;gap:6px;margin-bottom:22px}
+.paso{flex:1;height:4px;background:var(--linea);border-radius:4px;overflow:hidden}
+.paso i{display:block;height:100%;width:0;background:var(--rojo);border-radius:4px;transition:width .6s var(--e)}
+.paso.on i{width:100%}
+.cab{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px;min-height:30px}
+.num{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gris)}
+.volver{appearance:none;border:0;background:none;color:var(--suave);font-size:14px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:6px 0}
+.volver:hover{color:var(--noche)}
+.volver[hidden]{display:none}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}
+.chips:empty{display:none}
+.chip{background:var(--alt);border-radius:99px;padding:6px 12px;font-size:12.5px;font-weight:500;color:var(--suave)}
+.chip b{color:var(--noche);font-weight:600}
+
+.escena{position:relative;transition:height .55s var(--e)}
+.vista{transition:opacity .45s var(--e),transform .55s var(--e),filter .45s var(--e)}
+.vista.sale{opacity:0;transform:scale(.97);filter:blur(8px)}
+.vista.entra{opacity:0;transform:scale(1.02) translateY(10px);filter:blur(8px)}
+
+.q{font-family:var(--f-tit);font-weight:800;font-size:clamp(24px,3.4vw,34px);letter-spacing:-.025em;line-height:1.1;margin:0 0 8px}
+.ayuda{font-size:15px;line-height:1.55;color:var(--suave);margin:0 0 24px;max-width:62ch}
+
+.ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.op{appearance:none;text-align:left;background:#fff;border:1.5px solid var(--linea);border-radius:18px;padding:18px 18px 17px;
+  cursor:pointer;font-size:16px;font-weight:600;color:var(--noche);transition:border-color .2s,transform .35s var(--e),box-shadow .35s var(--e);width:100%;font-family:var(--f-tit)}
+.op:hover{border-color:var(--noche);transform:translateY(-3px);box-shadow:0 14px 30px rgba(11,17,32,.09)}
+.op:focus-visible{outline:3px solid rgba(221,24,59,.35);outline-offset:2px}
+.op.sel{border-color:var(--rojo);box-shadow:0 0 0 3px rgba(221,24,59,.12)}
+.op small{display:block;font-family:var(--f-txt);font-weight:400;font-size:13.5px;color:var(--suave);margin-top:6px;line-height:1.45}
+.op svg{display:block;width:64px;height:48px;margin-bottom:14px;fill:none;stroke:var(--noche);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.op svg .r{stroke:var(--rojo)}
+.ops.tipos{grid-template-columns:repeat(5,1fr)}
+
+/* medidas */
+.medidas{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.med{border:1.5px solid var(--linea);border-radius:18px;padding:18px}
+.med label{display:block;font-size:13px;font-weight:600;color:var(--suave);margin-bottom:12px;letter-spacing:.02em}
+.stp{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.stp button{appearance:none;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--linea);background:#fff;font-size:22px;line-height:1;cursor:pointer;color:var(--noche);transition:border-color .2s,background .2s}
+.stp button:hover{border-color:var(--noche)}
+.stp output{font-family:var(--f-tit);font-weight:800;font-size:34px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stp output small{font-size:16px;font-weight:700;color:var(--gris);margin-left:3px}
+.area{font-size:14px;color:var(--suave);margin:0 0 4px}
+.area b{color:var(--noche)}
+
+.kg{display:none;align-items:center;gap:10px;margin-top:14px}
+.kg.on{display:flex}
+.kg input{width:140px;font:700 22px var(--f-tit);padding:12px 14px;border:1.5px solid var(--linea);border-radius:14px;color:var(--noche)}
+.kg input:focus{outline:none;border-color:var(--noche)}
+
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.b{appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;font-family:var(--f-tit);
+  font-size:15px;font-weight:700;border-radius:99px;padding:15px 26px;background:var(--rojo);color:#fff;text-decoration:none;transition:background .2s,transform .2s}
+.b:hover{background:var(--rojo-b)}
+.b:active{transform:scale(.98)}
+.b.b2{background:var(--alt);color:var(--noche)}
+.b.b2:hover{background:#E9EBEF}
+.top-card .b.b2{background:#fff}
+.top-card .b.b2:hover{background:#fff;box-shadow:inset 0 0 0 1.5px var(--noche)}
+.b.wa{background:var(--verde)}
+.b.wa:hover{background:#177A42}
+.b svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.b[disabled]{opacity:.45;pointer-events:none}
+
+/* resultado */
+.res-ante{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--rojo);margin:0 0 8px}
+.top-card{display:grid;grid-template-columns:300px 1fr;gap:32px;align-items:center;background:var(--alt);border-radius:24px;padding:26px}
+.foto{aspect-ratio:1/1;background:#fff;border-radius:18px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.foto img{width:88%;height:88%;object-fit:contain;display:block}
+.top-card h3{font-family:var(--f-tit);font-weight:800;font-size:clamp(26px,3.4vw,36px);letter-spacing:-.025em;line-height:1.05;margin:0 0 10px}
+.precio{font-family:var(--f-tit);font-weight:800;font-size:28px;letter-spacing:-.02em;margin:0 0 16px}
+.porque{list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:9px}
+.porque li{display:flex;gap:10px;font-size:14.5px;line-height:1.45;color:var(--suave)}
+.porque li b{color:var(--noche);font-weight:600}
+.porque svg{flex:0 0 18px;width:18px;height:18px;margin-top:1px;fill:none;stroke:var(--verde);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.sup{display:inline-block;font-size:11px;font-weight:600;color:#8A6400;background:#FFF1C2;border-radius:6px;padding:1px 6px;margin-left:4px;vertical-align:1px}
+
+.kit{margin-top:14px;border:1.5px dashed #C3CAD4;border-radius:18px;padding:16px 18px;display:flex;align-items:center;gap:16px}
+.kit img{width:62px;height:62px;object-fit:contain;background:#fff;border-radius:12px;flex:0 0 62px}
+.kit p{margin:0;font-size:14.5px;line-height:1.5;color:var(--suave);flex:1}
+.kit p b{color:var(--noche)}
+.kit .tot{font-family:var(--f-tit);font-weight:800;font-size:18px;color:var(--noche);white-space:nowrap}
+
+.alts-t{font-family:var(--f-tit);font-weight:800;font-size:19px;letter-spacing:-.015em;margin:30px 0 12px}
+.alts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.alt{display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:center;border:1.5px solid var(--linea);border-radius:20px;padding:14px;text-decoration:none;color:inherit;transition:border-color .2s,transform .35s var(--e),box-shadow .35s var(--e)}
+.alt:hover{border-color:var(--noche);transform:translateY(-3px);box-shadow:0 14px 30px rgba(11,17,32,.08)}
+.alt .foto{border-radius:14px;background:var(--alt)}
+.alt .et{font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--rojo);margin-bottom:4px}
+.alt h4{font-family:var(--f-tit);font-weight:800;font-size:17px;margin:0 0 3px;letter-spacing:-.015em}
+.alt p{margin:0;font-size:13.5px;color:var(--suave);line-height:1.45}
+.alt .p{font-family:var(--f-tit);font-weight:700;color:var(--noche);margin-top:6px;font-size:15px}
+
+.logica{margin-top:26px;border-top:1px solid var(--linea);padding-top:18px}
+.logica summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--suave);list-style:none;display:flex;align-items:center;gap:8px}
+.logica summary::-webkit-details-marker{display:none}
+.logica summary::before{content:"+";font-size:18px;width:20px;text-align:center;transition:transform .3s}
+.logica[open] summary::before{transform:rotate(45deg)}
+.logica pre{white-space:pre-wrap;font:13px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--alt);border-radius:14px;padding:14px 16px;margin:12px 0 0;color:var(--noche)}
+
+.fuera{background:var(--alt);border-radius:24px;padding:28px}
+.fuera h3{font-family:var(--f-tit);font-weight:800;font-size:clamp(24px,3vw,30px);letter-spacing:-.02em;margin:0 0 8px}
+.fuera p{margin:0 0 6px;color:var(--suave);font-size:15px;line-height:1.55}
+
+/* supuestos */
+.valida{max-width:960px;margin:0 auto;padding:0 16px 70px}
+.valida h2{font-family:var(--f-tit);font-weight:800;font-size:20px;letter-spacing:-.015em;margin:0 0 12px}
+.valida ol{margin:0;padding-left:20px;color:var(--suave);font-size:14.5px;line-height:1.7}
+.valida ol b{color:var(--noche)}
+
+@media (max-width:860px){
+  .ops.tipos{grid-template-columns:repeat(2,1fr)}
+  .top-card{grid-template-columns:1fr;gap:18px}
+  .top-card .foto{max-width:300px;width:100%;margin:0 auto}
+  .alts{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .aura{padding:18px 20px 128px}
+  .top{margin-bottom:38px}
+  .m1{width:120vw;height:120vw;left:-40%;top:-20%}
+  .m2{width:130vw;height:130vw;right:-50%;bottom:-30%}
+  .top img{height:36px}
+  .wrap{margin-top:-96px;padding:0 12px 48px}
+  .tool{padding:24px 18px 26px;border-radius:24px}
+  .ops{grid-template-columns:1fr}
+  .ops.tipos{grid-template-columns:1fr 1fr}
+  .op{padding:15px}
+  .op svg{width:52px;height:40px;margin-bottom:10px}
+  .medidas{grid-template-columns:1fr}
+  .top-card{padding:16px;border-radius:20px}
+  .kit{flex-wrap:wrap}
+  .btns .b{flex:1 1 100%}
+  .alt{grid-template-columns:80px 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .aura-m i,.pill i{animation:none}
+  .vista,.escena,.paso i{transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="demo"><b>Prototipo para validar.</b> Los precios, fotos y links son los de la tienda. Lo marcado <span class="sup">a confirmar</span> es un supuesto nuestro.</div>
+
+<header class="aura">
+  <div class="aura-m" aria-hidden="true"><i class="m1"></i><i class="m2"></i><i class="m3"></i></div>
+  <div class="aura-in">
+    <div class="top">
+      <img src="https://cdn.jsdelivr.net/gh/mateoquirogav/praxis-media@main/aurel/logo-blanco.webp" alt="Aurel" width="563" height="307">
+      <a href="https://aurel7.mitiendanube.com/" rel="noopener">Ir a la tienda</a>
+    </div>
+    <span class="pill"><i></i>Cotizador de motores</span>
+    <h1>¿Qué motor va en tu portón? <span>Te lo decimos en un minuto.</span></h1>
+    <p class="baj">Contestá unas preguntas simples sobre tu portón y te mostramos el modelo exacto, con su precio y todo lo que necesitás para instalarlo.</p>
+    <div class="hechos">
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>1 minuto</span>
+      <span><svg viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></svg>Sin registrarte</span>
+      <span><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5.5c0 4.2 3 7.6 7 9.5 4-1.9 7-5.3 7-9.5V6z"/></svg>Garantía oficial de fábrica</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="tool" aria-live="polite">
+    <div class="pasos" id="pasos"></div>
+    <div class="cab"><span class="num" id="num"></span><button class="volver" id="volver" hidden>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>Atrás</button></div>
+    <div class="chips" id="chips"></div>
+    <div class="escena" id="escena"><div class="vista" id="vista"></div></div>
+  </section>
+</main>
+
+<section class="valida">
+  <h2>Lo que tiene que confirmar Aurel</h2>
+  <ol>
+    <li><b>La escalera:</b> qué motor recomiendan en cada rango de peso y uso. Abrí «¿Por qué este motor?» en el resultado para ver la regla.</li>
+    <li><b>Margen de seguridad:</b> el motor tiene que arrastrar 1,25 veces el peso del portón.</li>
+    <li><b>Kilos por m² según material:</b> liviano 20 · reja de hierro 35 · madera 40 · pesado 55.</li>
+    <li><b>Maniobras por hora</b> de Imperium, Imperium Plus, Galgo y Potro 600 (sus fichas no lo dicen).</li>
+    <li><b>Batiente doble:</b> ¿300 kg por hoja o en total?</li>
+    <li><b>Persianas:</b> la tabla de torque según medida, y la descripción del motor Paralelo (hoy vacía).</li>
+    <li><b>Imperium Plus:</b> ¿titular o alternativa por precio?</li>
+  </ol>
+</section>
+
+<script>
+(function(){
+'use strict';
+
+/* ===================== DATOS (salen de la tienda) ===================== */
+var T='https://aurel7.mitiendanube.com/productos/';
+var I='https://dcdn-us.mitiendanube.com/stores/008/218/664/products/';
+var WA='541172284597';
+var M={
+  imperium:{n:'Imperium',kg:300,ch:15,chS:1,seg:15,cr:'acero',inc:3,p:193392,g:'1 año',u:'motor-para-porton-corredizo-imperium',f:'11-4feb41a3bfba4dad2817890640852951-640-0.webp',d:'Silencioso, piñón y cremallera de acero.'},
+  puma:{n:'Puma',kg:400,ch:15,seg:14,cr:'nylon',inc:3,p:217566,g:'1 año',u:'motor-puma-porton-corredizo',f:'8-1-400a4821582837351a17890643117644-640-0.webp',d:'Robusto para casas: fuerza antes que velocidad.'},
+  galgo:{n:'Galgo',kg:300,ch:15,chS:1,seg:7,cr:'nylon',inc:3,p:241740,g:'',u:'motor-galgo-porton-corredizo',f:'8-1-c4085a9e50b337ea6d17890641615238-640-0.webp',d:'El rápido para portones livianos.'},
+  impplus:{n:'Imperium Plus',kg:800,ch:20,chS:1,seg:15,cr:'acero',inc:3,p:270363,g:'2 años',u:'motor-para-porton-corredizo-imperium-plus',f:'15-17844a7cf47dfbd92b17890644713208-640-0.webp',d:'800 kg de arrastre al mejor precio.'},
+  potro:{n:'Potro 600',kg:600,ch:20,chS:1,seg:13,cr:'nylon',inc:3,p:338436,g:'',u:'motor-potro-600-porton-corredizo',f:'11-1-e5e64214c1244998cb17890644057729-640-0.webp',d:'Para portones pesados o semipesados.'},
+  liebre:{n:'Liebre',kg:500,ch:20,seg:7,cr:'nylon',inc:3,p:350523,g:'1 año',u:'motor-liebre-porton-corredizo',f:'5-1-0a001932fbde09801917890648082376-640-0.webp',d:'La robustez del Potro al doble de velocidad.'},
+  plusS:{n:'Potro Plus S',kg:600,ch:20,seg:7,cr:'acero',inc:3,p:369971,g:'1 año',u:'potro-plus-s-motor-corredizo',f:'7-1-5ac790103d1732752d17890649337843-640-0.webp',d:'Rápido y hecho para tránsito frecuente.'},
+  potroPlus:{n:'Potro 600 Plus',kg:800,ch:20,seg:13,cr:'acero',inc:3,p:398871,g:'2 años',u:'motor-potro-600-plus-porton-corredizo',f:'5-1-9661fef5b23cdf9a3e17890647530937-640-0.webp',d:'Medio y alto porte, cocheras.'},
+  toro:{n:'Toro 1000',kg:1000,ch:40,seg:10,cr:'acero',inc:3,p:519741,g:'1 año',u:'motor-toro-1000-para-porton-corredizo-industrial',f:'10-1-0bde9b8757c9825fba17890648970838-640-0.webp',d:'El de los consorcios: 40 maniobras por hora.'},
+  megaM:{n:'Mega Monofásico',kg:1800,ch:40,seg:12,cr:'acero',inc:4,p:957290,g:'1 año',u:'motor-mega-monofasico-motor-corredizo-industrial',f:'16-4fc5308a9e26e74dac17890649763724-640-0.webp',d:'Industrial, caja en baño de aceite.'},
+  megaI:{n:'Mega Inverter',kg:2500,ch:40,seg:15,cr:'acero',inc:4,p:918612,g:'1 año',u:'motor-mega-monofasico-inverter-industrial',f:'9-1-15b4da1eeb0a5abf4b17890659140905-640-0.webp',d:'Arranque y frenado suaves con inverter.'},
+  megaT:{n:'Mega Trifásico',kg:2500,ch:999,seg:18,cr:'acero',inc:4,p:2847697,g:'1 año',u:'motor-mega-trifasico-motor-corredizo-industrial',f:'6-24083bced1e315f13f17890655062475-640-0.webp',d:'Uso continuo, necesita corriente trifásica.'},
+  bat1:{n:'Batiente Brazo Simple',kg:300,ch:60,seg:10,p:597098,u:'batiente-brazo-simple',f:'1-ca13852adcf0e6385017890638623339-640-0.webp',d:'Para una hoja de hasta 2,5 m.'},
+  bat2:{n:'Batiente Brazo Doble',kg:300,ch:60,seg:10,p:797742,u:'batiente-de-brazo-doble',f:'2-11-9473022a3d48c50e7c17890598806373-640-0.webp',d:'Para dos hojas de hasta 2,5 m cada una.'},
+  levE:{n:'Levadizo Velocidad Estándar',ch:25,seg:13,p:497984,u:'motor-para-porton-levadizo-velocidad-estandar',f:'17-b059e09fa7222a5eac17890640174156-640-0.webp',d:'Contrapesados de hasta 14 m².'},
+  levR:{n:'Levadizo Velocidad Rápida',ch:25,p:517323,u:'motor-para-porton-levadizo-velocidad-rapida',f:'17-65fef74648a24f919817890643750079-640-0.webp',d:'La misma máquina, más rápida.'}
+};
+var CREM={nylon:{n:'Cremallera de nylon maciza (1 m)',p:14504,u:'cremallera-de-nylon-maciza-1m',f:'d_nq_np_2x_870228-mla112505684781_052026-f-3-d27a6199d44536c44d17903677178001-640-0.webp'},
+          acero:{n:'Cremallera de acero (1 m)',p:24174,u:'cremallera-de-acero-1m',f:'d_nq_np_2x_743804-mla112506669903_052026-f-3-a6804afa59765d26ae17903676429214-640-0.webp'}};
+
+var MARGEN=1.25;
+var MAT={liv:{t:'Liviano',s:'Caño con chapa lisa o malla',k:20},reja:{t:'Reja de hierro',s:'Barrotes o chapa simple',k:35},
+         mad:{t:'Madera',s:'Tablas o placa maciza',k:40},pes:{t:'Pesado',s:'Hierro macizo o chapa gruesa',k:55}};
+var USO={casa:{t:'Casa',s:'Una familia, hasta ~10 aperturas por día'},mov:{t:'Casa con mucho movimiento',s:'PH, pasillo o varias familias'},
+         cons:{t:'Consorcio, cochera o comercio',s:'Abre y cierra todo el día'},ind:{t:'Industria',s:'Uso continuo, portones grandes'}};
+
+/* ===================== LA ESCALERA ===================== */
+/* hasta = peso del PORTÓN (el motor ya tiene 25% de margen: 240 = 300/1,25) */
+var ESC={
+  casa:[{h:240,r:'puma',rap:'galgo',pre:'imperium',dur:'liebre'},{h:320,r:'puma',rap:'liebre',dur:'potro'},
+        {h:400,r:'liebre',dur:'potro'},{h:480,r:'potro',rap:'plusS',dur:'potroPlus'},
+        {h:640,r:'potroPlus',pre:'impplus',dur:'toro'},{h:800,r:'toro',dur:'megaM'},
+        {h:1440,r:'megaM',pre:'megaI'},{h:2000,r:'megaI',dur:'megaT'}],
+  mov:[{h:400,r:'liebre',dur:'potroPlus'},{h:480,r:'plusS',pre:'potro',dur:'potroPlus'},
+       {h:640,r:'potroPlus',pre:'impplus',dur:'toro'},{h:800,r:'toro',dur:'megaM'},
+       {h:1440,r:'megaM',pre:'megaI'},{h:2000,r:'megaI',dur:'megaT'}],
+  cons:[{h:800,r:'toro',dur:'megaM'},{h:1440,r:'megaM',pre:'megaI'},{h:2000,r:'megaI',dur:'megaT'}]
+};
+var ETQ={rap:'Más rápido',pre:'Más económico',dur:'Más robusto',r:'El recomendado'};
+
+/* ===================== ESTADO ===================== */
+var S={};
+var hist=[];
+function reset(){S={tipo:null,largo:4,alto:2,mat:null,kgMan:null,uso:null,pref:null,tri:null,contra:null};}
+reset();
+
+function peso(){
+  if(S.kgMan){return Math.round(S.kgMan);}
+  if(!S.mat){return null;}
+  /* batiente doble: el largo es el ancho total y el peso se calcula por hoja */
+  return Math.round(S.largo*S.alto*MAT[S.mat].k/(S.tipo==='bat2'?2:1));
+}
+
+function flujo(){
+  var t=S.tipo;
+  if(t==='corr'){var f=['tipo','medidas','material','uso'];
+    if(S.uso!=='ind'){f.push('pref');}
+    if(S.uso==='ind'||(peso()&&peso()>1440)){f.push('tri');}
+    f.push('res');return f;}
+  if(t==='bat1'||t==='bat2'){return ['tipo','medidas','material','res'];}
+  if(t==='lev'){return ['tipo','contra','medidas','res'];}
+  if(t==='pers'){return ['tipo','medidas','res'];}
+  return ['tipo','medidas','material','uso','pref','res'];
+}
+
+/* ===================== MOTOR DE RECOMENDACIÓN ===================== */
+function recomendar(){
+  var kg=peso(),t=S.tipo,o={kg:kg,alts:[],logica:[]};
+  if(t==='corr'){
+    o.logica.push('Peso del portón: '+kg+' kg'+(S.kgMan?' (lo escribió)':' = '+fmt(S.largo)+' × '+fmt(S.alto)+' m × '+MAT[S.mat].k+' kg/m² ('+MAT[S.mat].t.toLowerCase()+')'));
+    o.logica.push('El motor tiene que arrastrar al menos '+Math.round(kg*MARGEN)+' kg (margen × '+fmt(MARGEN)+')');
+    if(S.uso==='ind'){
+      if(kg>2000){return fuera(o,'Tu portón pesa más de lo que mueve nuestro motor más grande (2.500 kg con margen).');}
+      if(S.tri==='si'){o.r='megaT';o.alts=[{k:'megaI',e:'Más económico'}];o.logica.push('Industria + corriente trifásica → Mega Trifásico');}
+      else{o.r='megaI';o.alts=[{k:'megaT',e:'Si conseguís trifásica'}];o.consultar=true;
+        o.logica.push('Industria sin trifásica (o no sabe) → Mega Inverter, y conviene confirmarlo con un asesor');}
+      return o;
+    }
+    var esc=ESC[S.uso],e=null;
+    for(var i=0;i<esc.length;i++){if(kg<=esc[i].h){e=esc[i];break;}}
+    if(!e){return fuera(o,'Tu portón pesa más de 2.000 kg: lo vemos con vos para no quedarnos cortos.');}
+    var desde=i>0?esc[i-1].h+1:0;
+    o.logica.push('Uso «'+USO[S.uso].t+'» · escalón '+desde+'–'+e.h+' kg → recomendado: '+M[e.r].n);
+    var r=e.r;
+    if(S.pref&&S.pref!=='r'&&e[S.pref]&&!(e[S.pref]==='megaT'&&S.tri!=='si')){r=e[S.pref];o.logica.push('Prioridad «'+ETQ[S.pref]+'» → '+M[r].n);}
+    else if(S.pref&&S.pref!=='r'){o.logica.push('Prioridad «'+ETQ[S.pref]+'»: el recomendado ya es la mejor opción de su escalón');}
+    o.r=r;
+    ['r','rap','pre','dur'].forEach(function(k){
+      var m=e[k];if(!m||m===r||o.alts.some(function(a){return a.k===m;})){return;}
+      if(m==='megaT'&&S.tri!=='si'){return;}
+      o.alts.push({k:m,e:k==='r'?'El recomendado para tu caso':ETQ[k]});
+    });
+    o.alts=o.alts.slice(0,2);
+    return o;
+  }
+  if(t==='bat1'||t==='bat2'){
+    var hoja=S.tipo==='bat2'?S.largo/2:S.largo;
+    o.logica.push((t==='bat2'?'2 hojas de ':'1 hoja de ')+hoja.toFixed(2).replace('.',',')+' m · peso por hoja: '+kg+' kg');
+    if(hoja>2.5){return fuera(o,'Cada hoja mide más de 2,5 m, que es lo máximo que mueve el brazo.');}
+    if(kg*MARGEN>300){return fuera(o,'Cada hoja pesa más de lo que mueve el brazo con margen (240 kg por hoja).');}
+    o.r=t;o.logica.push('Hoja ≤ 2,5 m y ≤ 240 kg → '+M[t].n);return o;
+  }
+  if(t==='lev'){
+    var m2=S.largo*S.alto;o.logica.push('Superficie: '+m2.toFixed(1).replace('.',',')+' m²');
+    if(S.contra!=='si'){return fuera(o,'El motor levadizo es para portones contrapesados. Si el tuyo no lo es (o no sabés), lo revisamos con vos.');}
+    if(m2>14){return fuera(o,'Tu portón pasa los 14 m², el máximo del motor levadizo.');}
+    o.r='levE';o.alts=[{k:'levR',e:'Más rápido'}];o.logica.push('Contrapesado ≤ 14 m² → Levadizo Estándar');return o;
+  }
+  return fuera(o,'Para persianas y cortinas elegimos el torque según la medida exacta. Mandanos las medidas y te decimos cuál va.',true);
+}
+function fuera(o,txt,pers){o.fuera=txt;o.pers=pers;return o;}
+
+/* ===================== UI ===================== */
+var $=function(id){return document.getElementById(id);};
+var vista=$('vista'),escena=$('escena');
+function $$(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));}
+function plata(n){return '$'+Math.round(n).toLocaleString('es-AR');}
+function img(k){return I+(M[k]?M[k].f:k);}
+
+var SVG={
+  corr:'<svg viewBox="0 0 64 48"><path d="M4 42h56"/><rect x="10" y="12" width="34" height="26" rx="1"/><path d="M18 12v26M26 12v26M34 12v26"/><path class="r" d="M48 25h10m-4-4 4 4-4 4"/></svg>',
+  bat1:'<svg viewBox="0 0 64 48"><path d="M4 42h56M12 8v34"/><path d="M12 12h26v26H12"/><path d="M20 12v26M28 12v26"/><path class="r" d="M40 40a28 28 0 0 0 8-20" stroke-dasharray="3 3"/></svg>',
+  bat2:'<svg viewBox="0 0 64 48"><path d="M4 42h56M6 8v34M58 8v34"/><path d="M6 12h24v26H6zM34 12h24v26H34z"/><path class="r" d="M18 44c-2-6-2-12 1-16M46 44c2-6 2-12-1-16" stroke-dasharray="3 3"/></svg>',
+  lev:'<svg viewBox="0 0 64 48"><path d="M4 42h56M10 6v36M54 6v36"/><path d="M10 10h44M14 16h36M14 22h36"/><path class="r" d="M32 38V28m-4 4 4-4 4 4"/></svg>',
+  pers:'<svg viewBox="0 0 64 48"><rect x="10" y="4" width="44" height="7" rx="3.5"/><path d="M12 11v26h40V11"/><path d="M12 17h40M12 23h40M12 29h40"/><path class="r" d="M32 43v-4"/></svg>'
+};
+var TIPOS=[{v:'corr',t:'Corredizo',s:'Se desliza de costado'},{v:'bat1',t:'Batiente 1 hoja',s:'Abre como una puerta'},
+           {v:'bat2',t:'Batiente 2 hojas',s:'Dos hojas que abren al medio'},{v:'lev',t:'Levadizo',s:'Sube de una pieza'},
+           {v:'pers',t:'Persiana o cortina',s:'Se enrolla hacia arriba'}];
+var NOMBRE_T={corr:'Corredizo',bat1:'Batiente 1 hoja',bat2:'Batiente 2 hojas',lev:'Levadizo',pers:'Persiana'};
+
+function pasoActual(){return hist[hist.length-1]||'tipo';}
+
+function chips(){
+  var c=[];
+  if(S.tipo&&pasoActual()!=='tipo'){c.push('<b>'+NOMBRE_T[S.tipo]+'</b>');}
+  var f=flujo(),i=f.indexOf(pasoActual());
+  if(i>f.indexOf('medidas')&&f.indexOf('medidas')>-1){c.push('<b>'+fmt(S.largo)+' × '+fmt(S.alto)+' m</b>');}
+  if(S.mat&&i>f.indexOf('material')&&f.indexOf('material')>-1){c.push('~<b>'+peso()+' kg</b>'+(S.tipo==='bat2'?' por hoja':''));}
+  if(S.uso&&i>f.indexOf('uso')&&f.indexOf('uso')>-1){c.push(USO[S.uso].t);}
+  $('chips').innerHTML=c.map(function(x){return '<span class="chip">'+x+'</span>';}).join('');
+}
+function fmt(n){return String(Math.round(n*100)/100).replace('.',',');}
+
+function barra(){
+  var f=flujo(),i=f.indexOf(pasoActual()),n=f.length-1;
+  $('pasos').innerHTML=f.slice(0,n).map(function(p,k){return '<span class="paso'+(k<i||pasoActual()==='res'?' on':'')+'"><i></i></span>';}).join('');
+  $('num').textContent=pasoActual()==='res'?'Tu resultado':'Paso '+(i+1)+' de '+n;
+  $('volver').hidden=hist.length<=1;
+}
+
+/* cambio de vista: desenfoque + escala, y la altura viaja */
+var ocupado=false;
+function mostrar(html,luego){
+  if(ocupado){return;}
+  var quieto=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var h0=escena.offsetHeight;
+  if(quieto||!vista.innerHTML){vista.innerHTML=html;luego&&luego();return;}
+  ocupado=true;
+  escena.style.height=h0+'px';
+  vista.classList.add('sale');
+  setTimeout(function(){
+    vista.innerHTML=html;luego&&luego();
+    vista.classList.remove('sale');vista.classList.add('entra');
+    var h1=vista.offsetHeight;escena.style.height=h1+'px';
+    requestAnimationFrame(function(){requestAnimationFrame(function(){vista.classList.remove('entra');});});
+    setTimeout(function(){escena.style.height='';ocupado=false;},560);
+  },260);
+}
+
+function ir(p){hist.push(p);pintar();}
+function siguiente(){var f=flujo(),i=f.indexOf(pasoActual());ir(f[i+1]);}
+$('volver').addEventListener('click',function(){if(hist.length>1&&!ocupado){hist.pop();pintar();}});
+
+function opciones(lista,sel,clase){
+  return '<div class="ops '+(clase||'')+'">'+lista.map(function(o){
+    return '<button class="op'+(sel===o.v?' sel':'')+'" data-v="'+o.v+'">'+(o.svg||'')+o.t+(o.s?'<small>'+o.s+'</small>':'')+'</button>';}).join('')+'</div>';
+}
+function alElegir(fn){$$('.op',vista).forEach(function(b){b.addEventListener('click',function(){
+  if(ocupado){return;}$$('.op',vista).forEach(function(x){x.classList.remove('sel');});b.classList.add('sel');
+  var v=b.getAttribute('data-v');setTimeout(function(){fn(v);},170);});});}
+
+function pintar(){
+  var p=pasoActual();barra();chips();
+  if(p==='tipo'){
+    mostrar('<h2 class="q">¿Qué portón tenés?</h2><p class="ayuda">Elegí el que más se parezca al tuyo.</p>'+
+      opciones(TIPOS.map(function(t){return {v:t.v,t:t.t,s:t.s,svg:SVG[t.v]};}),S.tipo,'tipos'),function(){
+      alElegir(function(v){var cambio=S.tipo!==v;if(cambio){var t=v;reset();S.tipo=t;}siguiente();});});
+  }
+  else if(p==='medidas'){
+    var bat=S.tipo==='bat1'||S.tipo==='bat2';
+    var q=S.tipo==='pers'?'¿Cuánto mide la persiana?':'¿Cuánto mide tu portón?';
+    var ay=S.tipo==='bat2'?'El ancho total de la abertura (las dos hojas juntas) y la altura.':
+           S.tipo==='corr'?'El largo de la hoja que se desliza y su altura. No hace falta que sea exacto.':'Aproximado está bien.';
+    mostrar('<h2 class="q">'+q+'</h2><p class="ayuda">'+ay+'</p>'+
+      '<div class="medidas">'+stepper('largo',S.tipo==='bat2'?'Ancho total':(S.tipo==='lev'||S.tipo==='pers')?'Ancho':'Largo')+stepper('alto','Alto')+'</div>'+
+      '<p class="area" id="area"></p>'+
+      '<div class="btns"><button class="b" id="seguir">Continuar <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button></div>',function(){
+      $$('.stp button',vista).forEach(function(b){b.addEventListener('click',function(){
+        var k=b.getAttribute('data-k'),d=+b.getAttribute('data-d');
+        var min=k==='alto'?1:1,max=k==='alto'?5:20;
+        S[k]=Math.min(max,Math.max(min,Math.round((S[k]+d)*10)/10));
+        $('o-'+k).innerHTML=fmt(S[k])+'<small>m</small>';area();});});
+      area();$('seguir').addEventListener('click',siguiente);});
+  }
+  else if(p==='material'){
+    var ops=Object.keys(MAT).map(function(k){return {v:k,t:MAT[k].t,s:MAT[k].s};});
+    ops.push({v:'kg',t:'Sé cuánto pesa',s:'Escribí los kilos'});
+    mostrar('<h2 class="q">¿De qué está hecho?</h2><p class="ayuda">Con esto calculamos cuánto pesa'+(S.tipo==='bat2'?' cada hoja':'')+'. <span class="sup">kg/m² a confirmar</span></p>'+
+      opciones(ops,S.kgMan?'kg':S.mat)+
+      '<div class="kg'+(S.kgMan?' on':'')+'" id="kgbox"><input id="kgin" type="number" inputmode="numeric" min="20" max="5000" placeholder="kg" value="'+(S.kgMan||'')+'"><span class="area">kilos'+(S.tipo==='bat2'?' por hoja':'')+'</span>'+
+      '<button class="b" id="kgok">Continuar</button></div>',function(){
+      $$('.op',vista).forEach(function(b){b.addEventListener('click',function(){
+        if(ocupado){return;}var v=b.getAttribute('data-v');
+        $$('.op',vista).forEach(function(x){x.classList.remove('sel');});b.classList.add('sel');
+        if(v==='kg'){$('kgbox').classList.add('on');$('kgin').focus();return;}
+        S.mat=v;S.kgMan=null;setTimeout(siguiente,170);});});
+      function okKg(){var n=+$('kgin').value;if(!n||n<20){$('kgin').focus();return;}S.kgMan=n;S.mat=S.mat||'reja';siguiente();}
+      $('kgok').addEventListener('click',okKg);
+      $('kgin').addEventListener('keydown',function(e){if(e.key==='Enter'){okKg();}});});
+  }
+  else if(p==='uso'){
+    mostrar('<h2 class="q">¿Cuánto se usa?</h2><p class="ayuda">Un motor de casa y uno de consorcio pueden mover el mismo peso, pero no aguantan el mismo ritmo.</p>'+
+      opciones(Object.keys(USO).map(function(k){return {v:k,t:USO[k].t,s:USO[k].s};}),S.uso),function(){
+      alElegir(function(v){S.uso=v;if(v==='ind'){S.pref=null;}siguiente();});});
+  }
+  else if(p==='pref'){
+    mostrar('<h2 class="q">¿Qué te importa más?</h2><p class="ayuda">Si hay más de un motor para tu portón, elegimos por esto.</p>'+
+      opciones([{v:'r',t:'Lo que me recomienden',s:'El equilibrio justo para tu caso'},{v:'rap',t:'Que abra rápido',s:'Modelos que abren 3 m en 7 segundos'},
+                {v:'pre',t:'El mejor precio',s:'Lo más económico que cumple'},{v:'dur',t:'Que dure más',s:'Más margen y construcción más robusta'}],S.pref),function(){
+      alElegir(function(v){S.pref=v;siguiente();});});
+  }
+  else if(p==='tri'){
+    mostrar('<h2 class="q">¿Tenés corriente trifásica?</h2><p class="ayuda">Es la de 380 V que suelen tener las industrias y galpones. Define qué motor industrial va.</p>'+
+      opciones([{v:'si',t:'Sí'},{v:'no',t:'No'},{v:'ns',t:'No sé',s:'Te recomendamos uno que funciona igual'}],S.tri),function(){
+      alElegir(function(v){S.tri=v;siguiente();});});
+  }
+  else if(p==='contra'){
+    mostrar('<h2 class="q">¿Tu portón es contrapesado?</h2><p class="ayuda">Tiene resortes o pesas que lo equilibran: si lo soltás a media altura, se queda quieto.</p>'+
+      opciones([{v:'si',t:'Sí, es contrapesado'},{v:'no',t:'No'},{v:'ns',t:'No sé'}],S.contra),function(){
+      alElegir(function(v){S.contra=v;siguiente();});});
+  }
+  else if(p==='res'){mostrar(resultado(),function(){
+    $('otra').addEventListener('click',function(){reset();hist=[];ir('tipo');});});}
+}
+
+function stepper(k,lab){
+  return '<div class="med"><label>'+lab+'</label><div class="stp"><button data-k="'+k+'" data-d="-0.5" aria-label="Menos">−</button>'+
+         '<output id="o-'+k+'">'+fmt(S[k])+'<small>m</small></output><button data-k="'+k+'" data-d="0.5" aria-label="Más">+</button></div></div>';
+}
+function area(){var a=S.largo*S.alto;$('area').innerHTML='Superficie: <b>'+fmt(Math.round(a*10)/10)+' m²</b>'+
+  (S.tipo==='bat2'?' · cada hoja mide <b>'+fmt(S.largo/2)+' m</b>':'');}
+
+function waLink(extra){
+  var t='Hola! Usé el cotizador de la web. Mi portón: '+NOMBRE_T[S.tipo]+', '+fmt(S.largo)+' × '+fmt(S.alto)+' m';
+  if(peso()&&S.tipo!=='lev'&&S.tipo!=='pers'){t+=', unos '+peso()+' kg'+(S.tipo==='bat2'?' por hoja':'');}
+  if(S.uso){t+=', uso: '+USO[S.uso].t.toLowerCase();}
+  if(extra){t+='. '+extra;}
+  return 'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
+}
+var CHECK='<svg viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></svg>';
+var WAIC='<svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/></svg>';
+
+var R=null;
+function resultado(){
+  R=recomendar();
+  var h='';
+  if(R.fuera){
+    return '<div class="fuera"><p class="res-ante">Lo vemos con vos</p><h3>'+(R.pers?'Te decimos qué motor va':'Tu portón necesita una mirada más')+'</h3>'+
+      '<p>'+R.fuera+'</p><p>Te respondemos por WhatsApp con el modelo exacto.</p>'+
+      '<div class="btns"><a class="b wa" href="'+waLink(R.pers?'¿Qué motor de persiana va?':'¿Qué motor me recomiendan?')+'" target="_blank" rel="noopener">'+WAIC+'Consultar por WhatsApp</a>'+
+      '<button class="b b2" id="otra">Empezar de nuevo</button></div></div>'+logica();
+  }
+  var m=M[R.r],kg=R.kg,li=[];
+  if(S.tipo==='corr'){
+    li.push('<b>Arrastra hasta '+m.kg.toLocaleString('es-AR')+' kg.</b> Tu portón pesa unos '+kg+' kg: le sobra un '+Math.round((m.kg/kg-1)*100)+'%.');
+    li.push('<b>Abre 3 metros en '+m.seg+' segundos.</b>');
+    li.push('<b>'+(m.ch>=999?'Uso continuo.':'Hasta '+m.ch+' maniobras por hora.')+'</b>'+(m.chS?'<span class="sup">a confirmar</span>':'')+' '+m.d);
+    li.push('<b>Trae '+m.inc+' m de cremallera de '+m.cr+' y 2 controles.</b>'+(m.g?' Garantía oficial de '+m.g+'.':''));
+  } else if(S.tipo==='lev'){
+    li.push('<b>Para contrapesados de hasta 14 m².</b> El tuyo tiene '+fmt(Math.round(S.largo*S.alto*10)/10)+' m².');
+    li.push('<b>Hasta 25 maniobras por hora.</b> Abre en 13 segundos.');
+  } else {
+    li.push('<b>Hojas de hasta 2,5 m y 300 kg.</b> Las tuyas: '+fmt(S.tipo==='bat2'?S.largo/2:S.largo)+' m y unos '+kg+' kg.'+(S.tipo==='bat2'?'<span class="sup">300 kg por hoja, a confirmar</span>':''));
+    li.push('<b>Hasta 60 ciclos por hora</b> y apertura en 10 segundos.');
+    li.push('<b>Trae central electrónica, 2 controles y llave de destrabe.</b>');
+  }
+  h+='<p class="res-ante">'+(R.consultar?'Nuestra recomendación':'El motor para tu portón')+'</p>'+
+     '<div class="top-card"><div class="foto"><img src="'+img(R.r)+'" alt="'+m.n+'"></div><div>'+
+     '<h3>'+m.n+'</h3><p class="precio">'+plata(m.p)+'</p>'+
+     '<ul class="porque">'+li.map(function(x){return '<li>'+CHECK+'<span>'+x+'</span></li>';}).join('')+'</ul>'+
+     '<div class="btns" style="margin-top:0"><a class="b" href="'+T+m.u+'/" target="_blank" rel="noopener">Comprar el '+m.n+'</a>'+
+     '<a class="b b2" href="'+waLink('Me recomendó el '+m.n+'. ¿Me lo confirman?')+'" target="_blank" rel="noopener">'+WAIC+'Confirmarlo con un asesor</a></div>'+
+     '</div></div>';
+  /* cremallera que falta */
+  if(S.tipo==='corr'&&m.inc){
+    var falta=Math.max(0,Math.ceil(S.largo+0.5-m.inc));
+    if(falta>0){var c=CREM[m.cr];
+      h+='<div class="kit"><img src="'+I+c.f+'" alt=""><p>Tu portón mide '+fmt(S.largo)+' m y el motor trae '+m.inc+' m de cremallera: <b>te '+(falta===1?'falta 1 m':'faltan '+falta+' m')+' de cremallera de '+m.cr+'</b> ('+plata(c.p)+' c/u).</p>'+
+         '<span class="tot">Todo: '+plata(m.p+falta*c.p)+'</span>'+
+         '<a class="b b2" href="'+T+c.u+'/" target="_blank" rel="noopener">Sumar '+falta+' m</a></div>';}
+  }
+  if(R.alts.length){
+    h+='<h4 class="alts-t">También te sirven</h4><div class="alts">'+R.alts.map(function(a){var x=M[a.k];
+      return '<a class="alt" href="'+T+x.u+'/" target="_blank" rel="noopener"><div class="foto"><img src="'+img(a.k)+'" alt="" loading="lazy"></div><div>'+
+        '<div class="et">'+a.e+'</div><h4>'+x.n+'</h4><p>'+(x.kg?'Hasta '+x.kg.toLocaleString('es-AR')+' kg · ':'')+(x.seg?'abre en '+x.seg+' s':'')+'</p><p class="p">'+plata(x.p)+'</p></div></a>';}).join('')+'</div>';
+  }
+  h+='<div class="btns"><button class="b b2" disabled title="Falta el PDF de Aurel">Instaladores por zona (PDF) · pendiente</button><button class="b b2" id="otra">Cotizar otro portón</button></div>';
+  return h+logica();
+}
+function logica(){return '<details class="logica"><summary>¿Por qué este motor? (la regla, para validar)</summary><pre>'+R.logica.join('\n')+'</pre></details>';}
+
+/* banco de pruebas: ?test expone el motor de recomendación */
+if(/[?&]test\b/.test(location.search)){window.__cot={S:function(){return S;},set:function(o){reset();for(var k in o){S[k]=o[k];}},rec:recomendar};}
+/* ?demo abre directo en el resultado de un caso tipo (para capturas) */
+if(/[?&]demo\b/.test(location.search)){S.tipo='corr';S.largo=4.5;S.mat='reja';S.uso='casa';S.pref='r';hist=['tipo','medidas','material','uso','pref'];ir('res');}
+else{ir('tipo');}
+})();
+</script>
+</body>
+</html>
