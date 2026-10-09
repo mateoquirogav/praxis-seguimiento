@@ -17,6 +17,7 @@
   --back:cubic-bezier(.34,1.56,.64,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
 html,body{height:100%}
 body{
   font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--ink);
@@ -37,6 +38,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .seg button{padding:7px 16px;border-radius:999px;font-size:13px;font-weight:600;color:var(--g5);display:flex;align-items:center;gap:7px}
 .seg button.on{background:var(--ink);color:#fff}
 .tool-r{display:flex;gap:8px}
+.est button{gap:8px}
+.est button i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.est button.on{background:var(--c);color:#fff}
+.est button.on i{background:#fff}
+.tool-mid{display:flex;gap:10px;align-items:center}
+.screen{transition:opacity .25s ease}
+.screen.swap{opacity:0}
 .tbtn{padding:8px 14px;border-radius:999px;background:#fff;border:1px solid var(--g3);font-size:12.5px;font-weight:600;color:var(--ink2)}
 .tbtn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 
@@ -84,6 +92,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .labels [data-label]{outline:1px dashed rgba(0,0,0,.18);outline-offset:-1px}
 .labels .hero-wrap[data-label]::before{top:22px;left:22px}
+.labels .hdr[data-label]::before{top:auto;bottom:-13px}
 
 /* Animaciones de entrada */
 .rv{transition:opacity .7s var(--ease),transform .8s var(--ease)}
@@ -213,6 +222,17 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .pill h4{font-family:Montserrat;font-weight:600;font-size:16px;margin-top:18px}
 .pill p{font-size:13px;color:var(--g4);line-height:1.55;margin-top:8px}
 
+/* Imagen + texto (estructura 3) */
+.it-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;align-items:center}
+.it-row + .it-row{margin-top:72px}
+.it-img{aspect-ratio:4/3;border-radius:22px;flex-direction:column;gap:10px}
+.it-img svg{width:18%}
+.it-img small{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--g4);position:relative;z-index:1}
+.it-txt .btn{margin-top:26px}
+.rv.from-r{opacity:0;transform:translateX(60px)}
+.rv.from-l{opacity:0;transform:translateX(-60px)}
+.rv.from-r.in,.rv.from-l.in{opacity:1;transform:none}
+
 /* 11 · Preguntas frecuentes */
 .faq{max-width:780px;margin:0 auto}
 .faq .head{justify-content:center;text-align:center}
@@ -333,6 +353,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .pill h4{font-size:14px;margin-top:10px}
   .pill p{font-size:12px}
 
+  .it-row{grid-template-columns:1fr;gap:20px}
+  .it-row + .it-row{margin-top:44px}
+  .it-row .it-img{order:-1;border-radius:16px}
+  .it-txt .btn{margin-top:18px}
   .q button{font-size:14px;padding:17px 0}
   .cta-box{padding:44px 22px;border-radius:20px}
   .cta-box .h2{font-size:25px}
@@ -352,6 +376,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .tool-brand span{display:none}
   .stage{height:calc(100% - 100px)}
   .tbtn{padding:7px 11px;font-size:11.5px}
+  .tool-mid{order:3;width:100%;justify-content:center;flex-wrap:wrap}
+  .seg button{padding:6px 10px;font-size:12px}
+  .stage{height:calc(100% - 140px)}
 }
 </style>
 </head>
@@ -359,11 +386,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 <div class="tool">
   <div class="tool-brand">PRAXIS<span>Estructura de tienda</span></div>
+  <div class="tool-mid">
+  <div class="seg est" role="tablist">
+    <button data-est="1" style="--c:#F07A1A" class="on"><i></i>Estructura 1</button>
+    <button data-est="2" style="--c:#2563EB"><i></i>Estructura 2</button>
+    <button data-est="3" style="--c:#16A34A"><i></i>Estructura 3</button>
+  </div>
   <div class="seg" role="tablist">
     <button data-mode="pc" class="on">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>PC</button>
     <button data-mode="mob">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg>Celular</button>
+  </div>
   </div>
   <div class="tool-r">
     <button class="tbtn" id="bLabels">Nombres de bloques</button>
@@ -379,7 +413,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
    <div class="site" id="site">
 
     <!-- 1 · Barra de anuncio -->
-    <div class="ann" data-label="01 · Barra de anuncio">
+    <div class="ann" data-key="ann" data-label="Barra de anuncio">
       <div class="ann-track" id="annTrack">
         <div>BARRA DE ANUNCIO <b>· Mensaje 1</b></div>
         <div>BARRA DE ANUNCIO <b>· Mensaje 2</b></div>
@@ -389,7 +423,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     </div>
 
     <!-- 2 · Encabezado -->
-    <header class="hdr" data-label="02 · Encabezado">
+    <header class="hdr" data-key="hdr" data-label="Encabezado">
       <div class="wrap">
         <svg class="burger" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         <div class="logo">LOGO</div>
@@ -403,9 +437,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     </header>
 
     <!-- 3 · Banner principal -->
-    <section class="hero-sec">
+    <section class="hero-sec" data-key="hero">
       <div class="wrap">
-        <div class="hero-wrap" id="heroWrap" data-label="03 · Banner principal">
+        <div class="hero-wrap" id="heroWrap" data-label="Banner principal">
           <div class="hero" id="hero">
             <div class="hero-art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m3 18 5-5 4 4 3-3 6 6"/></svg></div>
             <div class="hero-txt">
@@ -422,7 +456,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     </section>
 
     <!-- 4 · Beneficios -->
-    <section class="bens" data-label="04 · Beneficios">
+    <section class="bens" data-key="bens" data-label="Beneficios">
       <div class="wrap">
         <div class="ben-grid" id="benGrid"></div>
         <div class="ben-bar"><i id="benBar"></i></div>
@@ -430,7 +464,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     </section>
 
     <!-- 5 · Categorías -->
-    <section class="sec" data-label="05 · Categorías" style="padding-top:44px">
+    <section class="sec" data-key="cats" data-label="Categorías (4)" style="padding-top:44px">
       <div class="wrap">
         <div class="head rv up"><div><div class="kick">Categorías</div><div class="h2">Comprá por categoría</div></div><span class="link">Ver todo</span></div>
         <div class="cats" id="cats"></div>
@@ -438,15 +472,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     </section>
 
     <!-- 6 · Productos -->
-    <section class="sec" data-label="06 · Productos (2 hileras)" style="padding-top:20px">
+    <section class="sec" data-key="prods" data-label="Productos destacados (2 hileras)" style="padding-top:20px">
       <div class="wrap">
-        <div class="head rv up"><div><div class="kick">Productos</div><div class="h2">Los más elegidos</div></div><span class="link">Ver todos</span></div>
+        <div class="head rv up"><div><div class="kick">Destacados</div><div class="h2">Los más elegidos</div></div><span class="link">Ver todos</span></div>
         <div class="grid" data-prod="0"></div>
       </div>
     </section>
 
     <!-- 7 · Problema → Solución -->
-    <section class="sec ps" data-label="07 · Problema → Solución + video">
+    <section class="sec ps" data-key="ps" data-label="Problema → Solución + video">
       <div class="wrap ps-grid">
         <div class="rv up">
           <div class="kick">Problema → Solución</div>
@@ -470,29 +504,53 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     </section>
 
     <!-- 8 · Testimonios -->
-    <section class="sec" data-label="08 · Testimonios (carrusel infinito)">
+    <section class="sec" data-key="tst" data-label="Testimonios (carrusel infinito)">
       <div class="wrap"><div class="head rv up" style="justify-content:center;text-align:center"><div><div class="kick">Testimonios</div><div class="h2">Lo que dicen nuestros clientes</div></div></div></div>
       <div class="marq rv up"><div class="marq-track" id="marq"></div></div>
     </section>
 
     <!-- 9 · Productos (ofertas / destacados) -->
-    <section class="sec" data-label="09 · Productos: ofertas / destacados" style="padding-top:20px">
+    <section class="sec" data-key="ofer" data-label="Productos en oferta (2 hileras)" style="padding-top:20px">
       <div class="wrap">
-        <div class="head rv up"><div><div class="kick">Ofertas</div><div class="h2">Destacados de la semana</div></div><span class="link">Ver todos</span></div>
+        <div class="head rv up"><div><div class="kick">Ofertas</div><div class="h2">Productos en oferta</div></div><span class="link">Ver todos</span></div>
         <div class="grid" data-prod="1"></div>
       </div>
     </section>
 
     <!-- 10 · Por qué elegirnos -->
-    <section class="sec why" data-label="10 · ¿Por qué elegirnos?">
+    <section class="sec why" data-key="why" data-label="¿Por qué elegirnos?">
       <div class="wrap">
         <div class="rv up"><div class="kick">Diferenciales</div><div class="h2">¿Por qué elegirnos?</div><p class="sub">Las razones concretas por las que comprar acá y no en otro lado.</p></div>
         <div class="why-grid" id="why"></div>
       </div>
     </section>
 
+    <!-- Imagen + texto x2 (estructura 3) -->
+    <section class="sec it" data-key="it" data-label="Imagen + texto (2 secciones)">
+      <div class="wrap">
+        <div class="it-row">
+          <div class="it-txt rv up">
+            <div class="kick">Sección imagen + texto</div>
+            <div class="h2">Título de la sección 1</div>
+            <p class="sub">Contá algo de la marca que se entienda mejor con una foto: cómo se hace, quiénes están detrás, cómo se usa el producto.</p>
+            <span class="btn">Botón de acción</span>
+          </div>
+          <div class="it-img ph rv from-r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m3 18 5-5 4 4 3-3 6 6"/></svg><small>Imagen · 1200 × 900</small></div>
+        </div>
+        <div class="it-row rev">
+          <div class="it-img ph rv from-l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m3 18 5-5 4 4 3-3 6 6"/></svg><small>Imagen · 1200 × 900</small></div>
+          <div class="it-txt rv up" style="--i:1">
+            <div class="kick">Sección imagen + texto</div>
+            <div class="h2">Título de la sección 2</div>
+            <p class="sub">Segundo bloque, al revés que el primero, para que la página tenga ritmo y no se vuelva repetitiva.</p>
+            <span class="btn">Botón de acción</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 11 · Preguntas frecuentes -->
-    <section class="sec" data-label="11 · Preguntas frecuentes">
+    <section class="sec" data-key="faq" data-label="Preguntas frecuentes">
       <div class="wrap faq">
         <div class="head rv up"><div><div class="kick">Ayuda</div><div class="h2">Preguntas frecuentes</div></div></div>
         <div id="faq"></div>
@@ -500,7 +558,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     </section>
 
     <!-- 12 · CTA -->
-    <section class="sec" data-label="12 · Llamado a la acción" style="padding-top:10px">
+    <section class="sec" data-key="cta" data-label="Llamado a la acción" style="padding-top:10px">
       <div class="wrap">
         <div class="cta-box rv zoom">
           <div class="kick">Llamado a la acción</div>
@@ -512,7 +570,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     </section>
 
     <!-- 13 · Mapa -->
-    <section class="sec" data-label="13 · Ubicación del local" style="padding-top:0;padding-bottom:0">
+    <section class="sec" data-key="map" data-label="Ubicación del local" style="padding-top:0;padding-bottom:0">
       <div class="wrap">
         <div class="map rv up">
           <div class="map-info">
@@ -542,7 +600,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
       </div>
     </section>
 
-    <footer class="foot" data-label="Pie de página">
+    <footer class="foot" data-key="foot" data-label="Pie de página">
       <div class="wrap">
         <div class="foot-grid">
           <div><div class="logo" style="display:inline-block">LOGO</div><p class="sub" style="font-size:13px;max-width:240px">Frase corta de la marca y redes sociales.</p></div>
@@ -657,16 +715,46 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     setTimeout(check,350);
   }
 
+  /* Estructuras 1 · 2 · 3 */
+  var ORDEN={
+    '1':['ann','hdr','hero','bens','cats','prods','ps','tst','ofer','why','faq','cta','map','foot'],
+    '2':['ann','hdr','hero','bens','prods','ps','tst','cats','ofer','why','faq','cta','map','foot'],
+    '3':['ann','hdr','hero','bens','cats','prods','ps','tst','ofer','it','faq','cta','map','foot']
+  };
+  var site=$('#site'), est='1';
+  $$('[data-label]').forEach(function(el){el.setAttribute('data-name',el.getAttribute('data-label'))});
+  function numerar(){
+    var n=0;
+    $$('#site [data-name]').forEach(function(el){
+      if(el.closest('[hidden]')) return;
+      var name=el.getAttribute('data-name');
+      if(el.tagName==='FOOTER'){el.setAttribute('data-label',name);return;}
+      n++; el.setAttribute('data-label',(n<10?'0':'')+n+' · '+name);
+    });
+  }
+  function setEst(e,silent){
+    est=ORDEN[e]?e:'1';
+    var keys=ORDEN[est];
+    $$('#site > [data-key]').forEach(function(el){el.hidden = keys.indexOf(el.getAttribute('data-key'))<0;});
+    keys.forEach(function(k){ site.appendChild(site.querySelector('[data-key="'+k+'"]')); });
+    $$('.est button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-est')===est)});
+    numerar();
+    try{localStorage.setItem('praxis-mock-est',est)}catch(x){}
+    try{history.replaceState(null,'','#e'+est)}catch(x){}
+    if(!silent){ screen.classList.add('swap'); setTimeout(function(){replay();screen.classList.remove('swap');},250); }
+  }
+  $$('.est button').forEach(function(b){b.addEventListener('click',function(){ if(b.getAttribute('data-est')!==est) setEst(b.getAttribute('data-est')); })});
+
   /* PC / Celular */
   var device=$('#device');
   function setMode(m){
     device.className='device '+m;
-    $$('.seg button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-mode')===m)});
+    $$('[data-mode]').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-mode')===m)});
     $('#dims').textContent= m==='mob' ? 'Imagen de fondo · 820 × 1000' : 'Imagen de fondo · 1580 × 700';
     try{localStorage.setItem('praxis-mock-mode',m)}catch(e){}
     replay();
   }
-  $$('.seg button').forEach(function(b){b.addEventListener('click',function(){setMode(b.getAttribute('data-mode'))})});
+  $$('[data-mode]').forEach(function(b){b.addEventListener('click',function(){setMode(b.getAttribute('data-mode'))})});
 
   var labels=false;
   function setLabels(v){labels=v;$('#site').classList.toggle('labels',v);$('#bLabels').classList.toggle('on',v);}
@@ -675,12 +763,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
   document.addEventListener('keydown',function(e){
     if(e.target.tagName==='INPUT') return;
-    if(e.key==='1') setMode('pc');
-    else if(e.key==='2') setMode('mob');
+    if(e.key==='1'||e.key==='2'||e.key==='3') setEst(e.key);
+    else if(e.key==='m'||e.key==='M') setMode(device.classList.contains('pc')?'mob':'pc');
     else if(e.key==='r'||e.key==='R') replay();
     else if(e.key==='n'||e.key==='N') setLabels(!labels);
   });
 
+  var se=(location.hash.match(/^#e([123])$/)||[])[1];
+  if(!se){ try{se=localStorage.getItem('praxis-mock-est')}catch(x){} }
+  setEst(se||'1',true);
   var saved='pc'; try{saved=localStorage.getItem('praxis-mock-mode')||'pc'}catch(e){}
   setMode(saved==='mob'?'mob':'pc');
 })();
