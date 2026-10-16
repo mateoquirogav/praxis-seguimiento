@@ -233,6 +233,55 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .rv.from-l{opacity:0;transform:translateX(-60px)}
 .rv.from-r.in,.rv.from-l.in{opacity:1;transform:none}
 
+/* Mono producto (estructura 4) */
+.mono-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+.mono-gal{display:grid;grid-template-columns:72px 1fr;gap:14px}
+.mono-thumbs{display:grid;gap:10px;align-content:start}
+.mono-thumbs .ph{aspect-ratio:1;border-radius:10px}
+.mono-thumbs .ph svg{width:46%}
+.mono-thumbs .ph.on{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.mono-main{aspect-ratio:1;border-radius:20px}
+.mono-main svg{width:22%}
+.mono-info .stars{font-size:13px}
+.mono-info .stars span{letter-spacing:0;color:var(--g5);font-size:12.5px;margin-left:6px}
+.mono-info .h2{font-size:34px;margin-top:10px}
+.mono-info .price{margin-top:14px}
+.mono-info .price b{font-size:26px}
+.mono-info .price s{font-size:15px}
+.mono-off{font-size:11px;font-weight:600;letter-spacing:.06em;background:var(--ink);color:#fff;padding:4px 8px;border-radius:999px}
+.mono-lbl{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--g5);margin:24px 0 10px}
+.mono-vars{display:flex;gap:8px;flex-wrap:wrap}
+.mono-vars span{height:40px;min-width:52px;padding:0 14px;border-radius:999px;border:1.5px solid var(--g3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--g5)}
+.mono-vars span.on{border-color:var(--ink);color:var(--ink)}
+.mono-buy{display:flex;gap:10px;margin-top:24px}
+.mono-qty{height:52px;border:1.5px solid var(--g3);border-radius:999px;display:flex;align-items:center;gap:18px;padding:0 18px;font-weight:600}
+.mono-qty i{font-style:normal;color:var(--g4);font-size:18px}
+.mono-buy .btn{flex:1;height:52px}
+.mono-trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:20px}
+.mono-trust div{border:1px solid var(--g2);border-radius:12px;padding:12px;font-size:12px;color:var(--g5);display:flex;gap:8px;align-items:center}
+.mono-trust svg{width:18px;height:18px;flex:none;color:var(--ink)}
+
+.how-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:36px;position:relative}
+.how-step{border:1px solid var(--g2);border-radius:20px;padding:22px;background:#fff}
+.how-step .ph{aspect-ratio:4/3;border-radius:14px}
+.how-step .ph svg{width:22%}
+.how-step em{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;font:700 13px Montserrat;font-style:normal;align-items:center;justify-content:center;margin-top:18px}
+.how-step h4{font-family:Montserrat;font-weight:600;font-size:16px;margin-top:12px}
+.how-step p{font-size:13px;color:var(--g5);line-height:1.55;margin-top:6px}
+
+.pack-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px;align-items:stretch}
+.pack{border:1.5px solid var(--g2);border-radius:20px;padding:26px 22px;text-align:center;position:relative;display:flex;flex-direction:column;background:#fff}
+.pack.best{border-color:var(--ink);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+.pack .tag{left:50%;top:-12px;transform:translateX(-50%);white-space:nowrap}
+.pack .ph{aspect-ratio:1;border-radius:14px;width:62%;margin:0 auto}
+.pack .ph svg{width:34%}
+.pack h4{font-family:Montserrat;font-weight:700;font-size:18px;margin-top:16px}
+.pack .price{justify-content:center}
+.pack small{font-size:12px;color:var(--g5);margin-top:6px;display:block}
+.pack .btn{margin-top:auto;height:44px;width:100%;font-size:13px}
+.pack .gap{height:18px}
+.pack:not(.best) .btn{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+
 /* 11 · Preguntas frecuentes */
 .faq{max-width:780px;margin:0 auto}
 .faq .head{justify-content:center;text-align:center}
@@ -357,6 +406,32 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .it-row + .it-row{margin-top:44px}
   .it-row .it-img{order:-1;border-radius:16px}
   .it-txt .btn{margin-top:18px}
+  .mono-grid{grid-template-columns:1fr;gap:24px}
+  .mono-gal{grid-template-columns:1fr;gap:10px}
+  .mono-thumbs{grid-template-columns:repeat(4,minmax(0,1fr));order:2}
+  .mono-main{border-radius:16px}
+  .mono-info .h2{font-size:24px}
+  .mono-info .price b{font-size:22px}
+  .mono-lbl{margin:18px 0 8px}
+  .mono-buy{flex-direction:column}
+  .mono-qty{justify-content:center;height:46px}
+  .mono-buy .btn{flex:none;width:100%;height:50px}
+  .mono-trust{gap:6px}
+  .mono-trust div{flex-direction:column;text-align:center;font-size:10.5px;padding:10px 6px;gap:5px}
+  .how-grid{grid-template-columns:1fr;gap:12px;margin-top:22px}
+  .how-step{display:grid;grid-template-columns:38% 1fr;gap:14px;align-items:center;padding:12px;border-radius:16px}
+  .how-step .ph{border-radius:10px;grid-row:span 3}
+  .how-step em{margin-top:0;width:24px;height:24px;font-size:11px}
+  .how-step h4{font-size:14px;margin-top:0}
+  .how-step p{font-size:12px;margin-top:0}
+  .pack-grid{grid-template-columns:1fr;gap:18px;margin-top:26px}
+  .pack{display:grid;grid-template-columns:30% 1fr;text-align:left;gap:4px 14px;align-items:center;padding:18px 16px}
+  .pack .ph{width:100%;grid-row:span 3}
+  .pack h4{margin-top:0;font-size:16px}
+  .pack .price{justify-content:flex-start;margin-top:0}
+  .pack small{margin-top:0}
+  .pack .gap{display:none}
+  .pack .btn{grid-column:1/-1;margin-top:10px}
   .q button{font-size:14px;padding:17px 0}
   .cta-box{padding:44px 22px;border-radius:20px}
   .cta-box .h2{font-size:25px}
@@ -391,6 +466,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     <button data-est="1" style="--c:#F07A1A" class="on"><i></i>Estructura 1</button>
     <button data-est="2" style="--c:#2563EB"><i></i>Estructura 2</button>
     <button data-est="3" style="--c:#16A34A"><i></i>Estructura 3</button>
+    <button data-est="4" style="--c:#7C3AED"><i></i>Mono producto</button>
   </div>
   <div class="seg" role="tablist">
     <button data-mode="pc" class="on">
@@ -549,6 +625,47 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
       </div>
     </section>
 
+    <!-- Mono producto: el producto en la home (estructura 4) -->
+    <section class="sec" data-key="mono" data-label="El producto (galería + compra)" style="padding-top:44px">
+      <div class="wrap mono-grid">
+        <div class="mono-gal rv up">
+          <div class="mono-thumbs" id="monoThumbs"></div>
+          <div class="mono-main ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m3 18 5-5 4 4 3-3 6 6"/></svg></div>
+        </div>
+        <div class="mono-info rv up" style="--i:1">
+          <div class="stars">★★★★★<span>4,9 · 000 opiniones</span></div>
+          <div class="h2">Nombre del producto</div>
+          <p class="sub">Una línea que dice qué es, para quién y qué problema le saca de encima.</p>
+          <div class="price"><b>$00.000</b><s>$00.000</s><span class="mono-off">-20%</span></div>
+          <div class="cuotas">3 cuotas sin interés de $0.000 · 10% OFF con transferencia</div>
+          <div class="mono-lbl">Variante (color / talle / modelo)</div>
+          <div class="mono-vars"><span class="on">Opción 1</span><span>Opción 2</span><span>Opción 3</span></div>
+          <div class="mono-buy"><div class="mono-qty"><i>−</i>1<i>+</i></div><span class="btn">Comprar ahora</span></div>
+          <div class="mono-trust">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>Envío a todo el país</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Compra protegida</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/></svg>Cambio sin vueltas</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cómo se usa (estructura 4) -->
+    <section class="sec ps" data-key="how" data-label="Cómo se usa (3 pasos)">
+      <div class="wrap">
+        <div class="head rv up" style="justify-content:center;text-align:center;margin-bottom:0"><div><div class="kick">Cómo funciona</div><div class="h2">Así de simple se usa</div></div></div>
+        <div class="how-grid" id="how"></div>
+      </div>
+    </section>
+
+    <!-- Embudo por cantidad (estructura 4) -->
+    <section class="sec" data-key="pack" data-label="Elegí tu pack (embudo por cantidad)">
+      <div class="wrap">
+        <div class="head rv up" style="justify-content:center;text-align:center;margin-bottom:0"><div><div class="kick">Llevá más, pagá menos</div><div class="h2">Elegí tu pack</div></div></div>
+        <div class="pack-grid" id="packs"></div>
+      </div>
+    </section>
+
     <!-- 11 · Preguntas frecuentes -->
     <section class="sec" data-key="faq" data-label="Preguntas frecuentes">
       <div class="wrap faq">
@@ -658,6 +775,17 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     return '<div class="pill rv up" style="--i:'+i+'"><em>0'+n+'</em><h4>Razón '+n+'</h4><p>Por qué esto le conviene al cliente, en una o dos líneas.</p></div>';
   }).join('');
 
+  $('#monoThumbs').innerHTML=[0,1,2,3].map(function(i){return '<div class="ph'+(i===0?' on':'')+'">'+IMG+'</div>'}).join('');
+
+  $('#how').innerHTML=['Paso 1','Paso 2','Paso 3'].map(function(n,i){
+    return '<div class="how-step rv up" style="--i:'+i+'"><div class="ph">'+IMG+'</div><em>'+(i+1)+'</em><h4>'+n+'</h4><p>Qué hace el cliente en este paso, en una línea.</p></div>';
+  }).join('');
+
+  $('#packs').innerHTML=[['1 unidad','$00.000','',''],['2 unidades','$00.000','-10%','Ahorrás $0.000'],['3 unidades','$00.000','-15%','Ahorrás $0.000']].map(function(p,i){
+    var best=i===1;
+    return '<div class="pack rv pop'+(best?' best':'')+'" style="--i:'+i+'">'+(best?'<span class="tag">El más elegido</span>':'')+'<div class="ph">'+IMG+'</div><h4>'+p[0]+'</h4><div class="price"><b>'+p[1]+'</b>'+(p[2]?'<s>$00.000</s>':'')+'</div><small>'+(p[3]||'Precio por unidad')+'</small><div class="gap"></div><span class="btn">Elegir '+p[0]+'</span></div>';
+  }).join('');
+
   $('#faq').innerHTML=[1,2,3,4,5].map(function(n,i){
     return '<div class="q rv up" style="--i:'+i+'"><button type="button">Pregunta frecuente '+n+'<i></i></button><div class="a"><div><p>Respuesta clara y corta. Acá van envíos, cambios, medios de pago, tiempos de entrega y lo que más pregunta el cliente por WhatsApp.</p></div></div></div>';
   }).join('');
@@ -719,7 +847,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   var ORDEN={
     '1':['ann','hdr','hero','bens','cats','prods','ps','tst','ofer','why','faq','cta','map','foot'],
     '2':['ann','hdr','hero','bens','prods','ps','tst','cats','ofer','why','faq','cta','map','foot'],
-    '3':['ann','hdr','hero','bens','cats','prods','ps','tst','ofer','it','faq','cta','map','foot']
+    '3':['ann','hdr','hero','bens','cats','prods','ps','tst','ofer','it','faq','cta','map','foot'],
+    '4':['ann','hdr','hero','bens','mono','ps','how','tst','pack','it','faq','cta','foot']
   };
   var site=$('#site'), est='1';
   $$('[data-label]').forEach(function(el){el.setAttribute('data-name',el.getAttribute('data-label'))});
@@ -738,6 +867,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     $$('#site > [data-key]').forEach(function(el){el.hidden = keys.indexOf(el.getAttribute('data-key'))<0;});
     keys.forEach(function(k){ site.appendChild(site.querySelector('[data-key="'+k+'"]')); });
     $$('.est button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-est')===est)});
+    $('.nav').innerHTML=(est==='4'?['Inicio','El producto','Cómo se usa','Opiniones','Contacto']:['Inicio','Categoría 1','Categoría 2','Categoría 3','Contacto']).map(function(x){return '<span>'+x+'</span>'}).join('');
     numerar();
     try{localStorage.setItem('praxis-mock-est',est)}catch(x){}
     try{history.replaceState(null,'','#e'+est)}catch(x){}
@@ -763,13 +893,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
   document.addEventListener('keydown',function(e){
     if(e.target.tagName==='INPUT') return;
-    if(e.key==='1'||e.key==='2'||e.key==='3') setEst(e.key);
+    if(e.key==='1'||e.key==='2'||e.key==='3'||e.key==='4') setEst(e.key);
     else if(e.key==='m'||e.key==='M') setMode(device.classList.contains('pc')?'mob':'pc');
     else if(e.key==='r'||e.key==='R') replay();
     else if(e.key==='n'||e.key==='N') setLabels(!labels);
   });
 
-  var se=(location.hash.match(/^#e([123])$/)||[])[1];
+  var se=(location.hash.match(/^#e([1234])$/)||[])[1];
   if(!se){ try{se=localStorage.getItem('praxis-mock-est')}catch(x){} }
   setEst(se||'1',true);
   var saved='pc'; try{saved=localStorage.getItem('praxis-mock-mode')||'pc'}catch(e){}
