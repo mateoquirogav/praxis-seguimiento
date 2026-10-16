@@ -233,6 +233,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .rv.from-l{opacity:0;transform:translateX(-60px)}
 .rv.from-r.in,.rv.from-l.in{opacity:1;transform:none}
 
+/* Info del producto (estructura 4) */
+.inf-grid{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:36px;align-items:center;margin-top:36px}
+.inf-col{display:grid;gap:22px}
+.inf-pt{display:flex;gap:14px;align-items:flex-start}
+.inf-col.l .inf-pt{flex-direction:row-reverse;text-align:right}
+.inf-pt i{width:44px;height:44px;flex:none;border-radius:50%;background:var(--g1);display:flex;align-items:center;justify-content:center;font:700 13px Montserrat;font-style:normal}
+.inf-pt h4{font-family:Montserrat;font-weight:600;font-size:15.5px}
+.inf-pt p{font-size:13px;color:var(--g5);line-height:1.55;margin-top:4px}
+.inf-img{aspect-ratio:1;border-radius:50%;flex-direction:column;gap:10px}
+.inf-img svg{width:20%}
+.inf-img small{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--g4);position:relative;z-index:1}
+
 /* Mono producto (estructura 4) */
 .mono-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
 .mono-gal{display:grid;grid-template-columns:72px 1fr;gap:14px}
@@ -406,6 +418,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .it-row + .it-row{margin-top:44px}
   .it-row .it-img{order:-1;border-radius:16px}
   .it-txt .btn{margin-top:18px}
+  .inf-grid{grid-template-columns:1fr 1fr;gap:16px 12px;margin-top:22px}
+  .inf-img{grid-column:1/-1;order:-1;width:72%;margin:0 auto 8px}
+  .inf-col{display:contents}
+  .inf-pt,.inf-col.l .inf-pt{flex-direction:column;text-align:left;gap:8px;border:1px solid var(--g2);border-radius:14px;padding:14px}
+  .inf-pt i{width:32px;height:32px;font-size:11px}
+  .inf-pt h4{font-size:13.5px}
+  .inf-pt p{font-size:11.5px;margin-top:0}
   .mono-grid{grid-template-columns:1fr;gap:24px}
   .mono-gal{grid-template-columns:1fr;gap:10px}
   .mono-thumbs{grid-template-columns:repeat(4,minmax(0,1fr));order:2}
@@ -625,6 +644,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
       </div>
     </section>
 
+    <!-- Info del producto (estructura 4) -->
+    <section class="sec" data-key="info" data-label="Información del producto" style="padding-top:44px">
+      <div class="wrap">
+        <div class="head rv up" style="justify-content:center;text-align:center;margin-bottom:0"><div><div class="kick">Conocé el producto</div><div class="h2">Qué es y por qué funciona</div><p class="sub">Lo que el cliente tiene que saber antes de comprar, en cuatro datos.</p></div></div>
+        <div class="inf-grid">
+          <div class="inf-col l" id="infL"></div>
+          <div class="inf-img ph rv zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m3 18 5-5 4 4 3-3 6 6"/></svg><small>Foto del producto</small></div>
+          <div class="inf-col" id="infR"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Mono producto: el producto en la home (estructura 4) -->
     <section class="sec" data-key="mono" data-label="El producto (galería + compra)" style="padding-top:44px">
       <div class="wrap mono-grid">
@@ -775,6 +806,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     return '<div class="pill rv up" style="--i:'+i+'"><em>0'+n+'</em><h4>Razón '+n+'</h4><p>Por qué esto le conviene al cliente, en una o dos líneas.</p></div>';
   }).join('');
 
+  function infPt(n,i){return '<div class="inf-pt rv up" style="--i:'+i+'"><i>0'+n+'</i><div><h4>Dato '+n+'</h4><p>Qué hace, de qué está hecho o qué incluye, en una línea.</p></div></div>';}
+  $('#infL').innerHTML=infPt(1,0)+infPt(2,1);
+  $('#infR').innerHTML=infPt(3,0)+infPt(4,1);
+
   $('#monoThumbs').innerHTML=[0,1,2,3].map(function(i){return '<div class="ph'+(i===0?' on':'')+'">'+IMG+'</div>'}).join('');
 
   $('#how').innerHTML=['Paso 1','Paso 2','Paso 3'].map(function(n,i){
@@ -848,7 +883,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     '1':['ann','hdr','hero','bens','cats','prods','ps','tst','ofer','why','faq','cta','map','foot'],
     '2':['ann','hdr','hero','bens','prods','ps','tst','cats','ofer','why','faq','cta','map','foot'],
     '3':['ann','hdr','hero','bens','cats','prods','ps','tst','ofer','it','faq','cta','map','foot'],
-    '4':['ann','hdr','hero','bens','mono','ps','how','tst','pack','it','faq','cta','foot']
+    '4':['ann','hdr','hero','bens','info','mono','ps','how','tst','pack','it','faq','cta','foot']
   };
   var site=$('#site'), est='1';
   $$('[data-label]').forEach(function(el){el.setAttribute('data-name',el.getAttribute('data-label'))});
