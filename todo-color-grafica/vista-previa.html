@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cotizador · Todo Color Gráfica — PRAXIS</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#14274A;--ac:#2E5D87;--gris:#5A6B85;--suave:#9AA8BE;--linea:#E1E9F2;--tc:#009FE3;--tcd:#0079AD}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Poppins,sans-serif;color:var(--navy);background:#fff;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+/* portada */
+.top{background:linear-gradient(90deg,#0D1A30 0%,#14274A 40%,#20406B 70%,#2E5D87 100%);color:#fff;padding:28px 0 64px}
+.top .logo{height:34px;width:auto}
+.top .eye{margin-top:56px;font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#A9C7E4}
+.top h1{font-size:44px;font-weight:700;line-height:1.08;margin-top:12px}
+.top h1 span{display:block;font-weight:300;color:#B9CFE6;font-size:28px;margin-top:6px}
+.top p{margin-top:18px;max-width:640px;font-size:16px;font-weight:300;line-height:1.65;color:#DCE7F2}
+.sec{padding:72px 0}
+.sec.gris{background:#F5F8FB}
+.kick{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ac)}
+h2{font-size:32px;font-weight:700;line-height:1.15;margin-top:8px}
+h2 em{font-style:normal;color:var(--ac)}
+.intro{margin-top:10px;font-size:15.5px;font-weight:300;color:var(--gris);line-height:1.65;max-width:720px}
+.intro b{font-weight:600;color:var(--navy)}
+/* demo tienda */
+.demo{margin-top:32px;border:1px solid var(--linea);border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(20,39,74,.10);background:#fff}
+.demo-bar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:#F2F5F8;border-bottom:1px solid var(--linea);font-size:12px;color:var(--suave)}
+.demo-bar i{width:10px;height:10px;border-radius:50%;background:#D5DDE6;display:inline-block}
+.demo-bar span{margin-left:10px;background:#fff;border:1px solid var(--linea);border-radius:20px;padding:3px 14px;flex:1;max-width:420px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tienda{font-family:"Instrument Sans",sans-serif;color:#1a1a1a}
+.t-head{display:flex;justify-content:center;padding:14px;border-bottom:1px solid #eee}
+.t-head img{height:46px;width:auto}
+.t-anun{background:var(--tc);color:#fff;text-align:center;font-size:12.5px;font-weight:600;letter-spacing:.04em;padding:7px}
+.t-body{display:grid;grid-template-columns:1fr 1fr;gap:36px;padding:32px}
+.t-foto{position:sticky;top:20px;align-self:start}
+.t-foto img{border-radius:12px;aspect-ratio:1/1;object-fit:cover;width:100%}
+.t-foto small{display:block;margin-top:8px;font-size:12px;color:#888;text-align:center}
+.t-tit{font-size:26px;font-weight:700;line-height:1.15}
+.t-sub{font-size:14px;color:#666;margin-top:4px}
+.paso{margin-top:20px}
+.paso .lb{font-size:13px;font-weight:700;margin-bottom:8px;display:flex;gap:8px;align-items:center}
+.paso .lb b{width:22px;height:22px;border-radius:50%;background:var(--tc);color:#fff;font-size:12px;display:inline-flex;align-items:center;justify-content:center}
+.paso .lb small{font-weight:400;color:#888}
+.ops{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ops.c3{grid-template-columns:repeat(3,1fr)}
+.ops button{font:inherit;font-size:13.5px;border:1.5px solid #e2e2e2;background:#fff;border-radius:10px;padding:11px 6px;cursor:pointer;color:#333;line-height:1.25}
+.ops button small{display:block;font-size:11px;color:#999;margin-top:2px}
+.ops button.on{border-color:var(--tc);background:#E8F6FC;color:var(--tcd);font-weight:700}
+.ops button.on small{color:var(--tcd)}
+.up{border:1.5px dashed #c9d3dc;border-radius:12px;padding:16px;background:#FAFCFE}
+.up input[type=text]{width:100%;font:inherit;font-size:14px;border:1.5px solid #e2e2e2;border-radius:9px;padding:10px 12px;margin-bottom:10px}
+.up label.file{display:block;text-align:center;border:1.5px solid #e2e2e2;border-radius:9px;padding:12px;font-size:13.5px;cursor:pointer;background:#fff;color:#555}
+.up label.file input{display:none}
+.up .ayuda{font-size:11.5px;color:#888;margin-top:8px;text-align:center}
+.up .mail{margin-top:10px;width:100%;font:inherit;font-weight:700;font-size:14px;border:0;border-radius:9px;padding:12px;background:#1a1a1a;color:#fff;cursor:pointer}
+.res{margin-top:22px;border-top:1px solid #eee;padding-top:16px}
+.res .fila{display:flex;justify-content:space-between;font-size:13.5px;color:#666;margin-bottom:4px}
+.res .tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px}
+.res .tot span{font-size:14px;font-weight:600}
+.res .tot b{font-size:30px;font-weight:700}
+.res .transf{font-size:13px;color:#1F8A4C;font-weight:600;margin-top:2px;text-align:right}
+.cart{margin-top:14px;width:100%;font:inherit;font-weight:700;font-size:16px;border:0;border-radius:11px;padding:15px;background:var(--tc);color:#fff;cursor:pointer}
+.cart:hover,.up .mail:hover{filter:brightness(1.07)}
+.nota-demo{margin-top:12px;font-size:12px;color:var(--suave);text-align:center;font-family:Poppins}
+/* tarjetas */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.card{border:1px solid var(--linea);border-radius:14px;padding:22px;background:#fff}
+.card .ic{width:40px;height:40px;border-radius:10px;background:#EAF1F8;color:var(--ac);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.card b{display:block;font-size:16px;margin-top:14px}
+.card p{font-size:14px;font-weight:300;color:var(--gris);line-height:1.6;margin-top:6px}
+.card p strong{font-weight:600;color:var(--navy)}
+.card.nat{background:#F3F7FB;border-color:#D6E4F0}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.14em;background:var(--ac);color:#fff;padding:3px 8px;border-radius:4px;margin-left:6px;vertical-align:2px}
+/* panel */
+.panel{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;margin-top:30px;align-items:center}
+.tn{border:1px solid var(--linea);border-radius:14px;overflow:hidden;background:#fff;font-size:13.5px}
+.tn-h{background:#F2F5F8;padding:10px 16px;font-weight:600;font-size:13px;color:var(--gris);border-bottom:1px solid var(--linea)}
+.tn table{width:100%;border-collapse:collapse}
+.tn th{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);text-align:left;padding:10px 16px;border-bottom:1px solid var(--linea)}
+.tn td{padding:10px 16px;border-bottom:1px solid #EEF2F6;color:var(--navy)}
+.tn td.p{font-weight:600}
+.tn tr.off td{color:#B6C1CF;text-decoration:line-through}
+.tn .pill{font-size:11px;padding:2px 8px;border-radius:20px;background:#E3F4EA;color:#1F8A4C;font-weight:600;text-decoration:none;display:inline-block}
+.tn tr.off .pill{background:#F1F3F6;color:#9AA8BE}
+.puntos{display:grid;gap:14px}
+.punto{display:flex;gap:14px}
+.punto i{flex:none;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-style:normal;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.punto b{display:block;font-size:15px}
+.punto p{font-size:14px;font-weight:300;color:var(--gris);line-height:1.55;margin-top:2px}
+/* precio */
+.precio{margin-top:30px;background:linear-gradient(90deg,#0D1A30 0%,#14274A 45%,#2E5D87 100%);color:#fff;border-radius:18px;padding:34px 38px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.precio small{font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#A9C7E4}
+.precio p{font-size:15px;font-weight:300;color:#DCE7F2;margin-top:6px;max-width:480px;line-height:1.55}
+.precio .num{text-align:right}
+.precio s{display:block;font-size:20px;font-weight:300;color:#93AECB}
+.precio .num b{font-size:52px;font-weight:700;line-height:1}
+.precio .off{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;letter-spacing:.14em;background:#fff;color:var(--navy);padding:4px 10px;border-radius:4px}
+/* proceso */
+.linea{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+.et{border-top:3px solid var(--navy);padding-top:14px}
+.et .n{font-size:28px;font-weight:700;color:#C9D7E6;line-height:1}
+.et b{display:block;font-size:15px;margin-top:8px}
+.et p{font-size:13.5px;font-weight:300;color:var(--gris);line-height:1.55;margin-top:4px}
+.et.dest{border-color:var(--ac)}.et.dest .n{color:var(--ac)}
+.pago{margin-top:30px;background:#EAF1F8;border-left:4px solid var(--ac);border-radius:10px;padding:20px 24px;font-size:15px;font-weight:300;line-height:1.65;color:#2C3E5A}
+.pago b{font-weight:600;color:var(--navy)}
+.verde{margin-top:18px;background:#1F5E43;color:#E6F3EC;border-radius:12px;padding:20px 24px;font-size:14.5px;font-weight:300;line-height:1.6}
+.verde b{color:#fff;font-weight:600}
+.cond{margin-top:34px;padding-top:18px;border-top:1px solid var(--linea)}
+.cond small{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--suave);margin-bottom:8px}
+.cond p{font-size:13px;font-weight:300;color:#7A8AA3;line-height:1.6;margin-bottom:6px}
+.cond p b{font-weight:600;color:var(--gris)}
+.cond .fe{margin-top:14px;font-size:15px;font-weight:500;color:var(--ac);line-height:1.6}
+footer{background:#0D1A30;color:#93AECB;font-size:13px;font-weight:300;padding:26px 0}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(13,26,48,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:9}
+.modal.on{display:flex}
+.modal .box{background:#fff;border-radius:16px;max-width:440px;padding:28px;text-align:left}
+.modal .box small{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ac)}
+.modal .box b{display:block;font-size:19px;margin:6px 0 10px;line-height:1.3}
+.modal .box p{font-size:14px;font-weight:300;color:var(--gris);line-height:1.6}
+.modal .box p strong{font-weight:600;color:var(--navy)}
+.modal .box button{margin-top:18px;font:inherit;font-weight:600;font-size:14px;border:0;border-radius:9px;padding:11px 20px;background:var(--navy);color:#fff;cursor:pointer}
+@media (max-width:820px){
+  .top{padding:22px 0 46px}.top .eye{margin-top:36px}.top h1{font-size:32px}.top h1 span{font-size:21px}.top p{font-size:15px}
+  .sec{padding:52px 0}h2{font-size:25px}
+  .t-body{grid-template-columns:1fr;gap:20px;padding:18px}
+  .t-foto{position:static}.t-foto img{aspect-ratio:4/3}
+  .t-tit{font-size:22px}
+  .ops{grid-template-columns:repeat(2,1fr)}.ops.c3{grid-template-columns:repeat(3,1fr)}
+  .cards,.panel,.linea{grid-template-columns:1fr}
+  .precio{padding:26px 22px}.precio .num{text-align:left}.precio .num b{font-size:42px}
+  .tn th,.tn td{padding:9px 10px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <img class="logo" src="logo-blanco.png" alt="PRAXIS">
+    <div class="eye">Vista previa · Cotizador de productos personalizados</div>
+    <h1>Todo Color Gráfica<span>Tu cliente arma su pedido solo, y lo paga en tu tienda.</span></h1>
+    <p>Así va a funcionar la página nueva de tu Tiendanube. El cotizador de abajo funciona: tocá las opciones y mirá cómo cambia el precio. Los precios son de ejemplo; en la web real van los tuyos.</p>
+  </div>
+</header>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="kick">Probalo</div>
+    <h2>Así lo ve <em>tu cliente</em></h2>
+    <p class="intro">Una sola página para <b>stickers, planchas e imanes</b>. Elige, ve el total al instante, te manda su diseño y compra.</p>
+
+    <div class="demo">
+      <div class="demo-bar"><i></i><i></i><i></i><span>todocolorgrafica.com.ar/cotizador</span></div>
+      <div class="tienda">
+        <div class="t-anun">ENVÍOS A TODO EL PAÍS · DESCUENTO ABONANDO POR TRANSFERENCIA</div>
+        <div class="t-head"><img src="logo-tcg.webp" alt="Todo Color Gráfica"></div>
+        <div class="t-body">
+          <div class="t-foto"><img src="foto-1.webp" alt="Stickers personalizados"><small>Acá va la foto de cada material</small></div>
+          <div>
+            <div class="t-tit" id="tit">Armá tus stickers</div>
+            <div class="t-sub">Elegí las opciones y mirá el precio al instante.</div>
+
+            <div class="paso"><div class="lb"><b>1</b>Producto</div>
+              <div class="ops c3" data-k="prod"></div></div>
+            <div class="paso"><div class="lb"><b>2</b>Material</div>
+              <div class="ops" data-k="mat"></div></div>
+            <div class="paso" id="p-forma"><div class="lb"><b>3</b>Forma</div>
+              <div class="ops" data-k="forma"></div></div>
+            <div class="paso"><div class="lb"><b id="n-tam">4</b>Tamaño <small>· lado más largo</small></div>
+              <div class="ops" data-k="tam"></div></div>
+            <div class="paso"><div class="lb"><b id="n-cant">5</b>Cantidad</div>
+              <div class="ops" data-k="cant"></div></div>
+
+            <div class="paso"><div class="lb"><b id="n-dis">6</b>Tu diseño</div>
+              <div class="up">
+                <input type="text" id="nom" placeholder="Tu nombre (para identificar tu pedido)">
+                <label class="file"><input type="file" id="arch" accept=".png,.jpg,.jpeg,.pdf"><span id="arch-t">📎 Elegí tu archivo · PNG, JPG o PDF</span></label>
+                <div class="ayuda">Un solo diseño por pedido. Lo revisamos antes de imprimir.</div>
+                <button class="mail" id="b-mail">Enviar diseño →</button>
+              </div></div>
+
+            <div class="res">
+              <div class="fila"><span id="r-det">—</span><span id="r-uni">—</span></div>
+              <div class="tot"><span>Total</span><b id="r-tot">$0</b></div>
+              <div class="transf" id="r-tr">—</div>
+              <button class="cart" id="b-cart">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="nota-demo">Demostración con precios y opciones de ejemplo. En la web real, todo sale de tus productos en Tiendanube.</p>
+  </div>
+</section>
+
+<section class="sec gris">
+  <div class="wrap">
+    <div class="kick">Conectado a tu Tiendanube</div>
+    <h2>Qué pasa cuando <em>tu cliente compra</em></h2>
+    <p class="intro">No es una web aparte: <b>todo pasa por tu tienda</b>, igual que una venta de cualquier otro producto.</p>
+    <div class="cards">
+      <div class="card nat"><div class="ic">1</div><b>Va a tu carrito <span class="tag">NATIVO</span></b><p>Lo que eligió se agrega al <strong>carrito de tu Tiendanube</strong>, con el precio que vos cargaste. Puede sumar otros productos de la tienda en la misma compra.</p></div>
+      <div class="card nat"><div class="ic">2</div><b>Paga como quiera <span class="tag">NATIVO</span></b><p>Pasa por <strong>tu checkout de siempre</strong>: todos tus medios de pago, cuotas, descuento por transferencia y envíos. El pedido te aparece en <strong>Ventas</strong>, con material, forma, tamaño y cantidad.</p></div>
+      <div class="card"><div class="ic">3</div><b>Su diseño, a tu mail</b><p>Igual que hoy en tu tienda: con un clic en «Enviar diseño», <strong>el archivo te llega por mail</strong> con el nombre del cliente y lo que eligió, para que lo identifiques con el pedido.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="kick">Lo manejás vos</div>
+    <h2>Las opciones las cargás <em>y las sacás vos</em></h2>
+    <p class="intro">Cada combinación es una <b>variante de tu producto en Tiendanube</b>. La editás desde tu panel como cualquier producto, y el cotizador la toma sola.</p>
+    <div class="panel">
+      <div class="tn">
+        <div class="tn-h">Tu panel de Tiendanube · Stickers vinilo · Variantes</div>
+        <table>
+          <thead><tr><th>Variante</th><th>Precio</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td>Silueta · 6 cm · 100 u.</td><td class="p">$24.000</td><td><span class="pill">Visible</span></td></tr>
+            <tr><td>Silueta · 6 cm · 200 u.</td><td class="p">$40.800</td><td><span class="pill">Visible</span></td></tr>
+            <tr><td>Circular · 8 cm · 100 u.</td><td class="p">$29.000</td><td><span class="pill">Visible</span></td></tr>
+            <tr class="off"><td>Circular · 10 cm · 1000 u.</td><td class="p">$190.000</td><td><span class="pill">Sin stock</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="puntos">
+        <div class="punto"><i>✓</i><div><b>Cambiás un precio</b><p>Lo editás en la variante y el cotizador muestra el nuevo al instante.</p></div></div>
+        <div class="punto"><i>✓</i><div><b>Sacás una opción</b><p>La dejás sin stock y desaparece del cotizador, sin borrar nada.</p></div></div>
+        <div class="punto"><i>✓</i><div><b>Sumás una opción</b><p>Agregás la variante nueva (otro tamaño, otra cantidad) y aparece como un botón más.</p></div></div>
+        <div class="punto"><i>✓</i><div><b>Textos y fotos</b><p>Los títulos, las aclaraciones y la foto de cada material también los cambiás vos.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec gris">
+  <div class="wrap">
+    <div class="kick">La inversión</div>
+    <h2>El total <em>del trabajo</em></h2>
+    <div class="precio">
+      <div><small>Total del trabajo</small><p>Página nueva con el cotizador para stickers, planchas e imanes, conectada a tu Tiendanube, adaptada a celular y computadora, con compra de prueba incluida.</p></div>
+      <div class="num"><s>$180.000</s><b>$90.000</b><br><span class="off">50 % OFF · POR SER CLIENTE PRAXIS</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="kick">Cómo arrancamos</div>
+    <h2>5 días <em>de trabajo</em></h2>
+    <p class="intro">Desde que arrancamos, el cotizador está listo en <b>5 días</b>. Tu tienda sigue vendiendo normal mientras tanto.</p>
+    <div class="linea">
+      <div class="et dest"><div class="n">00</div><b>Abonás y reservás</b><p>Con el pago separo tus 5 días de estructuración y pasamos al seguimiento del trabajo.</p></div>
+      <div class="et"><div class="n">01</div><b>Me pasás tus precios</b><p>Materiales, formas, tamaños, cantidades y la foto de cada opción.</p></div>
+      <div class="et"><div class="n">02</div><b>Armo el cotizador</b><p>La página, tus productos y sus variantes, en celular y computadora.</p></div>
+      <div class="et"><div class="n">03</div><b>Revisás y publico</b><p>Lo probás de punta a punta, corregimos y lo publico con una compra de prueba.</p></div>
+    </div>
+    <div class="pago"><b>El pago es por adelantado.</b> Es lo que reserva tus 5 días de estructuración en mi agenda y te pasa al seguimiento del trabajo, donde ves en qué etapa está tu cotizador.</div>
+    <div class="verde"><b>Lo que me tenés que pasar:</b> precios y opciones de cada producto, una foto de cada material o terminación, las aclaraciones que querés mostrar (medidas, tiempos, formato del archivo) y acceso a tu Tiendanube como colaborador. Por audio, WhatsApp, documento o Drive.</div>
+    <div class="cond"><small>Aceptación y condiciones</small>
+      <p>Al abonar, das por aceptada esta propuesta.</p>
+      <p><b>Correcciones:</b> hago todas las que entren en lo pactado, hasta que el cotizador quede como lo querés. Una vez que me confirmás que está listo, o pasados los 5 días desde la entrega, los cambios nuevos ya no forman parte del trabajo y podés hacerlos vos desde tu panel.</p>
+      <p><b>Reembolsos:</b> dentro de los 2 días de abonado, se devuelve completo. Después, y hasta la entrega, se devuelve el 50 % y el resto cubre el trabajo y los costos ya invertidos. Con el cotizador entregado y en etapa de correcciones, no hay reembolso.</p>
+      <p class="fe">Trabajamos siempre de buena fe. Estas condiciones nos cuidan a los dos, pero no son una pared: si en algún momento surge algo, lo hablamos y le buscamos la vuelta juntos. Para todo hay solución.</p>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>PRAXIS · Diseño y desarrollo de tiendas online</span><span>Vista previa · 19 de octubre de 2026</span></div></footer>
+
+<div class="modal" id="modal"><div class="box"><small id="m-k"></small><b id="m-t"></b><p id="m-p"></p><button id="m-x">Entendido</button></div></div>
+
+<script>
+var D={
+  stickers:{t:'Armá tus stickers',forma:true,
+    mat:[['Vinilo blanco',1],['OPP oro',1.15],['Holográfico',1.25],['UV Gel 3D',1.45]],
+    tam:[['4 cm',.8],['6 cm',1],['8 cm',1.2],['10 cm',1.45]],
+    cant:[[50,13500],[100,24000],[200,40800],[500,90000]]},
+  planchas:{t:'Armá tus planchas',forma:false,
+    mat:[['Papel',1],['Vinilo',1.3],['OPP',1.4],['Kraft',1.1]],
+    tam:[['A4',1],['30 x 40',1.6],['50 x 70',2.6],['100 x 50',3.4]],
+    cant:[[1,15000],[5,67500],[10,127500],[20,240000]]},
+  imanes:{t:'Armá tus imanes',forma:true,
+    mat:[['Imán 0,3 mm',1],['Imán 0,5 mm',1.2],['Laminado',1.35],['Brillo',1.1]],
+    tam:[['5 cm',1],['7 cm',1.25],['9 cm',1.5],['10 x 15',1.9]],
+    cant:[[25,18000],[50,32000],[100,58000],[200,104000]]}
+};
+var FORMAS=['Circular','Rectangular','Cuadrado','Silueta'];
+var S={prod:'stickers',mat:0,forma:3,tam:1,cant:1};
+var $=function(s){return document.querySelector(s)};
+function fm(n){return '$'+(Math.round(n/100)*100).toLocaleString('es-AR')}
+function precio(){var d=D[S.prod];return d.cant[S.cant][1]*d.mat[S.mat][1]*d.tam[S.tam][1]}
+function pinta(k,items,lab){
+  var el=document.querySelector('[data-k="'+k+'"]');el.innerHTML='';
+  items.forEach(function(it,i){var b=document.createElement('button');b.type='button';b.innerHTML=lab(it,i);
+    if((k==='prod'?it[0]:i)===S[k])b.className='on';
+    b.onclick=function(){S[k]=(k==='prod'?it[0]:i);if(k==='prod'){S.mat=0;S.tam=1;S.cant=1;}render()};el.appendChild(b)});
+}
+function render(){
+  var d=D[S.prod];
+  $('#tit').textContent=d.t;
+  pinta('prod',[['stickers','Stickers'],['planchas','Planchas'],['imanes','Imanes']],function(it){return it[1]});
+  pinta('mat',d.mat,function(it){return it[0]});
+  $('#p-forma').style.display=d.forma?'':'none';
+  if(d.forma)pinta('forma',FORMAS.map(function(f){return[f]}),function(it){return it[0]});
+  var o=d.forma?0:-1;$('#n-tam').textContent=4+o;$('#n-cant').textContent=5+o;$('#n-dis').textContent=6+o;
+  pinta('tam',d.tam,function(it){return it[0]});
+  pinta('cant',d.cant,function(it,i){
+    var t=d.cant[i][1]*d.mat[S.mat][1]*d.tam[S.tam][1];
+    return it[0]+(S.prod==='planchas'?' plancha'+(it[0]>1?'s':''):' u.')+'<small>'+fm(t)+'</small>'});
+  var p=precio(),c=d.cant[S.cant][0];
+  $('#r-det').textContent=d.mat[S.mat][0]+(d.forma?' · '+FORMAS[S.forma]:'')+' · '+d.tam[S.tam][0]+' · '+c+(S.prod==='planchas'?' pl.':' u.');
+  $('#r-uni').textContent=fm(p/c)+' c/u';
+  $('#r-tot').textContent=fm(p);
+  $('#r-tr').textContent=fm(p*.9)+' con transferencia';
+}
+function modal(k,t,p){$('#m-k').textContent=k;$('#m-t').textContent=t;$('#m-p').innerHTML=p;$('#modal').classList.add('on')}
+$('#m-x').onclick=function(){$('#modal').classList.remove('on')};
+$('#modal').onclick=function(e){if(e.target.id==='modal')$('#modal').classList.remove('on')};
+$('#arch').onchange=function(){$('#arch-t').textContent=this.files[0]?'📎 '+this.files[0].name:'📎 Elegí tu archivo · PNG, JPG o PDF'};
+$('#b-mail').onclick=function(){
+  modal('En la web real','El diseño te llega por mail','Con este clic, el archivo llega a <strong>todocolorgrafica@gmail.com</strong> con el nombre del cliente y lo que eligió ('+$('#r-det').textContent+'), igual que funciona hoy en tu tienda. En esta vista previa no se envía nada.')};
+$('#b-cart').onclick=function(){
+  modal('En la web real','Se agrega a tu carrito de Tiendanube','Se suma <strong>'+$('#r-det').textContent+'</strong> al carrito de tu tienda con el precio de esa variante. El cliente sigue a tu checkout y paga con <strong>todos tus medios de pago</strong>. El pedido te aparece en Ventas.')};
+render();
+</script>
+</body>
+</html>
