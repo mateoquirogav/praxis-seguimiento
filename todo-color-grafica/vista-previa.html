@@ -318,7 +318,7 @@ function render(){
     return it[0]+(S.prod==='planchas'?' plancha'+(it[0]>1?'s':''):' u.')+'<small>'+fm(t)+'</small>'});
   var p=precio(),c=d.cant[S.cant][0];
   $('#r-det').textContent=d.mat[S.mat][0]+(d.forma?' · '+FORMAS[S.forma]:'')+' · '+d.tam[S.tam][0]+' · '+c+(S.prod==='planchas'?' pl.':' u.');
-  $('#r-uni').textContent=fm(p/c)+' c/u';
+  $('#r-uni').textContent='$'+Math.round(Math.round(p/100)*100/c).toLocaleString('es-AR')+' c/u';
   $('#r-tot').textContent=fm(p);
   $('#r-tr').textContent=fm(p*.9)+' con transferencia';
 }
