@@ -66,6 +66,20 @@ h2 em{font-style:normal;color:var(--ac)}
 .cart{margin-top:14px;width:100%;font:inherit;font-weight:700;font-size:16px;border:0;border-radius:11px;padding:15px;background:var(--tc);color:#fff;cursor:pointer}
 .cart:hover,.up .mail:hover{filter:brightness(1.07)}
 .nota-demo{margin-top:12px;font-size:12px;color:var(--suave);text-align:center;font-family:Poppins}
+.t-hero{background:linear-gradient(90deg,#0079AD,#009FE3);color:#fff;text-align:center;padding:30px 16px}
+.t-hero b{display:block;font-size:28px;font-weight:700;line-height:1.15}
+.t-hero span{display:block;font-size:15px;opacity:.9;margin-top:6px}
+.ops.vis button{padding:12px 6px 10px}
+.ops.vis em{display:flex;align-items:center;justify-content:center;height:40px;margin:0 auto 7px}
+.sw{width:40px;border-radius:50%;border:1px solid #d9e0e6}
+.fo{width:40px}.fo:before{content:"";display:block;background:#7fd3f7;border:2px solid #0079AD}
+.fo.f0:before{width:32px;height:32px;border-radius:50%}.fo.f1:before{width:38px;height:26px;border-radius:4px}
+.fo.f2:before{width:30px;height:30px;border-radius:4px}.fo.f3:before{width:36px;height:30px;border-radius:40% 60% 45% 55%/55% 40% 60% 45%}
+.tz{width:40px}.tz i{display:block;border-radius:50%;background:#7fd3f7;border:2px solid #0079AD}
+.ops.lst{grid-template-columns:1fr!important;gap:7px}
+.ops.lst button{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;text-align:left}
+.ops.lst button small{margin:0;font-size:12.5px;background:#E8F6FC;color:var(--tcd);padding:3px 9px;border-radius:6px;font-weight:600}
+.ops.lst button.on small{background:var(--tc);color:#fff}
 /* tarjetas */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
 .card{border:1px solid var(--linea);border-radius:14px;padding:22px;background:#fff}
@@ -117,6 +131,21 @@ h2 em{font-style:normal;color:var(--ac)}
 .cond .fe{margin-top:14px;font-size:15px;font-weight:500;color:var(--ac);line-height:1.6}
 footer{background:#0D1A30;color:#93AECB;font-size:13px;font-weight:300;padding:26px 0}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+/* referencia */
+.ref{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;margin-top:30px;align-items:start}
+.ref-img{display:block;border:1px solid var(--linea);border-radius:14px;overflow:hidden;box-shadow:0 14px 40px rgba(20,39,74,.10);text-decoration:none;max-height:560px;position:relative}
+.ref-img img{width:100%}
+.ref-img span{position:absolute;left:0;right:0;bottom:0;background:rgba(13,26,48,.85);color:#fff;font-size:12px;padding:8px 14px}
+.ref-btn{display:inline-block;margin-top:22px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:12px 22px;border-radius:9px}
+/* guía */
+.guia{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+.g{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:20px}
+.gn{width:30px;height:30px;border-radius:50%;background:var(--ac);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.g b{display:block;font-size:15.5px;margin-top:12px}
+.ruta{display:inline-block;margin-top:8px;font-size:11.5px;font-weight:600;color:var(--ac);background:#EAF1F8;border-radius:6px;padding:4px 9px;line-height:1.4}
+.g p{font-size:13.5px;font-weight:300;color:var(--gris);line-height:1.6;margin-top:8px}
+.g p strong{font-weight:600;color:var(--navy)}
+@media (max-width:820px){.ref,.guia{grid-template-columns:1fr}.ref-img{max-height:420px}}
 /* modal */
 .modal{position:fixed;inset:0;background:rgba(13,26,48,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:9}
 .modal.on{display:flex}
@@ -127,6 +156,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .modal .box p strong{font-weight:600;color:var(--navy)}
 .modal .box button{margin-top:18px;font:inherit;font-weight:600;font-size:14px;border:0;border-radius:9px;padding:11px 20px;background:var(--navy);color:#fff;cursor:pointer}
 @media (max-width:820px){
+  .t-hero b{font-size:22px}.t-hero span{font-size:13.5px}
   .top{padding:22px 0 46px}.top .eye{margin-top:36px}.top h1{font-size:32px}.top h1 span{font-size:21px}.top p{font-size:15px}
   .sec{padding:52px 0}h2{font-size:25px}
   .t-body{grid-template-columns:1fr;gap:20px;padding:18px}
@@ -152,6 +182,27 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
 <section class="sec">
   <div class="wrap">
+    <div class="kick">La referencia</div>
+    <h2>Lo hacemos <em>igual a Tema Calcos</em></h2>
+    <p class="intro">El cotizador va a funcionar <b>igual que el de Tema Calcos</b>, con el mismo paso a paso, adaptado a tu marca y a tus productos.</p>
+    <div class="ref">
+      <a class="ref-img" href="https://temacalcos.com.ar/producto/emprendedores/" target="_blank" rel="noopener"><img src="referencia-temacalcos.jpg" alt="Cotizador de Tema Calcos" loading="lazy"><span>temacalcos.com.ar/producto/emprendedores</span></a>
+      <div>
+        <div class="puntos">
+          <div class="punto"><i>1</i><div><b>Banner arriba que invita a armarlo</b><p>«Creá el sticker de tu logo» y los pasos a seguir.</p></div></div>
+          <div class="punto"><i>2</i><div><b>Opciones en tarjetas con foto</b><p>Material, forma y tamaño, cada uno con su imagen para que se entienda sin leer.</p></div></div>
+          <div class="punto"><i>3</i><div><b>Cantidades con su precio</b><p>Cada cantidad muestra cuánto sale, y el total se actualiza solo.</p></div></div>
+          <div class="punto"><i>4</i><div><b>Carga del diseño e instrucciones</b><p>Sube su archivo y deja aclaraciones antes de comprar.</p></div></div>
+          <div class="punto"><i>5</i><div><b>Total y «Agregar al carrito»</b><p>En tu tienda paga por tu checkout de Tiendanube, con todos tus medios de pago.</p></div></div>
+        </div>
+        <a class="ref-btn" href="https://temacalcos.com.ar/producto/emprendedores/" target="_blank" rel="noopener">Ver la referencia →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec gris">
+  <div class="wrap">
     <div class="kick">Probalo</div>
     <h2>Así lo ve <em>tu cliente</em></h2>
     <p class="intro">Una sola página para <b>stickers, planchas e imanes</b>. Elige, ve el total al instante, te manda su diseño y compra.</p>
@@ -161,6 +212,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
       <div class="tienda">
         <div class="t-anun">ENVÍOS A TODO EL PAÍS · DESCUENTO ABONANDO POR TRANSFERENCIA</div>
         <div class="t-head"><img src="logo-tcg.webp" alt="Todo Color Gráfica"></div>
+        <div class="t-hero"><b id="hero-t">¡Creá el sticker de tu logo!</b><span>Empezá eligiendo el material, la forma, y seguí los pasos.</span></div>
         <div class="t-body">
           <div class="t-foto"><img src="foto-1.webp" alt="Stickers personalizados"><small>Acá va la foto de cada material</small></div>
           <div>
@@ -170,13 +222,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
             <div class="paso"><div class="lb"><b>1</b>Producto</div>
               <div class="ops c3" data-k="prod"></div></div>
             <div class="paso"><div class="lb"><b>2</b>Material</div>
-              <div class="ops" data-k="mat"></div></div>
+              <div class="ops vis" data-k="mat"></div></div>
             <div class="paso" id="p-forma"><div class="lb"><b>3</b>Forma</div>
-              <div class="ops" data-k="forma"></div></div>
+              <div class="ops vis" data-k="forma"></div></div>
             <div class="paso"><div class="lb"><b id="n-tam">4</b>Tamaño <small>· lado más largo</small></div>
-              <div class="ops" data-k="tam"></div></div>
+              <div class="ops vis" data-k="tam"></div></div>
             <div class="paso"><div class="lb"><b id="n-cant">5</b>Cantidad</div>
-              <div class="ops" data-k="cant"></div></div>
+              <div class="ops lst" data-k="cant"></div></div>
 
             <div class="paso"><div class="lb"><b id="n-dis">6</b>Tu diseño</div>
               <div class="up">
@@ -200,7 +252,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   </div>
 </section>
 
-<section class="sec gris">
+<section class="sec">
   <div class="wrap">
     <div class="kick">Conectado a tu Tiendanube</div>
     <h2>Qué pasa cuando <em>tu cliente compra</em></h2>
@@ -213,35 +265,44 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   </div>
 </section>
 
-<section class="sec">
+<section class="sec gris">
   <div class="wrap">
     <div class="kick">Lo manejás vos</div>
-    <h2>Las opciones las cargás <em>y las sacás vos</em></h2>
-    <p class="intro">Cada combinación es una <b>variante de tu producto en Tiendanube</b>. La editás desde tu panel como cualquier producto, y el cotizador la toma sola.</p>
+    <h2>Cómo lo modificás <em>vos</em></h2>
+    <p class="intro">Cada material es un <b>producto de tu Tiendanube</b>, y cada combinación de forma, tamaño y cantidad es una <b>variante</b> de ese producto. Lo que cambies en el panel, el cotizador lo muestra solo: no tenés que tocar código ni pedirme nada.</p>
     <div class="panel">
       <div class="tn">
-        <div class="tn-h">Tu panel de Tiendanube · Stickers vinilo · Variantes</div>
+        <div class="tn-h">Tu panel de Tiendanube · Productos › Stickers vinilo › Variantes</div>
         <table>
-          <thead><tr><th>Variante</th><th>Precio</th><th>Estado</th></tr></thead>
+          <thead><tr><th>Variante</th><th>Precio</th><th>Stock</th></tr></thead>
           <tbody>
-            <tr><td>Silueta · 6 cm · 100 u.</td><td class="p">$24.000</td><td><span class="pill">Visible</span></td></tr>
-            <tr><td>Silueta · 6 cm · 200 u.</td><td class="p">$40.800</td><td><span class="pill">Visible</span></td></tr>
-            <tr><td>Circular · 8 cm · 100 u.</td><td class="p">$29.000</td><td><span class="pill">Visible</span></td></tr>
-            <tr class="off"><td>Circular · 10 cm · 1000 u.</td><td class="p">$190.000</td><td><span class="pill">Sin stock</span></td></tr>
+            <tr><td>Silueta · 6 cm · 100 u.</td><td class="p">$24.000</td><td><span class="pill">Infinito</span></td></tr>
+            <tr><td>Silueta · 6 cm · 200 u.</td><td class="p">$40.800</td><td><span class="pill">Infinito</span></td></tr>
+            <tr><td>Circular · 8 cm · 100 u.</td><td class="p">$29.000</td><td><span class="pill">Infinito</span></td></tr>
+            <tr class="off"><td>Circular · 10 cm · 500 u.</td><td class="p">$190.000</td><td><span class="pill">0 · no se muestra</span></td></tr>
           </tbody>
         </table>
       </div>
       <div class="puntos">
-        <div class="punto"><i>✓</i><div><b>Cambiás un precio</b><p>Lo editás en la variante y el cotizador muestra el nuevo al instante.</p></div></div>
-        <div class="punto"><i>✓</i><div><b>Sacás una opción</b><p>La dejás sin stock y desaparece del cotizador, sin borrar nada.</p></div></div>
-        <div class="punto"><i>✓</i><div><b>Sumás una opción</b><p>Agregás la variante nueva (otro tamaño, otra cantidad) y aparece como un botón más.</p></div></div>
-        <div class="punto"><i>✓</i><div><b>Textos y fotos</b><p>Los títulos, las aclaraciones y la foto de cada material también los cambiás vos.</p></div></div>
+        <div class="punto"><i>✓</i><div><b>Un producto por material</b><p>Vinilo, OPP oro, holográfico, UV 3D… cada uno es un producto, con su foto y sus variantes.</p></div></div>
+        <div class="punto"><i>✓</i><div><b>Las variantes son las opciones</b><p>Forma, tamaño y cantidad. Cada combinación tiene su precio.</p></div></div>
+        <div class="punto"><i>✓</i><div><b>El cotizador las lee solo</b><p>Siempre muestra lo que está cargado en tu panel en ese momento.</p></div></div>
       </div>
     </div>
+
+    <div class="guia">
+      <div class="g"><div class="gn">1</div><b>Cambiar un precio</b><div class="ruta">Productos › el material › Variantes</div><p>Buscás la combinación (por ejemplo «Silueta · 6 cm · 100 u.»), cambiás el precio y tocás <strong>Guardar</strong>. El cotizador ya muestra el nuevo.</p></div>
+      <div class="g"><div class="gn">2</div><b>Sacar una opción</b><div class="ruta">Productos › el material › Variantes</div><p>Le ponés <strong>stock 0</strong> a esa variante y desaparece del cotizador. Para volver a mostrarla, le devolvés el stock. No se borra nada.</p></div>
+      <div class="g"><div class="gn">3</div><b>Sumar un tamaño o una cantidad</b><div class="ruta">Productos › el material › Variantes › Editar</div><p>Agregás el valor nuevo (por ejemplo «12 cm» o «1000 u.»), le cargás el precio a las combinaciones nuevas y guardás. Aparece como una tarjeta más.</p></div>
+      <div class="g"><div class="gn">4</div><b>Sumar un material nuevo</b><div class="ruta">Productos › Agregar producto</div><p>Creás el producto con su foto y sus variantes, como cualquier otro, dentro de la categoría del cotizador. Se suma solo como una opción más.</p></div>
+      <div class="g"><div class="gn">5</div><b>Cambiar la foto de una opción</b><div class="ruta">Productos › el material › Fotos</div><p>La foto de cada tarjeta de material es la foto principal de ese producto. La cambiás ahí y listo.</p></div>
+      <div class="g"><div class="gn">6</div><b>Cambiar textos y aclaraciones</b><div class="ruta">Tu tienda › Editar diseño › lápiz «Editar este bloque»</div><p>El título, el banner y las aclaraciones («el tamaño es el lado más largo», tiempos, formato del archivo) los editás con el lápiz, sin código.</p></div>
+    </div>
+    <p class="nota-demo" style="text-align:left">Al entregarte el cotizador te dejo este paso a paso guardado, y lo hacemos juntos la primera vez.</p>
   </div>
 </section>
 
-<section class="sec gris">
+<section class="sec">
   <div class="wrap">
     <div class="kick">La inversión</div>
     <h2>El total <em>del trabajo</em></h2>
@@ -252,7 +313,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   </div>
 </section>
 
-<section class="sec">
+<section class="sec gris">
   <div class="wrap">
     <div class="kick">Cómo arrancamos</div>
     <h2>5 días <em>de trabajo</em></h2>
@@ -265,11 +326,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
     </div>
     <div class="pago"><b>El pago es por adelantado.</b> Es lo que reserva tus 5 días de estructuración en mi agenda y te pasa al seguimiento del trabajo, donde ves en qué etapa está tu cotizador.</div>
     <div class="verde"><b>Lo que me tenés que pasar:</b> precios y opciones de cada producto, una foto de cada material o terminación, las aclaraciones que querés mostrar (medidas, tiempos, formato del archivo) y acceso a tu Tiendanube como colaborador. Por audio, WhatsApp, documento o Drive.</div>
-    <div class="cond"><small>Aceptación y condiciones</small>
-      <p>Al abonar, das por aceptada esta propuesta.</p>
-      <p><b>Correcciones:</b> hago todas las que entren en lo pactado, hasta que el cotizador quede como lo querés. Una vez que me confirmás que está listo, o pasados los 5 días desde la entrega, los cambios nuevos ya no forman parte del trabajo y podés hacerlos vos desde tu panel.</p>
-      <p><b>Reembolsos:</b> dentro de los 2 días de abonado, se devuelve completo. Después, y hasta la entrega, se devuelve el 50 % y el resto cubre el trabajo y los costos ya invertidos. Con el cotizador entregado y en etapa de correcciones, no hay reembolso.</p>
-      <p class="fe">Trabajamos siempre de buena fe. Estas condiciones nos cuidan a los dos, pero no son una pared: si en algún momento surge algo, lo hablamos y le buscamos la vuelta juntos. Para todo hay solución.</p>
+    <div class="cond"><small>Correcciones</small>
+      <p>Hago todas las que entren en lo pactado, hasta que el cotizador quede como lo querés. Una vez que me confirmás que está listo, o pasados los 5 días desde la entrega, los cambios nuevos ya no forman parte del trabajo y podés hacerlos vos desde tu panel.</p>
     </div>
   </div>
 </section>
@@ -280,19 +338,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
 <script>
 var D={
-  stickers:{t:'Armá tus stickers',forma:true,
+  stickers:{t:'Armá tus stickers',h:'¡Creá el sticker de tu logo!',forma:true,
     mat:[['Vinilo blanco',1],['OPP oro',1.15],['Holográfico',1.25],['UV Gel 3D',1.45]],
     tam:[['4 cm',.8],['6 cm',1],['8 cm',1.2],['10 cm',1.45]],
     cant:[[50,13500],[100,24000],[200,40800],[500,90000]]},
-  planchas:{t:'Armá tus planchas',forma:false,
+  planchas:{t:'Armá tus planchas',h:'¡Armá tu plancha de stickers!',forma:false,
     mat:[['Papel',1],['Vinilo',1.3],['OPP',1.4],['Kraft',1.1]],
     tam:[['A4',1],['30 x 40',1.6],['50 x 70',2.6],['100 x 50',3.4]],
     cant:[[1,15000],[5,67500],[10,127500],[20,240000]]},
-  imanes:{t:'Armá tus imanes',forma:true,
+  imanes:{t:'Armá tus imanes',h:'¡Creá el imán de tu marca!',forma:true,
     mat:[['Imán 0,3 mm',1],['Imán 0,5 mm',1.2],['Laminado',1.35],['Brillo',1.1]],
     tam:[['5 cm',1],['7 cm',1.25],['9 cm',1.5],['10 x 15',1.9]],
     cant:[[25,18000],[50,32000],[100,58000],[200,104000]]}
 };
+var SW=['linear-gradient(135deg,#fff,#e9edf1)','linear-gradient(135deg,#f6d77a,#b8892b)','linear-gradient(135deg,#9be7ff,#f3a6ff,#fff59b,#8ef0c0)','linear-gradient(135deg,#1aa6e8,#7fd3f7)'];
 var FORMAS=['Circular','Rectangular','Cuadrado','Silueta'];
 var S={prod:'stickers',mat:0,forma:3,tam:1,cant:1};
 var $=function(s){return document.querySelector(s)};
@@ -306,16 +365,16 @@ function pinta(k,items,lab){
 }
 function render(){
   var d=D[S.prod];
-  $('#tit').textContent=d.t;
+  $('#tit').textContent=d.t;$('#hero-t').textContent=d.h;
   pinta('prod',[['stickers','Stickers'],['planchas','Planchas'],['imanes','Imanes']],function(it){return it[1]});
-  pinta('mat',d.mat,function(it){return it[0]});
+  pinta('mat',d.mat,function(it,i){return '<em class="sw" style="background:'+SW[i]+'"></em>'+it[0]});
   $('#p-forma').style.display=d.forma?'':'none';
-  if(d.forma)pinta('forma',FORMAS.map(function(f){return[f]}),function(it){return it[0]});
+  if(d.forma)pinta('forma',FORMAS.map(function(f){return[f]}),function(it,i){return '<em class="fo f'+i+'"></em>'+it[0]});
   var o=d.forma?0:-1;$('#n-tam').textContent=4+o;$('#n-cant').textContent=5+o;$('#n-dis').textContent=6+o;
-  pinta('tam',d.tam,function(it){return it[0]});
+  pinta('tam',d.tam,function(it,i){var z=14+i*7;return '<em class="tz"><i style="width:'+z+'px;height:'+z+'px"></i></em>'+it[0]});
   pinta('cant',d.cant,function(it,i){
     var t=d.cant[i][1]*d.mat[S.mat][1]*d.tam[S.tam][1];
-    return it[0]+(S.prod==='planchas'?' plancha'+(it[0]>1?'s':''):' u.')+'<small>'+fm(t)+'</small>'});
+    return '<span>'+it[0]+(S.prod==='planchas'?' plancha'+(it[0]>1?'s':''):' unidades')+'</span><small>'+fm(t)+'</small>'});
   var p=precio(),c=d.cant[S.cant][0];
   $('#r-det').textContent=d.mat[S.mat][0]+(d.forma?' · '+FORMAS[S.forma]:'')+' · '+d.tam[S.tam][0]+' · '+c+(S.prod==='planchas'?' pl.':' u.');
   $('#r-uni').textContent='$'+Math.round(Math.round(p/100)*100/c).toLocaleString('es-AR')+' c/u';
