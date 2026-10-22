@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instructivo del cotizador · Todo Color Gráfica</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#14274A;--ac:#2E5D87;--gris:#5A6B85;--linea:#E1E9F2;--suave:#F5F8FB;--mg:#E8187A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Poppins,sans-serif;color:var(--navy);background:#fff;-webkit-font-smoothing:antialiased;line-height:1.55}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+.top{background:linear-gradient(90deg,#0D1A30 0%,#14274A 45%,#2E5D87 100%);color:#fff;padding:34px 0 40px}
+.top small{font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#A9C7E4}
+.top h1{font-size:32px;font-weight:700;line-height:1.15;margin-top:8px}
+.top p{margin-top:10px;font-size:15.5px;font-weight:300;color:#DCE7F2;max-width:600px}
+.top a{color:#fff;font-weight:600}
+.sec{padding:34px 0 8px}
+.kick{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ac)}
+h2{font-size:24px;font-weight:700;margin-top:4px}
+.intro{margin-top:6px;font-size:15px;font-weight:300;color:var(--gris)}
+.pasos{margin-top:18px;display:grid;gap:12px}
+.paso{display:flex;gap:14px;border:1px solid var(--linea);border-radius:14px;padding:16px 18px;background:#fff}
+.paso i{flex:0 0 30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-style:normal;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.paso b{display:block;font-size:15.5px}
+.paso p{font-size:14.5px;font-weight:300;color:var(--gris);margin-top:2px}
+.ruta{display:inline-block;margin-top:6px;font-size:13px;font-weight:600;color:var(--ac);background:#EAF1F8;border-radius:6px;padding:3px 9px}
+table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px;border:1px solid var(--linea);border-radius:12px;overflow:hidden}
+th{text-align:left;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);background:var(--suave);padding:10px 14px}
+td{padding:11px 14px;border-top:1px solid var(--linea)}
+td:first-child{font-weight:600;white-space:nowrap}
+.tip{margin-top:14px;background:var(--suave);border-left:3px solid var(--ac);border-radius:8px;padding:12px 16px;font-size:14px;color:var(--gris)}
+.tip b{color:var(--navy)}
+footer{margin-top:40px;padding:22px 0;border-top:1px solid var(--linea);font-size:12.5px;color:var(--gris)}
+@media (max-width:600px){.top h1{font-size:26px}h2{font-size:21px}td:first-child{white-space:normal}.paso{padding:14px}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <small>Todo Color Gráfica · Cotizador</small>
+  <h1>Cómo modificar tu cotizador</h1>
+  <p>Todo se cambia desde tu Tiendanube, sin tocar código. Tu cotizador: <a href="https://todocolorgrafica.com.ar/cotizador/">todocolorgrafica.com.ar/cotizador</a></p>
+</div></header>
+
+<section class="sec"><div class="wrap">
+  <div class="kick">1 · Precios, medidas y cantidades</div>
+  <h2>Se cambian en tus productos</h2>
+  <p class="intro">Cada material del cotizador es un producto de tu tienda. Sus variantes son las opciones que elige el cliente, y el precio es el de cada variante.</p>
+
+  <table>
+    <tr><th>En el cotizador</th><th>Producto de tu tienda</th></tr>
+    <tr><td>Stickers · Blanco</td><td>Stickers con tu LOGO + Laca Sectorizada PREMIUM</td></tr>
+    <tr><td>Stickers · Dorado</td><td>STICKERS EN OPP ORO</td></tr>
+    <tr><td>Stickers · Holográfico</td><td>STICKERS EN OPP HOLOGRAFICO</td></tr>
+    <tr><td>Planchas</td><td>PLANCHA DE STICKERS PREMIUM</td></tr>
+    <tr><td>Imanes</td><td>IMANES PUBLICITARIOS</td></tr>
+  </table>
+
+  <div class="pasos">
+    <div class="paso"><i>1</i><div><b>Cambiar un precio</b><p>Entrás al producto, buscás la combinación (por ejemplo «500 · 5 cm»), cambiás el precio y guardás. El cotizador muestra el nuevo al instante.</p><span class="ruta">Productos › Lista de productos › el producto › Variantes</span></div></div>
+    <div class="paso"><i>2</i><div><b>Sacar una opción</b><p>Ponele stock 0 a esa variante y deja de aparecer en el cotizador. Para volver a mostrarla, le devolvés el stock.</p></div></div>
+    <div class="paso"><i>3</i><div><b>Sumar una medida o una cantidad</b><p>Agregás la variante nueva en ese producto, con su precio, y aparece sola como una opción más.</p></div></div>
+  </div>
+  <div class="tip"><b>Atajo:</b> en <b>Productos › Lista de productos</b> podés cambiar el precio de cada variante desde la misma lista, sin entrar producto por producto.</div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="kick">2 · Fotos, textos y materiales</div>
+  <h2>Se cambian con el lápiz</h2>
+  <p class="intro">El lápiz aparece solo dentro de tu Tiendanube. Tus clientes nunca lo ven.</p>
+  <div class="pasos">
+    <div class="paso"><i>1</i><div><b>Abrí la vista previa de tu tienda</b><span class="ruta">Tienda online › Diseño › Editar diseño actual</span></div></div>
+    <div class="paso"><i>2</i><div><b>Entrá a la página del cotizador</b><p>En la vista previa tocá «Creá el sticker de tu logo» en el menú y bajá hasta el final del cotizador.</p></div></div>
+    <div class="paso"><i>3</i><div><b>Tocá «Editar el cotizador»</b><p>Se abre un panel con todo lo que hoy se ve, separado en Stickers, Planchas e Imanes: nombre, texto y foto de cada tarjeta, el banner, y la lista de materiales con su foto, tiempo de producción y el cartel «IMPORTANTE».</p></div></div>
+    <div class="paso"><i>4</i><div><b>Cambiá y guardá</b><p>Lo que cambiás se ve arriba en el momento. <b>Guardar</b> lo publica. <b>Descartar</b> lo deja como estaba. <b>Volver al original</b> vuelve a lo que te entregamos.</p></div></div>
+  </div>
+  <div class="tip"><b>Sumar un material nuevo:</b> primero creá el producto en tu tienda con sus variantes, en el mismo orden que el modelo (por ejemplo, para stickers: cantidad y medida, como «STICKERS EN OPP ORO»). Después, en el lápiz, tocás «Agregar material» y pegás el link de ese producto.</div>
+  <div class="tip"><b>La home también se edita igual:</b> en la vista previa de la página de inicio, cada bloque (beneficios, categorías, preguntas frecuentes, reseñas, el local…) tiene su propio lápiz debajo.</div>
+</div></section>
+
+<footer><div class="wrap">PRAXIS · Diseño y desarrollo de tiendas online</div></footer>
+</body>
+</html>
