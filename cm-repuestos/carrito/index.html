@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Carrito · CM Repuestos — vista previa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../cm.css">
+<style>
+body{background:#EDEDF0;min-height:100vh}
+.back{position:fixed;inset:0;top:82px;background:url(../img/combo.webp) center/cover;filter:blur(3px) brightness(.45)}
+.demo{position:fixed;top:92px;left:16px;z-index:5;display:flex;gap:6px;background:rgba(0,0,0,.6);padding:6px;border-radius:12px}
+.demo button{font-family:inherit;font-size:12px;font-weight:700;border:0;border-radius:8px;padding:8px 12px;background:transparent;color:#fff;cursor:pointer}
+.demo button.on{background:var(--y);color:#000}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:440px;max-width:100%;background:#fff;z-index:20;display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.35)}
+.dh{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line)}
+.dh h2{font-size:21px;font-weight:800;color:var(--ink)}
+.dh h2 span{color:var(--tx2);font-weight:600;font-size:16px}
+.dh .x{width:38px;height:38px;border:1.5px solid var(--ink);border-radius:10px;display:grid;place-items:center;background:#fff;cursor:pointer}
+.dh .x svg{width:18px;height:18px;stroke:var(--ink);stroke-width:2.4}
+.db{flex:1;overflow:auto;padding:16px 20px 20px}
+.how{background:var(--ink);color:#D6D7DC;border-radius:14px;padding:14px 16px;display:flex;gap:12px;font-size:13px;line-height:1.45}
+.how svg{flex:0 0 24px;width:24px;height:24px;stroke:var(--y);fill:none;stroke-width:2}
+.how b{color:#fff;display:block;font-size:14px;margin-bottom:2px}
+.it{display:grid;grid-template-columns:84px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.it img{width:84px;height:84px;object-fit:cover;border-radius:12px}
+.it .n{font-weight:800;color:var(--ink);font-size:15px;line-height:1.25}
+.it .m{font-size:12.5px;color:var(--tx2);margin-top:2px}
+.it .r{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.qty{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:9px}
+.qty button{width:32px;height:32px;border:0;background:none;font-size:17px;cursor:pointer;color:var(--ink)}
+.qty span{min-width:26px;text-align:center;font-weight:700;color:var(--ink)}
+.it .p{font-weight:800;color:var(--ink);font-size:17px}
+.it .del{font-size:12px;color:var(--tx2);text-decoration:underline;margin-top:6px;display:inline-block;cursor:pointer}
+.steps{margin-top:18px}
+.steps h3{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+.st{display:grid;grid-template-columns:34px 1fr;gap:12px;position:relative;padding-bottom:14px}
+.st:not(:last-child):before{content:"";position:absolute;left:16px;top:34px;bottom:0;width:2px;background:var(--line)}
+.st i{font-style:normal;width:34px;height:34px;border-radius:50%;background:var(--y);color:#000;font-weight:800;display:grid;place-items:center;font-size:14px;position:relative}
+.st b{display:block;font-size:14px}
+.st p{font-size:13px;line-height:1.45}
+.st .wa{color:#128C4A;font-weight:700}
+.df{border-top:1px solid var(--line);padding:14px 20px calc(16px + env(safe-area-inset-bottom));background:#fff;box-shadow:0 -10px 30px rgba(0,0,0,.05)}
+.tot{display:flex;justify-content:space-between;align-items:baseline}
+.tot span{font-size:14px;color:var(--tx)}
+.tot b{font-size:27px;font-weight:800;letter-spacing:-.02em}
+.tot2{font-size:12.5px;color:var(--tx2);margin:2px 0 12px}
+.free{display:flex;justify-content:center;gap:6px;align-items:center;font-size:12.5px;font-weight:600;color:#15803D;margin:9px 0 10px}
+.free svg{width:15px;height:15px;stroke:#15803D;fill:none;stroke-width:2.4}
+.mini{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:11.5px;color:var(--tx2)}
+.mini span:before{content:"✓ ";color:var(--ok);font-weight:800}
+/* pedido enviado */
+.ok-wrap{text-align:center;padding:10px 4px 0}
+.ok-ic{width:74px;height:74px;border-radius:50%;background:#DCFCE7;display:grid;place-items:center;margin:8px auto 14px}
+.ok-ic svg{width:38px;height:38px;stroke:#15803D;fill:none;stroke-width:3}
+.ok-wrap h3{font-size:22px;color:var(--ink);font-weight:800;line-height:1.2}
+.ok-wrap .num{display:inline-block;margin:10px 0 4px;background:var(--soft);border-radius:8px;padding:5px 12px;font-size:13px;font-weight:700;color:var(--ink)}
+.ok-wrap p.l{font-size:14px;margin-top:6px}
+.tl{text-align:left;margin-top:22px;border:1px solid var(--line);border-radius:14px;padding:16px 16px 4px}
+.tl .st i.done{background:#16A34A;color:#fff}
+.tl .st i.now{background:var(--y)}
+.tl .st i.next{background:#F1F2F4;color:var(--tx2)}
+.tl .st small{display:inline-block;font-size:11px;font-weight:700;border-radius:5px;padding:1px 7px;margin-left:6px;vertical-align:1px}
+.tl .st small.a{background:#DCFCE7;color:#15803D}
+.tl .st small.b{background:#FFF6BF;color:#7A6A00}
+.tip{margin-top:14px;background:#F0FDF4;border:1px solid #B7E7C6;border-radius:12px;padding:12px 14px;font-size:13px;text-align:left;display:flex;gap:10px}
+.tip svg{flex:0 0 20px;width:20px;height:20px;fill:#25D366}
+[hidden]{display:none!important}
+@media(max-width:560px){
+  .back{top:72px}.drawer{width:100%}.demo{top:auto;bottom:auto;left:50%;transform:translateX(-50%);top:8px;z-index:30}
+  .dh{padding-top:64px}
+  .demo button{white-space:nowrap;font-size:11.5px;padding:8px 10px}
+  .mini{display:none}.tot b{font-size:23px}.tot2{margin-bottom:10px}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr"><div class="wrap">
+  <img src="../img/logo-crop.webp" alt="CM Repuestos Mayorista">
+  <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 016 0"/></svg></div>
+</div></header>
+<div class="back"></div>
+
+<div class="demo" role="tablist" aria-label="Vista previa">
+  <button class="on" data-v="cart">1 · El carrito</button>
+  <button data-v="done">2 · Pedido enviado</button>
+</div>
+
+<aside class="drawer" aria-label="Tu pedido">
+  <!-- VISTA 1: CARRITO -->
+  <div id="v-cart" style="display:contents">
+    <div class="dh"><h2>Tu pedido <span>(1)</span></h2><a class="x" href="../combo-emprendedor-plus/" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div>
+    <div class="db">
+      <div class="how">
+        <svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+        <div><b>Hoy no pagás nada.</b>En CM la compra es asistida: enviás tu pedido, confirmamos el stock real y te escribimos por WhatsApp para coordinar el pago y el envío.</div>
+      </div>
+
+      <div class="it">
+        <img src="../img/combo.webp" alt="">
+        <div>
+          <div class="n">COMBO EMPRENDEDOR PLUS</div>
+          <div class="m">30 productos · 165 unidades · motos 110 y 150</div>
+          <div class="r">
+            <div class="qty"><button id="mn" aria-label="Menos">−</button><span id="q">1</span><button id="mas" aria-label="Más">+</button></div>
+            <div class="p" id="pl">$499.999</div>
+          </div>
+          <span class="del">Quitar</span>
+        </div>
+      </div>
+
+      <div class="steps">
+        <h3>Cómo sigue tu pedido</h3>
+        <div class="st"><i>1</i><div><b>Enviás tu pedido</b><p>Dejás tu nombre, tu WhatsApp y tu localidad. <b>No se cobra nada.</b></p></div></div>
+        <div class="st"><i>2</i><div><b>Confirmamos stock real</b><p>Revisamos cada producto del pedido. Si algo falta, te ofrecemos un reemplazo antes de cobrar.</p></div></div>
+        <div class="st"><i>3</i><div><b>Te escribimos por <span class="wa">WhatsApp</span></b><p>Una persona de CM te contacta para cerrar el pago y el envío a tu localidad.</p></div></div>
+      </div>
+    </div>
+    <div class="df">
+      <div class="tot"><span>Total del pedido</span><b id="tt">$499.999</b></div>
+      <div class="tot2">Precio mayorista · el envío lo coordinamos por WhatsApp</div>
+      <button class="btn" id="send"><svg viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-2.5-6.5z"/></svg>Enviar mi pedido</button>
+      <div class="free"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Sin pago online · sin compromiso</div>
+      <a class="btn-wa" href="#" onclick="return false"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>Prefiero consultar antes por WhatsApp</a>
+      <div class="mini"><span>Stock real</span><span>Asesoramiento</span><span>Envíos a todo el país</span></div>
+    </div>
+  </div>
+
+  <!-- VISTA 2: PEDIDO ENVIADO -->
+  <div id="v-done" style="display:contents" hidden>
+    <div class="dh"><h2>Pedido enviado</h2><a class="x" href="../combo-emprendedor-plus/" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div>
+    <div class="db">
+      <div class="ok-wrap">
+        <div class="ok-ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></div>
+        <h3>¡Listo! Tu pedido ya le llegó a CM Repuestos</h3>
+        <span class="num">Pedido #0000 · Combo Emprendedor Plus</span>
+        <p class="l">No tenés que hacer nada más: ahora nos toca a nosotros.</p>
+        <div class="tl">
+          <div class="st"><i class="done">✓</i><div><b>Pedido recibido <small class="a">LISTO</small></b><p>Ya tenemos tu pedido y tus datos.</p></div></div>
+          <div class="st"><i class="now">2</i><div><b>Revisamos el stock real <small class="b">AHORA</small></b><p>Confirmamos cada producto. Si algo falta, te proponemos un reemplazo.</p></div></div>
+          <div class="st"><i class="next">3</i><div><b>Te escribimos por WhatsApp</b><p>Para cerrar el pago y el envío a tu localidad.</p></div></div>
+        </div>
+        <div class="tip"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2z"/></svg><div><b>Tené el WhatsApp a mano.</b> Te vamos a escribir desde el +54 9 2477 39-7400. Agendalo para no perderte el mensaje.</div></div>
+      </div>
+    </div>
+    <div class="df"><a class="btn dark" href="../combo-emprendedor-plus/">Seguir viendo productos</a></div>
+  </div>
+</aside>
+
+<div class="pvw">VISTA PREVIA · PRAXIS</div>
+
+<script>
+const P=499999,fmt=n=>'$'+n.toLocaleString('es-AR');
+let q=1;const upd=()=>{document.getElementById('q').textContent=q;document.getElementById('pl').textContent=fmt(P*q);document.getElementById('tt').textContent=fmt(P*q)};
+document.getElementById('mn').onclick=()=>{if(q>1){q--;upd()}};
+document.getElementById('mas').onclick=()=>{q++;upd()};
+const views={cart:document.getElementById('v-cart'),done:document.getElementById('v-done')};
+const go=v=>{for(const k in views)views[k].hidden=k!==v;document.querySelectorAll('.demo button').forEach(b=>b.classList.toggle('on',b.dataset.v===v))};
+document.querySelectorAll('.demo button').forEach(b=>b.onclick=()=>go(b.dataset.v));
+document.getElementById('send').onclick=()=>go('done');
+</script>
+</body>
+</html>
