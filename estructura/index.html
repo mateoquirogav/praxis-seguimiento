@@ -474,6 +474,203 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .seg button{padding:6px 10px;font-size:12px}
   .stage{height:calc(100% - 140px)}
 }
+
+/* ───────── Ficha de producto (se abre al tocar un producto) ───────── */
+.device{position:relative}
+.card,.mono-buy .btn{cursor:pointer}
+.site.fx-on > [data-key]:not([data-key="ann"]):not([data-key="hdr"]):not([data-key="foot"]){display:none!important}
+.fx-pdp{padding:28px 0 72px}
+.fx-crumb{font-size:12px;color:var(--g4);margin-bottom:22px}
+.fx-crumb b{color:var(--ink);font-weight:500;cursor:pointer}
+.fx-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:start}
+.fx-gal{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px}
+.fx-thumbs{display:flex;flex-direction:column;gap:10px}
+.fx-thumbs .ph{aspect-ratio:1;border-radius:10px}
+.fx-thumbs .ph.on{box-shadow:0 0 0 1.5px var(--ink)}
+.fx-thumbs svg{width:22px;height:22px}
+.fx-main{aspect-ratio:4/5;border-radius:18px}
+.fx-main svg{width:56px;height:56px}
+.fx-info h1{font-family:Montserrat;font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.01em}
+.fx-info > *{animation:fxIn .5s var(--ease) both}
+.fx-info > *:nth-child(2){animation-delay:.04s}.fx-info > *:nth-child(3){animation-delay:.08s}.fx-info > *:nth-child(4){animation-delay:.12s}
+.fx-info > *:nth-child(5){animation-delay:.16s}.fx-info > *:nth-child(6){animation-delay:.2s}.fx-info > *:nth-child(n+7){animation-delay:.24s}
+@keyframes fxIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.fx-p{display:flex;gap:10px;align-items:baseline;margin-top:12px}
+.fx-p b{font-family:Montserrat;font-weight:700;font-size:24px}
+.fx-p s{font-size:14px;color:var(--g4)}
+.fx-cu{font-size:13px;color:var(--g5);margin-top:6px}
+.fx-lk{font-size:12.5px;font-weight:600;border-bottom:1.5px solid var(--ink);display:inline-block;margin-top:10px;padding-bottom:1px}
+.fx-lbl{font-size:12.5px;font-weight:600;margin:22px 0 9px}
+.fx-vars{display:flex;gap:8px;flex-wrap:wrap}
+.fx-vars span{min-width:42px;height:38px;padding:0 12px;border-radius:999px;border:1px solid var(--g3);display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer}
+.fx-vars span.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.fx-buy{display:flex;gap:10px;margin-top:18px}
+.fx-qty{height:50px;border:1px solid var(--g3);border-radius:999px;display:flex;align-items:center;gap:16px;padding:0 16px;font-weight:600}
+.fx-qty i{font-style:normal;color:var(--g5);cursor:pointer}
+.fx-add{flex:1;height:50px;cursor:pointer;letter-spacing:.06em;text-transform:uppercase;font-size:13px}
+.fx-row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--g2);padding:15px 0;margin-top:22px;font-size:13.5px;font-weight:600}
+.fx-row + .fx-row{margin-top:0}
+.fx-row i{font-style:normal;color:var(--g4)}
+.fx-desc{font-size:13px;color:var(--g5);line-height:1.6}
+.fx-desc .bar{height:9px;border-radius:5px;background:var(--g1);margin-top:9px}
+
+/* Embudo de precios (estilo Destino) */
+.fx-q{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.fx-q em{font-style:normal;letter-spacing:2px;font-size:12px}
+.fx-old{display:flex;gap:9px;align-items:center;margin-top:16px}
+.fx-old s{font-size:14px;color:var(--g4)}
+.fx-off{font-size:10.5px;font-weight:700;letter-spacing:.08em;padding:4px 9px;border-radius:999px;border:1.5px solid var(--ink)}
+.fx-big{font-family:Montserrat;font-weight:700;font-size:38px;letter-spacing:-.02em;line-height:1.1;margin-top:4px}
+.fx-best{display:flex;align-items:center;gap:14px;margin-top:16px;background:var(--ink);color:#fff;border-radius:16px;padding:16px 18px;position:relative;overflow:hidden}
+.fx-best::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.14) 50%,transparent 65%);transform:translateX(-100%);animation:fxShine 3.2s ease-in-out infinite}
+@keyframes fxShine{55%,100%{transform:translateX(100%)}}
+.fx-best .ic{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex:none}
+.fx-best .ic svg{width:19px;height:19px}
+.fx-best small{display:block;font-size:10px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,.6)}
+.fx-best span{font-size:12.5px;line-height:1.4}
+.fx-best b{margin-left:auto;font-family:Montserrat;font-size:27px;font-weight:700;white-space:nowrap}
+.fx-cbox{display:flex;align-items:center;gap:12px;border:1px solid var(--g2);border-radius:14px;padding:13px 18px;margin-top:10px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--g5)}
+.fx-cbox svg{width:20px;height:20px;flex:none}
+.fx-cbox b{margin-left:auto;font-family:Montserrat;font-size:19px;color:var(--ink);letter-spacing:0}
+.fx-ship{border:1.5px solid var(--ink);border-radius:14px;padding:13px 15px;margin-top:16px;position:relative}
+.fx-ship .tg{position:absolute;top:-9px;right:14px;background:var(--ink);color:#fff;font-size:9.5px;font-weight:700;letter-spacing:.1em;padding:3px 8px;border-radius:999px}
+.fx-ship-h{display:flex;align-items:center;gap:10px}
+.fx-ship-h svg{width:20px;height:20px;flex:none}
+.fx-ship-h h5{font-size:12.5px;font-weight:700;letter-spacing:.04em}
+.fx-ship-h p{font-size:11.5px;color:var(--g5);margin-top:1px}
+.fx-clock{margin-left:auto;display:flex;gap:4px}
+.fx-clock span{background:var(--ink);color:#fff;border-radius:6px;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font:700 12.5px Montserrat}
+.fx-ship-bar{height:4px;border-radius:2px;background:var(--g2);margin-top:12px;overflow:hidden}
+.fx-ship-bar i{display:block;height:100%;width:62%;background:var(--ink)}
+.fx-ops{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.fx-ops div{border:1px solid var(--g2);border-radius:12px;padding:11px 13px;font-size:11.5px;color:var(--g5);line-height:1.45}
+.fx-ops em{display:block;font-style:normal;letter-spacing:2px;font-size:11px;color:var(--ink);margin-bottom:4px}
+.fx-ops b{display:block;color:var(--ink);font-size:10.5px;letter-spacing:.06em;margin-top:5px}
+.fx-pays{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.fx-pays span{height:24px;min-width:38px;padding:0 7px;border-radius:5px;border:1px solid var(--g2);font-size:9.5px;font-weight:700;color:var(--g5);display:flex;align-items:center;justify-content:center}
+.fx-gar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}
+.fx-gar div{border:1px solid var(--g2);border-radius:14px;padding:14px 8px;text-align:center}
+.fx-gar svg{width:22px;height:22px;margin:0 auto 7px;display:block}
+.fx-gar h6{font-size:12px;font-weight:700}
+.fx-gar p{font-size:11px;color:var(--g5);margin-top:3px;line-height:1.4}
+.fx-wa{text-align:center;font-size:12.5px;color:var(--g5);margin-top:16px}
+.fx-wa b{color:var(--ink);border-bottom:1.5px solid var(--ink)}
+
+/* Capa sobre la pantalla: carrito y cross selling */
+.fx-ov{position:absolute;z-index:40;overflow:hidden;pointer-events:none}
+.device.mob .fx-ov{border-radius:0 0 40px 40px}
+.fx-bg{position:absolute;inset:0;background:rgba(0,0,0,.42);opacity:0;transition:opacity .3s ease}
+.fx-ov.fx-open-c .fx-bg,.fx-ov.fx-open-x .fx-bg{opacity:1;pointer-events:auto}
+.fx-cart{position:absolute;top:0;right:0;bottom:0;width:min(400px,100%);background:#fff;display:flex;flex-direction:column;transform:translateX(102%);transition:transform .42s var(--ease);pointer-events:auto}
+.device.mob .fx-cart{width:90%}
+.fx-ov.fx-open-c .fx-cart{transform:none}
+.fx-ch{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--g2);font-family:Montserrat;font-weight:700;font-size:15px}
+.fx-x{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1;color:var(--g5)}
+.fx-cb{flex:1;overflow-y:auto;padding:16px 20px;scrollbar-width:none}
+.fx-cb::-webkit-scrollbar{display:none}
+.fx-it{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--g2);animation:fxIn .4s var(--ease) both}
+.fx-it .ph{width:64px;height:76px;border-radius:10px;flex:none}
+.fx-it .ph svg{width:20px;height:20px}
+.fx-it h6{font-size:13px;font-weight:500}
+.fx-it small{display:block;font-size:11.5px;color:var(--g4);margin-top:2px}
+.fx-it .fx-qty{height:30px;gap:10px;padding:0 10px;font-size:12px;margin-top:8px;display:inline-flex}
+.fx-it b{margin-left:auto;font-size:13.5px;white-space:nowrap}
+.fx-it.xs-it small{color:var(--ink);font-weight:600}
+.fx-cf{border-top:1px solid var(--g2);padding:16px 20px 20px}
+.fx-tot{display:flex;justify-content:space-between;font-size:14px;font-weight:600}
+.fx-tot b{font-family:Montserrat;font-size:18px}
+.fx-cf .btn{width:100%;margin-top:14px;letter-spacing:.06em;text-transform:uppercase;font-size:13px}
+.fx-more{display:block;text-align:center;font-size:12.5px;font-weight:600;margin-top:12px;text-decoration:underline}
+.fx-free{border-radius:12px;background:var(--g0);border:1px solid var(--g2);padding:12px 14px;font-size:12px;margin-bottom:6px}
+.fx-free p b{font-weight:700}
+.fx-free div{height:6px;border-radius:3px;background:var(--g2);margin-top:9px;overflow:hidden}
+.fx-free i{display:block;height:100%;background:var(--ink);border-radius:3px;transition:width .8s var(--ease)}
+.fx-op{margin-top:14px}
+.fx-op h5{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g5);margin-bottom:8px}
+.fx-op-t{display:flex;gap:8px;width:max-content;animation:fxMarq 18s linear infinite}
+.fx-op-w{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.fx-op-t div{width:190px;border:1px solid var(--g2);border-radius:12px;padding:10px 12px;font-size:11px;color:var(--g5);line-height:1.4}
+.fx-op-t em{display:block;font-style:normal;letter-spacing:2px;color:var(--ink);font-size:10.5px}
+@keyframes fxMarq{to{transform:translateX(-50%)}}
+.fx-tr{border:1px solid var(--g2);border-radius:12px;margin-top:12px;overflow:hidden}
+.fx-tr div{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;font-size:12.5px}
+.fx-tr div + div{border-top:1px solid var(--g2)}
+.fx-tr div:first-child{background:var(--ink);color:#fff}
+.fx-tr div:first-child small{color:rgba(255,255,255,.65)}
+.fx-tr small{display:block;font-size:10.5px;color:var(--g5)}
+.fx-tr b{font-family:Montserrat;font-size:15px}
+.fx-safe{display:flex;align-items:center;justify-content:center;gap:6px;font-size:11.5px;color:var(--g5);margin-top:10px}
+.fx-safe svg{width:15px;height:15px}
+.fx-cf .fx-pays{justify-content:center;margin-top:10px}
+
+/* Cross selling (estilo Tacuba) */
+.fx-xs{position:absolute;left:50%;top:50%;width:min(370px,calc(100% - 32px));max-height:calc(100% - 32px);overflow-y:auto;scrollbar-width:none;background:#fff;border-radius:20px;box-shadow:0 30px 70px rgba(0,0,0,.3);transform:translate(-50%,-44%) scale(.94);opacity:0;transition:transform .45s var(--back),opacity .25s ease;pointer-events:none}
+.fx-ov.fx-open-x .fx-xs{transform:translate(-50%,-50%);opacity:1;pointer-events:auto}
+.fx-xh{display:flex;align-items:center;gap:9px;padding:14px 16px;font-family:Montserrat;font-weight:700;font-size:14.5px}
+.fx-xh .dot{width:9px;height:9px;border-radius:50%;background:var(--ink);animation:fxPulse 1.4s ease-in-out infinite}
+@keyframes fxPulse{50%{box-shadow:0 0 0 6px rgba(0,0,0,.08)}}
+.fx-xh .fx-x{margin-left:auto}
+.fx-xph{position:relative;margin:0 16px;aspect-ratio:16/11;border-radius:14px}
+.fx-xph svg{width:40px;height:40px}
+.fx-xph .t1,.fx-xph .t2{position:absolute;top:10px;font-size:10px;font-weight:700;letter-spacing:.08em;padding:4px 9px;border-radius:999px}
+.fx-xph .t1{left:10px;background:var(--ink);color:#fff}
+.fx-xph .t2{right:10px;background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.fx-res{display:flex;align-items:center;margin:10px 16px 0;border:1px solid var(--g2);border-radius:12px;padding:9px 12px;font-size:11px;gap:10px}
+.fx-res .mk{font-family:Montserrat;font-weight:700;letter-spacing:.06em;padding-right:10px;border-right:1px solid var(--g3)}
+.fx-res .mk small{display:block;font:500 9.5px Inter;letter-spacing:.1em;color:var(--g4)}
+.fx-res .rt{margin-left:auto;display:flex;align-items:center;gap:7px;color:var(--g5)}
+.fx-res .rt b{font:700 14px Montserrat;color:var(--ink);background:var(--g1);padding:3px 7px;border-radius:6px}
+.fx-xb{padding:12px 16px 16px}
+.fx-xb h6{font-size:14px;font-weight:600}
+.fx-xp{display:flex;gap:10px;align-items:baseline;margin-top:6px}
+.fx-xp s{font-size:13px;color:var(--g4);animation:fxBeat 1.6s ease-in-out infinite;display:inline-block}
+@keyframes fxBeat{50%{transform:scale(1.07)}}
+.fx-xp b{font:700 24px Montserrat}
+.fx-save{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:999px;background:#E8F6EE;color:#17663D}
+.fx-sc{margin-top:12px;font-size:11px;color:var(--g5)}
+.fx-sc div{height:5px;border-radius:3px;background:var(--g2);margin-top:6px;overflow:hidden}
+.fx-sc i{display:block;height:100%;width:86%;background:var(--ink)}
+.fx-xb .btn{width:100%;margin-top:14px;font-size:13px}
+.fx-no{display:block;width:100%;text-align:center;font-size:12px;color:var(--g5);margin-top:10px;text-decoration:underline}
+.fx-seals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:14px}
+.fx-seals div{border:1px solid var(--g2);border-radius:10px;padding:8px 4px;text-align:center;font-size:10px;color:var(--g5);line-height:1.3}
+.fx-seals b{display:block;color:var(--ink);font-size:11px}
+.fx-close{font-size:11px;color:var(--g5);text-align:center;margin-top:12px;line-height:1.5}
+
+/* Barra de botones de la ficha (fuera del mockup) */
+.fx-bar{display:none;height:52px;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;padding:0 16px}
+body.fx-mode .fx-bar{display:flex}
+body.fx-mode .stage{height:calc(100% - 112px)}
+.fx-bar .lb{font-size:12px;font-weight:600;color:var(--g5);margin-right:4px}
+.fx-bar .tbtn{display:flex;align-items:center;gap:7px}
+.fx-bar .tbtn i{width:26px;height:15px;border-radius:999px;background:var(--g3);position:relative;transition:background .2s}
+.fx-bar .tbtn i::after{content:"";position:absolute;top:2px;left:2px;width:11px;height:11px;border-radius:50%;background:#fff;transition:transform .2s var(--ease)}
+.fx-bar .tbtn.on i{background:#16A34A}
+.fx-bar .tbtn.on i::after{transform:translateX(11px)}
+.fx-bar .tbtn.on{background:#fff;color:var(--ink);border-color:var(--ink)}
+
+@container site (max-width:640px){
+  .fx-pdp{padding:14px 0 48px}
+  .fx-crumb{margin-bottom:12px}
+  .fx-grid{grid-template-columns:1fr;gap:20px}
+  .fx-gal{grid-template-columns:1fr}
+  .fx-thumbs{flex-direction:row;order:2}
+  .fx-thumbs .ph{width:58px}
+  .fx-info h1{font-size:21px}
+  .fx-big{font-size:32px}
+  .fx-best{padding:14px}
+  .fx-best b{font-size:23px}
+  .fx-gar{gap:6px}
+  .fx-gar div{padding:12px 4px}
+  .fx-gar h6{font-size:11px}
+  .fx-gar p{font-size:10px}
+  .fx-ops{grid-template-columns:1fr}
+}
+@media (max-width:700px){
+  body.fx-mode .stage{height:calc(100% - 196px)}
+  .fx-bar{height:auto;padding:6px 16px 10px}
+  .fx-bar .lb{width:100%;text-align:center}
+}
 </style>
 </head>
 <body>
@@ -933,6 +1130,171 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     else if(e.key==='r'||e.key==='R') replay();
     else if(e.key==='n'||e.key==='N') setLabels(!labels);
   });
+
+
+  /* ───────── Ficha de producto: se abre al tocar un producto, como en Tiendanube ───────── */
+  var FX={emb:false,cart:false,xs:false}, enFicha=false, items=0, xsSumado=false, relojes=[];
+  try{var g=JSON.parse(localStorage.getItem('praxis-mock-fx')||'{}');['emb','cart','xs'].forEach(function(k){FX[k]=!!g[k]})}catch(x){}
+  var pdp=document.createElement('section'); pdp.className='fx-pdp'; pdp.id='fxPdp'; pdp.setAttribute('data-name','Ficha de producto'); pdp.hidden=true;
+  var ov=document.createElement('div'); ov.className='fx-ov'; ov.id='fxOv';
+  ov.innerHTML='<div class="fx-bg"></div><aside class="fx-cart" id="fxCart"></aside><div class="fx-xs" id="fxXs"></div>';
+  $('#device').appendChild(ov);
+  var I={
+    truck:'<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>',
+    card:'<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/>',
+    bank:'<path d="M3 10h18L12 4zM5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/>',
+    shield:'<path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+    back:'<path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/>',
+    chat:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8"/>',
+    star:'<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
+    lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'
+  };
+  function ic(k){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">'+I[k]+'</svg>';}
+  var PAYS='<div class="fx-pays"><span>VISA</span><span>MASTER</span><span>AMEX</span><span>NARANJA</span><span>MERCADO PAGO</span><span>TRANSF.</span></div>';
+  function dos(n){return (n<10?'0':'')+n;}
+  function hastaCorte(){ // cuenta hasta las 19 h, como el «despacho hoy» de Destino
+    var a=new Date(), c=new Date(a); c.setHours(19,0,0,0); if(c<=a) c.setDate(c.getDate()+1);
+    var s=Math.floor((c-a)/1000); return [Math.floor(s/3600),Math.floor(s%3600/60),s%60];
+  }
+  function pintarFicha(){
+    var h='<div class="wrap"><div class="fx-crumb"><b data-fx-home>Inicio</b> / Categoría 1 / Nombre del producto</div><div class="fx-grid">';
+    h+='<div class="fx-gal"><div class="fx-thumbs">'+[0,1,2,3].map(function(i){return '<div class="ph'+(i===0?' on':'')+'">'+IMG+'</div>'}).join('')+'</div><div class="fx-main ph">'+IMG+'</div></div>';
+    h+='<div class="fx-info">';
+    h+='<h1>Nombre del producto</h1>';
+    if(FX.emb){
+      h+='<div class="fx-q"><em>★★★★★</em>Calidad de la marca</div>';
+      h+='<div><div class="fx-old"><s>$00.000</s><span class="fx-off">20% OFF</span></div><div class="fx-big">$00.000</div></div>';
+      h+='<div class="fx-best"><div class="ic">'+ic('bank')+'</div><span><small>MEJOR PRECIO</small>Por transferencia · ahorrás $0.000</span><b>$00.000</b></div>';
+      h+='<div class="fx-cbox">'+ic('card')+'6 cuotas sin interés<b>$0.000</b></div>';
+    }else{
+      h+='<div class="fx-p"><b>$00.000</b><s>$00.000</s></div><div class="fx-cu">3 cuotas sin interés de $0.000</div><div><span class="fx-lk">Ver medios de pago</span></div>';
+    }
+    h+='<div><div class="fx-lbl">Talle: S</div><div class="fx-vars"><span class="on">S</span><span>M</span><span>L</span><span>XL</span></div></div>';
+    h+='<div class="fx-buy"><div class="fx-qty"><i>−</i>1<i>+</i></div><span class="btn fx-add" id="fxAdd">Agregar al carrito</span></div>';
+    if(FX.emb){
+      var t=hastaCorte();
+      h+='<div class="fx-ship"><span class="tg">HOY</span><div class="fx-ship-h">'+ic('truck')+'<div><h5>DESPACHO HOY</h5><p>Comprá antes de las 19 h y lo despachamos hoy</p></div><div class="fx-clock" id="fxClock"><span>'+dos(t[0])+'</span><span>'+dos(t[1])+'</span><span>'+dos(t[2])+'</span></div></div><div class="fx-ship-bar"><i></i></div></div>';
+      h+='<div class="fx-ops"><div><em>★★★★★</em>“La calidad es excelente y el servicio súper rápido.”<b>CLIENTE 1</b></div><div><em>★★★★★</em>“Me encantó, me queda perfecto. Recomiendo 100 %.”<b>CLIENTE 2</b></div></div>';
+      h+=PAYS;
+      h+='<div class="fx-gar"><div>'+ic('back')+'<h6>Cambios y devoluciones</h6><p>Dentro de 00 días hábiles</p></div><div>'+ic('chat')+'<h6>Atención personalizada</h6><p>Te respondemos por WhatsApp</p></div><div>'+ic('star')+'<h6>4,9 de puntaje</h6><p>Más de 000 opiniones</p></div></div>';
+      h+='<div class="fx-wa">¿Dudas con el talle? <b>Escribinos por WhatsApp</b></div>';
+    }
+    h+='<div class="fx-row">Medios de envío<i>+</i></div><div class="fx-row">Descripción<i>−</i></div><div class="fx-desc">Qué es, de qué está hecho, cómo queda y cómo se cuida.<div class="bar"></div><div class="bar" style="width:80%"></div><div class="bar" style="width:60%"></div></div>';
+    h+='</div></div></div>';
+    pdp.innerHTML=h;
+    pdp.querySelector('#fxAdd').addEventListener('click',agregar);
+    pdp.querySelector('[data-fx-home]').addEventListener('click',cerrarFicha);
+    var vs=[].slice.call(pdp.querySelectorAll('.fx-vars span'));
+    vs.forEach(function(s){s.addEventListener('click',function(){
+      vs.forEach(function(x){x.classList.toggle('on',x===s)});
+      pdp.querySelector('.fx-lbl').textContent='Talle: '+s.textContent;
+    })});
+  }
+  function abrirFicha(){
+    cerrarCapas();
+    enFicha=true; items=0; xsSumado=false; pintarBadge();
+    pintarFicha();
+    site.insertBefore(pdp,site.querySelector('[data-key="foot"]'));
+    pdp.hidden=false; site.classList.add('fx-on'); document.body.classList.add('fx-mode');
+    numerar(); screen.scrollTop=0;
+  }
+  function cerrarFicha(){
+    if(!enFicha) return;
+    cerrarCapas(); enFicha=false; pdp.hidden=true; site.classList.remove('fx-on'); document.body.classList.remove('fx-mode');
+    items=0; pintarBadge(); numerar(); replay();
+  }
+  /* La capa se calza justo sobre la pantalla del mockup (PC o celular) */
+  function calzar(){ov.style.top=screen.offsetTop+'px';ov.style.left=screen.offsetLeft+'px';ov.style.width=screen.offsetWidth+'px';ov.style.height=screen.offsetHeight+'px';}
+  function cerrarCapas(){ov.classList.remove('fx-open-c','fx-open-x');}
+  function pintarBadge(){var b=$('.hdr .cart b'); if(b) b.textContent=enFicha?String(items):'2';}
+  function agregar(){
+    items=1; xsSumado=false; pintarBadge(); calzar();
+    if(FX.xs){ pintarXs(); ov.classList.add('fx-open-x'); } else abrirCarrito();
+  }
+  var xsSeg=600;
+  function pintarXs(){
+    xsSeg=600;
+    $('#fxXs').innerHTML='<div class="fx-xh"><i class="dot"></i>¡Descuento exclusivo!<button class="fx-x" data-xs-no>×</button></div>'
+      +'<div class="fx-xph ph"><span class="t1">LLEVALA HOY</span><span class="t2">-20% OFF</span>'+IMG+'</div>'
+      +'<div class="fx-res"><div class="mk">MARCA<small>EDICIÓN</small></div><span>Tu descuento queda reservado</span><div class="rt">⏱<b id="fxXsT">10:00</b></div></div>'
+      +'<div class="fx-xb"><h6>Producto que combina</h6><div class="fx-xp"><s>$00.000</s><b>$00.000</b></div><span class="fx-save">✓ Ahorrás $0.000</span>'
+      +'<div class="fx-sc">Quedan pocas a este precio<div><i></i></div></div>'
+      +'<span class="btn" data-xs-si>Agregar y ahorrar $0.000</span><button class="fx-no" data-xs-no>No, gracias</button>'
+      +'<div class="fx-seals"><div><b>4,9 / 5</b>+000 ventas</div><div><b>Devolución</b>sin vueltas</div><div><b>Pago</b>protegido</div></div>'
+      +'<p class="fx-close">Se suma al mismo pedido: mismo pago, mismo envío. Sin costos extra.</p></div>';
+    $$('#fxXs [data-xs-no]').forEach(function(b){b.addEventListener('click',function(){ov.classList.remove('fx-open-x');abrirCarrito();})});
+    $('#fxXs [data-xs-si]').addEventListener('click',function(){xsSumado=true;items=2;pintarBadge();ov.classList.remove('fx-open-x');abrirCarrito();});
+  }
+  function itemHtml(nom,var_,xs){
+    return '<div class="fx-it'+(xs?' xs-it':'')+'"><div class="ph">'+IMG+'</div><div><h6>'+nom+'</h6><small>'+var_+'</small><div class="fx-qty"><i>−</i>1<i>+</i></div></div><b>$00.000</b></div>';
+  }
+  function abrirCarrito(){
+    calzar();
+    var lista=itemHtml('Nombre del producto','Talle: '+((pdp.querySelector('.fx-vars .on')||{}).textContent||'S'))+(xsSumado?itemHtml('Producto que combina','Con 20% OFF · ahorrás $0.000',true):'');
+    var h='<div class="fx-ch">Carrito de compras ('+items+')<button class="fx-x" data-c-x>×</button></div><div class="fx-cb">';
+    if(FX.cart){
+      h+='<div class="fx-free"><p>Te faltan <b>$00.000</b> para el <b>envío gratis</b></p><div><i style="width:0%"></i></div></div>';
+      h+=lista;
+      h+='<div class="fx-op"><h5>Ya lo vivieron</h5><div class="fx-op-w"><div class="fx-op-t">'+[1,2,3,1,2,3].map(function(n){return '<div><em>★★★★★</em>“Llegó rapidísimo y la calidad es tal cual las fotos.” — Cliente '+n+'</div>'}).join('')+'</div></div></div>';
+      h+='</div><div class="fx-cf"><div class="fx-tot">Total<b>$00.000</b></div>';
+      h+='<div class="fx-tr"><div><span>Con transferencia<small>Ahorrás $0.000</small></span><b>$00.000</b></div><div><span>Con tarjeta<small>6 cuotas sin interés de $0.000</small></span><b>$00.000</b></div></div>';
+      h+='<span class="btn">Iniciar compra</span><div class="fx-safe">'+ic('lock')+'Compra protegida · pago seguro</div>'+PAYS+'</div>';
+    }else{
+      h+=lista+'</div><div class="fx-cf"><div class="fx-tot">Subtotal<b>$00.000</b></div><span class="btn">Iniciar compra</span><span class="fx-more" data-c-x>Ver más productos</span></div>';
+    }
+    $('#fxCart').innerHTML=h;
+    $$('#fxCart [data-c-x]').forEach(function(b){b.addEventListener('click',cerrarCapas)});
+    ov.classList.add('fx-open-c');
+    var bar=$('#fxCart .fx-free i'); if(bar) setTimeout(function(){bar.style.width=(xsSumado?78:58)+'%'},80);
+  }
+  ov.querySelector('.fx-bg').addEventListener('click',cerrarCapas);
+  window.addEventListener('resize',calzar);
+
+  /* Relojes: despacho hoy y descuento reservado */
+  setInterval(function(){
+    var c=$('#fxClock'); if(c&&enFicha){var t=hastaCorte(); c.innerHTML='<span>'+dos(t[0])+'</span><span>'+dos(t[1])+'</span><span>'+dos(t[2])+'</span>';}
+    var x=$('#fxXsT'); if(x&&ov.classList.contains('fx-open-x')){xsSeg=Math.max(0,xsSeg-1); x.textContent=dos(Math.floor(xsSeg/60))+':'+dos(xsSeg%60);}
+  },1000);
+
+  /* Todo producto lleva a su ficha (tarjeta entera) */
+  $$('.card').forEach(function(c){c.addEventListener('click',abrirFicha)});
+  $('.mono-buy .btn').addEventListener('click',function(){abrirFicha();});
+  $('.hdr .logo').style.cursor='pointer';
+  $('.hdr .logo').addEventListener('click',cerrarFicha);
+  $('.hdr .cart').style.cursor='pointer';
+  $('.hdr .cart').addEventListener('click',function(){ if(enFicha&&items) abrirCarrito(); });
+
+  /* Botones para prender cada mejora */
+  var fxBar=document.createElement('div'); fxBar.className='fx-bar';
+  fxBar.innerHTML='<span class="lb">Ficha de producto:</span>'
+    +'<button class="tbtn" data-fx="emb"><i></i>Embudo de precios + confianza</button>'
+    +'<button class="tbtn" data-fx="cart"><i></i>Carrito</button>'
+    +'<button class="tbtn" data-fx="xs"><i></i>Cross selling</button>'
+    +'<button class="tbtn" id="fxVolver">← Volver al inicio</button>';
+  document.body.insertBefore(fxBar,$('.stage'));
+  function pintarBotones(){$$('[data-fx]').forEach(function(b){b.classList.toggle('on',FX[b.getAttribute('data-fx')])});}
+  function prender(k){
+    FX[k]=!FX[k]; pintarBotones();
+    try{localStorage.setItem('praxis-mock-fx',JSON.stringify(FX))}catch(x){}
+    if(!enFicha) return;
+    if(k==='emb') pintarFicha();
+    if(k==='cart'&&ov.classList.contains('fx-open-c')) abrirCarrito();
+    if(k==='xs'&&FX.xs&&!ov.classList.contains('fx-open-x')){ cerrarCapas(); items=1; pintarBadge(); calzar(); pintarXs(); ov.classList.add('fx-open-x'); }
+    if(k==='xs'&&!FX.xs) ov.classList.remove('fx-open-x');
+  }
+  $$('[data-fx]').forEach(function(b){b.addEventListener('click',function(){prender(b.getAttribute('data-fx'))})});
+  $('#fxVolver').addEventListener('click',cerrarFicha);
+  pintarBotones();
+  document.addEventListener('keydown',function(e){
+    if(!enFicha) return;
+    if(e.key==='e'||e.key==='E') prender('emb');
+    else if(e.key==='c'||e.key==='C') prender('cart');
+    else if(e.key==='x'||e.key==='X') prender('xs');
+    else if(e.key==='Escape'){ if(ov.classList.contains('fx-open-c')||ov.classList.contains('fx-open-x')) cerrarCapas(); else cerrarFicha(); }
+  });
+  $$('.est button').forEach(function(b){b.addEventListener('click',cerrarFicha)});
+  document.addEventListener('keydown',function(e){ if('1234'.indexOf(e.key)>-1&&e.key) cerrarFicha(); });
+  $$('[data-mode]').forEach(function(b){b.addEventListener('click',function(){cerrarCapas();setTimeout(calzar,500)})});
 
   var se=(location.hash.match(/^#e([1234])$/)||[])[1];
   if(!se){ try{se=localStorage.getItem('praxis-mock-est')}catch(x){} }
