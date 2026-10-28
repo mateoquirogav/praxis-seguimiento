@@ -153,7 +153,21 @@ body{background:#EDEDF0;min-height:100vh}
 <div class="pvw">VISTA PREVIA · PRAXIS</div>
 
 <script>
-const P=499999,fmt=n=>'$'+n.toLocaleString('es-AR');
+// combo que viene de cada landing (?c=inicial | taller); sin parámetro = Emprendedor Plus
+const COMBOS={
+ plus:{p:499999,n:'COMBO EMPRENDEDOR PLUS',t:'Combo Emprendedor Plus',m:'30 productos · 165 unidades · motos 110 y 150',img:'combo.webp',u:'../combo-emprendedor-plus/'},
+ inicial:{p:199800,n:'COMBO EMPRENDEDOR INICIAL',t:'Combo Emprendedor Inicial',m:'25 productos · 89 unidades · motos 110 y 150',img:'combo-inicial.webp',u:'../combo-emprendedor/'},
+ taller:{p:159666,n:'COMBO TALLER PARA LAS 110',t:'Combo Taller para las 110',m:'8 productos · motos 110',img:'combo-taller.webp',u:'../combo-taller/'}
+};
+const C=COMBOS[new URLSearchParams(location.search).get('c')]||COMBOS.plus;
+document.querySelector('.it img').src='../img/'+C.img;
+document.querySelector('.it .n').textContent=C.n;
+document.querySelector('.it .m').textContent=C.m;
+document.querySelector('.num').textContent='Pedido #0000 · '+C.t;
+document.querySelectorAll('a.x, #v-done .df a').forEach(a=>a.href=C.u);
+document.querySelector('.back').style.backgroundImage='url(../img/'+C.img+')';
+const P=C.p,fmt=n=>'$'+n.toLocaleString('es-AR');
+document.getElementById('pl').textContent=fmt(P);document.getElementById('tt').textContent=fmt(P);
 let q=1;const upd=()=>{document.getElementById('q').textContent=q;document.getElementById('pl').textContent=fmt(P*q);document.getElementById('tt').textContent=fmt(P*q)};
 document.getElementById('mn').onclick=()=>{if(q>1){q--;upd()}};
 document.getElementById('mas').onclick=()=>{q++;upd()};
