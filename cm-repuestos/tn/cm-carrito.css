@@ -1,0 +1,46 @@
+#cmCartTrust{display:none!important}
+.cmc-nota{display:flex;align-items:center;gap:8px;margin:12px 0 8px;font-family:Poppins,Inter,Arial,sans-serif;font-size:13px;line-height:1.35;color:#0E0E10;background:#ECFDF3;border:1px solid #BBF7D0;border-radius:10px;padding:9px 12px}
+.cmc-nota b{color:#15803D}
+.cmc-sub{text-align:center;font-family:Poppins,Inter,Arial,sans-serif;font-size:12px;color:#6B7280;margin:8px 0 4px}
+.cmc{margin:14px 0 6px;background:#0E0E10;border-radius:20px;padding:16px;color:#fff;font-family:Poppins,Inter,Arial,sans-serif;overflow:hidden}
+.cmc *{box-sizing:border-box}
+.cmc-pill{display:inline-block;background:rgba(252,235,31,.14);color:#FCEB1F;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:5px 10px}
+.cmc-t{font-size:19px;font-weight:800;line-height:1.15;margin:9px 0 4px;color:#fff}
+.cmc-d{font-size:12.5px;line-height:1.45;color:#D1D5DB;margin:0 0 12px}
+.cmc-steps{display:flex;gap:6px;margin-bottom:12px}
+.cmc-steps span{flex:1;text-align:center;font-size:10.5px;font-weight:700;color:#9CA3AF;background:#1A1A1E;border-radius:8px;padding:7px 4px;line-height:1.2}
+.cmc-steps span i{display:block;font-style:normal;font-size:13px;font-weight:800;color:#6B7280}
+.cmc-s1{animation:cmcS1 10s infinite}
+.cmc-s2{animation:cmcS2 10s infinite}
+.cmc-s3{animation:cmcS3 10s infinite}
+@keyframes cmcS1{0%,22%{background:#FCEB1F;color:#000}26%,100%{background:#1A1A1E;color:#9CA3AF}}
+@keyframes cmcS2{0%,24%{background:#1A1A1E;color:#9CA3AF}28%,50%{background:#FCEB1F;color:#000}54%,100%{background:#1A1A1E;color:#9CA3AF}}
+@keyframes cmcS3{0%,52%{background:#1A1A1E;color:#9CA3AF}56%,94%{background:#25D366;color:#fff}98%,100%{background:#1A1A1E;color:#9CA3AF}}
+.cmc-phone{background:#ECE5DD;border-radius:16px;overflow:hidden;border:4px solid #26262B}
+.cmc-head{display:flex;align-items:center;gap:9px;background:#075E54;padding:9px 11px}
+.cmc-av{width:30px;height:30px;border-radius:50%;background:#FCEB1F;color:#000;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;flex:0 0 30px}
+.cmc-head b{display:block;color:#fff;font-size:13px;line-height:1.1}
+.cmc-head small{display:block;color:#D1FAE5;font-size:10.5px}
+.cmc-chat{min-height:178px;padding:10px;display:flex;flex-direction:column;gap:6px;position:relative}
+.cmc-b{max-width:88%;background:#fff;color:#111;font-size:12.5px;line-height:1.38;border-radius:2px 10px 10px 10px;padding:7px 9px;box-shadow:0 1px 1px rgba(0,0,0,.12);opacity:0}
+.cmc-b b{color:#111}
+.cmc-b small{display:block;text-align:right;font-size:9.5px;color:#9CA3AF;margin-top:2px}
+.cmc-b1{animation:cmcB1 10s infinite}
+.cmc-b2{animation:cmcB2 10s infinite}
+.cmc-b3{animation:cmcB3 10s infinite}
+@keyframes cmcB1{0%,24%{opacity:0;transform:translateY(6px)}28%,94%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes cmcB2{0%,36%{opacity:0;transform:translateY(6px)}40%,94%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes cmcB3{0%,58%{opacity:0;transform:translateY(6px)}62%,94%{opacity:1;transform:none}98%,100%{opacity:0}}
+.cmc-typing{position:absolute;left:10px;bottom:10px;background:#fff;border-radius:10px;padding:8px 10px;display:flex;gap:4px;opacity:0;animation:cmcTy 10s infinite}
+.cmc-typing i{width:6px;height:6px;border-radius:50%;background:#9CA3AF;animation:cmcDot 1s infinite}
+.cmc-typing i:nth-child(2){animation-delay:.15s}
+.cmc-typing i:nth-child(3){animation-delay:.3s}
+@keyframes cmcTy{0%,10%{opacity:0}13%,24%{opacity:1}26%,46%{opacity:0}49%,58%{opacity:1}60%,100%{opacity:0}}
+@keyframes cmcDot{0%,100%{opacity:.35}50%{opacity:1}}
+.cmc-num{display:flex;align-items:center;gap:10px;margin-top:12px;background:#fff;color:#0E0E10;border-radius:12px;padding:10px 12px}
+.cmc-num svg{width:26px;height:26px;flex:0 0 26px;fill:#25D366}
+.cmc-num span{font-size:12px;line-height:1.35;color:#4B5563}
+.cmc-num b{display:block;font-size:14px;color:#0E0E10}
+.cmc-wa{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;border:2px solid #25D366;color:#25D366!important;background:transparent;border-radius:999px;padding:10px;font-size:12.5px;font-weight:700;text-decoration:none!important}
+.cmc-wa svg{width:16px;height:16px;fill:#25D366}
+@media (prefers-reduced-motion:reduce){.cmc-b,.cmc-steps span{animation:none!important;opacity:1}.cmc-typing{display:none}}
