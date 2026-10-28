@@ -3,7 +3,7 @@
   var ICO='<svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.6L3 29l7-2.2c1.8 1 3.9 1.5 6 1.5 7 0 12.7-5.6 12.7-12.6S23 3 16 3zm6.4 17.6c-.3.8-1.6 1.5-2.3 1.6-.6.1-1.3.1-4.1-1-3.4-1.4-5.6-4.9-5.8-5.1-.2-.2-1.4-1.8-1.4-3.5s.9-2.5 1.2-2.8c.3-.3.7-.4.9-.4h.7c.2 0 .5 0 .8.6l1 2.4c.1.2.1.5 0 .7l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.4.2.6.1.8-.1l1.1-1.3c.2-.3.5-.3.8-.2l2.3 1.1c.3.2.6.2.7.4.1.2.1.9-.2 1.7z"/></svg>';
   function pedido(m){
     var it=[].slice.call(m.querySelectorAll('.js-cart-item')).map(function(r){
-      var n=r.querySelector('.cart-item-name'),q=r.querySelector('.js-cart-quantity-input');
+      var n=r.querySelector('.cart-item-name a')||r.querySelector('.cart-item-name'),q=r.querySelector('.js-cart-quantity-input');
       return (q?q.value:'1')+' x '+(n?n.textContent.trim():'');
     });
     var t=m.querySelector('.js-cart-total');
