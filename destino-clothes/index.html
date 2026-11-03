@@ -90,7 +90,7 @@ h1{font-size:1.72rem;font-weight:600;letter-spacing:-.7px;line-height:1.25;text-
   </div>
 
   <h1>Destino Clothes</h1>
-  <p class="sub">Home de 11 bloques + embudo de precios + widget «Envío gratis a Córdoba en el día» con cuenta regresiva + carrito + carrito flotante al bajar</p>
+  <p class="sub">Tabla de talles + ¿Qué talle soy? en 4 categorías (remeras, pantalones, camperas y bermudas) + descripciones de 256 productos + aviso de compras con los 20 productos de Mariano</p>
 
   <div class="fases" id="fs"></div>
 
@@ -108,7 +108,7 @@ h1{font-size:1.72rem;font-weight:600;letter-spacing:-.7px;line-height:1.25;text-
 
   <div class="pie">
     <div>Arrancamos el<b id="ini"></b></div>
-    <div style="text-align:right">Entrega estimada<b>21 de octubre</b></div>
+    <div style="text-align:right">Entrega estimada<b>12 de noviembre</b></div>
   </div>
 
   <p class="nota">Esta página se actualiza sola todos los días.<br>
@@ -117,8 +117,8 @@ h1{font-size:1.72rem;font-weight:600;letter-spacing:-.7px;line-height:1.25;text-
 
 <script>
 (function(){
-  var INICIO = "2026-10-08", TOTAL = 14;
-  var CORTES = [2, 8, 12, 14], FASES = [["Análisis y gestión", "Analizamos tu sitio con criterios de diseño de conversión: qué mira primero tu cliente, dónde se pierde y qué lo lleva a comprar. También revisamos que todo vaya acorde a tu identidad de marca, para dejar el plan cerrado antes de arrancar."], ["Desarrollo de código", "Armamos las estructuras de código de cada bloque de tu web. Es la parte más silenciosa del trabajo: se construye por fuera, listo para montarlo después en tu sitio."], ["Diseño", "Unimos las estructuras de código con tu tienda y ajustamos que todo hable el mismo idioma: colores, tipografías y espacios en concordancia con tu marca."], ["Ajustes", "Revisamos la web completa: que cargue rápido, que no haya conflictos entre códigos y que cada sección funcione como tiene que funcionar."]];
+  var INICIO = "2026-10-30", TOTAL = 14;
+  var CORTES = [3, 8, 12, 14], FASES = [["Análisis y gestión", "Preparamos toda la estructura para la puesta en marcha y analizamos tu sitio: revisamos qué es lo que mira primero tu cliente, dónde se pierde y qué lo lleva a comprar. También organizamos la información que tenemos a mano sobre tu marca."], ["Desarrollo de código", "Armamos las estructuras de código de cada bloque de tu web. Es la parte más silenciosa del trabajo: se construye por fuera, listo para montarlo después en tu sitio."], ["Diseño", "Unimos las estructuras de código con tu tienda y ajustamos que todo hable el mismo idioma: colores, tipografías y espacios en concordancia con tu marca."], ["Ajustes", "Revisamos la web completa: que cargue rápido, que no haya conflictos entre códigos y que cada sección funcione como tiene que funcionar."]];
   var MES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 
   function parse(s){ var a=s.split('-'); return new Date(+a[0], +a[1]-1, +a[2]); }
@@ -136,7 +136,7 @@ h1{font-size:1.72rem;font-weight:600;letter-spacing:-.7px;line-height:1.25;text-
     var hE = '', d0 = 0;
     for(var a = 0; a < FASES.length; a++){
       hE += '<div class="f"><span class="pt"></span><span class="nm">' + FASES[a][0] + '</span>'
-          + '<span class="dd">día ' + (d0 + 1) + ' al ' + CORTES[a] + '</span></div>';
+          + '<span class="dd">día ' + (CORTES[a] > d0 + 1 ? (d0 + 1) + ' al ' + CORTES[a] : CORTES[a]) + '</span></div>';
       d0 = CORTES[a];
     }
     document.getElementById('fs').innerHTML = hE;
@@ -168,7 +168,7 @@ h1{font-size:1.72rem;font-weight:600;letter-spacing:-.7px;line-height:1.25;text-
     var cls = pasado || j < iF ? 'f hecha' : (j === iF ? 'f hoy' : 'f');
     var der = (pasado || j < iF) ? '<span class="ok">listo</span>'
             : (j === iF ? '<span class="tag">acá estamos</span>'
-                        : '<span class="dd">día ' + (desde + 1) + ' al ' + hasta + '</span>');
+                        : '<span class="dd">día ' + (hasta > desde + 1 ? (desde + 1) + ' al ' + hasta : hasta) + '</span>');
     hF += '<div class="' + cls + '"><span class="pt"></span><span class="nm">' + FASES[j][0] + '</span>' + der + '</div>';
     desde = hasta;
   }
