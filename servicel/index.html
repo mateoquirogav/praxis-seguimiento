@@ -99,7 +99,7 @@ h1{font-size:1.72rem;font-weight:600;letter-spacing:-.7px;line-height:1.25;text-
   <div class="fases" id="fs"></div>
 
   <div class="grid" id="g"></div>
-  <div class="leyenda"><i></i><span>Los días rayados son <b>sábado y domingo</b>: no cuentan.</span></div>
+  <div class="leyenda"><i></i><span>Sábado y domingo no son días de trabajo: <b>la fecha de entrega ya los contempla</b>.</span></div>
 
   <div class="nums">
     <span class="big" id="dia">—</span>
@@ -117,12 +117,13 @@ h1{font-size:1.72rem;font-weight:600;letter-spacing:-.7px;line-height:1.25;text-
   </div>
 
   <p class="nota">Esta página se actualiza sola todos los días.<br>
-  Podés volver a entrar cuando quieras con <b>el mismo link</b>.<br>Sábados y domingos no son laborables.</p>
+  Podés volver a entrar cuando quieras con <b>el mismo link</b>.<br>El estudio trabaja de lunes a viernes.</p>
 </div>
 
 <script>
 (function(){
   var INICIO = "2026-10-29", TOTAL = 10, HAB = true;
+  var ENTREGA = "11 de noviembre";
   function esHabil(d){ var w = d.getDay(); return w !== 0 && w !== 6; }
   // dias del plazo que ya corrieron entre a y b (ambos incluidos); con HAB, sin sabados ni domingos
   function cuenta(a, b){ var c = 0, x = new Date(a.getTime()); while(x <= b){ if(!HAB || esHabil(x)) c++; x.setDate(x.getDate() + 1); } return c; }
@@ -169,7 +170,9 @@ h1{font-size:1.72rem;font-weight:600;letter-spacing:-.7px;line-height:1.25;text-
   document.getElementById('et').textContent = pasado ? 'Estado' : (finde ? 'Fin de semana' : FASES[iF][0]);
   document.getElementById('msg').textContent = pasado
     ? 'Estamos en el cierre del proyecto.'
-    : (finde ? 'Sábados y domingos no son laborables: el lunes seguimos con la etapa de ' + FASES[iF][0].toLowerCase() + '.'
+    : (finde ? 'El estudio trabaja de lunes a viernes. El lunes tu proyecto retoma en la etapa de '
+             + FASES[iF][0].toLowerCase() + ', y la fecha de entrega ya contempla el fin de semana: sigue siendo el '
+             + ENTREGA + '.'
              : FASES[iF][1]);
 
   var desde = 0, hF = '';
