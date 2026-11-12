@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mora Lencería · Home nueva (vista previa)</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/01-modelo-nude-091dd25b0efdf5d6ad17917713304384-1024-1024.webp">
+<style>
+:root{--bordo:#6B1F33;--bordo2:#561627;--beige:#F1E6D8;--lino:#F7F1EA;--base:#FFFFFF;--tinta:#2B1A1F;--suave:#6F5F55;--linea:#E8DCCF;--r:14px;--max:1240px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--base);color:var(--tinta);font:400 15px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+h1,h2,h3,.f-t{font-family:Montserrat,system-ui,sans-serif}
+.kick{display:inline-block;font:700 11px/1 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--bordo)}
+.sec{padding:88px 0}
+.sh{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:36px}
+.sh h2{font-weight:700;font-size:34px;line-height:1.12;letter-spacing:-.01em;margin-top:10px;max-width:640px}
+.sh h2 em{font-style:normal;color:var(--bordo)}
+.sh p{color:var(--suave);margin-top:10px;max-width:520px}
+.lnk{font:600 13px/1 Montserrat,sans-serif;color:var(--bordo);border-bottom:1.5px solid currentColor;padding-bottom:4px;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 28px;border-radius:999px;background:var(--bordo);color:#fff;font:700 13px/1 Montserrat,sans-serif;letter-spacing:.06em;text-transform:uppercase;transition:background .2s}
+.btn:hover{background:var(--bordo2)}
+.btn.ghost{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px var(--tinta)}
+.btn.ghost:hover{background:var(--tinta);color:#fff}
+
+/* aviso de vista previa */
+.pv{background:var(--tinta);color:#F1E6D8;text-align:center;font:600 11px/1 Montserrat,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:9px 12px}
+
+/* encabezado */
+.hd{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+.hd .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;flex-direction:column;align-items:center;line-height:1}
+.logo b{font:italic 400 34px/1 'DM Serif Display',serif;color:var(--bordo)}
+.logo small{font:600 8px/1 Montserrat,sans-serif;letter-spacing:.42em;color:var(--bordo);margin-top:3px;padding-left:.42em}
+.nav{display:flex;gap:30px;font:600 13px/1 Montserrat,sans-serif}
+.nav a:hover{color:var(--bordo)}
+.ico{display:flex;gap:18px}.ico svg{width:22px;height:22px;stroke:var(--tinta);fill:none;stroke-width:1.6}
+.burger{display:none}
+
+/* 1 · banner */
+.hero{position:relative;background:var(--beige);overflow:hidden;min-height:620px;display:flex;align-items:center}
+.hero-img{position:absolute;inset:0 0 0 auto;width:58%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.hero-img:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--beige) 0%,rgba(241,230,216,0) 22%);z-index:1}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.hero-tx{max-width:520px;padding:56px 0}
+.hero h1{font-weight:800;font-size:52px;line-height:1.04;letter-spacing:-.02em;margin:16px 0 20px}
+.hero h1 em{font:italic 400 58px/1 'DM Serif Display',serif;color:var(--bordo);letter-spacing:0}
+.hero p{font-size:17px;color:#4A3A35;max-width:470px}
+.hero p b{color:var(--tinta);font-weight:600}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero .mini{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px;font:600 12px/1.3 Montserrat,sans-serif;color:var(--suave)}
+.hero .mini span{display:flex;align-items:center;gap:7px}
+.hero .mini i{width:6px;height:6px;border-radius:50%;background:var(--bordo)}
+
+/* 2 · beneficios */
+.ben{background:var(--base);border-bottom:1px solid var(--linea)}
+.ben .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.b{display:flex;align-items:center;gap:14px;padding:26px 22px}
+.b+.b{border-left:1px solid var(--linea)}
+.b svg{flex:0 0 34px;width:34px;height:34px;stroke:var(--bordo);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.b strong{display:block;font:700 14px/1.25 Montserrat,sans-serif}
+.b span{display:block;font-size:13px;color:var(--suave);margin-top:3px}
+
+/* 3 · catálogo */
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 20px}
+.card{display:flex;flex-direction:column;cursor:pointer}
+.ph{position:relative;display:block;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;background:var(--lino)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;left:10px;top:10px;z-index:1;background:var(--bordo);color:#fff;font:700 10.5px/1 Montserrat,sans-serif;letter-spacing:.04em;padding:7px 10px;border-radius:999px}
+.nm{font:600 14.5px/1.35 Montserrat,sans-serif;margin-top:14px}
+.pr{font:700 18px/1 Montserrat,sans-serif;margin-top:8px}
+.cu{font-size:12.5px;color:var(--suave);margin-top:6px}
+.cu b{color:var(--bordo);font-weight:600}
+.vp{margin-top:12px;align-self:flex-start;font:700 11.5px/1 Montserrat,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--bordo);border-bottom:1.5px solid currentColor;padding-bottom:4px}
+.card:hover .nm{color:var(--bordo)}
+
+/* 4 · destacados del mes */
+.dest{background:var(--beige)}
+.dgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.dcard{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));background:var(--base);border-radius:20px;overflow:hidden;cursor:pointer}
+.dph{position:relative;display:block;background:var(--lino);min-height:100%}
+.dph img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
+.dnum{position:absolute;left:14px;top:12px;z-index:1;font:italic 400 44px/1 'DM Serif Display',serif;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.25)}
+.dtx{display:flex;flex-direction:column;padding:30px 28px}
+.dnm{font:700 21px/1.2 Montserrat,sans-serif;margin-top:12px}
+.dtx ul{list-style:none;margin:18px 0 0;display:grid;gap:9px}
+.dtx li{position:relative;padding-left:22px;font-size:14px;color:#4A3A35}
+.dtx li:before{content:"";position:absolute;left:0;top:6px;width:12px;height:7px;border-left:2px solid var(--bordo);border-bottom:2px solid var(--bordo);transform:rotate(-45deg)}
+.off{align-self:flex-start;margin-top:18px;background:#F6E9EC;color:var(--bordo);font:700 11.5px/1.2 Montserrat,sans-serif;padding:8px 12px;border-radius:999px}
+.dpr{font:800 28px/1 Montserrat,sans-serif;margin-top:auto;padding-top:22px}
+.dtx .btn{margin-top:20px;width:100%}
+
+/* 5 · categorías */
+.cgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.cat{position:relative;display:block;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;background:var(--lino)}
+.cat img{width:100%;height:100%;object-fit:cover}
+.cat:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,26,31,0) 45%,rgba(43,26,31,.78) 100%)}
+.cb{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:20px;color:#fff;display:flex;flex-direction:column}
+.cn{font:700 22px/1 Montserrat,sans-serif}
+.cc{font-size:12.5px;opacity:.85;margin-top:6px}
+.cv{white-space:nowrap;margin-top:14px;align-self:flex-start;background:#fff;color:var(--bordo);font:700 11.5px/1 Montserrat,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:10px 14px;border-radius:999px}
+.mas{margin-top:72px}
+.mas h3{font:700 22px/1.2 Montserrat,sans-serif;margin-bottom:24px}
+.all{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px;aspect-ratio:4/5;border-radius:var(--r);background:var(--bordo);color:#fff;padding:28px}
+.all b{font:italic 400 40px/1 'DM Serif Display',serif}
+.all span{font:600 14px/1.4 Montserrat,sans-serif;opacity:.9}
+.all em{white-space:nowrap;font-style:normal;margin-top:6px;background:#fff;color:var(--bordo);font:700 11.5px/1 Montserrat,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:12px 16px;border-radius:999px}
+
+/* 6 · por qué elegirnos */
+.pq{background:var(--lino)}
+.razones{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.rz{padding:30px 24px 30px 0}
+.rz+.rz{padding-left:24px;border-left:1px solid var(--linea)}
+.rz b{display:block;font:italic 400 34px/1 'DM Serif Display',serif;color:var(--bordo)}
+.rz strong{display:block;font:700 16px/1.3 Montserrat,sans-serif;margin-top:14px}
+.rz p{font-size:14px;color:var(--suave);margin-top:6px}
+.conf{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:40px}
+.cf{display:flex;align-items:center;gap:12px;background:var(--base);border-radius:12px;padding:16px 18px}
+.cf svg{flex:0 0 26px;width:26px;height:26px;stroke:var(--bordo);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.cf strong{display:block;font:700 13px/1.25 Montserrat,sans-serif}
+.cf span{display:block;font-size:12px;color:var(--suave)}
+.ops-h{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:64px 0 22px}
+.ops-h h3{font:700 22px/1.2 Montserrat,sans-serif}
+.ops{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.op{background:var(--base);border-radius:var(--r);padding:22px 20px;display:flex;flex-direction:column}
+.st{display:flex;gap:3px}.st svg{width:15px;height:15px;fill:#E0A100}
+.op blockquote{font-size:14px;line-height:1.55;margin:12px 0 16px;flex:1}
+.op figcaption{font:700 13px/1.3 Montserrat,sans-serif}
+.desl{display:none;font-size:12px;color:var(--suave);margin-top:10px}
+.op figcaption span{font:400 12px Inter,sans-serif;color:var(--suave)}
+.cierre{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:56px;background:var(--bordo);color:#fff;border-radius:20px;padding:40px 44px}
+.cierre h3{font:700 26px/1.2 Montserrat,sans-serif;max-width:560px}
+.cierre h3 em{font:italic 400 30px/1 'DM Serif Display',serif}
+.cierre p{opacity:.85;margin-top:8px}
+.cierre .bts{display:flex;gap:12px;flex-wrap:wrap}
+.cierre .btn{background:#fff;color:var(--bordo)}
+.cierre .btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px #fff}
+
+/* pie */
+.ft{background:var(--tinta);color:#D9CBBE;padding:48px 0 30px;font-size:13px}
+.ft .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.ft .logo b,.ft .logo small{color:#F1E6D8}
+.ft nav{display:flex;gap:22px;flex-wrap:wrap;font:600 13px Montserrat,sans-serif}
+
+/* tablet */
+@media (max-width:1100px){
+ .grid{gap:24px 14px}
+ .dgrid{grid-template-columns:1fr}
+ .ops{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .conf{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .hero h1{font-size:44px}.hero h1 em{font-size:50px}
+}
+/* celular */
+@media (max-width:767px){
+ .wrap{padding:0 16px}
+ .sec{padding:56px 0}
+ .sh{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:24px}
+ .sh h2{font-size:26px}
+ .nav{display:none}.burger{display:block}
+ .hd .wrap{height:62px}
+ .logo b{font-size:28px}
+ .hero{min-height:0;align-items:flex-end}
+ .hero-img{width:100%;display:block}
+ .hero-img img:nth-child(2){display:none}
+ .hero-img img{object-position:62% 18%}
+ .hero-img:before{background:linear-gradient(90deg,rgba(241,230,216,.97) 0%,rgba(241,230,216,.88) 46%,rgba(241,230,216,0) 78%)}
+ .hero-tx{max-width:66%;padding:52px 0 40px;min-height:calc(100svh - 96px);max-height:640px;display:flex;flex-direction:column;justify-content:center}
+ .hero h1{font-size:30px;margin:12px 0 14px}.hero h1 em{font-size:34px}
+ .hero p{font-size:14px}
+ .hero .cta{flex-direction:column;align-items:stretch;gap:10px;margin-top:22px}
+ .hero .btn{min-height:46px;padding:0 18px;font-size:12px}
+ .hero .mini{display:none}
+ .ben .wrap{grid-template-columns:repeat(2,minmax(0,1fr));padding:0}
+ .b{padding:18px 14px;gap:10px;align-items:flex-start}
+ .b+.b{border-left:0}.b:nth-child(even){border-left:1px solid var(--linea)}.b:nth-child(n+3){border-top:1px solid var(--linea)}
+ .b svg{flex-basis:28px;width:28px;height:28px}
+ .b strong{font-size:13px}.b span{font-size:12px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
+ .nm{font-size:13px;margin-top:10px}.pr{font-size:16px}.cu{font-size:11.5px}
+ .dcard{grid-template-columns:1fr}
+ .dph img{aspect-ratio:1/1}
+ .dtx{padding:22px 18px}
+ .dnm{font-size:19px}
+ .cgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .cvn{display:none}
+ .cb{padding:14px}.cn{font-size:18px}.cv{font-size:10.5px;padding:9px 11px}
+ .mas{margin-top:48px}
+ .all{padding:16px;aspect-ratio:auto}.all b{font-size:30px}.all span{font-size:12.5px}.all em{white-space:nowrap;font-size:10.5px;padding:10px 12px}
+ .razones{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .rz,.rz+.rz{padding:22px 14px 22px 0;border-left:0}
+ .rz:nth-child(even){padding-left:14px;border-left:1px solid var(--linea)}
+ .rz:nth-child(n+3){border-top:1px solid var(--linea)}
+ .rz b{font-size:28px}.rz strong{font-size:14.5px}.rz p{font-size:13px}
+ .conf{grid-template-columns:1fr;gap:10px;margin-top:28px}
+ .ops-h{margin:44px 0 16px;flex-direction:column;align-items:flex-start}
+ .ops{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px;gap:12px;margin:0 -16px;padding:0 16px 6px;scrollbar-width:none}
+ .ops::-webkit-scrollbar{display:none}
+ .op{flex:0 0 78%;scroll-snap-align:start}
+ .desl{display:block}
+ .cierre{flex-direction:column;align-items:flex-start;padding:28px 22px;margin-top:40px}
+ .cierre h3{font-size:21px}.cierre h3 em{font-size:24px}
+ .cierre .bts{width:100%;flex-direction:column}.cierre .btn{width:100%}
+}
+@media (max-width:360px){.hero-tx{max-width:74%}.hero h1{font-size:27px}.hero h1 em{font-size:30px}}
+</style>
+</head>
+<body>
+<div class="pv">Vista previa · Home nueva de Mora</div>
+
+<header class="hd"><div class="wrap">
+ <svg class="burger ico" viewBox="0 0 24 24" width="24" height="24" style="stroke:#2B1A1F;fill:none;stroke-width:1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+ <a class="logo" href="#"><b>Mora</b><small>LENCERÍA</small></a>
+ <nav class="nav"><a href="#catalogo">Productos</a><a href="#categorias">Corpiños</a><a href="#categorias">Conjuntos</a><a href="#categorias">Bodys</a><a href="#categorias">Bombachas</a></nav>
+ <div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><svg viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></div>
+</div></header>
+
+<!-- 1 · BANNER: qué somos y qué hacemos -->
+<section class="hero">
+ <div class="hero-img">
+  <img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/01-modelo-nude-091dd25b0efdf5d6ad17917713304384-1024-1024.webp" alt="Corpiño segunda piel nude" fetchpriority="high" width="1024" height="1270">
+  <img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/02-modelo-negro-c8f2244d81f7451fa417917713304553-1024-1024.webp" alt="Corpiño segunda piel negro" width="1024" height="1270">
+ </div>
+ <div class="wrap"><div class="hero-tx">
+  <span class="kick">Lencería de Córdoba · Envíos a todo el país</span>
+  <h1>Lencería <em>cómoda</em> para usar todo el día</h1>
+  <p>Somos <b>Mora</b>. Hacemos <b>corpiños sin aro, conjuntos, bodys y bombachas</b> en talles del M al 4XL, para que estés cómoda de la mañana a la noche.</p>
+  <div class="cta"><a class="btn" href="#catalogo">Ver productos</a><a class="btn ghost" href="#categorias">Elegir categoría</a></div>
+  <div class="mini"><span><i></i>3 cuotas sin interés</span><span><i></i>Talles del M al 4XL</span><span><i></i>Te asesoramos por WhatsApp</span></div>
+ </div></div>
+</section>
+
+<!-- 2 · BENEFICIOS -->
+<section class="ben"><div class="wrap">
+ <div class="b"><svg viewBox="0 0 32 32"><path d="M3 9h16v13H3zM19 13h6l4 5v4h-10z"/><circle cx="9" cy="24" r="2.5"/><circle cx="24" cy="24" r="2.5"/></svg><div><strong>Envíos a todo el país</strong><span>Despachamos desde Córdoba</span></div></div>
+ <div class="b"><svg viewBox="0 0 32 32"><rect x="3" y="7" width="26" height="18" rx="3"/><path d="M3 13h26M8 20h6"/></svg><div><strong>3 cuotas sin interés</strong><span>Con tarjeta de crédito</span></div></div>
+ <div class="b"><svg viewBox="0 0 32 32"><path d="M17 4h10v10L15 26 6 17z"/><circle cx="22" cy="9" r="1.6"/></svg><div><strong>Hasta 38% OFF</strong><span>Llevando 2 o 3 corpiños Premium</span></div></div>
+ <div class="b"><svg viewBox="0 0 32 32"><path d="M3 12h26v8H3z"/><path d="M8 12v4M13 12v3M18 12v4M23 12v3"/></svg><div><strong>Talles del M al 4XL</strong><span>Guía en centímetros</span></div></div>
+</div></section>
+
+<!-- 3 · CATÁLOGO -->
+<section class="sec" id="catalogo"><div class="wrap">
+ <div class="sh"><div><span class="kick">Catálogo</span><h2>Elegí lo que vas a <em>usar todos los días</em></h2></div><a class="lnk" href="https://moralenceriaok.mitiendanube.com/productos/">Ver los 11 productos</a></div>
+ <div class="grid"><a class="card" href="https://moralenceriaok.mitiendanube.com/productos/corpino-segunda-piel-reforzado-11du5/"><span class="ph"><span class="tag">Hasta 38% OFF</span><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/mora-gris-portada-240eeefb1fc28731f717941940398168-640-0.webp" alt="Corpiño Segunda Piel Reforzado Premium" loading="eager" width="640" height="800"></span><span class="nm">Corpiño Segunda Piel Reforzado Premium</span><span class="pr">$39.990</span><span class="cu">3 cuotas sin interés de <b>$13.330</b></span><span class="vp">Ver producto</span></a><a class="card" href="https://moralenceriaok.mitiendanube.com/productos/conjunto-morley-con-puntilla-1ykyj/"><span class="ph"><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/01-conjunto-morley-puntilla-6-negro-75a9351f1cbc567d0017917755042825-640-0.webp" alt="Conjunto Morley con Puntilla" loading="eager" width="640" height="800"></span><span class="nm">Conjunto Morley con Puntilla</span><span class="pr">$30.990</span><span class="cu">3 cuotas sin interés de <b>$10.330</b></span><span class="vp">Ver producto</span></a><a class="card" href="https://moralenceriaok.mitiendanube.com/productos/body-reductor-colaless-rwmbn/"><span class="ph"><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/05-body-reductor-colaless-2-negro-e20e346fb5e3f2077a17917766145973-640-0.webp" alt="Body Reductor Colaless" loading="eager" width="640" height="800"></span><span class="nm">Body Reductor Colaless</span><span class="pr">$31.990</span><span class="cu">3 cuotas sin interés de <b>$10.663,33</b></span><span class="vp">Ver producto</span></a><a class="card" href="https://moralenceriaok.mitiendanube.com/productos/conjunto-de-algodon-con-puntilla-1sth4/"><span class="ph"><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/06-conjunto-algodon-puntilla-8-nougat-8b79156b562e90db6417917768835978-640-0.webp" alt="Conjunto de Algodón con Puntilla" loading="eager" width="640" height="800"></span><span class="nm">Conjunto de Algodón con Puntilla</span><span class="pr">$31.990</span><span class="cu">3 cuotas sin interés de <b>$10.663,33</b></span><span class="vp">Ver producto</span></a><a class="card" href="https://moralenceriaok.mitiendanube.com/productos/corpino-segunda-piel-premium-doble-reforzado-qt5ko/"><span class="ph"><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/mora-reforzado-01-a196c041899966d7b117941915203384-640-0.webp" alt="Corpiño Segunda Piel Premium Doble Reforzado" loading="lazy" width="640" height="800"></span><span class="nm">Corpiño Segunda Piel Premium Doble Reforzado</span><span class="pr">$39.990</span><span class="cu">3 cuotas sin interés de <b>$13.330</b></span><span class="vp">Ver producto</span></a><a class="card" href="https://moralenceriaok.mitiendanube.com/productos/conjunto-triangulito-soft-estampado-14488/"><span class="ph"><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/02-conjunto-triangulito-estampado-1-nude-d41422ac41cbf6112117917757890034-640-0.webp" alt="Conjunto Triangulito Soft Estampado" loading="lazy" width="640" height="800"></span><span class="nm">Conjunto Triangulito Soft Estampado</span><span class="pr">$30.990</span><span class="cu">3 cuotas sin interés de <b>$10.330</b></span><span class="vp">Ver producto</span></a><a class="card" href="https://moralenceriaok.mitiendanube.com/productos/pack-x3-culotte-less-de-algodon-frashe-6jdlm/"><span class="ph"><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/08-pack-culotte-frashe-3-58ac356cb3c8ff592817917772900534-640-0.webp" alt="Pack x3 Culotte Less de Algodón Frashe" loading="lazy" width="640" height="800"></span><span class="nm">Pack x3 Culotte Less de Algodón Frashe</span><span class="pr">$32.990</span><span class="cu">3 cuotas sin interés de <b>$10.996,67</b></span><span class="vp">Ver producto</span></a><a class="card" href="https://moralenceriaok.mitiendanube.com/productos/body-reductor-con-broche-1fvh4/"><span class="ph"><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/04-body-reductor-4-negro-b78a4ab255cc94821017917763459040-640-0.webp" alt="Body Reductor con Broche" loading="lazy" width="640" height="800"></span><span class="nm">Body Reductor con Broche</span><span class="pr">$29.990</span><span class="vp">Ver producto</span></a></div>
+</div></section>
+
+<!-- 4 · DESTACADOS DEL MES -->
+<section class="sec dest" id="destacados"><div class="wrap">
+ <div class="sh"><div><span class="kick">Noviembre</span><h2>Los 2 <em>destacados del mes</em></h2><p>Los corpiños que más eligen: sin aro, con gel que sostiene y talles reales.</p></div></div>
+ <div class="dgrid"><a class="dcard" href="https://moralenceriaok.mitiendanube.com/productos/corpino-segunda-piel-reforzado-11du5/"><span class="dph"><span class="dnum">01</span><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/mora-gris-portada-240eeefb1fc28731f717941940398168-640-0.webp" alt="Corpiño Segunda Piel Reforzado Premium" loading="lazy" width="640" height="800"></span><span class="dtx"><span class="kick">Destacado del mes</span><span class="dnm">Corpiño Segunda Piel Reforzado Premium</span><ul><li>Sin aro: sostiene con gel</li><li>Talles del M al 4XL</li><li>Elegís talle y color de cada uno</li></ul><span class="off">Hasta 38% OFF comprando en cantidad</span><span class="dpr">$39.990</span><span class="cu">3 cuotas sin interés de <b>$13.330</b></span><span class="btn">Ver producto</span></span></a><a class="dcard" href="https://moralenceriaok.mitiendanube.com/productos/corpino-segunda-piel-premium-doble-reforzado-qt5ko/"><span class="dph"><span class="dnum">02</span><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/mora-reforzado-01-a196c041899966d7b117941915203384-640-0.webp" alt="Corpiño Segunda Piel Premium Doble Reforzado" loading="lazy" width="640" height="800"></span><span class="dtx"><span class="kick">Destacado del mes</span><span class="dnm">Corpiño Segunda Piel Premium Doble Reforzado</span><ul><li>Doble refuerzo para más sostén</li><li>Sin aro y sin marcas</li><li>Talles del M al 4XL</li></ul><span class="dpr">$39.990</span><span class="cu">3 cuotas sin interés de <b>$13.330</b></span><span class="btn">Ver producto</span></span></a></div>
+</div></section>
+
+<!-- 5 · CATEGORÍAS + MÁS PRODUCTOS -->
+<section class="sec" id="categorias"><div class="wrap">
+ <div class="sh"><div><span class="kick">Categorías</span><h2>¿Buscás algo en <em>especial</em>?</h2></div></div>
+ <div class="cgrid"><a class="cat" href="https://moralenceriaok.mitiendanube.com/corpinos/"><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/mora-reforzado-01-a196c041899966d7b117941915203384-640-0.webp" alt="Corpiños" loading="lazy" width="640" height="800"><span class="cb"><span class="cn">Corpiños</span><span class="cc">2 productos</span><span class="cv">Ver <span class="cvn">corpiños </span>→</span></span></a><a class="cat" href="https://moralenceriaok.mitiendanube.com/conjuntos/"><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/02-conjunto-triangulito-estampado-1-nude-d41422ac41cbf6112117917757890034-640-0.webp" alt="Conjuntos" loading="lazy" width="640" height="800"><span class="cb"><span class="cn">Conjuntos</span><span class="cc">3 productos</span><span class="cv">Ver <span class="cvn">conjuntos </span>→</span></span></a><a class="cat" href="https://moralenceriaok.mitiendanube.com/bodys/"><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/05-body-reductor-colaless-2-negro-e20e346fb5e3f2077a17917766145973-640-0.webp" alt="Bodys" loading="lazy" width="640" height="800"><span class="cb"><span class="cn">Bodys</span><span class="cc">2 productos</span><span class="cv">Ver <span class="cvn">bodys </span>→</span></span></a><a class="cat" href="https://moralenceriaok.mitiendanube.com/bombachas/"><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/07-pack-culotte-mon-cherie-1-90ce7714048a18304817917771740386-640-0.webp" alt="Bombachas" loading="lazy" width="640" height="800"><span class="cb"><span class="cn">Bombachas</span><span class="cc">4 productos</span><span class="cv">Ver <span class="cvn">bombachas </span>→</span></span></a></div>
+ <div class="mas"><h3>Más productos para ver</h3>
+  <div class="grid"><a class="card" href="https://moralenceriaok.mitiendanube.com/productos/pack-x3-culotte-less-de-algodon-mon-cherie-1aib5/"><span class="ph"><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/07-pack-culotte-mon-cherie-1-90ce7714048a18304817917771740386-640-0.webp" alt="Pack x3 Vedetina de Algodón" loading="lazy" width="640" height="800"></span><span class="nm">Pack x3 Vedetina de Algodón</span><span class="pr">$30.990</span><span class="cu">3 cuotas sin interés de <b>$10.330</b></span><span class="vp">Ver producto</span></a><a class="card" href="https://moralenceriaok.mitiendanube.com/productos/boxer-sin-costura-qchfc/"><span class="ph"><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/03-boxer-sin-costura-4-nougat-7dfdfd54c759c305d017917760283444-640-0.webp" alt="Bóxer Sin Costura" loading="lazy" width="640" height="800"></span><span class="nm">Bóxer Sin Costura</span><span class="pr">$26.990</span><span class="vp">Ver producto</span></a><a class="card" href="https://moralenceriaok.mitiendanube.com/productos/pack-x3-tangas-de-algodon-d4er1/"><span class="ph"><img src="https://dcdn-us.mitiendanube.com/stores/006/812/373/products/20-tangas-pack3-0126ea77cdebe8963717917813580554-640-0.webp" alt="Pack x3 Tangas de algodón" loading="lazy" width="640" height="800"></span><span class="nm">Pack x3 Tangas de algodón</span><span class="pr">$7.900</span><span class="vp">Ver producto</span></a><a class="all" href="https://moralenceriaok.mitiendanube.com/productos/"><b>Todo Mora</b><span>Corpiños, conjuntos, bodys y bombachas en un solo lugar.</span><em>Ver todos</em></a></div>
+ </div>
+</div></section>
+
+<!-- 6 · POR QUÉ ELEGIRNOS + CONFIANZA -->
+<section class="sec pq" id="por-que"><div class="wrap">
+ <div class="sh"><div><span class="kick">Por qué Mora</span><h2>Por qué <em>elegirnos</em></h2></div></div>
+ <div class="razones">
+  <div class="rz"><b>01</b><strong>Cómodo de verdad</strong><p>Sin aro y sin costuras que marquen. Lo usás todo el día y te olvidás que lo tenés puesto.</p></div>
+  <div class="rz"><b>02</b><strong>Talles reales</strong><p>Del M al 4XL, medidos en centímetros de busto: de 86 a 116 cm.</p></div>
+  <div class="rz"><b>03</b><strong>Vos elegís</strong><p>Talle y color de cada prenda. Sin surtidos ni sorpresas.</p></div>
+  <div class="rz"><b>04</b><strong>Te respondemos</strong><p>¿Dudás con el talle? Escribinos por WhatsApp y te ayudamos a elegir.</p></div>
+ </div>
+ <div class="conf">
+  <div class="cf"><svg viewBox="0 0 32 32"><path d="M16 3l11 4v8c0 7-5 12-11 14C10 27 5 22 5 15V7z"/><path d="m11 16 4 4 7-8"/></svg><div><strong>Pago 100% seguro</strong><span>Con Pago Nube de Tiendanube</span></div></div>
+  <div class="cf"><svg viewBox="0 0 32 32"><path d="M4 10l12-6 12 6v12l-12 6-12-6z"/><path d="M4 10l12 6 12-6M16 16v12"/></svg><div><strong>Seguís tu pedido</strong><span>Te avisamos cuando sale</span></div></div>
+  <div class="cf"><svg viewBox="0 0 32 32"><path d="M5 27l2-6a11 11 0 1 1 4 4z"/><path d="M12 13c0 4 3 7 7 7l2-2-3-2-1 1c-1-.5-2.5-2-3-3l1-1-2-3z"/></svg><div><strong>Atención por WhatsApp</strong><span>Antes y después de comprar</span></div></div>
+  <div class="cf"><svg viewBox="0 0 32 32"><path d="M6 12a10 10 0 0 1 18-4M26 20a10 10 0 0 1-18 4"/><path d="M24 3v5h-5M8 29v-5h5"/></svg><div><strong>Cambios coordinados</strong><span>Lo hablamos por WhatsApp</span></div></div>
+ </div>
+ <div class="ops-h"><h3>Lo que dicen las que ya compraron</h3><a class="lnk" href="https://instagram.com/moralenceria_cba">Seguinos en Instagram @moralenceria_cba</a></div>
+ <div class="ops"><figure class="op"><span class="st"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg></span><blockquote>La verdad que quedé contenta con mi compra. Seguramente vuelvo a pedir cuando haya cosas nuevas.</blockquote><figcaption>Mariana A. <span>· Clienta de Mora</span></figcaption></figure><figure class="op"><span class="st"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg></span><blockquote>Me avisaron cuando salió el pedido y pude seguirlo sin problema. Gracias.</blockquote><figcaption>Agustina B. <span>· Clienta de Mora</span></figcaption></figure><figure class="op"><span class="st"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg></span><blockquote>Tuve dudas con el envío y me respondieron enseguida. Por suerte llegó todo perfecto.</blockquote><figcaption>Agustina R. <span>· Clienta de Mora</span></figcaption></figure><figure class="op"><span class="st"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg></span><blockquote>Volví a pedir para hacer un regalo. Esta vez tampoco me decepcionó.</blockquote><figcaption>Sofía G. <span>· Clienta de Mora</span></figcaption></figure><figure class="op"><span class="st"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8 4.7 17.7l1.2-5.9L1.4 7.7l6-.7z"/></svg></span><blockquote>Me gustó más cuando lo tuve en la mano. Las fotos ya estaban buenas, pero en persona se siente mucho más la calidad.</blockquote><figcaption>Camila Q. <span>· Clienta de Mora</span></figcaption></figure></div><p class="desl">Deslizá para ver más →</p>
+ <div class="cierre"><div><h3>Lencería que se siente <em>como tu piel</em></h3><p>Elegí la tuya y recibila en tu casa.</p></div><div class="bts"><a class="btn" href="#catalogo">Ver productos</a><a class="btn ghost" href="https://wa.me/543512010152">Consultar por WhatsApp</a></div></div>
+</div></section>
+
+<footer class="ft"><div class="wrap">
+ <a class="logo" href="#"><b>Mora</b><small>LENCERÍA</small></a>
+ <nav><a href="#catalogo">Productos</a><a href="#destacados">Destacados</a><a href="#categorias">Categorías</a><a href="#por-que">Por qué Mora</a></nav>
+</div></footer>
+<script>
+// la tarjeta entera abre la ficha (también desde la foto o el rótulo)
+document.querySelectorAll('.card,.dcard,.cat').forEach(function(c){c.addEventListener('click',function(e){if(e.target.closest('a')!==c){e.preventDefault();location.href=c.href}},true)});
+</script>
+</body>
+</html>
