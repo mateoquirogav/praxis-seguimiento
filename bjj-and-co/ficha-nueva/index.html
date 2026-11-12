@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vista previa · Ficha, carrito y landing — BJJ &amp; Co.</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@600;700;800;900&family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#FFFFFF;--hueso:#F6F4F1;--arena:#EFECE7;
+  --tinta:#141414;--gris:#6E6862;--gris2:#9A938C;--linea:#E5E1DB;
+  --rojo:#E4231F;--rojo2:#C11A16;--ok:#1F7A4D;
+  --b-blanco:#E9E6E1;--b-azul:#1B3A8C;--b-violeta:#5B2C9B;--b-marron:#5A3A22;--b-negro:#141414;
+  --tt:'Sofia Sans Extra Condensed',Impact,sans-serif;
+  --tc:'Public Sans',system-ui,sans-serif;
+  --max:1240px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{overflow-x:hidden;touch-action:manipulation;-webkit-text-size-adjust:100%}
+body{background:var(--papel);color:var(--tinta);font-family:var(--tc);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--rojo)}
+h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:uppercase;letter-spacing:-.005em}
+
+.grados{display:flex;height:5px;width:100%}
+.grados span{flex:1}
+.g1{background:var(--b-blanco)}.g2{background:var(--b-azul)}.g3{background:var(--b-violeta)}
+.g4{background:var(--b-marron)}.g5{background:var(--b-negro)}.g6{background:var(--rojo);flex:0 0 34px!important}
+
+/* ── barra de la vista previa (PRAXIS) ── */
+.vp{background:#0E1B33;color:#fff}
+.vp .in{max-width:var(--max);margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.vp .t{font-size:12px;letter-spacing:.08em;color:#AFC0DA;flex:1;min-width:220px}
+.vp .t b{color:#fff;font-weight:600}
+.vp nav{display:flex;gap:6px;flex-wrap:wrap}
+.vp nav a{font-size:12.5px;font-weight:600;letter-spacing:.06em;padding:9px 14px;border-radius:999px;border:1px solid #2E4670;color:#D8E2F2;white-space:nowrap}
+.vp nav a.on{background:#fff;color:#0E1B33;border-color:#fff}
+
+/* ── anuncio + header de la tienda ── */
+.anuncio{background:var(--tinta);color:#CFCAC4;text-align:center;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:10px 16px}
+.anuncio b{color:#fff}
+.hd{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--linea)}
+.hd .in{max-width:var(--max);margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;gap:32px}
+.hd .logo img{height:24px;width:auto}
+.hd nav{display:flex;gap:24px}
+.hd nav a{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.hd .acc{margin-left:auto;display:flex;gap:18px;align-items:center}
+.ico{width:20px;height:20px;stroke:var(--tinta);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.bag{position:relative}
+.bag em{position:absolute;top:-6px;right:-8px;background:var(--rojo);color:#fff;font-style:normal;font-size:9px;font-weight:700;width:16px;height:16px;border-radius:50%;display:grid;place-items:center}
+
+.vista{display:none}
+.vista.on{display:block}
+
+/* ═════════ FICHA ═════════ */
+.miga{padding:20px 0 0;font-size:12px;color:var(--gris2);letter-spacing:.05em}
+.fi{padding:20px 0 70px}
+.fi-in{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:52px;align-items:start}
+.gal{display:grid;grid-template-columns:76px minmax(0,1fr);gap:14px;position:sticky;top:88px}
+.thumbs{display:flex;flex-direction:column;gap:10px}
+.thumbs button{border:1px solid var(--linea);aspect-ratio:1;overflow:hidden;opacity:.55;transition:opacity .2s}
+.thumbs button.on{opacity:1;border-color:var(--tinta)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.main{position:relative;background:var(--arena);aspect-ratio:1;overflow:hidden}
+.main .pista{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.main .pista::-webkit-scrollbar{display:none}
+.main .pista img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start}
+.puntos{display:none}
+
+.compra .tag{display:inline-flex;gap:8px;align-items:center;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gris)}
+.compra .tag i{width:6px;height:6px;border-radius:50%;background:var(--rojo)}
+.compra h1{font-size:76px;margin:8px 0 6px}
+.compra .frase{font-size:15px;color:var(--gris);margin-bottom:22px}
+
+.benef{list-style:none;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);padding:16px 0;margin-bottom:22px;display:grid;gap:12px}
+.benef li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;font-size:14.5px;line-height:1.45}
+.benef li b{font-weight:700}
+.benef li span{color:var(--gris)}
+.benef .ck{width:28px;height:28px;border-radius:50%;background:var(--tinta);display:grid;place-items:center}
+.benef .ck svg{width:14px;height:14px;stroke:#fff;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+.precio{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.precio b{font-family:var(--tt);font-size:52px;font-weight:800;line-height:1}
+.cuotas{display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:var(--hueso);border:1px solid var(--linea);border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:600}
+.cuotas .modo{font-weight:800;letter-spacing:.04em;background:#0A0A0A;color:#fff;border-radius:4px;padding:1px 6px;font-size:11.5px}
+.envio{font-size:13px;color:var(--gris);margin-top:10px}
+.envio b{color:var(--tinta)}
+
+.talle{margin-top:24px}
+.talle .r{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.talle .r span{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.talle .r span em{font-style:normal;color:var(--gris);letter-spacing:.06em;text-transform:none;font-weight:500}
+.talle .r button{font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.talles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.talles button{height:50px;border:1.5px solid var(--linea);font-weight:700;font-size:15px;transition:border-color .15s,background .15s}
+.talles button.on{border-color:var(--tinta);background:var(--tinta);color:#fff}
+
+.agregar{margin-top:16px;display:grid;grid-template-columns:110px 1fr;gap:10px}
+.cant{display:grid;grid-template-columns:1fr 1fr 1fr;border:1.5px solid var(--linea);height:58px;align-items:center;text-align:center;font-weight:700}
+.cant button{height:100%;font-size:20px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;height:58px;background:var(--rojo);color:#fff;font-weight:800;font-size:14px;letter-spacing:.18em;text-transform:uppercase;transition:background .2s}
+.btn:hover{background:var(--rojo2)}
+.btn.negro{background:var(--tinta)}.btn.negro:hover{background:#000}
+.seguro{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--gris)}
+.seguro span{display:flex;gap:6px;align-items:center}
+.seguro svg{width:15px;height:15px;stroke:var(--tinta);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* descripción con código */
+.desc{background:var(--hueso);border-top:1px solid var(--linea)}
+.hist{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:80px 0}
+.hist img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.hist h2{font-size:64px;margin:12px 0 18px}
+.hist p{color:#3d3935;font-size:16px;margin-bottom:12px;max-width:470px}
+.hist .firma{font-family:var(--tt);font-size:26px;font-weight:800;text-transform:uppercase;margin-top:20px}
+.hist .firma span{color:var(--rojo)}
+.carac{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--linea);border:1px solid var(--linea);margin-bottom:70px}
+.carac div{background:#fff;padding:26px 22px}
+.carac small{display:block;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rojo);margin-bottom:8px}
+.carac b{display:block;font-family:var(--tt);font-size:28px;font-weight:800;text-transform:uppercase;line-height:1;margin-bottom:6px}
+.carac p{font-size:13.5px;color:var(--gris);line-height:1.5}
+.guia{display:grid;grid-template-columns:420px 1fr;gap:48px;align-items:center;padding-bottom:80px}
+.guia img{width:100%;border:1px solid var(--linea)}
+.guia h3{font-size:42px;margin:10px 0 14px}
+.guia ul{list-style:none;display:grid;gap:10px;font-size:14.5px}
+.guia li{padding-left:22px;position:relative}
+.guia li:before{content:'';position:absolute;left:0;top:9px;width:10px;height:2px;background:var(--rojo)}
+
+/* barra fija celular */
+.fijo{position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid var(--linea);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;grid-template-columns:1fr auto;gap:12px;align-items:center;transform:translateY(110%);transition:transform .3s}
+.fijo{visibility:hidden}.fijo.ver{transform:none;visibility:visible}
+.fijo b{display:block;font-family:var(--tt);font-size:26px;font-weight:800;line-height:1}
+.fijo small{font-size:11.5px;color:var(--gris)}
+.fijo .btn{height:50px;padding:0 22px;font-size:12.5px}
+
+/* modal talles */
+.modal{position:fixed;inset:0;z-index:90;background:rgba(10,10,10,.6);display:none;place-items:center;padding:20px}
+.modal.ver{display:grid}
+.modal .cj{background:#fff;max-width:560px;width:100%;position:relative}
+.modal .cj button{position:absolute;top:8px;right:8px;width:40px;height:40px;background:#fff;border-radius:50%;font-size:22px;line-height:1}
+
+/* ═════════ CARRITO ═════════ */
+.cv{background:#E9E6E1;min-height:80vh;padding:48px 0 70px}
+.cv-in{display:grid;grid-template-columns:1fr 440px;gap:48px;align-items:start}
+.porq h2{font-size:56px;margin:12px 0 10px}
+.porq>p{color:#4a4541;max-width:520px;margin-bottom:26px}
+.porq .it{background:#fff;border-left:4px solid var(--rojo);padding:20px 22px;margin-bottom:12px}
+.porq .it small{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rojo)}
+.porq .it b{display:block;font-family:var(--tt);font-size:28px;text-transform:uppercase;line-height:1;margin:6px 0 6px}
+.porq .it p{font-size:14px;color:#4a4541}
+.cajon{background:#fff;box-shadow:0 24px 60px rgba(20,20,20,.18)}
+.cajon .top{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--linea)}
+.cajon .top b{font-family:var(--tt);font-size:28px;text-transform:uppercase}
+.reloj{display:flex;align-items:center;gap:10px;background:var(--tinta);color:#fff;padding:12px 22px;font-size:14px}
+.reloj svg{width:18px;height:18px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round}
+.reloj strong{font-variant-numeric:tabular-nums;color:#fff;background:var(--rojo);padding:2px 8px;border-radius:4px;font-size:15px;margin-left:auto}
+.item{display:grid;grid-template-columns:84px 1fr auto;gap:14px;padding:18px 22px;border-bottom:1px solid var(--linea)}
+.item img{width:84px;height:84px;object-fit:cover;background:var(--arena)}
+.item b{font-family:var(--tt);font-size:22px;text-transform:uppercase;line-height:1}
+.item small{display:block;font-size:12.5px;color:var(--gris);margin:4px 0 8px}
+.item .cant{height:36px;width:104px;font-size:14px}
+.item .cant button{font-size:16px}
+.item .p{font-weight:700;font-size:15px}
+.bloque{padding:18px 22px;border-bottom:1px solid var(--linea)}
+.bloque>small{display:block;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px}
+.pago{display:grid;gap:8px}
+.pago label{display:grid;grid-template-columns:20px 1fr;gap:12px;align-items:start;border:1.5px solid var(--linea);padding:13px 14px;cursor:pointer;transition:border-color .15s}
+.pago label.on{border-color:var(--tinta)}
+.pago input{position:absolute;opacity:0;pointer-events:none;font-size:16px}
+.pago .rd{width:20px;height:20px;border-radius:50%;border:2px solid var(--gris2);margin-top:1px;position:relative}
+.pago label.on .rd{border-color:var(--tinta)}
+.pago label.on .rd:after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--tinta)}
+.pago b{display:block;font-size:14.5px}
+.pago span{display:block;font-size:12.5px;color:var(--gris);line-height:1.45}
+.testi{display:grid;gap:10px}
+.testi blockquote{background:var(--hueso);padding:12px 14px;font-size:13.5px;line-height:1.5;border-left:3px solid var(--tinta)}
+.testi cite{display:block;font-style:normal;font-size:11.5px;color:var(--gris);margin-top:4px}
+.histos{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.histos img{width:100%;aspect-ratio:9/14;object-fit:cover}
+.tot{padding:18px 22px}
+.tot .r{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+.tot .r.g{font-size:18px;font-weight:800;margin:10px 0 14px}
+.tot .btn{width:100%}
+.tot .seguir{display:block;text-align:center;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px;margin-top:12px}
+
+/* ═════════ LANDING AIDA ═════════ */
+.l-hero{position:relative;min-height:640px;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:#111}
+.l-hero img{position:absolute;top:0;bottom:0;right:0;width:52%;height:100%;object-fit:cover;object-position:center 30%}
+.l-hero:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#111 0%,#111 48%,rgba(17,17,17,0) 62%)}
+.l-hero .wrap{position:relative;z-index:2;padding-top:90px;padding-bottom:84px;width:100%}
+.l-hero .eyebrow{color:#fff;opacity:.8}
+.l-hero h1{font-size:118px;margin:14px 0 18px;max-width:700px}
+.l-hero h1 em{font-style:normal;color:var(--rojo)}
+.l-hero p{font-size:18px;max-width:470px;color:#E7E3DE;margin-bottom:30px}
+.l-hero .cta{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.l-hero .cta .btn{padding:0 30px}
+.l-hero .cta small{font-size:13px;color:#D6D1CB}
+.aida{font-size:10.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gris2);display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.aida i{font-style:normal;width:26px;height:26px;border:1.5px solid currentColor;border-radius:50%;display:grid;place-items:center;font-size:11px;letter-spacing:0}
+.l-sec{padding:96px 0}
+.l-int{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.l-int h2{font-size:72px;margin:10px 0 22px}
+.l-int p{font-size:17px;color:#3d3935;margin-bottom:14px;max-width:520px}
+.l-int img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linea);border:1px solid var(--linea);margin-top:28px}
+.pasos div{background:#fff;padding:18px 16px}
+.pasos b{display:block;font-family:var(--tt);font-size:26px;text-transform:uppercase;line-height:1}
+.pasos span{font-size:12.5px;color:var(--gris)}
+
+.l-asp{background:var(--tinta);color:#fff;text-align:center;padding:110px 0}
+.l-asp .eyebrow{color:var(--rojo)}
+.l-asp h2{font-size:96px;max-width:980px;margin:18px auto 22px}
+.l-asp h2 span{color:#7E7973}
+.l-asp p{font-size:18px;color:#CFCAC4;max-width:560px;margin:0 auto}
+.l-gal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:-60px;position:relative}
+.l-gal figure{background:#fff}
+.l-gal img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.l-gal figcaption{padding:12px 4px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.l-cal{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:70px}
+.l-cal div{border-top:3px solid var(--tinta);padding-top:16px}
+.l-cal b{display:block;font-family:var(--tt);font-size:32px;text-transform:uppercase;line-height:1;margin-bottom:8px}
+.l-cal p{font-size:14.5px;color:var(--gris)}
+.l-tst{background:var(--hueso)}
+.l-tst h2{font-size:64px;margin:10px 0 36px}
+.l-tst .g{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:start}
+.l-tst blockquote{background:#fff;padding:22px 24px;margin-bottom:12px;font-size:16.5px;line-height:1.5;border-left:4px solid var(--rojo)}
+.l-tst cite{display:block;font-style:normal;font-size:12px;color:var(--gris);margin-top:8px;letter-spacing:.06em}
+.l-tst .hs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.l-tst .hs img{width:100%;aspect-ratio:9/14;object-fit:cover}
+.l-acc{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.l-acc img{width:100%;aspect-ratio:1;object-fit:cover;background:var(--arena)}
+.l-acc h2{font-size:72px;margin:8px 0 10px}
+.garant{display:grid;gap:10px;margin-top:22px}
+.garant div{display:flex;gap:12px;align-items:center;font-size:14px}
+.garant svg{width:20px;height:20px;flex:0 0 20px;stroke:var(--tinta);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.l-fin{background:var(--tinta);color:#fff;text-align:center;padding:56px 0}
+.l-fin b{font-family:var(--tt);font-size:44px;text-transform:uppercase;letter-spacing:.01em}
+.l-fin b span{color:var(--rojo)}
+
+.pie{background:#0B0B0B;color:#8E8882;font-size:12px;text-align:center;padding:22px}
+
+/* ═════════ CELULAR ═════════ */
+@media (max-width:900px){
+  .hd .in{height:58px;gap:16px;padding:0 16px}
+  .hd nav{display:none}
+  .wrap{padding:0 16px}
+  .vp .in{padding:10px 16px}
+  .vp nav{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}
+  .vp nav a{text-align:center;padding:9px 6px;font-size:12px}
+  .fi{padding:8px 0 40px}
+  .fi-in{grid-template-columns:1fr;gap:20px}
+  .fi .wrap.mob0{padding:0}
+  .gal{position:static;grid-template-columns:1fr;gap:0}
+  .thumbs{display:none}
+  .puntos{display:flex;justify-content:center;gap:6px;position:absolute;left:0;right:0;bottom:12px}
+  .puntos i{width:7px;height:7px;border-radius:50%;background:rgba(20,20,20,.25)}
+  .puntos i.on{background:var(--tinta)}
+  .compra{padding:0 16px}
+  .compra h1{font-size:58px}
+  .precio b{font-size:44px}
+  .fijo{display:grid}
+  .hist{grid-template-columns:1fr;gap:28px;padding:52px 0}
+  .hist h2{font-size:48px}
+  .carac{grid-template-columns:1fr 1fr;margin-bottom:48px}
+  .carac div{padding:18px 16px}
+  .carac b{font-size:24px}
+  .guia{grid-template-columns:1fr;gap:24px;padding-bottom:110px}
+  .guia h3{font-size:36px}
+  .cv{padding:28px 0 50px}
+  .cv-in{grid-template-columns:1fr;gap:28px}
+  .cajon{order:-1}
+  .porq h2{font-size:42px}
+  .bloque,.item,.tot,.cajon .top,.reloj{padding-left:16px;padding-right:16px}
+  .l-hero{min-height:620px}
+  .l-hero img{width:100%;left:0;object-position:center 20%}
+  .l-hero:after{background:linear-gradient(0deg,rgba(10,10,10,.92) 0%,rgba(10,10,10,.6) 45%,rgba(10,10,10,.1) 80%)}
+  .l-hero .wrap{padding-bottom:44px}
+  .l-hero h1{font-size:72px}
+  .l-hero p{font-size:16px}
+  .l-hero .cta .btn{width:100%}
+  .l-sec{padding:60px 0}
+  .l-int{grid-template-columns:1fr;gap:28px}
+  .l-int h2,.l-acc h2,.l-tst h2{font-size:50px}
+  .pasos b{font-size:21px}
+  .pasos div{padding:14px 10px}
+  .l-asp{padding:72px 0 100px}
+  .l-asp h2{font-size:56px}
+  .l-gal{grid-template-columns:1fr 1fr;gap:10px;margin-top:-50px}
+  .l-gal figure:first-child{grid-column:1/-1}
+  .l-cal{grid-template-columns:1fr;gap:22px;margin-top:44px}
+  .l-tst .g{grid-template-columns:1fr}
+  .l-acc{grid-template-columns:1fr;gap:24px}
+  .l-fin{padding-bottom:110px}
+  .l-fin b{font-size:34px}
+  body.v-landing .fijo,body.v-ficha .fijo{display:grid}
+}
+@media (max-width:360px){
+  .compra h1{font-size:50px}
+  .l-hero h1{font-size:62px}
+  .agregar{grid-template-columns:96px 1fr}
+  .btn{letter-spacing:.12em}
+}
+</style>
+</head>
+<body class="v-ficha">
+
+<div class="vp"><div class="in">
+  <div class="t"><b>Vista previa para BJJ &amp; Co.</b> · ejemplo armado con <b>Mindset</b></div>
+  <nav>
+    <a href="#ficha" data-v="ficha" class="on">1 · Ficha nueva</a>
+    <a href="#carrito" data-v="carrito">2 · Carrito</a>
+    <a href="#landing" data-v="landing">3 · Landing</a>
+  </nav>
+</div></div>
+
+<div class="anuncio"><b>Envío gratis</b> desde $150.000 · <b>3 cuotas sin interés</b> con MODO</div>
+<header class="hd"><div class="in">
+  <a class="logo" href="#ficha"><img src="logo.png" alt="BJJ &amp; Co."></a>
+  <nav><a href="#ficha">Remeras</a><a href="#ficha">Buzos</a><a href="#ficha">Packs</a><a href="#ficha">Nosotros</a></nav>
+  <div class="acc">
+    <svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <a class="bag" href="#carrito" aria-label="Carrito"><svg class="ico" viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><em>1</em></a>
+  </div>
+</div></header>
+<div class="grados"><span class="g1"></span><span class="g2"></span><span class="g3"></span><span class="g4"></span><span class="g5"></span><span class="g6"></span></div>
+
+<!-- ═══════════════ 1 · FICHA ═══════════════ -->
+<main class="vista on" id="v-ficha">
+  <div class="wrap"><div class="miga">Inicio / Remeras / Oversize / Mindset</div></div>
+  <section class="fi"><div class="wrap mob0"><div class="fi-in">
+    <div class="gal">
+      <div class="thumbs" id="thumbs"></div>
+      <div class="main">
+        <div class="pista" id="pista">
+          <img src="frente-el.jpg" alt="Mindset frente, él">
+          <img src="frente-ella.jpg" alt="Mindset frente, ella">
+          <img src="espalda-ella.jpg" alt="Mindset espalda">
+          <img src="parche.jpg" alt="Detalle del parche">
+          <img src="tabla.jpg" alt="Tabla de talles oversize">
+        </div>
+        <div class="puntos" id="puntos"></div>
+      </div>
+    </div>
+
+    <div class="compra">
+      <span class="tag"><i></i>Oversize · Drop 01</span>
+      <h1>Mindset</h1>
+      <p class="frase">La mentalidad se construye con repetición.</p>
+
+      <ul class="benef">
+        <li><span class="ck"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span><div><b>Algodón peinado 24/1.</b> <span>Suave, fresco y mantiene la forma lavado tras lavado.</span></div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span><div><b>Serigrafía artesanal.</b> <span>La estampa no se cuartea ni se borra: no hacemos estampados descartables.</span></div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span><div><b>Fit oversize.</b> <span>Silueta amplia que cae bien, dentro y fuera del tatami.</span></div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span><div><b>Cambios en 3 días hábiles.</b> <span>Si el talle no te queda, lo cambiás.</span></div></li>
+      </ul>
+
+      <div class="precio"><b>$29.000</b></div>
+      <div class="cuotas"><span class="modo">MODO</span> 3 cuotas sin interés</div>
+      <p class="envio">Envío por Andreani a todo el país · <b>gratis desde $150.000</b></p>
+
+      <div class="talle">
+        <div class="r"><span>Talle <em id="tsel">· elegí el tuyo</em></span><button type="button" data-modal>Ver tabla de talles</button></div>
+        <div class="talles" id="talles"><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
+      </div>
+      <div class="agregar" id="agregar">
+        <div class="cant"><button type="button" data-m>−</button><span>1</span><button type="button" data-p>+</button></div>
+        <a class="btn" href="#carrito">Agregar al carrito</a>
+      </div>
+      <div class="seguro">
+        <span><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg>Llega en 3 a 7 días hábiles</span>
+        <span><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Pago seguro con Pago Nube</span>
+      </div>
+    </div>
+  </div></div></section>
+
+  <section class="desc"><div class="wrap">
+    <div class="hist">
+      <img src="frente-ella.jpg" alt="Mindset" loading="lazy">
+      <div>
+        <span class="eyebrow">La historia de Mindset</span>
+        <h2>Una mentalidad no se construye de un día para otro</h2>
+        <p>Se forma a través de la repetición, los errores, los ajustes y la decisión de volver una vez más.</p>
+        <p>Mindset nace de esa experiencia: comprender que cada desafío es una oportunidad para seguir evolucionando. Inspirada en una forma de pensar construida entrenamiento tras entrenamiento.</p>
+        <div class="firma">BJJ &amp; Co. <span>Tamo junto... OSS!!!</span></div>
+      </div>
+    </div>
+    <div class="carac">
+      <div><small>Tela</small><b>Algodón 24/1</b><p>Peinado, suave y respirable.</p></div>
+      <div><small>Estampa</small><b>Serigrafía</b><p>Artesanal, hecha para durar.</p></div>
+      <div><small>Calce</small><b>Oversize</b><p>Silueta amplia, hombro caído.</p></div>
+      <div><small>Cuidado</small><b>Agua fría</b><p>Sin lavandina ni secadora. Planchar del revés.</p></div>
+    </div>
+    <div class="guia">
+      <img src="tabla.jpg" alt="Tabla de talles oversize" loading="lazy">
+      <div>
+        <span class="eyebrow">Tu talle</span>
+        <h3>Elegí sin dudas</h3>
+        <ul>
+          <li>Las medidas son de la prenda, en centímetros.</li>
+          <li>Medí una remera que te quede bien y comparala con la tabla.</li>
+          <li>Si te queda entre dos talles, el oversize ya viene amplio: elegí el menor.</li>
+          <li>Si no te queda, tenés 3 días hábiles para cambiarlo.</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+</main>
+
+<!-- ═══════════════ 2 · CARRITO ═══════════════ -->
+<main class="vista" id="v-carrito">
+  <section class="cv"><div class="wrap"><div class="cv-in">
+    <div class="porq">
+      <span class="eyebrow">El carrito nuevo</span>
+      <h2>Que el que agrega, compre</h2>
+      <p>El carrito es el último paso antes de pagar. Cada bloque está para sacar una duda o empujar la decisión.</p>
+      <div class="it"><small>1 · Urgencia</small><b>Tu carrito se guarda 10 minutos</b><p>El temporizador le marca un tiempo: la persona termina la compra ahora, en vez de dejarla para después.</p></div>
+      <div class="it"><small>2 · Confianza</small><b>Gente que ya compró</b><p>Mensajes e historias reales de tus clientes, justo antes de pagar. Ver a otros conformes saca el miedo de comprarle a una marca nueva.</p></div>
+      <div class="it"><small>3 · Decisión</small><b>Pago normal o transferencia</b><p>Elige cómo paga antes de entrar al checkout: con cuotas o con el descuento por transferencia. Menos dudas, más compras cerradas.</p></div>
+    </div>
+
+    <aside class="cajon">
+      <div class="top"><b>Tu carrito (1)</b><a href="#ficha" aria-label="Cerrar"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></a></div>
+      <div class="reloj"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg><span id="rel-t">Tu carrito se guarda por</span><strong id="rel">10:00</strong></div>
+      <div class="item">
+        <img src="frente-el.jpg" alt="Mindset">
+        <div><b>Mindset</b><small>Oversize · Talle M</small><div class="cant"><button type="button">−</button><span>1</span><button type="button">+</button></div></div>
+        <span class="p">$29.000</span>
+      </div>
+      <div class="bloque">
+        <small>¿Cómo querés pagar?</small>
+        <div class="pago" id="pago">
+          <label class="on"><input type="radio" name="pg" checked><span class="rd"></span><div><b>Pago normal</b><span>Tarjeta, débito o MODO. Hasta 3 cuotas sin interés con MODO.</span></div></label>
+          <label><input type="radio" name="pg"><span class="rd"></span><div><b>Transferencia bancaria</b><span>Pagás con el descuento por transferencia que tengas cargado en tu tienda.</span></div></label>
+        </div>
+      </div>
+      <div class="bloque">
+        <small>Lo que dicen los que ya compraron</small>
+        <div class="testi">
+          <blockquote>«La verdad que la calidad es mucho mejor que por foto. Esperando que larguen nuevos productos.»<cite>Cliente de BJJ &amp; Co. · por WhatsApp</cite></blockquote>
+          <blockquote>«La remera me llegó en perfecto estado. Me encantó el modelo, la calidad, a muy buen precio.»<cite>Cliente de BJJ &amp; Co. · por WhatsApp</cite></blockquote>
+        </div>
+        <div class="histos"><img src="historia-5.jpg" alt="Historia de clienta"><img src="historia-6.jpg" alt="Historia de cliente"><img src="historia-7.jpg" alt="Historia de cliente"><img src="historia-8.jpg" alt="Historia de cliente"></div>
+      </div>
+      <div class="tot">
+        <div class="r"><span>Subtotal</span><span>$29.000</span></div>
+        <div class="r"><span>Envío</span><span>Se calcula en el checkout</span></div>
+        <div class="r g"><span>Total</span><span>$29.000</span></div>
+        <a class="btn" href="#carrito">Iniciar compra</a>
+        <a class="seguir" href="#ficha">Seguir comprando</a>
+      </div>
+    </aside>
+  </div></div></section>
+</main>
+
+<!-- ═══════════════ 3 · LANDING AIDA ═══════════════ -->
+<main class="vista" id="v-landing">
+  <!-- A · ATENCIÓN -->
+  <section class="l-hero">
+    <img src="frente-el.jpg" alt="Mindset">
+    <div class="wrap">
+      <div class="aida" style="color:#CFCAC4"><i>A</i>Atención</div>
+      <span class="eyebrow">Mindset · Drop 01 «On the mat»</span>
+      <h1>La mentalidad <em>se entrena</em></h1>
+      <p>Para los que vuelven una vez más. Llevá lo que aprendiste en el tatami a la calle.</p>
+      <div class="cta"><a class="btn" href="#comprar" data-ir="comprar">Quiero la mía · $29.000</a><small>3 cuotas sin interés con MODO</small></div>
+    </div>
+  </section>
+  <div class="grados"><span class="g1"></span><span class="g2"></span><span class="g3"></span><span class="g4"></span><span class="g5"></span><span class="g6"></span></div>
+
+  <!-- I · INTERÉS -->
+  <section class="l-sec"><div class="wrap l-int">
+    <div>
+      <div class="aida"><i>I</i>Interés</div>
+      <span class="eyebrow">No es solo una remera</span>
+      <h2>Es lo que repetís en cada entrenamiento</h2>
+      <p>Una mentalidad no se construye de un día para otro. Se forma a través de la repetición, los errores, los ajustes y la decisión de volver una vez más.</p>
+      <p>Mindset nace de esa experiencia: cada desafío es una oportunidad para seguir evolucionando.</p>
+      <div class="pasos"><div><b>Repetir</b><span>entrenamiento tras entrenamiento</span></div><div><b>Ajustar</b><span>aprender de cada error</span></div><div><b>Volver</b><span>una vez más</span></div></div>
+    </div>
+    <img src="parche.jpg" alt="Detalle de Mindset" loading="lazy">
+  </div></section>
+
+  <!-- D · DESEO (aspiración) -->
+  <section class="l-asp"><div class="wrap">
+    <div class="aida" style="justify-content:center;color:#8E8882"><i>D</i>Deseo</div>
+    <span class="eyebrow">Nacida del tatami. Pensada para la calle.</span>
+    <h2>Lo que aprendés en el tatami <span>no se queda en el tatami</span></h2>
+    <p>La calma bajo presión, la paciencia, la constancia. Mindset es para llevarlo puesto todos los días y que se note de dónde venís.</p>
+  </div></section>
+  <section style="padding-bottom:90px"><div class="wrap">
+    <div class="l-gal">
+      <figure><img src="frente-el.jpg" alt="Mindset, él" loading="lazy"><figcaption>Oversize · Él</figcaption></figure>
+      <figure><img src="frente-ella.jpg" alt="Mindset, ella" loading="lazy"><figcaption>Oversize · Ella</figcaption></figure>
+      <figure><img src="espalda-ella.jpg" alt="Mindset de espalda" loading="lazy"><figcaption>Silueta amplia</figcaption></figure>
+    </div>
+    <div class="l-cal">
+      <div><b>Algodón peinado 24/1</b><p>Suave y respirable. Mantiene la forma lavado tras lavado.</p></div>
+      <div><b>Serigrafía artesanal</b><p>No hacemos estampados descartables: la estampa está hecha para durar.</p></div>
+      <div><b>Fit oversize</b><p>Silueta amplia que cae bien, dentro y fuera del tatami.</p></div>
+    </div>
+  </div></section>
+
+  <section class="l-sec l-tst"><div class="wrap">
+    <span class="eyebrow">La comunidad BJJ &amp; Co.</span>
+    <h2>Ya la llevan puesta</h2>
+    <div class="g">
+      <div>
+        <blockquote>«La verdad que la calidad es mucho mejor que por foto. Esperando que larguen nuevos productos.»<cite>CLIENTE DE BJJ &amp; CO. · POR WHATSAPP</cite></blockquote>
+        <blockquote>«La remera me llegó en perfecto estado. Me encantó el modelo, la calidad, a muy buen precio. Sin duda voy por el buzo.»<cite>CLIENTE DE BJJ &amp; CO. · POR WHATSAPP</cite></blockquote>
+        <blockquote>«Compré el buzo Trust the Process y me encantó. Excelente la calidad y el diseño, muy copado.»<cite>CLIENTE DE BJJ &amp; CO. · POR WHATSAPP</cite></blockquote>
+      </div>
+      <div class="hs"><img src="historia-5.jpg" alt="Historia de clienta" loading="lazy"><img src="historia-8.jpg" alt="Historia de cliente" loading="lazy"></div>
+    </div>
+  </div></section>
+
+  <!-- A · ACCIÓN -->
+  <section class="l-sec" id="comprar"><div class="wrap l-acc">
+    <img src="frente-el.jpg" alt="Mindset" loading="lazy">
+    <div class="compra" style="padding:0">
+      <div class="aida"><i>A</i>Acción</div>
+      <span class="tag"><i></i>Oversize · Drop 01</span>
+      <h2>Mindset</h2>
+      <div class="precio"><b>$29.000</b></div>
+      <div class="cuotas"><span class="modo">MODO</span> 3 cuotas sin interés</div>
+      <div class="talle">
+        <div class="r"><span>Talle</span><button type="button" data-modal>Ver tabla de talles</button></div>
+        <div class="talles"><button type="button">S</button><button type="button" class="on">M</button><button type="button">L</button><button type="button">XL</button></div>
+      </div>
+      <div class="agregar" style="grid-template-columns:1fr"><a class="btn" href="#carrito">Agregar al carrito</a></div>
+      <div class="garant">
+        <div><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg>Envío por Andreani a todo el país, gratis desde $150.000</div>
+        <div><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>Cambios en 3 días hábiles desde que la recibís</div>
+        <div><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Pago seguro con Pago Nube</div>
+      </div>
+    </div>
+  </div></section>
+  <div class="l-fin"><b>BJJ &amp; Co. <span>Tamo junto... OSS!!!</span></b></div>
+</main>
+
+<div class="pie">Vista previa de diseño · BJJ &amp; Co. · PRAXIS</div>
+
+<!-- barra fija (celular) -->
+<div class="fijo" id="fijo">
+  <div><b>$29.000</b><small>Mindset · 3 cuotas sin interés con MODO</small></div>
+  <a class="btn" href="#carrito" id="fijo-btn">Agregar</a>
+</div>
+
+<div class="modal" id="modal"><div class="cj"><button type="button" aria-label="Cerrar">×</button><img src="tabla.jpg" alt="Tabla de talles oversize"></div></div>
+
+<script>
+(function(){
+  var vistas=['ficha','carrito','landing'];
+  function mostrar(){
+    var h=(location.hash||'#ficha').slice(1);
+    if(h==='comprar'){h='landing'}
+    if(vistas.indexOf(h)<0)h='ficha';
+    vistas.forEach(function(v){document.getElementById('v-'+v).classList.toggle('on',v===h)});
+    document.querySelectorAll('.vp nav a').forEach(function(a){a.classList.toggle('on',a.dataset.v===h)});
+    document.body.className='v-'+h;
+    if(location.hash!=='#comprar')window.scrollTo(0,0);
+    if(h==='carrito')reloj();
+    obs();
+  }
+  window.addEventListener('hashchange',mostrar);
+
+  /* galería */
+  var pista=document.getElementById('pista'),imgs=pista.querySelectorAll('img'),th=document.getElementById('thumbs'),pt=document.getElementById('puntos');
+  imgs.forEach(function(im,i){
+    var b=document.createElement('button');b.type='button';b.innerHTML='<img src="'+im.getAttribute('src')+'" alt="">';
+    b.onclick=function(){pista.scrollTo({left:pista.clientWidth*i,behavior:'smooth'})};th.appendChild(b);
+    pt.appendChild(document.createElement('i'));
+  });
+  function marca(){var i=Math.round(pista.scrollLeft/pista.clientWidth);
+    th.querySelectorAll('button').forEach(function(b,j){b.classList.toggle('on',j===i)});
+    pt.querySelectorAll('i').forEach(function(b,j){b.classList.toggle('on',j===i)});}
+  pista.addEventListener('scroll',function(){requestAnimationFrame(marca)});marca();
+
+  /* talles */
+  document.querySelectorAll('.talles').forEach(function(g){
+    g.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+      g.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
+      if(g.id==='talles')document.getElementById('tsel').textContent='· '+b.textContent;});
+  });
+  /* cantidad */
+  document.querySelectorAll('.cant').forEach(function(c){
+    var s=c.querySelector('span'),bs=c.querySelectorAll('button');
+    bs[0].onclick=function(){s.textContent=Math.max(1,+s.textContent-1)};
+    bs[1].onclick=function(){s.textContent=Math.min(10,+s.textContent+1)};
+  });
+  /* tabla de talles */
+  var md=document.getElementById('modal');
+  document.querySelectorAll('[data-modal]').forEach(function(b){b.onclick=function(){md.classList.add('ver')}});
+  md.onclick=function(e){if(e.target===md||e.target.closest('button'))md.classList.remove('ver')};
+
+  /* pago */
+  var pg=document.getElementById('pago');
+  pg.addEventListener('change',function(){pg.querySelectorAll('label').forEach(function(l){l.classList.toggle('on',l.querySelector('input').checked)})});
+
+  /* temporizador 10 min */
+  var fin=0,tm=null;
+  function reloj(){
+    if(!fin)fin=Date.now()+600000;
+    clearInterval(tm);
+    function t(){var r=Math.max(0,fin-Date.now()),m=Math.floor(r/60000),s=Math.floor(r%60000/1000);
+      document.getElementById('rel').textContent=m+':'+(s<10?'0':'')+s;
+      if(r<=0){clearInterval(tm);document.getElementById('rel-t').textContent='¡Terminá tu compra antes de que se agote tu talle!';document.getElementById('rel').textContent='0:00';}}
+    t();tm=setInterval(t,1000);
+  }
+
+  /* barra fija en celular: aparece cuando el botón principal sale de pantalla */
+  var fijo=document.getElementById('fijo');
+  function chk(){
+    var h=document.body.className;
+    var bl=h==='v-ficha'?document.getElementById('agregar'):h==='v-landing'?document.querySelector('.l-hero .cta'):null;
+    if(!bl){fijo.classList.remove('ver');return}
+    var fin2=h==='v-landing'?document.getElementById('comprar').getBoundingClientRect():null;
+    var pasado=bl.getBoundingClientRect().bottom<0;
+    var enFin=fin2&&fin2.top<innerHeight&&fin2.bottom>0;
+    fijo.classList.toggle('ver',pasado&&!enFin);
+  }
+  function obs(){
+    document.getElementById('fijo-btn').setAttribute('href',document.body.className==='v-landing'?'#comprar':'#carrito');
+    chk();
+  }
+  window.addEventListener('scroll',chk,{passive:true});window.addEventListener('resize',chk);
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href="#comprar"]');if(!a)return;e.preventDefault();
+    document.getElementById('comprar').scrollIntoView({behavior:'smooth'});});
+  mostrar();
+})();
+</script>
+</body>
+</html>
