@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mundo Visión Óptica · Boceto</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="img/mundovision-isotipo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--g:#585858;--gr:#2B2B2B;--v:#759C7C;--vp:#4A7554;--br:#F4F7F4;--ni:#E8F0E9;--li:#E3E8E3;--r:12px;--w:1240px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{touch-action:manipulation;-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:Inter,sans-serif;color:var(--g);background:#fff;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;font-size:16px}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 24px}
+h1,h2,h3,.tt{font-family:Montserrat,sans-serif;color:var(--gr);line-height:1.12;letter-spacing:-.01em}
+h2{font-size:clamp(26px,3vw,36px);font-weight:700}
+h2 em,h1 em{font-style:normal;color:var(--v)}
+.kick{font-family:Montserrat;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--vp);margin-bottom:10px;display:block}
+.sec{padding:88px 0}
+.sec.alt{background:var(--br)}
+.head{text-align:center;max-width:640px;margin:0 auto 44px}
+.head p{margin-top:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--vp);color:#fff;font-family:Montserrat;font-weight:600;font-size:15px;padding:15px 28px;border-radius:var(--r);border:0;cursor:pointer;transition:background .2s}
+.btn:hover{background:#3E6447}
+.btn.ln{background:transparent;color:var(--gr);box-shadow:inset 0 0 0 1.5px var(--gr)}
+.btn.ln:hover{background:var(--gr);color:#fff}
+.btn.wa{background:#25D366;color:#0b2b17}
+.chev{width:14px;height:14px}
+
+/* aviso boceto */
+.boceto{position:fixed;left:16px;bottom:16px;z-index:60;background:var(--gr);color:#fff;font-size:12px;padding:8px 12px;border-radius:10px;opacity:.92;max-width:calc(100% - 32px)}
+.boceto b{color:#9CC2A3}
+
+/* 1 anuncio + header */
+.ann{background:var(--gr);color:#fff;font-size:13px;height:38px;overflow:hidden;position:relative}
+.ann div{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:8px;opacity:0;transition:opacity .5s}
+.ann div.on{opacity:1}
+.ann b{color:#9CC2A3;font-weight:600}
+header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--li)}
+.hd{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
+.hd .logo img{height:46px;width:auto}
+.hd nav{display:flex;gap:28px;font-family:Montserrat;font-weight:500;font-size:14px;color:var(--gr)}
+.hd nav a:hover{color:var(--vp)}
+.ic{display:flex;gap:18px;align-items:center}
+.ic svg{width:22px;height:22px;stroke:var(--gr);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.burger{display:none}
+
+/* hero */
+.hero{position:relative;height:620px;overflow:hidden;background:#f2f1ee}
+.hero picture img{position:absolute;right:0;top:0;height:100%;width:62%;object-fit:cover;object-position:70% 30%}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#fff 0,#fff 38%,rgba(255,255,255,.85) 46%,rgba(255,255,255,0) 62%)}
+.hero .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center}
+.hero h1{font-size:clamp(34px,4.4vw,58px);font-weight:700;max-width:560px}
+.hero p{max-width:440px;margin:18px 0 30px;font-size:18px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+
+/* beneficios */
+.bens{border-bottom:1px solid var(--li)}
+.bens .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.ben{display:flex;gap:14px;align-items:center;padding:26px 18px}
+.ben+.ben{border-left:1px solid var(--li)}
+.ben svg{flex:0 0 30px;width:30px;height:30px;stroke:var(--vp);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ben b{display:block;font-family:Montserrat;font-weight:600;color:var(--gr);font-size:15px;line-height:1.3}
+.ben span{font-size:13.5px}
+
+/* categorias */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cat{position:relative;border-radius:var(--r);overflow:hidden;background:var(--br);aspect-ratio:4/5;display:block}
+.cat img{width:100%;height:100%;object-fit:cover}
+.cat .lb{position:absolute;left:12px;right:12px;bottom:12px;background:#fff;border-radius:10px;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;font-family:Montserrat;font-weight:600;color:var(--gr);font-size:15px}
+.cat .lb i{font-style:normal;color:var(--vp)}
+.cat.ph{background:var(--ni);display:flex;align-items:center;justify-content:center}
+.cat.ph svg{width:46%;stroke:var(--vp);fill:none;stroke-width:1.2}
+
+/* productos */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 22px}
+.card{display:block;cursor:pointer}
+.card .ph{position:relative;aspect-ratio:1;background:#fff;border:1px solid var(--li);border-radius:var(--r);overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;left:10px;top:10px;background:var(--gr);color:#fff;font-family:Montserrat;font-weight:600;font-size:12px;padding:4px 9px;border-radius:7px}
+.tag.of{background:var(--vp)}
+.card .br{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8a8a8a;margin-top:14px}
+.card h3{font-size:16px;font-weight:600;margin:3px 0 8px}
+.pr{font-family:Montserrat;font-weight:700;color:var(--gr);font-size:19px}
+.pr s{font-weight:500;color:#9a9a9a;font-size:14px;margin-left:6px}
+.pt{font-size:13.5px;color:var(--vp);font-weight:600;margin-top:4px;padding-top:6px;border-top:1px solid var(--li)}
+.pc{font-size:13px}
+.more{text-align:center;margin-top:44px}
+
+/* problema solucion */
+.ps{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.ps h2{margin-bottom:16px}
+.ps ul{list-style:none;margin:22px 0 30px}
+.ps li{display:flex;gap:12px;margin-bottom:12px}
+.ps li svg{flex:0 0 22px;width:22px;height:22px;stroke:var(--vp);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.vid{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;max-height:600px;justify-self:end;width:100%}
+.vid img{width:100%;height:100%;object-fit:cover}
+.vid .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.vid .play span{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center}
+.vid .play svg{width:26px;height:26px;fill:var(--vp);margin-left:4px}
+.vid .cap{position:absolute;left:14px;bottom:14px;background:rgba(43,43,43,.82);color:#fff;font-size:13px;padding:7px 11px;border-radius:8px}
+
+/* testimonios */
+.tst{overflow:hidden}
+.trk{display:flex;gap:20px;width:max-content;animation:roll 48s linear infinite}
+.tst:hover .trk{animation-play-state:paused}
+@keyframes roll{to{transform:translateX(-50%)}}
+.op{width:340px;background:#fff;border:1px solid var(--li);border-radius:var(--r);padding:26px}
+.st{color:#FBBC04;letter-spacing:2px;font-size:17px}
+.op p{margin:12px 0 18px;color:var(--gr)}
+.op b{font-family:Montserrat;font-weight:600;color:var(--gr);font-size:14px}
+.op small{display:block;font-size:12.5px;color:#8a8a8a}
+.gsc{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:36px}
+.gsc .n{font-family:Montserrat;font-weight:700;font-size:42px;color:var(--gr);line-height:1}
+
+/* por que */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.wy{background:#fff;border-radius:var(--r);padding:30px 24px;border:1px solid var(--li)}
+.wy .nm{font-family:Montserrat;font-weight:700;font-size:15px;color:var(--v);letter-spacing:.06em}
+.wy h3{font-size:18px;font-weight:600;margin:10px 0 8px}
+.wy p{font-size:15px}
+
+/* faq */
+.faq{max-width:820px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--li)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 2px;font-family:Montserrat;font-weight:600;color:var(--gr);font-size:16.5px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:0 0 28px;height:28px;border-radius:50%;background:var(--ni);position:relative}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1.75px;background:var(--vp);transform:translate(-50%,-50%);transition:transform .25s}
+.faq summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq details[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
+.faq details p{padding:0 44px 22px 2px}
+
+/* info */
+.inf{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.inf+.inf{margin-top:88px}
+.inf .im{border-radius:var(--r);overflow:hidden;aspect-ratio:5/4}
+.inf .im img{width:100%;height:100%;object-fit:cover}
+.inf h2{margin-bottom:16px}
+.inf p{margin-bottom:24px}
+.inf.rev .im{order:2}
+
+/* ubicacion */
+.cta{background:var(--gr);color:#cfcfcf}
+.cta .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+.cta h2{color:#fff}
+.cta h2 em{color:#9CC2A3}
+.cta .kick{color:#9CC2A3}
+.dat{list-style:none;margin:24px 0 30px}
+.dat li{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid #3d3d3d}
+.dat svg{flex:0 0 22px;width:22px;height:22px;stroke:#9CC2A3;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.dat b{color:#fff;font-weight:600;display:block}
+.map{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background:#3a3a3a}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(.35)}
+.cta .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.cta .btn.ln{color:#fff;box-shadow:inset 0 0 0 1.5px #fff}
+.cta .btn.ln:hover{background:#fff;color:var(--gr)}
+
+/* footer */
+footer{background:#fff;padding:64px 0 28px;border-top:1px solid var(--li)}
+.ft{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;gap:36px}
+.ft h4{font-family:Montserrat;font-weight:600;color:var(--gr);font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+.ft a{display:block;font-size:14.5px;margin-bottom:8px}
+.ft a:hover{color:var(--vp)}
+.ft .lg img{height:52px;width:auto;margin-bottom:14px}
+.pays{display:flex;flex-wrap:wrap;gap:6px}
+.pays span{border:1px solid var(--li);border-radius:6px;font-size:11.5px;padding:4px 8px;font-weight:600;color:var(--gr)}
+.cp{margin-top:44px;padding-top:20px;border-top:1px solid var(--li);font-size:12.5px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* ficha */
+.fx{position:fixed;inset:0;z-index:80;background:#fff;overflow:auto;display:none}
+.fx.on{display:block}
+.fx .bar{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--li);z-index:2}
+.fx .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+.fx .bar img{height:38px}
+.fx .x{background:none;border:0;cursor:pointer;font-family:Montserrat;font-weight:600;color:var(--gr);display:flex;gap:8px;align-items:center}
+.fxg{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;padding:40px 0 80px}
+.fxg .ph{border:1px solid var(--li);border-radius:var(--r);overflow:hidden;aspect-ratio:1}
+.fxg .ph img{width:100%;height:100%;object-fit:cover}
+.fxg h1{font-size:30px;font-weight:700;margin:6px 0 18px}
+.emb{border:1px solid var(--li);border-radius:var(--r);overflow:hidden;margin-bottom:22px}
+.emb div{display:flex;justify-content:space-between;align-items:center;padding:14px 18px}
+.emb div+div{border-top:1px solid var(--li)}
+.emb span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.emb b{font-family:Montserrat;font-weight:700;color:var(--gr);font-size:20px}
+.emb .tr{background:var(--ni)}
+.emb .tr b{color:var(--vp)}
+.qty{display:flex;gap:12px;margin-bottom:14px}
+.qty .q{display:flex;align-items:center;border:1px solid var(--li);border-radius:var(--r)}
+.qty .q button{background:none;border:0;width:44px;height:52px;cursor:pointer;font-size:20px;color:var(--gr)}
+.qty .q span{width:30px;text-align:center;font-weight:600;color:var(--gr)}
+.qty .btn{flex:1;justify-content:center}
+.sell{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+.sell div{background:var(--br);border-radius:10px;padding:12px;font-size:13px;text-align:center}
+.sell svg{width:22px;height:22px;stroke:var(--vp);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;margin:0 auto 6px;display:block}
+.desc h3{font-size:16px;margin:22px 0 8px}
+
+/* celular */
+@media (max-width:900px){
+ .wrap{padding:0 16px}
+ .sec{padding:60px 0}
+ .hd{height:64px}.hd .logo img{height:36px}
+ .hd nav{display:none}.burger{display:block}
+ .hero{height:auto;min-height:540px}
+ .hero picture img{width:66%;object-position:66% 30%}
+ .hero::before{background:linear-gradient(90deg,#fff 0,#fff 30%,rgba(255,255,255,.7) 42%,rgba(255,255,255,0) 58%)}
+ .hero .wrap{justify-content:center;min-height:540px;padding-top:36px;padding-bottom:36px}
+ .hero h1{font-size:26px;max-width:56%}
+ .hero p{font-size:14.5px;max-width:50%;margin:10px 0 18px}
+ .hero .ctas{flex-direction:column;align-items:flex-start;gap:8px}
+ .boceto span{display:none}
+ .hero .btn{padding:13px 20px;font-size:14px}
+ .bens .wrap{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:0}
+ .ben{flex:0 0 78%;scroll-snap-align:start;padding:20px 16px}
+ .cats{grid-template-columns:1fr 1fr;gap:12px}
+ .cat .lb{left:8px;right:8px;bottom:8px;padding:10px 12px;font-size:14px}
+ .grid{grid-template-columns:1fr 1fr;gap:24px 12px}
+ .card h3{font-size:14.5px}.pr{font-size:17px}
+ .ps,.inf,.cta .wrap,.fxg{grid-template-columns:1fr;gap:32px}
+ .inf.rev .im{order:0}
+ .inf+.inf{margin-top:60px}
+ .why{grid-template-columns:1fr 1fr;gap:12px}
+ .wy{padding:20px 16px}
+ .op{width:280px}
+ .ft{grid-template-columns:1fr 1fr}
+ .ft .lg{grid-column:1/-1}
+ .fxg{padding:20px 0 60px}
+}
+@media (max-width:380px){.why{grid-template-columns:1fr}.hero h1{font-size:28px}}
+</style>
+</head>
+<body>
+
+<div class="boceto"><b>BOCETO</b><span> · Estructura 1 · fotos de su Instagram · precios y opiniones de ejemplo</span></div>
+
+<!-- 1 · Barra de anuncios -->
+<div class="ann" id="ann">
+ <div class="on">Pagá en <b>cuotas sin interés</b> con tarjeta</div>
+ <div><b>Descuento</b> pagando por transferencia</div>
+ <div>Envíos a todo el país · <b>retiro en el local</b></div>
+</div>
+
+<!-- Encabezado -->
+<header>
+ <div class="wrap hd">
+  <a class="logo" href="#"><img src="img/mundovision-logo-color.png" alt="Mundo Visión Ópticas"></a>
+  <nav><a href="#productos">Anteojos de sol</a><a href="#productos">Recetados</a><a href="#cats">Lentes de contacto</a><a href="#cats">Accesorios</a><a href="#local">El local</a></nav>
+  <div class="ic">
+   <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+   <svg viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+   <svg class="burger" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </div>
+ </div>
+</header>
+
+<!-- Banner -->
+<section class="hero">
+ <picture><img src="img/ig-24.jpg" alt="Anteojos de sol aviador"></picture>
+ <div class="wrap">
+  <span class="kick">Óptica en Córdoba</span>
+  <h1>Ver bien también <em>es una experiencia.</em></h1>
+  <p>Anteojos de sol, recetados y lentes de contacto de las marcas que te gustan, con asesoramiento de verdad.</p>
+  <div class="ctas"><a class="btn" href="#productos">Ver anteojos <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></a><a class="btn ln" href="#local">Visitá el local</a></div>
+ </div>
+</section>
+
+<!-- 2 · Beneficios -->
+<section class="bens">
+ <div class="wrap">
+  <div class="ben"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/></svg><div><b>Cuotas sin interés</b><span>Con todas las tarjetas</span></div></div>
+  <div class="ben"><svg viewBox="0 0 24 24"><path d="M4 7h13l3 4v6H4z"/><circle cx="8" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg><div><b>Envíos a todo el país</b><span>O retirás en Fuerza Aérea</span></div></div>
+  <div class="ben"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><div><b>Asesoramiento óptico</b><span>Traé tu receta y elegimos juntos</span></div></div>
+  <div class="ben"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><div><b>Marcas originales</b><span>Rusty, Vulk, Mariana Arias y más</span></div></div>
+ </div>
+</section>
+
+<!-- 3 · Categorías -->
+<section class="sec" id="cats">
+ <div class="wrap">
+  <div class="head"><span class="kick">Categorías</span><h2>¿Qué estás <em>buscando?</em></h2></div>
+  <div class="cats">
+   <a class="cat" href="#productos"><img src="img/ig-29.jpg" alt=""><span class="lb">Anteojos de sol <i>›</i></span></a>
+   <a class="cat" href="#productos"><img src="img/ig-01.jpg" alt=""><span class="lb">Recetados <i>›</i></span></a>
+   <a class="cat ph" href="#productos"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30"/><path d="M28 44q22-18 44 0"/><circle cx="50" cy="52" r="9"/></svg><span class="lb">Lentes de contacto <i>›</i></span></a>
+   <a class="cat" href="#productos"><img src="img/ig-00.jpg" alt=""><span class="lb">Accesorios <i>›</i></span></a>
+  </div>
+ </div>
+</section>
+
+<!-- 4 · Destacados -->
+<section class="sec alt" id="productos">
+ <div class="wrap">
+  <div class="head"><span class="kick">Los más elegidos</span><h2>Destacados <em>de la óptica</em></h2></div>
+  <div class="grid" id="dest"></div>
+  <div class="more"><a class="btn ln" href="#productos">Ver todos los anteojos</a></div>
+ </div>
+</section>
+
+<!-- 5 · Problema · solución -->
+<section class="sec">
+ <div class="wrap ps">
+  <div>
+   <span class="kick">Comprar anteojos online</span>
+   <h2>«¿Y cómo me <em>van a quedar?</em>»</h2>
+   <p>Es la duda de todos. Por eso te los mostramos puestos, de frente y de perfil, y te asesoramos por WhatsApp antes de comprar.</p>
+   <ul>
+    <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></svg><span>Videos de cada modelo puesto y de cerca.</span></li>
+    <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></svg><span>Te ayudamos a elegir según la forma de tu cara.</span></li>
+    <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></svg><span>Si preferís, te los probás en el local.</span></li>
+   </ul>
+   <a class="btn" href="#productos">Elegir mis anteojos</a>
+  </div>
+  <div class="vid"><img src="img/ig-04.jpg" alt=""><div class="play"><span><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg></span></div><div class="cap">Acá va su video: un modelo puesto</div></div>
+ </div>
+</section>
+
+<!-- 6 · Testimonios -->
+<section class="sec alt">
+ <div class="head wrap"><span class="kick">Opiniones</span><h2>Lo que dicen <em>nuestros clientes</em></h2></div>
+ <div class="gsc"><span class="n">4,9</span><div><div class="st">★★★★★</div><small>Opiniones en Google</small></div></div>
+ <div class="tst"><div class="trk" id="trk"></div></div>
+</section>
+
+<!-- 7 · Ofertas -->
+<section class="sec">
+ <div class="wrap">
+  <div class="head"><span class="kick">Ofertas</span><h2>Anteojos <em>con descuento</em></h2></div>
+  <div class="grid" id="ofer"></div>
+ </div>
+</section>
+
+<!-- 8 · Por qué elegirnos -->
+<section class="sec alt">
+ <div class="wrap">
+  <div class="head"><span class="kick">Por qué elegirnos</span><h2>Te ayudamos a ver bien <em>y a verte bien</em></h2></div>
+  <div class="why">
+   <div class="wy"><span class="nm">01</span><h3>Asesoramiento</h3><p>Te escuchamos, miramos tu receta y te recomendamos lo que de verdad te sirve.</p></div>
+   <div class="wy"><span class="nm">02</span><h3>Marcas originales</h3><p>Rusty, Vulk, Mariana Arias, Elizabeth Arden, Bausch + Lomb y más.</p></div>
+   <div class="wy"><span class="nm">03</span><h3>Cristales que cuidan</h3><p>Blue Light Cut, antirreflejo y polarizados con protección UV400.</p></div>
+   <div class="wy"><span class="nm">04</span><h3>Packaging con estilo</h3><p>Tus anteojos llegan armados con cuidado y mucho estilo.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 9 · Preguntas frecuentes -->
+<section class="sec">
+ <div class="wrap">
+  <div class="head"><span class="kick">Preguntas frecuentes</span><h2>Antes de comprar, <em>tus dudas</em></h2></div>
+  <div class="faq">
+   <details open><summary>¿Puedo comprar anteojos recetados online?<i></i></summary><p>Sí. Elegís el armazón, nos mandás tu receta por WhatsApp y te armamos los cristales. Si tenés dudas, te asesoramos antes.</p></details>
+   <details><summary>¿Cuánto tarda el envío?<i></i></summary><p>Despachamos a todo el país. También podés retirar sin cargo en Av. Fuerza Aérea 2714, Córdoba.</p></details>
+   <details><summary>¿Qué medios de pago aceptan?<i></i></summary><p>Tarjetas de crédito y débito, cuotas sin interés y transferencia con descuento.</p></details>
+   <details><summary>¿Puedo cambiar si no me quedan bien?<i></i></summary><p>Sí, tenés cambio en los anteojos de sol sin uso y en su caja original.</p></details>
+   <details><summary>¿Trabajan lentes de contacto?<i></i></summary><p>Sí, toda la línea Bausch + Lomb: cosméticas, esféricas, tóricas y líquidos de limpieza.</p></details>
+  </div>
+ </div>
+</section>
+
+<!-- 10 y 11 · Bloques informativos -->
+<section class="sec alt">
+ <div class="wrap">
+  <div class="inf">
+   <div class="im"><img src="img/ig-02.jpg" alt=""></div>
+   <div><span class="kick">Quiénes somos</span><h2>Una óptica de barrio <em>con marcas de diseño</em></h2><p>En Mundo Visión te atendemos cara a cara: te escuchamos, miramos tu receta y te ayudamos a encontrar el anteojo que va con vos.</p><a class="btn ln" href="#local">Conocé el local</a></div>
+  </div>
+  <div class="inf rev">
+   <div class="im"><img src="img/ig-12.jpg" alt=""></div>
+   <div><span class="kick">En el local</span><h2>Probátelos <em>antes de llevarlos</em></h2><p>Recetados, de sol, montados al aire y lentes de contacto. Vení a probártelos y te los entregamos listos, en su packaging.</p><a class="btn" href="#local">Cómo llegar</a></div>
+  </div>
+ </div>
+</section>
+
+<!-- 12 · Ubicación -->
+<section class="sec cta" id="local">
+ <div class="wrap">
+  <div>
+   <span class="kick">Visitanos</span>
+   <h2>Te esperamos <em>en Fuerza Aérea</em></h2>
+   <ul class="dat">
+    <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>Av. Fuerza Aérea 2714</b>Córdoba Capital</div></li>
+    <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Horarios</b>Lunes a viernes y sábados por la mañana</div></li>
+    <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><div><b>351 855-2632</b>WhatsApp · fijo 0351 728-4137</div></li>
+   </ul>
+   <div class="ctas"><a class="btn wa" href="#local">Escribinos por WhatsApp</a><a class="btn ln" href="https://www.google.com/maps/search/?api=1&query=Av.+Fuerza+A%C3%A9rea+2714+C%C3%B3rdoba" target="_blank" rel="noopener">Cómo llegar</a></div>
+  </div>
+  <div class="map"><iframe title="Mapa" src="https://www.google.com/maps?q=Av.+Fuerza+A%C3%A9rea+2714,+C%C3%B3rdoba,+Argentina&output=embed"></iframe></div>
+ </div>
+</section>
+
+<!-- 13 · Pie -->
+<footer>
+ <div class="wrap">
+  <div class="ft">
+   <div class="lg"><img src="img/mundovision-logo-color.png" alt=""><p style="font-size:14.5px">Óptica en Córdoba. Anteojos de sol, recetados y lentes de contacto.</p></div>
+   <div><h4>Categorías</h4><a href="#">Anteojos de sol</a><a href="#">Recetados</a><a href="#">Lentes de contacto</a><a href="#">Accesorios</a></div>
+   <div><h4>Información</h4><a href="#">Cómo comprar</a><a href="#">Envíos</a><a href="#">Cambios y devoluciones</a><a href="#">Botón de arrepentimiento</a></div>
+   <div><h4>Contacto</h4><a href="#">351 855-2632</a><a href="#">Av. Fuerza Aérea 2714</a><a href="#">@mundovisionoptica</a><div class="pays" style="margin-top:14px"><span>VISA</span><span>MASTER</span><span>AMEX</span><span>NARANJA</span><span>TRANSFERENCIA</span></div></div>
+  </div>
+  <div class="cp"><span>© Mundo Visión Ópticas</span><span>Diseño PRAXIS</span></div>
+ </div>
+</footer>
+
+<!-- Ficha de producto -->
+<div class="fx" id="fx">
+ <div class="bar"><div class="wrap"><img src="img/mundovision-logo-color.png" alt=""><button class="x" id="fxx">✕ Volver</button></div></div>
+ <div class="wrap fxg">
+  <div class="ph"><img id="fimg" src="" alt=""></div>
+  <div>
+   <span class="kick" id="fbr"></span>
+   <h1 id="fnm"></h1>
+   <div class="emb">
+    <div><span>Precio</span><b id="fpr"></b></div>
+    <div class="tr"><span>Con transferencia</span><b id="ftr"></b></div>
+    <div><span>En cuotas</span><b id="fcu" style="font-size:16px"></b></div>
+   </div>
+   <div class="qty"><div class="q"><button id="m">−</button><span id="qn">1</span><button id="p">+</button></div><button class="btn">Agregar al carrito</button></div>
+   <a class="btn wa" style="width:100%;justify-content:center" href="#">Consultar por WhatsApp</a>
+   <div class="sell">
+    <div><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>Original con garantía</div>
+    <div><svg viewBox="0 0 24 24"><path d="M4 7h13l3 4v6H4z"/><circle cx="8" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>Envíos a todo el país</div>
+    <div><svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Asesoramiento óptico</div>
+   </div>
+   <div class="desc"><h3>Descripción</h3><p id="fds"></p></div>
+  </div>
+ </div>
+</div>
+
+<script>
+const P=[
+ {i:'ig-18',b:'Vulk',n:'Vulk cuadrado negro',p:89900,d:'Armazón de acetato negro, lentes polarizadas con protección UV400.'},
+ {i:'ig-14',b:'Rusty',n:'Rusty redondo espejado rosa',p:74900,d:'Armazón liviano con lentes espejadas y factor de protección UV400.'},
+ {i:'ig-20',b:'Vulk',n:'Vulk con protección lateral',p:112900,d:'Armazón metálico con protección lateral de cuero y lentes degradé.'},
+ {i:'ig-26',b:'Rusty',n:'Rusty cuadrado lente verde',p:69900,d:'Frente plano, lentes de policarbonato verde con protección UV400.'},
+ {i:'ig-05',b:'Mariana Arias',n:'Redondo metálico dorado',p:84900,d:'Armazón metálico redondo, lentes verde clásico.'},
+ {i:'ig-03',b:'360 Eyewear',n:'360 Eyewear carey',p:64900,d:'Una marca argentina desde los 90: modelos livianos, coloridos y modernos.'},
+ {i:'ig-11',b:'Elizabeth Arden',n:'Elizabeth Arden carey rosa',p:92900,d:'Equilibrio entre simpleza y elegancia, clásico y moderno a la vez.'},
+ {i:'ig-01',b:'360 Eyewear',n:'Recetado Milo · Blue Light',p:79900,d:'Armazón con cristales Blue Light Cut, ideales para proteger tus ojos de las pantallas.'}
+];
+const O=[
+ {i:'ig-08',b:'Mariana Arias',n:'Mariana Arias espejado dorado',p:68900,o:86900,d:'Líneas redondeadas y colores audaces.'},
+ {i:'ig-09',b:'Mariana Arias',n:'Mariana Arias espejado celeste',p:68900,o:86900,d:'Líneas redondeadas y colores audaces.'},
+ {i:'ig-10',b:'Mariana Arias',n:'Mariana Arias espejado verde',p:68900,o:86900,d:'Líneas redondeadas y colores audaces.'},
+ {i:'ig-22',b:'Vulk',n:'Vulk lateral de cuero',p:98900,o:119900,d:'Protección lateral de cuero y armazón metálico.'}
+];
+const $=s=>document.getElementById(s);
+const f=n=>'$'+n.toLocaleString('es-AR');
+const card=(x,k,off)=>`<a class="card" data-k="${k}"><div class="ph"><img src="img/${x.i}.jpg" alt="">${off?`<span class="tag of">${Math.round((1-x.p/x.o)*100)}% OFF</span>`:''}</div><div class="br">${x.b}</div><h3>${x.n}</h3><div class="pr">${f(x.p)}${off?`<s>${f(x.o)}</s>`:''}</div><div class="pt">${f(Math.round(x.p*.9))} con transferencia</div><div class="pc">3 cuotas sin interés de ${f(Math.round(x.p/3))}</div></a>`;
+$('dest').innerHTML=P.map((x,k)=>card(x,'p'+k)).join('');
+$('ofer').innerHTML=O.map((x,k)=>card(x,'o'+k,1)).join('');
+const T=[['Excelente atención, me asesoraron con la receta y los anteojos quedaron perfectos.','Lucía','Recetados'],['Compré unos Rusty y llegaron con un packaging hermoso. Súper recomendables.','Martín','Anteojos de sol'],['Me ayudaron a elegir el armazón según mi cara. Muy buena onda.','Carla','Recetados'],['Los lentes de contacto siempre a mano y con buen precio.','Federico','Lentes de contacto'],['Rápidos y atentos por WhatsApp. Volvería a comprar.','Sofía','Anteojos de sol']];
+const tc=T.map(t=>`<div class="op"><div class="st">★★★★★</div><p>«${t[0]}»</p><b>${t[1]}</b><small>${t[2]}</small></div>`).join('');
+$('trk').innerHTML=tc+tc;
+document.addEventListener('click',e=>{const c=e.target.closest('.card');if(!c)return;e.preventDefault();const k=c.dataset.k,x=(k[0]=='p'?P:O)[+k.slice(1)];
+ $('fimg').src='img/'+x.i+'.jpg';$('fbr').textContent=x.b;$('fnm').textContent=x.n;$('fpr').textContent=f(x.p);$('ftr').textContent=f(Math.round(x.p*.9));$('fcu').textContent='3 × '+f(Math.round(x.p/3))+' sin interés';$('fds').textContent=x.d;$('qn').textContent=1;$('fx').classList.add('on');$('fx').scrollTop=0;document.body.style.overflow='hidden';});
+$('fxx').onclick=()=>{$('fx').classList.remove('on');document.body.style.overflow=''};
+$('m').onclick=()=>{$('qn').textContent=Math.max(1,+$('qn').textContent-1)};$('p').onclick=()=>{$('qn').textContent=+$('qn').textContent+1};
+let a=0;const an=[...document.querySelectorAll('#ann div')];setInterval(()=>{an[a].classList.remove('on');a=(a+1)%an.length;an[a].classList.add('on')},3500);
+</script>
+</body>
+</html>
