@@ -74,12 +74,9 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
 .verif svg{width:12px;height:12px;stroke:var(--rojo);stroke-width:3;fill:none}
 .compra h1{font-size:64px;margin:4px 0 16px}
 
-.benef{list-style:none;display:grid;gap:11px;margin-bottom:20px}
-.benef li{display:grid;grid-template-columns:24px 1fr;gap:11px;align-items:start;font-size:14.5px;line-height:1.45}
-.benef li b{font-weight:700}
-.benef li span{color:var(--gris)}
-.benef .ck{width:24px;height:24px;border-radius:50%;background:var(--tinta);display:grid;place-items:center;margin-top:-1px}
-.benef .ck svg{width:12px;height:12px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.resu{margin-bottom:22px;padding-left:16px;border-left:3px solid var(--rojo)}
+.resu b{display:block;font-size:17px;font-weight:700;line-height:1.3;margin-bottom:6px}
+.resu p{font-size:14.5px;line-height:1.55;color:var(--gris)}
 
 .em{display:grid;gap:9px}
 .em-p{display:flex;justify-content:space-between;align-items:center;background:#0B0B0B;color:#fff;border-radius:999px;padding:0 24px;height:66px;box-shadow:0 10px 24px rgba(0,0,0,.18)}
@@ -134,30 +131,16 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
 .oscuro .baja{color:#BDB7B0}
 .centro{text-align:center}.centro .baja{margin:0 auto}
 
-.h1l{display:grid;grid-template-columns:1fr 1fr;min-height:620px;background:#0B0B0B;color:#fff}
-.h1l .tx{padding:80px 56px 80px max(24px,calc((100vw - var(--max))/2 + 24px));display:flex;flex-direction:column;justify-content:center}
-.h1l h2{font-size:110px;margin:16px 0 18px}
-.h1l h2 em{font-style:normal;color:var(--rojo)}
-.h1l p{font-size:18px;color:#CFCAC4;max-width:470px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
-.chips span{display:inline-flex;align-items:center;gap:7px;border:1px solid #333;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600}
-.chips svg{width:15px;height:15px;stroke:var(--rojo);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.h1l .ft{position:relative;overflow:hidden}
-.h1l .ft img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hvid{background:#0B0B0B;color:#fff;text-align:center;padding:80px 24px}
+.hvid h2{font-size:96px;margin:0 auto 40px;max-width:900px}
+.hvid h2 em{font-style:normal;color:var(--rojo)}
+.hvid-v{max-width:520px;margin:0 auto;border-radius:20px;overflow:hidden;background:#1a1a1a;aspect-ratio:1;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.hvid-v video{width:100%;height:100%;object-fit:cover}
 
 .lleva{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
 .lleva figure{position:relative;border-radius:16px;overflow:hidden;background:#222;aspect-ratio:9/14}
 .lleva video,.lleva img{width:100%;height:100%;object-fit:cover}
 .lleva figcaption{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.65);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:999px}
-
-.prob{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.prob ul{list-style:none;display:grid;gap:12px;margin-top:26px}
-.prob li{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--linea);border-radius:14px;padding:16px 18px;font-size:15.5px;font-weight:600}
-.prob li i{width:30px;height:30px;flex:0 0 30px;border-radius:50%;background:#FDECEC;display:grid;place-items:center}
-.prob li i svg{width:14px;height:14px;stroke:var(--rojo);stroke-width:3;fill:none;stroke-linecap:round}
-.prob .sol{margin-top:22px;background:var(--tinta);color:#fff;border-radius:14px;padding:18px 20px;font-size:15px}
-.prob .sol b{color:var(--rojo)}
-.prob img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px}
 
 .tiene{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px;text-align:left}
 .tiene div{border:1px solid var(--linea);border-radius:18px;padding:26px 22px;background:#fff}
@@ -165,14 +148,6 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
 .tiene b{display:block;font-family:var(--tt);font-size:28px;text-transform:uppercase;line-height:1;margin:12px 0 10px}
 .tiene p{font-size:14px;color:var(--gris)}
 .tiene p strong{color:var(--tinta)}
-
-.asp h2{font-size:104px;max-width:1000px;margin:18px auto 22px}
-.asp h2 span{color:#6E6862}
-.asp .story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:64px;text-align:left}
-.asp .story img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:18px}
-.asp .story p{font-size:17px;color:#CFCAC4;margin-bottom:14px}
-.asp .firma{font-family:var(--tt);font-size:30px;font-weight:800;text-transform:uppercase;color:#fff;margin-top:18px}
-.asp .firma span{color:var(--rojo)}
 
 .enc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
 .enc>div{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:28px 18px;text-align:center}
@@ -219,22 +194,21 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
 .faq details[open] summary i{transform:rotate(45deg);background:var(--tinta);color:#fff;border-color:var(--tinta)}
 .faq p{padding:0 4px 22px;color:var(--gris);font-size:15.5px;max-width:700px}
 
-.cierre{background:#0B0B0B;color:#fff;text-align:center;padding:80px 0}
-.cierre h2{font-size:76px;margin:12px 0 22px}
-.cierre h2 span{color:var(--rojo)}
-.cierre .btn{display:inline-flex;padding:0 40px}
-
-.flota{position:fixed;left:0;right:0;bottom:0;z-index:70;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-top:1px solid var(--linea);box-shadow:0 -10px 30px rgba(0,0,0,.08);transform:translateY(110%);visibility:hidden;transition:transform .35s cubic-bezier(.22,.61,.36,1),visibility .35s}
-.flota.ver{transform:none;visibility:visible}
-.flota .in{max-width:var(--max);margin:0 auto;padding:12px 24px calc(12px + env(safe-area-inset-bottom));display:grid;grid-template-columns:54px 1fr auto auto auto;gap:18px;align-items:center}
-.flota img{width:54px;height:54px;object-fit:cover;border-radius:10px}
-.flota small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gris)}
-.flota strong{font-family:var(--tt);font-size:24px;text-transform:uppercase;line-height:1}
-.flota .tl{display:flex;gap:6px}
-.flota .tl button{width:40px;height:36px;border-radius:999px;border:1.5px solid var(--linea);font-family:var(--tt);font-size:18px;font-weight:800}
-.flota .tl button.on{background:var(--tinta);color:#fff;border-color:var(--tinta)}
-.flota .pr{font-family:var(--tt);font-size:32px;font-weight:800}
-.flota .btn{height:50px;padding:0 28px;font-size:13px}
+.flota{position:fixed;right:24px;bottom:24px;z-index:70;width:min(560px,calc(100vw - 48px));background:#0B0B0B;color:#fff;border-radius:999px;padding:8px 8px 8px 8px;box-shadow:0 18px 50px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.06) inset;transform:translateX(calc(100% + 40px));opacity:0;visibility:hidden;transition:transform .5s cubic-bezier(.22,.61,.36,1),opacity .35s,visibility .5s}
+.flota.ver{transform:none;opacity:1;visibility:visible}
+.flota .in{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:14px;align-items:center}
+.flota img{width:52px;height:52px;object-fit:cover;border-radius:50%;border:2px solid #2a2a2a}
+.flota .dt{min-width:0}
+.flota strong{display:block;font-family:var(--tt);font-size:24px;font-weight:800;text-transform:uppercase;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.flota strong span{color:var(--rojo)}
+.flota .sub{display:flex;align-items:center;gap:8px;margin-top:5px;font-size:12px;color:#BDB7B0;white-space:nowrap}
+.flota .sub i{font-style:normal;font-weight:800;color:var(--modo)}
+.flota .tl{display:flex;gap:4px}
+.flota .tl button{width:30px;height:24px;border-radius:999px;border:1px solid #3a3a3a;font-family:var(--tt);font-size:15px;font-weight:800;color:#fff;line-height:1}
+.flota .tl button.on{background:#fff;color:#0B0B0B;border-color:#fff}
+.flota .btn{height:52px;padding:0 26px;font-size:12.5px;letter-spacing:.16em;box-shadow:0 8px 20px rgba(228,35,31,.4)}
+.flota .btn svg{width:16px;height:16px;stroke:#fff;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.flota .btn:hover svg{transform:translateX(3px)}
 
 .modal{position:fixed;top:0;left:0;right:0;bottom:0;z-index:90;background:rgba(10,10,10,.6);display:none;place-items:center;padding:20px}
 .modal.ver{display:grid}
@@ -311,20 +285,12 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
   .ld-sec{padding:60px 0}
   .tit{font-size:48px}
   .baja{font-size:16px}
-  .h1l{grid-template-columns:1fr;min-height:0}
-  .h1l .ft{height:110vw;max-height:520px;order:-1}
-  .h1l .tx{padding:36px 16px 48px}
-  .h1l h2{font-size:72px}
-  .h1l p{font-size:16px}
   .lleva{gap:10px;margin-top:28px}
-  .prob{grid-template-columns:1fr;gap:28px}
   .tiene{gap:10px}
   .tiene div{padding:18px 14px}
   .tiene .n{font-size:36px}
   .tiene b{font-size:22px}
   .tiene p{font-size:13px}
-  .asp h2{font-size:56px}
-  .asp .story{grid-template-columns:1fr;gap:26px;margin-top:40px}
   .enc{gap:10px}
   .enc>div{padding:20px 10px}
   .anillo{width:96px;height:96px}
@@ -337,13 +303,16 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
   .tst{grid-template-columns:1fr}
   .hist4{grid-template-columns:1fr 1fr}
   .faq summary{font-size:15.5px;padding:18px 2px}
-  .cierre{padding:56px 0}
-  .cierre h2{font-size:52px}
-  .flota .in{grid-template-columns:44px 1fr auto;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom))}
+  .hvid{padding:52px 16px 56px}
+  .hvid h2{font-size:58px;margin-bottom:28px}
+  .hvid-v{max-width:420px}
+  .flota{right:12px;left:12px;bottom:calc(12px + env(safe-area-inset-bottom));width:auto;padding:6px}
+  .flota .in{grid-template-columns:44px minmax(0,1fr) auto;gap:10px}
   .flota img{width:44px;height:44px}
-  .flota .tl,.flota .pr{display:none}
   .flota strong{font-size:20px}
-  .flota .btn{height:46px;padding:0 18px;font-size:12px;letter-spacing:.12em}
+  .flota .tl{display:none}
+  .flota .sub{font-size:11px;margin-top:3px}
+  .flota .btn{height:46px;padding:0 18px;font-size:11.5px;letter-spacing:.12em}
   .cv{padding:28px 0 50px}
   .cv-in{grid-template-columns:1fr;gap:28px}
   .cajon{order:-1}
@@ -351,9 +320,11 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
   .bloque,.item,.tot,.cajon .top,.reloj{padding-left:16px;padding-right:16px}
 }
 @media (max-width:360px){
+  .hvid h2{font-size:48px}
+  .flota .btn span{display:none}
+  .flota .btn{padding:0 16px}
   .compra h1{font-size:46px}
   .talles button{width:52px}
-  .h1l h2{font-size:62px}
   .vs .r{grid-template-columns:1fr 70px 70px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -402,12 +373,10 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
       </div>
       <h1>Mindset</h1>
 
-      <ul class="benef">
-        <li><span class="ck"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span><div><b>Algodón peinado 24/1.</b> <span>Suave, fresco y mantiene la forma lavado tras lavado.</span></div></li>
-        <li><span class="ck"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span><div><b>Serigrafía artesanal.</b> <span>La estampa no se cuartea: no hacemos estampados descartables.</span></div></li>
-        <li><span class="ck"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span><div><b>Fit oversize.</b> <span>Silueta amplia que cae bien, dentro y fuera del tatami.</span></div></li>
-        <li><span class="ck"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span><div><b>Cambios en 3 días hábiles.</b> <span>Si el talle no te queda, lo cambiás.</span></div></li>
-      </ul>
+      <div class="resu">
+        <b>Hecha para los que vuelven una vez más</b>
+        <p>Mindset nace de lo que enseña el tatami: la mentalidad se construye con repetición, errores y ajustes, entrenamiento tras entrenamiento. Algodón peinado 24/1, serigrafía artesanal y fit oversize para llevarla dentro y fuera del tatami.</p>
+      </div>
 
       <div class="em">
         <div class="em-p"><small>Precio</small><b>$29.000</b></div>
@@ -439,18 +408,9 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
   </div></div></section>
 
   <div class="ld">
-    <section class="h1l">
-      <div class="tx">
-        <span class="eyebrow">Mindset · Drop 01 «On the mat»</span>
-        <h2>La mentalidad <em>se entrena</em></h2>
-        <p>Para los que vuelven una vez más. Llevá lo que aprendiste en el tatami a la calle.</p>
-        <div class="chips">
-          <span><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>3 cuotas sin interés con MODO</span>
-          <span><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>Envíos a todo el país</span>
-          <span><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>Cambios en 3 días hábiles</span>
-        </div>
-      </div>
-      <div class="ft"><img src="frente-el.jpg" alt="Mindset" loading="lazy"></div>
+    <section class="hvid">
+      <h2>La mentalidad <em>se entrena</em></h2>
+      <div class="hvid-v"><video src="video-3.mp4" poster="video-3.jpg" muted loop playsinline autoplay preload="metadata"></video></div>
     </section>
     <div class="grados"><span class="g1"></span><span class="g2"></span><span class="g3"></span><span class="g4"></span><span class="g5"></span><span class="g6"></span></div>
 
@@ -466,23 +426,7 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
       </div>
     </div></section>
 
-    <section class="ld-sec hueso"><div class="wrap prob">
-      <div>
-        <span class="eyebrow">El problema</span>
-        <h2 class="tit">¿Tu remera ya no es <em>la misma</em>?</h2>
-        <p class="baja">Tres lavados y empieza lo de siempre. El problema no sos vos: es la remera.</p>
-        <ul>
-          <li><i><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></i>La estampa se cuartea y se borra</li>
-          <li><i><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></i>El cuello se estira y queda deformado</li>
-          <li><i><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></i>La tela se pone finita y pierde la forma</li>
-          <li><i><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></i>Diseños genéricos, sin nada que contar</li>
-        </ul>
-        <div class="sol"><b>La solución:</b> algodón peinado 24/1, serigrafía artesanal y un diseño nacido del tatami.</div>
-      </div>
-      <img src="parche.jpg" alt="Detalle de la terminación" loading="lazy">
-    </div></section>
-
-    <section class="ld-sec"><div class="wrap centro">
+    <section class="ld-sec hueso"><div class="wrap centro">
       <span class="eyebrow">Por dentro</span>
       <h2 class="tit">Lo que tiene <em>y lo que te aporta</em></h2>
       <p class="baja">No es una remera más: cada detalle está pensado para durar.</p>
@@ -494,20 +438,7 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
       </div>
     </div></section>
 
-    <section class="ld-sec oscuro asp"><div class="wrap centro">
-      <span class="eyebrow">Nacida del tatami. Pensada para la calle.</span>
-      <h2>Lo que aprendés en el tatami <span>no se queda en el tatami</span></h2>
-      <div class="story">
-        <img src="frente-ella.jpg" alt="Mindset" loading="lazy">
-        <div>
-          <p>Una mentalidad no se construye de un día para otro. Se forma a través de la repetición, los errores, los ajustes y la decisión de volver una vez más.</p>
-          <p>Mindset nace de esa experiencia: comprender que cada desafío es una oportunidad para seguir evolucionando. Inspirada en una forma de pensar construida entrenamiento tras entrenamiento.</p>
-          <div class="firma">BJJ &amp; Co. <span>Tamo junto... OSS!!!</span></div>
-        </div>
-      </div>
-    </div></section>
-
-    <section class="ld-sec hueso"><div class="wrap centro">
+    <section class="ld-sec"><div class="wrap centro">
       <span class="eyebrow">Encuesta a la comunidad</span>
       <h2 class="tit">La comunidad <em>responde</em></h2>
       <p class="baja">Les preguntamos a quienes ya tienen su BJJ &amp; Co.</p>
@@ -551,12 +482,6 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
         <details><summary>¿Cómo la lavo?<i>+</i></summary><p>Con agua fría, sin lavandina ni secadora. Planchala del revés, sin pasar por la estampa.</p></details>
         <details><summary>¿Puedo pagar en cuotas?<i>+</i></summary><p>Sí: 3 cuotas sin interés abonando con MODO.</p></details>
       </div>
-    </div></section>
-
-    <section class="cierre"><div class="wrap">
-      <span class="eyebrow">Tamo junto... OSS!!!</span>
-      <h2>Tu próxima remera <span>tiene historia</span></h2>
-      <a class="btn" href="#ficha" data-subir>Elegí tu talle</a>
     </div></section>
   </div>
 </main>
@@ -607,12 +532,13 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
 
 <div class="pie">Vista previa de diseño · BJJ &amp; Co. · PRAXIS</div>
 
-<div class="flota" id="flota"><div class="in">
+<div class="flota" id="flota" aria-label="Comprar Mindset"><div class="in">
   <img src="frente-el.jpg" alt="">
-  <div><small>Estás eligiendo</small><strong>Mindset · <span id="f-t">talle M</span></strong></div>
-  <div class="tl" id="f-tl"><button type="button">S</button><button type="button" class="on">M</button><button type="button">L</button><button type="button">XL</button></div>
-  <span class="pr">$29.000</span>
-  <a class="btn" href="#carrito">Agregar al carrito</a>
+  <div class="dt">
+    <strong>Mindset · <span>$29.000</span></strong>
+    <div class="sub"><span><i>MODO</i> 3 cuotas sin interés</span><div class="tl" id="f-tl"><button type="button">S</button><button type="button" class="on">M</button><button type="button">L</button><button type="button">XL</button></div></div>
+  </div>
+  <a class="btn" href="#carrito"><span>Agregar</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 </div></div>
 
 <div class="modal" id="modal"><div class="cj"><button type="button" aria-label="Cerrar">×</button><img src="tabla.jpg" alt="Tabla de talles oversize"></div></div>
@@ -652,7 +578,7 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
   var T=document.getElementById('talles'),FT=document.getElementById('f-tl');
   function talle(t){
     [T,FT].forEach(function(g){g.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x.textContent===t)})});
-    document.getElementById('tsel').textContent=t;document.getElementById('f-t').textContent='talle '+t;
+    document.getElementById('tsel').textContent=t;
   }
   [T,FT].forEach(function(g){g.addEventListener('click',function(e){var b=e.target.closest('button');if(b)talle(b.textContent)})});
 
@@ -702,7 +628,6 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
     anillos();
   }
   window.addEventListener('scroll',chk,{passive:true});window.addEventListener('resize',chk);
-  document.addEventListener('click',function(e){if(e.target.closest('[data-subir]')){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'})}});
   mostrar();
 })();
 </script>
