@@ -359,6 +359,7 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
 .faq .fin b{display:block;color:var(--tinta);font-size:17px;margin-bottom:4px}
 @media (max-width:900px){.arma .gl{gap:6px}.arma button img{width:46px;height:46px}.bgrid>div{grid-template-columns:1fr;gap:8px}.hvid-v.cuad{max-width:420px}.em-p .tach{font-size:20px}}
 @media (max-width:360px){.arma .gl{grid-template-columns:repeat(3,1fr)}}
+.resu p span{display:block}.resu p span+span{margin-top:9px}
 </style>
 </head>
 <body class="v-ficha">
@@ -442,18 +443,6 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
     <div class="grados"><span class="g1"></span><span class="g2"></span><span class="g3"></span><span class="g4"></span><span class="g5"></span><span class="g6"></span></div>
 
     <section class="ld-sec"><div class="wrap centro">
-      <span class="eyebrow">La comunidad</span>
-      <h2 class="tit">Así se <em>lleva</em></h2>
-      <p class="baja">La gente de BJJ &amp; Co., dentro y fuera del tatami.</p>
-      <div class="lleva">
-        <figure><video src="video-1.mp4" poster="video-1.jpg" muted loop playsinline autoplay preload="metadata"></video><figcaption>Llegó su pedido</figcaption></figure>
-        <figure><img id="ll-1" alt="" loading="lazy"><figcaption id="ll-1c"></figcaption></figure>
-        <figure><video src="video-2.mp4" poster="video-2.jpg" muted loop playsinline autoplay preload="metadata"></video><figcaption>En el gimnasio</figcaption></figure>
-        <figure><img id="ll-2" alt="" loading="lazy"><figcaption id="ll-2c"></figcaption></figure>
-      </div>
-    </div></section>
-
-    <section class="ld-sec hueso"><div class="wrap centro">
       <span class="eyebrow">Por dentro</span>
       <h2 class="tit">Lo que tiene <em>y lo que te aporta</em></h2>
       <p class="baja">No es una remera más: cada detalle está pensado para durar.</p>
@@ -462,6 +451,18 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
         <div><span class="n">02</span><b>Serigrafía artesanal</b><p><strong>Aporta:</strong> la estampa dura; no se cuartea ni se borra.</p></div>
         <div><span class="n">03</span><b id="fit-t"></b><p><strong>Aporta:</strong> <span id="fit-p"></span></p></div>
         <div><span class="n">04</span><b>Cuello americano</b><p><strong>Aporta:</strong> terminaciones reforzadas que no se estiran.</p></div>
+      </div>
+    </div></section>
+
+    <section class="ld-sec hueso"><div class="wrap centro">
+      <span class="eyebrow">La comunidad</span>
+      <h2 class="tit">Así se <em>lleva</em></h2>
+      <p class="baja">La gente de BJJ &amp; Co., dentro y fuera del tatami.</p>
+      <div class="lleva">
+        <figure><video src="video-1.mp4" poster="video-1.jpg" muted loop playsinline autoplay preload="metadata"></video><figcaption>Llegó su pedido</figcaption></figure>
+        <figure><img id="ll-1" alt="" loading="lazy"><figcaption id="ll-1c"></figcaption></figure>
+        <figure><video src="video-2.mp4" poster="video-2.jpg" muted loop playsinline autoplay preload="metadata"></video><figcaption>En el gimnasio</figcaption></figure>
+        <figure><img id="ll-2" alt="" loading="lazy"><figcaption id="ll-2c"></figcaption></figure>
       </div>
     </div></section>
 
@@ -520,14 +521,14 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
 
   var MOD=[['Mindset','mindset','Oversize'],['Choke','choke','Oversize'],['First Poss','first-poss','Oversize'],['Ambassador OS','ambassador-os','Oversize'],['Humildade','humildade','Regular'],['Ambassador','ambassador','Regular'],['Original','original','Regular']];
   var P={
-    mindset:{nom:'Mindset',miga:'Inicio / Remeras / Oversize / <b>Mindset</b>',fotos:['frente-el.jpg','frente-ella.jpg','espalda-ella.jpg','parche.jpg','tabla.jpg'],tabla:'tabla.jpg',
-      rt:'Hecha para los que vuelven una vez más',rp:'Mindset nace de lo que enseña el tatami: la mentalidad se construye con repetición, errores y ajustes, entrenamiento tras entrenamiento. Algodón peinado 24/1, serigrafía artesanal y fit oversize de silueta amplia, para llevarla dentro y fuera del tatami.',
+    mindset:{nom:'Remera Mindset',miga:'Inicio / Remeras / Oversize / <b>Remera Mindset</b>',fotos:['frente-el.jpg','frente-ella.jpg','espalda-ella.jpg','parche.jpg','tabla.jpg'],tabla:'tabla.jpg',
+      rt:'Hecha para los que vuelven una vez más',rp:'Mindset nace de lo que enseña el tatami: la mentalidad se construye con repetición, errores y ajustes, entrenamiento tras entrenamiento.\nAlgodón peinado 24/1, serigrafía artesanal y fit oversize de silueta amplia, para llevarla dentro y fuera del tatami.',
       pr:'$29.000',ant:'',cu:'$4.292',ht:'La mentalidad <em>se entrena</em>',fitt:'Fit oversize',fitp:'silueta amplia y hombro caído, cómoda todo el día.',ll:['frente-ella.jpg','Mindset · ella','frente-el.jpg','Mindset · él']},
-    humildade:{nom:'Humildade',miga:'Inicio / Remeras / Regular / <b>Humildade</b>',fotos:['m/humildade-1.jpg','m/humildade-2.jpg','m/humildade-3.jpg','m/humildade-4.jpg'],tabla:'m/humildade-4.jpg',
-      rt:'Para los que saben que siempre queda algo por aprender',rp:'Humildade nace de una de las lecciones más importantes del tatami: el crecimiento empieza cuando dejamos espacio para aprender. Algodón peinado 24/1, serigrafía artesanal y fit regular con caída natural, para llevarla dentro y fuera del tatami.',
+    humildade:{nom:'Remera Humildade',miga:'Inicio / Remeras / Regular / <b>Remera Humildade</b>',fotos:['m/humildade-1.jpg','m/humildade-2.jpg','m/humildade-3.jpg','m/humildade-4.jpg'],tabla:'m/humildade-4.jpg',
+      rt:'Para los que saben que siempre queda algo por aprender',rp:'Humildade nace de una de las lecciones más importantes del tatami: el crecimiento empieza cuando dejamos espacio para aprender.\nAlgodón peinado 24/1, serigrafía artesanal y fit regular con caída natural, para llevarla dentro y fuera del tatami.',
       pr:'$29.000',ant:'',cu:'$4.292',ht:'Siempre queda <em>algo por aprender</em>',fitt:'Fit regular',fitp:'calce clásico con caída natural, cómodo y versátil para el día a día.',ll:['m/humildade-2.jpg','Humildade · ella','m/humildade-1.jpg','Humildade · él']},
     pack:{nom:'Pack x3 a elección',miga:'Inicio / Remeras / Packs / <b>Pack x3 remeras a elección</b>',fotos:['m/pack-x3-1.jpg','m/pack-x3-2.jpg','m/pack-x3-3.jpg','m/pack-x3-4.jpg'],tabla:'m/pack-x3-4.jpg',
-      rt:'Tres remeras, a tu manera',rp:'Armamos este pack para que no tengas que elegir una sola: tres remeras de la colección, combinando libremente modelos Oversize y Regular, con 20% OFF en el total. Algodón peinado 24/1 y serigrafía artesanal que no se cuartea.',
+      rt:'Tres remeras, a tu manera',rp:'Armamos este pack para que no tengas que elegir una sola: tres remeras de la colección, combinando libremente modelos Oversize y Regular, con 20% OFF en el total.\nAlgodón peinado 24/1 y serigrafía artesanal que no se cuartea.',
       pr:'$69.600',ant:'$87.000',off:'20% OFF',cu:'$10.301',ht:'Nacidas del tatami. <em>Pensadas para la calle</em>',fitt:'Oversize o Regular',fitp:'combinás los dos cortes: oversize de silueta amplia o regular con caída natural.',ll:['m/pack-oversize-1.jpg','Pack Oversize','m/pack-regular-1.jpg','Pack Regular']}
   };
 
@@ -574,12 +575,12 @@ h1,h2,h3{font-family:var(--tt);font-weight:800;line-height:.92;text-transform:up
   function $(id){return document.getElementById(id)}
   function cargar(k){
     var p=P[k];
-    $('miga').innerHTML=p.miga;$('nom').textContent=p.nom;$('r-t').textContent=p.rt;$('r-p').textContent=p.rp;
+    $('miga').innerHTML=p.miga;$('nom').textContent=p.nom;$('r-t').textContent=p.rt;$('r-p').innerHTML=p.rp.split('\n').map(function(t){return '<span>'+esc(t)+'</span>'}).join('');
     $('p-pr').textContent=p.pr;$('p-ant').textContent=p.ant;$('p-ant').style.display=p.ant?'':'none';$('p-cu').textContent=p.cu;
     $('nom').innerHTML=esc(p.nom)+(p.off?'<span class="off">'+p.off+'</span>':'');
     $('h-t').innerHTML=p.ht;$('fit-t').textContent=p.fitt;$('fit-p').textContent=p.fitp;
     $('ll-1').src=p.ll[0];$('ll-1c').textContent=p.ll[1];$('ll-2').src=p.ll[2];$('ll-2c').textContent=p.ll[3];
-    $('f-n').textContent=k==='pack'?'Pack x3':p.nom;$('f-p').textContent=p.pr;$('f-img').src=p.fotos[0];$('m-img').src=p.tabla;
+    $('f-n').textContent=k==='pack'?'Pack x3':p.nom.replace('Remera ','');$('f-p').textContent=p.pr;$('f-img').src=p.fotos[0];$('m-img').src=p.tabla;
     $('arma').hidden=k!=='pack';$('t-lb').textContent=k==='pack'?'Talle del pack':'Talle';
     elegidas=[];pintaArma();galeria(p.fotos);
   }
