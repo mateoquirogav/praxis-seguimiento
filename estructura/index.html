@@ -1424,11 +1424,24 @@ body.fx-mode .stage{height:calc(100% - 112px)}
 .gd-q{background:#FFF6E0;color:#4A3300;border-radius:9px;padding:10px 12px;font-size:14px;line-height:1.5;font-weight:500}
 .gd.full{grid-column:1/-1}
 .gd.wide{grid-column:span 2}
+.gd.full .gd-list{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gd-ruta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:-8px 0 26px;position:sticky;top:-32px;z-index:2;background:#fff;padding:10px 0}
+.gd-ruta a{text-decoration:none;color:#fff;border-radius:10px;padding:10px 12px;font-family:Montserrat;font-weight:700;font-size:14px;line-height:1.2;display:flex;flex-direction:column;gap:3px;background:var(--fc)}
+.gd-ruta a small{font-family:Inter;font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.gd-fase{--fc:#6b6b6b;--ft:#f3f3f3;margin-bottom:30px;scroll-margin-top:90px}
+.f0{--fc:#6b6b6b;--ft:#f3f3f3}.f1{--fc:#2563EB;--ft:#EAF1FE}.f2{--fc:#16A34A;--ft:#E7F6EC}.f3{--fc:#DC2626;--ft:#FDECEC}
+.gd-fh{border-left:6px solid var(--fc);background:var(--ft);border-radius:0 12px 12px 0;padding:12px 16px;margin-bottom:14px}
+.gd-fh small{display:block;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fc)}
+.gd-fh h3{font-family:Montserrat;font-weight:700;font-size:clamp(20px,2.4vw,26px);letter-spacing:-.01em;margin-top:2px}
+.gd-fase .gd-h b{color:var(--fc)}
+.gd-fase .gd.key{border-color:var(--fc)}
+.gd-fase .gd{border-top:3px solid var(--fc)}
+@media (max-width:860px){.gd-ruta{grid-template-columns:1fr 1fr}}
 .gd-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .gd-obj{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .gd-obj div{border:1px solid var(--g2);border-radius:9px;padding:9px 11px;font-size:13.5px;line-height:1.45;min-width:0}
 .gd-obj i{display:block;font-style:normal;font-weight:700;color:#2563EB;font-size:12px;margin-bottom:2px}
-@media (max-width:860px){.gd-grid{grid-template-columns:1fr}.gd.wide{grid-column:auto}.gd-list,.gd-obj{grid-template-columns:1fr}}
+@media (max-width:860px){.gd-grid{grid-template-columns:1fr}.gd.wide{grid-column:auto}.gd-list,.gd-obj,.gd.full .gd-list{grid-template-columns:1fr}}
 </style>
 
 <div class="pk-ov" id="pkOv" hidden>
@@ -1458,17 +1471,28 @@ body.fx-mode .stage{height:calc(100% - 112px)}
 <div class="pk-ov gd-ov" id="gdOv" hidden>
 <div class="pk-in">
   <div class="pk-top"><div><h2>Guía del Meet</h2><p>Solo vos · botón Meet o tecla G · Esc cierra · 25 min</p></div><button class="pk-close" data-pk-close aria-label="Cerrar">×</button></div>
+  <div class="gd-ruta"><a href="javascript:void(0)" data-ir="gd-f0" class="f0"><small>Antes</small>Escuchar</a><a href="javascript:void(0)" data-ir="gd-f1" class="f1"><small>Momento 1</small>Mostrar el MOCKUP</a><a href="javascript:void(0)" data-ir="gd-f2" class="f2"><small>Momento 2</small>Lo que VAMOS A HACER en tu web</a><a href="javascript:void(0)" data-ir="gd-f3" class="f3"><small>Momento 3</small>CIERRE: arrancamos hoy</a></div>
+  <section class="gd-fase f0" id="gd-f0"><div class="gd-fh"><small>Antes · bloques 1 · 2</small><h3>Escuchar y anticipar que hoy se arranca</h3></div>
   <div class="gd-grid">
     <div class="gd"><div class="gd-h"><b>1</b><h4>Congeniar</h4><span>4 min</span></div><p class="gd-k">Banal y personal. Al terminar, dejás claro que hoy se decide y se arranca:</p><p class="gd-q">«Te cuento cómo va: vos me contás, yo te muestro cómo la armaría y vemos qué incluye. La idea es que hoy mismo arranquemos: vemos si vamos con la reestructuración completa o si le sumamos algún agregado.»</p></div>
     <div class="gd"><div class="gd-h"><b>2</b><h4>Lo que va a cambiar</h4><span>4 min</span></div><p class="gd-q">«¿Qué sentís hoy cuando entrás a tu web?» · «¿Qué te llamó la atención de mi trabajo?»</p><p class="gd-k">No te quedes en lo que le frena: vendé el cambio.</p><p class="gd-q">«Esto no son 2 o 3 cambios: tu web va a quedar otra, de punta a punta. Lo que me contaste se resuelve, y además te muestro algo más.»</p></div>
+  </div></section>
+  <section class="gd-fase f1" id="gd-f1"><div class="gd-fh"><small>Momento 1 · bloques 3 · 4</small><h3>Mostrar el MOCKUP</h3></div>
+  <div class="gd-grid">
     <div class="gd"><div class="gd-h"><b>3</b><h4>Estructura</h4><span>5 min · 1-4</span></div><p class="gd-k">Cada bloque con lo que gana el cliente, no con lo que le falta.</p><p class="gd-q">«Mirá cómo entra tu cliente: esto es lo primero que ve…»</p><p class="gd-q">«¿Qué es lo que más te gustó?»</p></div>
     <div class="gd"><div class="gd-h"><b>4</b><h4>Producto</h4><span>2 min · E C X</span></div><p class="gd-k">Ficha apagada y después prendida.</p><p class="gd-q">«Así la ve hoy tu cliente. Así la vería con lo que armamos.»</p></div>
-    <div class="gd key wide"><div class="gd-h"><b>5</b><h4>Packs: el total y el mínimo</h4><span>3 min · P</span></div><p class="gd-k">Abrís Packs. Marcás la diferencia: la completa es el total; la editable es la reestructuración completa, lo mínimo.</p><p class="gd-q">«Te muestro las tres formas de arrancar. Esta es la web al 100 %, con todo: $490.000. Esta es la reestructuración completa, lo que hablamos, ya editable: $300.000. Y en el medio, la que además te arma el carrito para vender más: $370.000.»</p><div class="gd-obj"><div><i>«Me dijiste $270.000»</i>«Sí, la reestructuración sola es eso. Con que la puedas editar vos desde Tiendanube queda en $300.000, que es como la arrancan casi todos.»</div><div><i>«¿Por qué tanta diferencia?»</i>«La completa incluye la página de venta de cada uno de tus productos. La de $300.000 es la web entera reestructurada.»</div></div></div>
+  </div></section>
+  <section class="gd-fase f2" id="gd-f2"><div class="gd-fh"><small>Momento 2 · bloques 5 · 6 · 7</small><h3>Lo que VAMOS A HACER en tu web</h3></div>
+  <div class="gd-grid">
+    <div class="gd wide"><div class="gd-h"><b>5</b><h4>Packs: el total y el mínimo</h4><span>3 min · P</span></div><p class="gd-k">Abrís Packs. Marcás la diferencia: la completa es el total; la editable es la reestructuración completa, lo mínimo.</p><p class="gd-q">«Te muestro las tres formas de arrancar. Esta es la web al 100 %, con todo: $490.000. Esta es la reestructuración completa, lo que hablamos, ya editable: $300.000. Y en el medio, la que además te arma el carrito para vender más: $370.000.»</p><div class="gd-obj"><div><i>«Me dijiste $270.000»</i>«Sí, la reestructuración sola es eso. Con que la puedas editar vos desde Tiendanube queda en $300.000, que es como la arrancan casi todos.»</div><div><i>«¿Por qué tanta diferencia?»</i>«La completa incluye la página de venta de cada uno de tus productos. La de $300.000 es la web entera reestructurada.»</div></div></div>
     <div class="gd"><div class="gd-h"><b>6</b><h4>Recomendación</h4><span>2 min</span></div><p class="gd-k">Primero lo que no necesita, después el pack que le sirve.</p><p class="gd-q">«Con [X] productos, las descripciones de todo el catálogo hoy no te hacen falta. Lo que te va a mover la aguja es el carrito: para vos es la Web que vende.»</p></div>
-    <div class="gd wide"><div class="gd-h"><b>7</b><h4>A o B</h4><span>2 min</span></div><p class="gd-k">Nunca «¿lo querés?». Siempre cuál de los dos.</p><div class="gd-list"><p class="gd-q">«¿En el carrito te sirve más el cross-up o el cross-selling?»</p><p class="gd-q">«¿Arrancamos con la Estructura 1 o con la 2?»</p><p class="gd-q">«¿El banner lo hacemos con foto o con video?»</p><p class="gd-q">«¿Vamos con la que vende o directamente con la completa?»</p><p class="gd-q">Si pregunta por el editor: «¿Preferís manejar vos los bloques desde Tiendanube, o que te la deje armada y los cambios me los pedís a mí?»</p><p class="gd-q">Al cerrar: «¿Lo pagás por transferencia o con tarjeta en cuotas?»</p></div></div>
-    <div class="gd key wide"><div class="gd-h"><b>8</b><h4>Cierre: arrancamos hoy</h4><span>2 min</span></div><p class="gd-q">«Entonces arrancamos hoy con la [pack]. Te paso el alias ahora y, apenas entra, te mando el seguimiento y empiezo.»</p><p class="gd-k"><b>Y te callás.</b></p><div class="gd-obj"><div><i>Lo pienso</i>«Dale, perfecto. Mirá…» (como revisando la agenda) «…te separo el [mañana, día]. Ese día te escribo y arrancamos.»</div><div><i>Es mucho</i>Bajás un pack o tarjeta en cuotas. Nunca bajar el precio.</div><div><i>Duda</i>«Del 1 al 10, ¿cuánto te cierra? ¿Qué falta para el 10?»</div><div><i>Socio</i>«¿Lo vemos los tres mañana, 15 minutos?»</div></div></div>
+    <div class="gd full"><div class="gd-h"><b>7</b><h4>A o B</h4><span>2 min</span></div><p class="gd-k">Nunca «¿lo querés?». Siempre cuál de los dos.</p><div class="gd-list"><p class="gd-q">«¿En el carrito te sirve más el cross-up o el cross-selling?»</p><p class="gd-q">«¿Arrancamos con la Estructura 1 o con la 2?»</p><p class="gd-q">«¿El banner lo hacemos con foto o con video?»</p><p class="gd-q">«¿Vamos con la que vende o directamente con la completa?»</p><p class="gd-q">Si pregunta por el editor: «¿Preferís manejar vos los bloques desde Tiendanube, o que te la deje armada y los cambios me los pedís a mí?»</p><p class="gd-q">Al cerrar: «¿Lo pagás por transferencia o con tarjeta en cuotas?»</p></div></div>
+  </div></section>
+  <section class="gd-fase f3" id="gd-f3"><div class="gd-fh"><small>Momento 3 · bloques 8 · 9</small><h3>CIERRE: arrancamos hoy</h3></div>
+  <div class="gd-grid">
+    <div class="gd wide"><div class="gd-h"><b>8</b><h4>Cierre: arrancamos hoy</h4><span>2 min</span></div><p class="gd-q">«Entonces arrancamos hoy con la [pack]. Te paso el alias ahora y, apenas entra, te mando el seguimiento y empiezo.»</p><p class="gd-k"><b>Y te callás.</b></p><div class="gd-obj"><div><i>Lo pienso</i>«Dale, perfecto. Mirá…» (como revisando la agenda) «…te separo el [mañana, día]. Ese día te escribo y arrancamos.»</div><div><i>Es mucho</i>Bajás un pack o tarjeta en cuotas. Nunca bajar el precio.</div><div><i>Duda</i>«Del 1 al 10, ¿cuánto te cierra? ¿Qué falta para el 10?»</div><div><i>Socio</i>«¿Lo vemos los tres mañana, 15 minutos?»</div></div></div>
     <div class="gd"><div class="gd-h"><b>9</b><h4>Siembra</h4><span>30 s</span></div><p class="gd-q">«Cuando la tengas andando, te muestro cómo se prende sola para [fecha comercial].»</p></div>
-  </div>
+  </div></section>
 </div>
 </div>
 
@@ -1479,6 +1503,7 @@ body.fx-mode .stage{height:calc(100% - 112px)}
   function toggle(el){ var o=el.hidden; pk.hidden=true; gd.hidden=true; el.hidden=!o; }
   document.querySelectorAll('[data-pk-close]').forEach(function(b){b.addEventListener('click',function(){pk.hidden=true;gd.hidden=true;})});
   var bp=document.getElementById('bPacks'); if(bp) bp.addEventListener('click',function(){toggle(pk)});
+  document.querySelectorAll('[data-ir]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.getElementById(a.getAttribute('data-ir'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
   var bm=document.getElementById('bMeet'); if(bm) bm.addEventListener('click',function(){toggle(gd)});
   pk.querySelectorAll('.pk li').forEach(function(li){li.addEventListener('click',function(){li.classList.toggle('off')})});
   pk.querySelectorAll('.pk .price').forEach(function(p){p.style.cursor='pointer';p.addEventListener('click',function(){p.closest('.pk').classList.toggle('off')})});
