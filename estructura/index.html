@@ -669,6 +669,12 @@ body.fx-mode .stage{height:calc(100% - 112px)}
   .fx-gar p{font-size:10px}
   .fx-ops{grid-template-columns:1fr}
 }
+@media (min-width:701px) and (max-width:1180px){
+  .tool{height:auto;flex-wrap:wrap;row-gap:8px;padding:10px 20px}
+  .tool-mid{order:3;width:100%;justify-content:center}
+  .stage{height:calc(100% - 104px)}
+  body.fx-mode .stage{height:calc(100% - 156px)}
+}
 @media (max-width:700px){
   body.fx-mode .stage{height:calc(100% - 196px)}
   .fx-bar{height:auto;padding:6px 16px 10px}
